@@ -59,3 +59,6 @@ const createData = async (jsonUrl, pag = 1, items = 100000, campo = '', texto = 
     }
 
 }
+
+
+<div class="btn-paginacion" id="paginacion"><div class="control-pag"><button class="btn-pag" data-set-pg="1">1</button><button class="btn-pag" data-set-pg="2">2</button><button class="btn-pag" data-set-pg="3">3</button><button class="btn-pag" data-set-pg="4">4</button><button class="btn-pag" data-set-pg="1094">1094</button></div></div>
