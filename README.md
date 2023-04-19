@@ -1,43 +1,39 @@
 # sgt
-intercambio de codigo
-{
-        "region": "R07",
-        "cta_padre": "70324907",
-        "cta": "73848755",
-        "ciclo": "20",
-        "razon_social": "BANCO SANTANDER MEXICO SA INST",
-        "num_movil": "2224570207",
-        "estatus_tel": "AC",
-        "motivo_tel": "TARDS",
-        "iccid": "8952020020671460895 ",
-        "imei": "356552495266686",
-        "estatus_cta": "AC",
-        "nombre_plan": "TMSLE CC 2000 DD 18 ",
-        "monto_plan": "283.62",
-        "marca": "SAM            ",
-        "modelo": "SM-A035M        ",
-        "modelo_img": "A03",
-        "meses_plan": "19",
-        "date_ini": "2022-09-08",
-        "date_fin": "2024-04-08",
-        "estatus_adeudum": "CON ADENDUM",
-        "mes_restante": "11",
-        "dias_restantes": "356",
-        "semaforo": "verde",
-        "asignado_a": "MARCELA CERVANTES CASTRO",
-        "expediente": "C112489",
-        "email": "mcervantesc@santander.com.mx",
-        "area": "Director Zona Empresas (VICTOR HUGO ARROYO FUENTES)",
-        "puesto": "MEX Ejec. De Cuenta",
-        "empresa_santander": "CORP REG SUR PUEBLA CITY ANGELOPOLIS",
-        "estatus_expediente": "WD Activo",
-        "estatus_int": "Asignado",
-        "observacion_int": null,
-        "update_file": "2023-03-28 14:00:23",
-        "update_usr_data": "2023-03-28 14:05:22",
-        "enrollment_model": "SM-A035M",
-        "enrollment_date": "2023-04-14 10:02:04",
-        "semaforo_enrollment": "Enrolado",
-        "edoUser": "perm_identity",
-        "updateWorkday": "2023-03-15 18:49:54"
-    }
+
+const recordsPerPage = 10;
+const records = /* Aquí debes poner el array con los 50000 registros */;
+const totalPages = Math.ceil(records.length / recordsPerPage);
+
+function createTablePage(records) {
+  let html = '<table>';
+  html += '<tr><th>IMEI</th><th>Nombre del Plan</th><th>Asignado a</th><th>Expediente</th><th>Semaforo Enrollment</th></tr>';
+  for (const record of records) {
+    html += `<tr><td><button onclick="showDetails('${record.imei}')">${record.imei}</button></td><td>${record.nombre_plan}</td><td>${record.asignado_a}</td><td>${record.expediente}</td><td>${record.semaforo_enrollment}</td></tr>`;
+  }
+  html += '</table>';
+  return html;
+}
+
+function showTablePage(page) {
+  const startIndex = (page - 1) * recordsPerPage;
+  const recordsPage = records.slice(startIndex, startIndex + recordsPerPage);
+  const tableHtml = createTablePage(recordsPage);
+  document.getElementById('table-container').innerHTML = tableHtml;
+}
+
+function showDetails(imei) {
+  /* Aquí debes poner el código para mostrar los detalles del registro con el IMEI indicado */
+}
+
+// Mostrar la primera página al cargar la página
+showTablePage(1);
+
+// Agregar botones de paginación
+for (let i = 1; i <= totalPages; i++) {
+  const button = document.createElement('button');
+  button.innerText = i;
+  button.onclick = function() {
+    showTablePage(i);
+  };
+  document.getElementById('pagination-container').appendChild(button);
+}
