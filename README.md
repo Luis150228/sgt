@@ -37,6 +37,9 @@ for (let i = 1; i <= totalPages; i++) {
   };
   document.getElementById('pagination-container').appendChild(button);
 }
+
+
+/**/
 const createData = async (jsonUrl, pag = 1, items = 100000, campo = '', texto = '', columna = 'num_movil', order = 'ASC')=>{
     try {
         let loader = document.createElement('p')
