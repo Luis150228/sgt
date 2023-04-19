@@ -37,3 +37,22 @@ for (let i = 1; i <= totalPages; i++) {
   };
   document.getElementById('pagination-container').appendChild(button);
 }
+const createData = async (jsonUrl, pag = 1, items = 100000, campo = '', texto = '', columna = 'num_movil', order = 'ASC')=>{
+    try {
+        let loader = document.createElement('p')
+        loader.innerHTML = 'espere... '
+        divloader.appendChild(loader)
+
+        let res = await fetch(`${jsonUrl.url}rutes/showData.php?pag=${pag}&reg=${items}&co=${campo}&tx=${texto}&cl=${columna}&or=${order}`, {
+            method: "GET"
+        }),
+        json = await res.json();
+            const datas = json['data'];
+            divloader.innerHTML = ''
+            return datas
+
+    } catch (error) {
+        divData.innerHTML = `Error en consulta parametros incorrectos: ${error}`
+    }
+
+}
