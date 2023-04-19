@@ -62,3 +62,15 @@ const createData = async (jsonUrl, pag = 1, items = 100000, campo = '', texto = 
 
 
 <div class="btn-paginacion" id="paginacion"><div class="control-pag"><button class="btn-pag" data-set-pg="1">1</button><button class="btn-pag" data-set-pg="2">2</button><button class="btn-pag" data-set-pg="3">3</button><button class="btn-pag" data-set-pg="4">4</button><button class="btn-pag" data-set-pg="1094">1094</button></div></div>
+
+
+
+const objetosEncontrados = arregloDeObjetos.filter(objeto => {
+  const regex = new RegExp("castro", "i"); // "i" indica que la búsqueda no distingue mayúsculas y minúsculas
+  for (const propiedad in objeto) {
+    if (regex.test(objeto[propiedad])) {
+      return true; // Si se encuentra una coincidencia, se devuelve true y se agrega el objeto al arreglo de objetos encontrados
+    }
+  }
+  return false; // Si no se encuentra ninguna coincidencia, se devuelve false y se excluye el objeto del arreglo de objetos encontrados
+});
