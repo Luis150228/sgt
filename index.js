@@ -32,7 +32,28 @@ inputFile.addEventListener('change', async (e) =>{
         const typFile = e.target.files[0].type;
         const sizFile = ((e.target.files[0].size)/1024)/1024;
         const refFile = numPedido.value
-        console.log(file);
+        console.log(file); /*File {name: 'SUBASTA AUTOS  03-2023.pdf', lastModified: 1682434256241, lastModifiedDate: Tue Apr 25 2023 08:50:56 GMT-0600 (hora estándar central), webkitRelativePath: '', size: 350825, …}
+lastModified
+: 
+1682434256241
+lastModifiedDate
+: 
+Tue Apr 25 2023 08:50:56 GMT-0600 (hora estándar central) {}
+name
+: 
+"SUBASTA AUTOS  03-2023.pdf"
+size
+: 
+350825
+type
+: 
+"application/pdf"
+webkitRelativePath
+: 
+""
+[[Prototype]]
+: 
+File*/
         const typeFiles = [
             "application/pdf",
             "image/jpeg",
@@ -46,6 +67,22 @@ inputFile.addEventListener('change', async (e) =>{
             data.append('type', typFile);
             data.append('archivo', file);
             console.log([...data]);
+          /*Resultado del [...data] = 
+          [
+              [
+                  "id",
+                  "c-100151"
+              ],
+              [
+                  "type",
+                  "application/pdf"
+              ],
+              [
+                  "archivo",
+                  {}
+              ]
+          ]
+          */
             divLoader()
             const attachFile = await fetchBeta('adjuntos', data);
             console.log(attachFile);
