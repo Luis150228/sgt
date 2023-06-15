@@ -16,3 +16,6 @@ let response = await fetch("http://180.176.105.244/santec_hardware_api/rutes/adj
 
 let data = await response.text();
 console.log(data);
+
+
+"202"{"code":"202","message":"Fallo archivo no almacenado","archivo":"21001234_acn1.pdf"}
