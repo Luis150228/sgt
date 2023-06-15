@@ -1,20 +1,14 @@
-[
-    {
-        "id": "1",
-        "nombre": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "ubicacion": "Queretaro",
-        "region": "Centro"
-    },
-    {
-        "id": "2",
-        "nombre": "EDIF. CORPORATIVO PATIO SANTA FE",
-        "ubicacion": "CDMX",
-        "region": "Metro"
-    },
-    {
-        "id": "3",
-        "nombre": "EDIF. AMERICAS",
-        "ubicacion": "Jalisco",
-        "region": "Occidente"
-    }
-]
+------WebKitFormBoundaryoeCqMPD5oFhZk2Lw
+Content-Disposition: form-data; name="id"
+
+c-100151
+------WebKitFormBoundaryoeCqMPD5oFhZk2Lw
+Content-Disposition: form-data; name="type"
+
+application/pdf
+------WebKitFormBoundaryoeCqMPD5oFhZk2Lw
+Content-Disposition: form-data; name="archivo"; filename="RADL8409013S1.6.2019.pdf"
+Content-Type: application/pdf
+
+
+------WebKitFormBoundaryoeCqMPD5oFhZk2Lw--
