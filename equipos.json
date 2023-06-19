@@ -43,6 +43,71 @@ function agruparPorMarca(equipos) {
     const marca = equipo.marca;
 
     if (agrupados[marca]) {
+      agrupados[marca].push({ marca, npvr: equipo.npvr });
+    } else {
+      agrupados[marca] = [{ marca, npvr: equipo.npvr }];
+    }
+  }
+
+  return agrupados;
+}
+
+const equiposAgrupados = agruparPorMarca(equipos);
+
+for (const marca in equiposAgrupados) {
+  console.log(`Equipos de la marca ${marca}:`);
+  console.log(equiposAgrupados[marca]);
+  console.log('------------------------------');
+}
+
+
+
+
+const equipos = [
+  {
+    "idequipo": "23",
+    "npvr": "12",
+    "tipo_equipo": "ROUTER",
+    "marca": "CISCO",
+    "modelo": "CRG-807"
+  },
+  {
+    "idequipo": "24",
+    "npvr": "12",
+    "tipo_equipo": "ACCES POINT",
+    "marca": "CISCO",
+    "modelo": "AIR-CAP1532-A-K9"
+  },
+  {
+    "idequipo": "25",
+    "npvr": "12",
+    "tipo_equipo": "ACCES POINT",
+    "marca": "CISCO",
+    "modelo": "AIR-CAP1532-A-K9"
+  },
+  {
+    "idequipo": "26",
+    "npvr": "12",
+    "tipo_equipo": "ACCES POINT",
+    "marca": "CISCO",
+    "modelo": "AIR-CAP1532I-A-K9"
+  },
+  {
+    "idequipo": "27",
+    "npvr": "12",
+    "tipo_equipo": "ACCES POINT",
+    "marca": "CISCO",
+    "modelo": "AIR-CAP2602I-N-K9"
+  }
+];
+
+function agruparPorMarca(equipos) {
+  const agrupados = {};
+
+  for (const equipo of equipos) {
+    const marca = equipo.marca;
+
+    if (agrupados[marca]) {
       agrupados[marca].push(equipo);
     } else {
       agrupados[marca] = [equipo];
