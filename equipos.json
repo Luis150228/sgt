@@ -1,0 +1,1203 @@
+{
+    "code": "200",
+    "code_msg": "Bienvenido al sistema de Activo EUT",
+    "data": [
+        {
+            "idequipo": "2",
+            "npvr": "7",
+            "tipo_equipo": "Bateria Laptop",
+            "marca": "Dell",
+            "modelo": "B-57001"
+        },
+        {
+            "idequipo": "23",
+            "npvr": "7",
+            "tipo_equipo": "Cargador Laptop",
+            "marca": "Dell",
+            "modelo": "CRG-807"
+        },
+        {
+            "idequipo": "24",
+            "npvr": "12",
+            "tipo_equipo": "ACCES POINT",
+            "marca": "CISCO",
+            "modelo": "AIR-CAP1532-A-K9"
+        },
+        {
+            "idequipo": "25",
+            "npvr": "12",
+            "tipo_equipo": "ACCES POINT",
+            "marca": "CISCO",
+            "modelo": "AIR-CAP1532-A-K9"
+        },
+        {
+            "idequipo": "26",
+            "npvr": "12",
+            "tipo_equipo": "ACCES POINT",
+            "marca": "CISCO",
+            "modelo": "AIR-CAP1532I-A-K9"
+        },
+        {
+            "idequipo": "27",
+            "npvr": "12",
+            "tipo_equipo": "ACCES POINT",
+            "marca": "CISCO",
+            "modelo": "AIR-CAP2602I-N-K9"
+        },
+        {
+            "idequipo": "28",
+            "npvr": "12",
+            "tipo_equipo": "ACCES POINT",
+            "marca": "CISCO",
+            "modelo": "AIR-CAP27021-N-K9"
+        },
+        {
+            "idequipo": "29",
+            "npvr": "12",
+            "tipo_equipo": "ACCES POINT",
+            "marca": "CISCO",
+            "modelo": "AIRCAP2702I-N-K9"
+        },
+        {
+            "idequipo": "30",
+            "npvr": "12",
+            "tipo_equipo": "ACCES POINT",
+            "marca": "CISCO",
+            "modelo": "AIR-CAP2702I-N-K9"
+        },
+        {
+            "idequipo": "31",
+            "npvr": "12",
+            "tipo_equipo": "ACCES POINT",
+            "marca": "CISCO",
+            "modelo": "AIR-LAP1142N-A-K9"
+        },
+        {
+            "idequipo": "32",
+            "npvr": "12",
+            "tipo_equipo": "ACCES POINT",
+            "marca": "CISCO",
+            "modelo": "CAP272I-N-K9"
+        },
+        {
+            "idequipo": "33",
+            "npvr": "12",
+            "tipo_equipo": "RUTEADOR",
+            "marca": "CISCO",
+            "modelo": "1760"
+        },
+        {
+            "idequipo": "34",
+            "npvr": "12",
+            "tipo_equipo": "RUTEADOR",
+            "marca": "CISCO",
+            "modelo": "2500"
+        },
+        {
+            "idequipo": "35",
+            "npvr": "12",
+            "tipo_equipo": "RUTEADOR",
+            "marca": "CISCO",
+            "modelo": "2801"
+        },
+        {
+            "idequipo": "36",
+            "npvr": "12",
+            "tipo_equipo": "RUTEADOR",
+            "marca": "CISCO",
+            "modelo": "2900"
+        },
+        {
+            "idequipo": "37",
+            "npvr": "12",
+            "tipo_equipo": "RUTEADOR",
+            "marca": "CISCO",
+            "modelo": "2901"
+        },
+        {
+            "idequipo": "38",
+            "npvr": "12",
+            "tipo_equipo": "RUTEADOR",
+            "marca": "CISCO",
+            "modelo": "2901 K9"
+        },
+        {
+            "idequipo": "39",
+            "npvr": "12",
+            "tipo_equipo": "RUTEADOR",
+            "marca": "CISCO",
+            "modelo": "2911"
+        },
+        {
+            "idequipo": "40",
+            "npvr": "12",
+            "tipo_equipo": "RUTEADOR",
+            "marca": "CISCO",
+            "modelo": "2921 K9 V08"
+        },
+        {
+            "idequipo": "41",
+            "npvr": "12",
+            "tipo_equipo": "RUTEADOR",
+            "marca": "CISCO",
+            "modelo": "3600"
+        },
+        {
+            "idequipo": "42",
+            "npvr": "12",
+            "tipo_equipo": "RUTEADOR",
+            "marca": "CISCO",
+            "modelo": "3825 V05"
+        },
+        {
+            "idequipo": "43",
+            "npvr": "12",
+            "tipo_equipo": "RUTEADOR",
+            "marca": "CISCO",
+            "modelo": "7160"
+        },
+        {
+            "idequipo": "44",
+            "npvr": "12",
+            "tipo_equipo": "RUTEADOR",
+            "marca": "CISCO",
+            "modelo": "WS-C3750-48"
+        },
+        {
+            "idequipo": "45",
+            "npvr": "12",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "CISCO",
+            "modelo": "UCS C220 M4"
+        },
+        {
+            "idequipo": "46",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "1800"
+        },
+        {
+            "idequipo": "47",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "2600"
+        },
+        {
+            "idequipo": "48",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "2801"
+        },
+        {
+            "idequipo": "49",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "2901"
+        },
+        {
+            "idequipo": "50",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "3526T-PWR"
+        },
+        {
+            "idequipo": "51",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "4526T-PWR"
+        },
+        {
+            "idequipo": "52",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "C9300-48P"
+        },
+        {
+            "idequipo": "53",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "C9300-48P-E"
+        },
+        {
+            "idequipo": "54",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "C9300-NM-4G"
+        },
+        {
+            "idequipo": "55",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "CATALYST 2960"
+        },
+        {
+            "idequipo": "56",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "N9K-C93180YC"
+        },
+        {
+            "idequipo": "57",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "WS-3850"
+        },
+        {
+            "idequipo": "58",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "WS-C2950-24"
+        },
+        {
+            "idequipo": "59",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "WS-C2960-24"
+        },
+        {
+            "idequipo": "60",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "WS-C2960-48"
+        },
+        {
+            "idequipo": "61",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "WS-C2960-48TT"
+        },
+        {
+            "idequipo": "62",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "WS-C2960X-48"
+        },
+        {
+            "idequipo": "63",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "WS-C2960X-48FPS"
+        },
+        {
+            "idequipo": "64",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "WS-C2960X-48FPS-L V06"
+        },
+        {
+            "idequipo": "65",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "WS-C3750-48"
+        },
+        {
+            "idequipo": "66",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "WS-C3750X-12"
+        },
+        {
+            "idequipo": "67",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "WS-C3850-24P"
+        },
+        {
+            "idequipo": "68",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "WS-C3850-48"
+        },
+        {
+            "idequipo": "69",
+            "npvr": "12",
+            "tipo_equipo": "SWITCH",
+            "marca": "CISCO",
+            "modelo": "WS-C3850-48F"
+        },
+        {
+            "idequipo": "70",
+            "npvr": "7",
+            "tipo_equipo": "DESKTOP",
+            "marca": "DELL",
+            "modelo": "GX1"
+        },
+        {
+            "idequipo": "71",
+            "npvr": "7",
+            "tipo_equipo": "DESKTOP",
+            "marca": "DELL",
+            "modelo": "OPTIPLEX 150"
+        },
+        {
+            "idequipo": "72",
+            "npvr": "7",
+            "tipo_equipo": "DESKTOP",
+            "marca": "DELL",
+            "modelo": "OPTIPLEX 780"
+        },
+        {
+            "idequipo": "73",
+            "npvr": "7",
+            "tipo_equipo": "DESKTOP",
+            "marca": "DELL",
+            "modelo": "OPTIPLEX 790"
+        },
+        {
+            "idequipo": "74",
+            "npvr": "7",
+            "tipo_equipo": "DESKTOP",
+            "marca": "DELL",
+            "modelo": "OPTIPLEX GX240"
+        },
+        {
+            "idequipo": "75",
+            "npvr": "7",
+            "tipo_equipo": "DESKTOP",
+            "marca": "DELL",
+            "modelo": "PRECISION 3430"
+        },
+        {
+            "idequipo": "76",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "5400"
+        },
+        {
+            "idequipo": "77",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "E5450"
+        },
+        {
+            "idequipo": "78",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "K17M"
+        },
+        {
+            "idequipo": "79",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITIUDE E6400"
+        },
+        {
+            "idequipo": "80",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITUDE 5400"
+        },
+        {
+            "idequipo": "81",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITUDE 5410"
+        },
+        {
+            "idequipo": "82",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITUDE 5470"
+        },
+        {
+            "idequipo": "83",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITUDE 5480"
+        },
+        {
+            "idequipo": "84",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITUDE 5490"
+        },
+        {
+            "idequipo": "85",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITUDE 7400"
+        },
+        {
+            "idequipo": "86",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITUDE 7480"
+        },
+        {
+            "idequipo": "87",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITUDE 7490"
+        },
+        {
+            "idequipo": "88",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITUDE E5450"
+        },
+        {
+            "idequipo": "89",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITUDE E5470"
+        },
+        {
+            "idequipo": "90",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITUDE E5480"
+        },
+        {
+            "idequipo": "91",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITUDE E6410"
+        },
+        {
+            "idequipo": "92",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITUDE E6420"
+        },
+        {
+            "idequipo": "93",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITUDE E7450"
+        },
+        {
+            "idequipo": "94",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATITUDE P15G"
+        },
+        {
+            "idequipo": "95",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "LATUTIDE 7400"
+        },
+        {
+            "idequipo": "96",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "PRECISION 5540"
+        },
+        {
+            "idequipo": "97",
+            "npvr": "7",
+            "tipo_equipo": "LAPTOP",
+            "marca": "DELL",
+            "modelo": "PROBOOK E6420"
+        },
+        {
+            "idequipo": "98",
+            "npvr": "7",
+            "tipo_equipo": "NETTOP",
+            "marca": "DELL",
+            "modelo": "3040"
+        },
+        {
+            "idequipo": "99",
+            "npvr": "7",
+            "tipo_equipo": "NETTOP",
+            "marca": "DELL",
+            "modelo": "OPTI3040"
+        },
+        {
+            "idequipo": "100",
+            "npvr": "7",
+            "tipo_equipo": "NETTOP",
+            "marca": "DELL",
+            "modelo": "OPTIPLEX 3040"
+        },
+        {
+            "idequipo": "101",
+            "npvr": "7",
+            "tipo_equipo": "NETTOP",
+            "marca": "DELL",
+            "modelo": "OPTIPLEX 3050"
+        },
+        {
+            "idequipo": "102",
+            "npvr": "7",
+            "tipo_equipo": "NETTOP",
+            "marca": "DELL",
+            "modelo": "OPTIPLEX 3060"
+        },
+        {
+            "idequipo": "103",
+            "npvr": "7",
+            "tipo_equipo": "NETTOP",
+            "marca": "DELL",
+            "modelo": "OPTIPLEX 3080"
+        },
+        {
+            "idequipo": "104",
+            "npvr": "7",
+            "tipo_equipo": "PROYECTOR",
+            "marca": "DELL",
+            "modelo": "1201MP"
+        },
+        {
+            "idequipo": "105",
+            "npvr": "7",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "DELL",
+            "modelo": "E5320"
+        },
+        {
+            "idequipo": "106",
+            "npvr": "7",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "DELL",
+            "modelo": "POVEREDGE T320"
+        },
+        {
+            "idequipo": "107",
+            "npvr": "7",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "DELL",
+            "modelo": "POWEREDGE R200"
+        },
+        {
+            "idequipo": "108",
+            "npvr": "7",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "DELL",
+            "modelo": "POWEREDGE T320"
+        },
+        {
+            "idequipo": "109",
+            "npvr": "7",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "DELL",
+            "modelo": "POWEREDGE T440"
+        },
+        {
+            "idequipo": "110",
+            "npvr": "7",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "DELL",
+            "modelo": "R440"
+        },
+        {
+            "idequipo": "111",
+            "npvr": "8",
+            "tipo_equipo": "DESKTOP",
+            "marca": "HP",
+            "modelo": "8200 ELITE"
+        },
+        {
+            "idequipo": "112",
+            "npvr": "8",
+            "tipo_equipo": "DESKTOP",
+            "marca": "HP",
+            "modelo": "D330"
+        },
+        {
+            "idequipo": "113",
+            "npvr": "8",
+            "tipo_equipo": "DESKTOP",
+            "marca": "HP",
+            "modelo": "DC5000"
+        },
+        {
+            "idequipo": "114",
+            "npvr": "8",
+            "tipo_equipo": "DESKTOP",
+            "marca": "HP",
+            "modelo": "DC5100"
+        },
+        {
+            "idequipo": "115",
+            "npvr": "8",
+            "tipo_equipo": "DESKTOP",
+            "marca": "HP",
+            "modelo": "DC5700"
+        },
+        {
+            "idequipo": "116",
+            "npvr": "8",
+            "tipo_equipo": "DESKTOP",
+            "marca": "HP",
+            "modelo": "DC7800"
+        },
+        {
+            "idequipo": "117",
+            "npvr": "8",
+            "tipo_equipo": "DESKTOP",
+            "marca": "HP",
+            "modelo": "DC7900"
+        },
+        {
+            "idequipo": "118",
+            "npvr": "8",
+            "tipo_equipo": "DESKTOP",
+            "marca": "HP",
+            "modelo": "ELITE 8200"
+        },
+        {
+            "idequipo": "119",
+            "npvr": "8",
+            "tipo_equipo": "DESKTOP",
+            "marca": "HP",
+            "modelo": "ELITE 8300"
+        },
+        {
+            "idequipo": "120",
+            "npvr": "8",
+            "tipo_equipo": "DESKTOP",
+            "marca": "HP",
+            "modelo": "PRO 6300"
+        },
+        {
+            "idequipo": "121",
+            "npvr": "8",
+            "tipo_equipo": "DESKTOP",
+            "marca": "HP",
+            "modelo": "VECTRA VL400"
+        },
+        {
+            "idequipo": "122",
+            "npvr": "8",
+            "tipo_equipo": "IMPRESORA",
+            "marca": "HP",
+            "modelo": "LASER\tPRO M12W"
+        },
+        {
+            "idequipo": "123",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "640"
+        },
+        {
+            "idequipo": "124",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "CHROMEBOOK X350"
+        },
+        {
+            "idequipo": "125",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "ELITEBOOK 840 G5"
+        },
+        {
+            "idequipo": "126",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "ELITEBOOK"
+        },
+        {
+            "idequipo": "127",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "ELITEBOOK 840"
+        },
+        {
+            "idequipo": "128",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "ELITEBOOK 840 G5"
+        },
+        {
+            "idequipo": "129",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "ELITEBOOK 8460P"
+        },
+        {
+            "idequipo": "130",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "H240 G7"
+        },
+        {
+            "idequipo": "131",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "HP PROBOOK 640 G5"
+        },
+        {
+            "idequipo": "132",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "PROBOOK 430"
+        },
+        {
+            "idequipo": "133",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "PROBOOK 430 G1"
+        },
+        {
+            "idequipo": "134",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "PROBOOK 430 G7"
+        },
+        {
+            "idequipo": "135",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "PROBOOK 440 G6"
+        },
+        {
+            "idequipo": "136",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "PROBOOK 450 G6"
+        },
+        {
+            "idequipo": "137",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "PROBOOK 635 AEROG7"
+        },
+        {
+            "idequipo": "138",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "PROBOOK 640"
+        },
+        {
+            "idequipo": "139",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "PROBOOK 640 G1"
+        },
+        {
+            "idequipo": "140",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "PROBOOK 6410B"
+        },
+        {
+            "idequipo": "141",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "PROBOOK 6470B"
+        },
+        {
+            "idequipo": "142",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "PROBOOK 6930P"
+        },
+        {
+            "idequipo": "143",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "PROBOOK L440"
+        },
+        {
+            "idequipo": "144",
+            "npvr": "8",
+            "tipo_equipo": "LAPTOP",
+            "marca": "HP",
+            "modelo": "PROBOOK L440 G2"
+        },
+        {
+            "idequipo": "145",
+            "npvr": "8",
+            "tipo_equipo": "MONITOR",
+            "marca": "HP",
+            "modelo": "PAVILON 440G3"
+        },
+        {
+            "idequipo": "146",
+            "npvr": "8",
+            "tipo_equipo": "NETTOP",
+            "marca": "HP",
+            "modelo": "400 G4"
+        },
+        {
+            "idequipo": "147",
+            "npvr": "8",
+            "tipo_equipo": "NETTOP",
+            "marca": "HP",
+            "modelo": "PRO 400 G4"
+        },
+        {
+            "idequipo": "148",
+            "npvr": "8",
+            "tipo_equipo": "NETTOP",
+            "marca": "HP",
+            "modelo": "PRODESK 400"
+        },
+        {
+            "idequipo": "149",
+            "npvr": "8",
+            "tipo_equipo": "NETTOP",
+            "marca": "HP",
+            "modelo": "PRODESK 400 4G"
+        },
+        {
+            "idequipo": "150",
+            "npvr": "8",
+            "tipo_equipo": "NETTOP",
+            "marca": "HP",
+            "modelo": "PRODESK 400 G4"
+        },
+        {
+            "idequipo": "151",
+            "npvr": "8",
+            "tipo_equipo": "NETTOP",
+            "marca": "HP",
+            "modelo": "PRODESK 400 G5"
+        },
+        {
+            "idequipo": "152",
+            "npvr": "8",
+            "tipo_equipo": "RUTEADOR",
+            "marca": "HP",
+            "modelo": "JL262A"
+        },
+        {
+            "idequipo": "153",
+            "npvr": "8",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "HP",
+            "modelo": "PROLIANT DL180 GEN 10"
+        },
+        {
+            "idequipo": "154",
+            "npvr": "8",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "HP",
+            "modelo": "PROLIANT DL380 G8"
+        },
+        {
+            "idequipo": "155",
+            "npvr": "8",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "HP",
+            "modelo": "PROLIANT ML350"
+        },
+        {
+            "idequipo": "156",
+            "npvr": "8",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "HP",
+            "modelo": "PROLIANT ML350 G6"
+        },
+        {
+            "idequipo": "157",
+            "npvr": "8",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "HP",
+            "modelo": "PROLIANT ML350P"
+        },
+        {
+            "idequipo": "158",
+            "npvr": "8",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "HP",
+            "modelo": "Z620"
+        },
+        {
+            "idequipo": "159",
+            "npvr": "8",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "HP",
+            "modelo": "Z800"
+        },
+        {
+            "idequipo": "160",
+            "npvr": "8",
+            "tipo_equipo": "SWITCH",
+            "marca": "HP",
+            "modelo": "3810M JL071A"
+        },
+        {
+            "idequipo": "161",
+            "npvr": "8",
+            "tipo_equipo": "SWITCH",
+            "marca": "HP",
+            "modelo": "JL084A"
+        },
+        {
+            "idequipo": "162",
+            "npvr": "8",
+            "tipo_equipo": "SWITCH",
+            "marca": "HP",
+            "modelo": "JL262-60001"
+        },
+        {
+            "idequipo": "163",
+            "npvr": "8",
+            "tipo_equipo": "SWITCH",
+            "marca": "HP",
+            "modelo": "JL262A"
+        },
+        {
+            "idequipo": "164",
+            "npvr": "9",
+            "tipo_equipo": "COMPUTADORA",
+            "marca": "LENOVO",
+            "modelo": "M7483"
+        },
+        {
+            "idequipo": "165",
+            "npvr": "9",
+            "tipo_equipo": "LAPTOP",
+            "marca": "LENOVO",
+            "modelo": "81MW"
+        },
+        {
+            "idequipo": "166",
+            "npvr": "9",
+            "tipo_equipo": "LAPTOP",
+            "marca": "LENOVO",
+            "modelo": "L440"
+        },
+        {
+            "idequipo": "167",
+            "npvr": "9",
+            "tipo_equipo": "LAPTOP",
+            "marca": "LENOVO",
+            "modelo": "THINKPAD"
+        },
+        {
+            "idequipo": "168",
+            "npvr": "9",
+            "tipo_equipo": "LAPTOP",
+            "marca": "LENOVO",
+            "modelo": "THINKPAD L430"
+        },
+        {
+            "idequipo": "169",
+            "npvr": "9",
+            "tipo_equipo": "LAPTOP",
+            "marca": "LENOVO",
+            "modelo": "THINKPAD L440"
+        },
+        {
+            "idequipo": "170",
+            "npvr": "9",
+            "tipo_equipo": "LAPTOP",
+            "marca": "LENOVO",
+            "modelo": "THINKPAD L470"
+        },
+        {
+            "idequipo": "171",
+            "npvr": "9",
+            "tipo_equipo": "LAPTOP",
+            "marca": "LENOVO",
+            "modelo": "THINKPAD T400P"
+        },
+        {
+            "idequipo": "172",
+            "npvr": "9",
+            "tipo_equipo": "NETTOP",
+            "marca": "LENOVO",
+            "modelo": "THINCKCENTRE"
+        },
+        {
+            "idequipo": "173",
+            "npvr": "9",
+            "tipo_equipo": "NETTOP",
+            "marca": "LENOVO",
+            "modelo": "THINKCENTRE"
+        },
+        {
+            "idequipo": "174",
+            "npvr": "9",
+            "tipo_equipo": "PANTALLA",
+            "marca": "LENOVO",
+            "modelo": "LT2252PWA"
+        },
+        {
+            "idequipo": "175",
+            "npvr": "9",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "LENOVO",
+            "modelo": "ST250"
+        },
+        {
+            "idequipo": "176",
+            "npvr": "9",
+            "tipo_equipo": "SERVIDOR",
+            "marca": "LENOVO",
+            "modelo": "ST250E"
+        },
+        {
+            "idequipo": "177",
+            "npvr": "10",
+            "tipo_equipo": "PANTALLA LCD",
+            "marca": "LG",
+            "modelo": "49UJ6200"
+        },
+        {
+            "idequipo": "178",
+            "npvr": "10",
+            "tipo_equipo": "PANTALLA LCD",
+            "marca": "LG",
+            "modelo": "65S8500-UB"
+        },
+        {
+            "idequipo": "179",
+            "npvr": "10",
+            "tipo_equipo": "PANTALLA LCD",
+            "marca": "LG",
+            "modelo": "65SJ8500"
+        },
+        {
+            "idequipo": "180",
+            "npvr": "10",
+            "tipo_equipo": "PANTALLA LED",
+            "marca": "LG",
+            "modelo": "65J8500-UB"
+        },
+        {
+            "idequipo": "181",
+            "npvr": "10",
+            "tipo_equipo": "PANTALLA LED",
+            "marca": "LG",
+            "modelo": "65SJ8500-UB"
+        },
+        {
+            "idequipo": "182",
+            "npvr": "9",
+            "tipo_equipo": "LAPTOP TOUCH",
+            "marca": "LENOVO",
+            "modelo": "THINKPAD Z546"
+        },
+        {
+            "idequipo": "183",
+            "npvr": "11",
+            "tipo_equipo": "PANTALLA LCD",
+            "marca": "SAMSUNG",
+            "modelo": "LH65QBNEBGCR"
+        },
+        {
+            "idequipo": "184",
+            "npvr": "11",
+            "tipo_equipo": "PANTALLA LCD",
+            "marca": "SAMSUNG",
+            "modelo": "UN55RU7100F"
+        },
+        {
+            "idequipo": "185",
+            "npvr": "11",
+            "tipo_equipo": "PANTALLA LED",
+            "marca": "SAMSUNG",
+            "modelo": "UN49J5200AF"
+        },
+        {
+            "idequipo": "186",
+            "npvr": "11",
+            "tipo_equipo": "PANTALLA LED",
+            "marca": "SAMSUNG",
+            "modelo": "UN49J5290AF"
+        },
+        {
+            "idequipo": "187",
+            "npvr": "11",
+            "tipo_equipo": "PANTALLA LED",
+            "marca": "SAMSUNG",
+            "modelo": "UN65NU7090F"
+        },
+        {
+            "idequipo": "188",
+            "npvr": "12",
+            "tipo_equipo": "CAMARA TELEPRESENCIA",
+            "marca": "CISCO",
+            "modelo": "TTC7-22"
+        },
+        {
+            "idequipo": "189",
+            "npvr": "12",
+            "tipo_equipo": "CAMARA TELEPRESENCIA",
+            "marca": "CISCO",
+            "modelo": "TTC7-23"
+        },
+        {
+            "idequipo": "190",
+            "npvr": "12",
+            "tipo_equipo": "PANTALLA TACTIL",
+            "marca": "CISCO",
+            "modelo": "TTC5-09"
+        },
+        {
+            "idequipo": "191",
+            "npvr": "12",
+            "tipo_equipo": "PANTALLA TACTIL",
+            "marca": "CISCO",
+            "modelo": "TTC5-90"
+        },
+        {
+            "idequipo": "192",
+            "npvr": "12",
+            "tipo_equipo": "PANTALLA TELEPRESENCIA",
+            "marca": "CISCO",
+            "modelo": "AA55WW"
+        }
+    ]
+}
