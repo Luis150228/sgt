@@ -3,3 +3,18 @@
     "1": "mb-3",
     "2": "select-click"
 }
+    inputSelect.addEventListener('click', e=>{
+        const selectClick = Object.values(e.target.parentElement.classList);
+        const selectBtnClick = Object.values(e.target.classList);
+        if (selectClick.includes("select-click") || selectBtnClick.includes("bi-caret-down-fill")) {
+
+            for (const option of listElementos) {
+                const addOption = document.createElement('a');
+                addOption.setAttribute('class', 'list-group-item list-group-item-action')
+                addOption.dataset.text = option.text;
+                addOption.dataset.valor = option.id;
+                addOption.innerHTML = option.text;
+                listGroup.appendChild(addOption)
+            }
+        }
+    });
