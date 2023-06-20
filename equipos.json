@@ -1,26 +1,5 @@
-[
-    {
-        "id": "7",
-        "nombre": "Dell"
-    },
-    {
-        "id": "12",
-        "nombre": "CISCO"
-    },
-    {
-        "id": "8",
-        "nombre": "HP"
-    },
-    {
-        "id": "9",
-        "nombre": "LENOVO"
-    },
-    {
-        "id": "10",
-        "nombre": "LG"
-    },
-    {
-        "id": "11",
-        "nombre": "SAMSUNG"
-    }
-]
+{
+    "0": "input-group",
+    "1": "mb-3",
+    "2": "select-click"
+}
