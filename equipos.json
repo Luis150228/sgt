@@ -1,4 +1,17 @@
-<a class="list-group-item list-group-item-action" data-text="Cisco S.A de C.V." data-valor="12">Cisco S.A de C.V.</a>
+const createListGroup = (elementos, destino)=>{
+        destino.innerHTML = '';
+        for (const option of elementos) {
+            const addOption = document.createElement('a');
+            addOption.setAttribute('class', 'list-group-item list-group-item-action');
+            addOption.setAttribute('tabindex', 0)
+            addOption.dataset.text = option.text;
+            addOption.dataset.valor = option.id;
+            addOption.innerHTML = option.text;
+            destino.appendChild(addOption)
+        }
+    }
+
+/****/
 [
     {
         "id": "12",
