@@ -1,40 +1,84 @@
-const createListGroup = (elementos, destino)=>{
-        destino.innerHTML = '';
-        for (const option of elementos) {
-            const addOption = document.createElement('a');
-            addOption.setAttribute('class', 'list-group-item list-group-item-action');
-            addOption.setAttribute('tabindex', 0)
-            addOption.dataset.text = option.text;
-            addOption.dataset.valor = option.id;
-            addOption.innerHTML = option.text;
-            destino.appendChild(addOption)
-        }
-    }
+<div id="file-usr">
+    <div>
+        <p id="read-inc">Importar CSV Asignación</p>
+        <input type="file" name="read_file_usr" id="read_file_usr">
+    </div>
+</div>
 
-/****/
-[
-    {
-        "id": "12",
-        "text": "Cisco S.A de C.V."
-    },
-    {
-        "id": "7",
-        "text": "Dell Computer Mexico S.A de C.V."
-    },
-    {
-        "id": "8",
-        "text": "HP Development Company, L.P."
-    },
-    {
-        "id": "9",
-        "text": "Lenovo Mexico S.A de C.V."
-    },
-    {
-        "id": "10",
-        "text": "LG Mexico S.A"
-    },
-    {
-        "id": "11",
-        "text": "Samsung de Mexico S.A de C.V."
+const readFileUsr = document.querySelector('#read_file_usr');
+
+readFileUsr.addEventListener('change', openFileUsrs, false);
+
+export const openFileUsrs = (e)=>{
+    const archivo = e.target.files[0];
+
+    if (archivo.type != 'text/csv') {
+        console.log('Archivo invalido')
+    } else {
+        const lector = new FileReader();
+        lector.onload = (e)=>{
+            const contenido = e.target.result;
+            ajustCSV(contenido)
+        }
+        lector.readAsText(archivo)
     }
-]
+}
+
+const ajustCSV = (data)=>{
+    
+    let filas = data.split(/\r\n/).map(element =>{
+
+        let fila = element.replaceAll(/\'/g, '');
+        let columnas = fila.split(/\,/)//las cadenas de texto se dividen en columnas
+
+        let arrData = {
+            expediente:columnas[0].trim(),
+            usuario:columnas[1],
+            correo:columnas[2],
+            area:columnas[3],
+            puesto:columnas[4],
+            empresa:columnas[5],
+            modelo:columnas[6],
+            numero:columnas[7],
+            imei:columnas[8],
+            usr:columnas[9]
+        }
+
+        return arrData;
+    });
+
+    filas.shift()
+
+    filas = filas.filter(registro=>{
+        return registro != undefined
+    })
+
+    filas = filas.filter(registro=>{
+        return registro.expediente != 'expediente'
+    })
+    
+    filas = filas.filter(registro=>{
+        return registro != ''
+    })
+
+    filas = filas.filter(registro=>{
+        return registro.expediente != ''
+    })
+    
+    regTotal = filas.length - 1;
+    h2Total.innerHTML = `Total folios ${regTotal}`;
+
+    let partData = 100;
+    let particiones = Math.ceil(regTotal/partData)
+
+    for (let index = 0; index < particiones; index++) {
+        let inicio = index*(partData)
+        let final =  partData + (inicio+5)
+
+        let filaUno = filas.slice(inicio, final)
+
+        // console.log(filaUno);
+
+        fetchDataParticion(JSON.stringify(filaUno), regTotal);
+    }
+}
