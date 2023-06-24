@@ -1,1 +1,26 @@
 esta regresando {"code":"200","mnj":"Informacion Correcta","data":"2974"} el console log de "result"
+esta regresando {"code":"200","mnj":"Informacion Correcta","data":"2974"} el console log de "result"
+const openFile = (tipo, archivo, tiempo) => {
+    return new Promise((resolve, reject) => {
+        if (archivo.type != 'text/csv') {
+            console.log('Archivo inválido');
+            reject('Archivo inválido');
+        } else {
+            const lector = new FileReader();
+            lector.onload = (e) => {
+                const contenido = e.target.result;
+                console.log('Antes de ajustCSV');
+                ajustCSV(tipo, contenido, tiempo)
+                    .then((result) => {
+                        console.log('Después de ajustCSV');
+                        resolve(result);
+                    })
+                    .catch((error) => {
+                        console.log('Error en ajustCSV:', error);
+                        reject(error);
+                    });
+            }
+            lector.readAsText(archivo, 'windows-1252');
+        }
+    });
+}
