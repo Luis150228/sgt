@@ -1,0 +1,31 @@
+archivo = [[Prototype]]: File File {name: 'incident_gb.csv', lastModified: 1687528334349, lastModifiedDate: Fri Jun 23 2023 07:52:14 GMT-0600 (hora estándar central), webkitRelativePath: '', size: 3410249, …}
+tipo = 'inciddntes'
+
+archivo y tipo vienene de la siguiente funcion 
+frmData.addEventListener('submit', e=>{
+        e.preventDefault();
+        const archivo = e.target[0].files[0]
+        const base = e.target.name
+        console.log(e);
+        console.log(archivo);
+        console.log(base);
+        /*"text/csv"*/
+    })
+como modifico esta ultima funcion en base a lo anterior 
+
+export const openFile = (e)=>{
+    const archivo = e.target.files[0];
+
+    if (archivo.type != 'text/csv') {
+        console.log('Archivo invalido')
+    } else {
+        const lector = new FileReader();
+        lector.onload = (e)=>{
+            const contenido = e.target.result;
+            // console.log(contenido)
+            // ajustCSV(contenido)
+            return contenido;
+        }
+        lector.readAsText(archivo)
+    }
+}
