@@ -86,3 +86,42 @@ export const fetchSaveDatas = async (fecha, ruta, datos, totalreg)=>{
         throw new Error(`Peticion Fecht con problemas de servidor: ${error}`);
     }
 }
+for (const frmData of frmDatas) {
+    frmData.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const archivo = e.target[0].files[0]
+        const base = e.target.name
+        const result = await openFile(base, archivo, mostrarTiempo())
+        console.log(result); // Aquí puedes ver el resultado devuelto por el servidor
+    })
+}
+
+
+
+const openFile = (tipo, archivo, tiempo) => {
+    return new Promise((resolve, reject) => {
+        if (archivo.type != 'text/csv') {
+            console.log('Archivo inválido');
+            reject('Archivo inválido');
+        } else {
+            const lector = new FileReader();
+            lector.onload = (e) => {
+                const contenido = e.target.result;
+                ajustCSV(tipo, contenido, tiempo)
+                    .then((result) => resolve(result))
+                    .catch((error) => reject(error));
+            }
+            lector.readAsText(archivo, 'windows-1252');
+        }
+    });
+}
+
+const ajustCSV = async (tipo, data, tiempo) => {
+    // Resto del código de ajustCSV
+    // ...
+}
+
+export const fetchSaveDatas = async (fecha, ruta, datos, totalreg) => {
+    // Resto del código de fetchSaveDatas
+    // ...
+}
