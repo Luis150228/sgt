@@ -1,84 +1,32 @@
-<div id="file-usr">
-    <div>
-        <p id="read-inc">Importar CSV Asignación</p>
-        <input type="file" name="read_file_usr" id="read_file_usr">
-    </div>
-</div>
-
-const readFileUsr = document.querySelector('#read_file_usr');
-
-readFileUsr.addEventListener('change', openFileUsrs, false);
-
-export const openFileUsrs = (e)=>{
-    const archivo = e.target.files[0];
-
-    if (archivo.type != 'text/csv') {
-        console.log('Archivo invalido')
-    } else {
-        const lector = new FileReader();
-        lector.onload = (e)=>{
-            const contenido = e.target.result;
-            ajustCSV(contenido)
-        }
-        lector.readAsText(archivo)
-    }
-}
-
-const ajustCSV = (data)=>{
-    
-    let filas = data.split(/\r\n/).map(element =>{
-
-        let fila = element.replaceAll(/\'/g, '');
-        let columnas = fila.split(/\,/)//las cadenas de texto se dividen en columnas
-
-        let arrData = {
-            expediente:columnas[0].trim(),
-            usuario:columnas[1],
-            correo:columnas[2],
-            area:columnas[3],
-            puesto:columnas[4],
-            empresa:columnas[5],
-            modelo:columnas[6],
-            numero:columnas[7],
-            imei:columnas[8],
-            usr:columnas[9]
-        }
-
-        return arrData;
-    });
-
-    filas.shift()
-
-    filas = filas.filter(registro=>{
-        return registro != undefined
-    })
-
-    filas = filas.filter(registro=>{
-        return registro.expediente != 'expediente'
-    })
-    
-    filas = filas.filter(registro=>{
-        return registro != ''
-    })
-
-    filas = filas.filter(registro=>{
-        return registro.expediente != ''
-    })
-    
-    regTotal = filas.length - 1;
-    h2Total.innerHTML = `Total folios ${regTotal}`;
-
-    let partData = 100;
-    let particiones = Math.ceil(regTotal/partData)
-
-    for (let index = 0; index < particiones; index++) {
-        let inicio = index*(partData)
-        let final =  partData + (inicio+5)
-
-        let filaUno = filas.slice(inicio, final)
-
-        // console.log(filaUno);
-
-        fetchDataParticion(JSON.stringify(filaUno), regTotal);
-    }
-}
+[
+    "035315125",
+    "2023-06-23 17:29:38",
+    "",
+    "",
+    "",
+    "TMX_EU_Lexmark_Zona_1",
+    "HECTOR MANUEL ORDU�O LOPEZ",
+    "Activo",
+    "Impresi�n del usuario final",
+    "Device Error",
+    "Falla al escanear",
+    "",
+    "Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear",
+    "true",
+    "2",
+    "SUC. SAN MATEO (5742)",
+    "MARIBEL ZU�IGA CASTILLO",
+    "Z257662@santander.com.mx",
+    "0",
+    "0",
+    "Santander M�xico",
+    "Variables:\n\nCorreo electr�nico: subdirsuc5742@santander.com.mx\nMarca: Lexmark\nExpediente: 401571\nTipo de Falla: Falla al Escanear\nExtension de Segundo Contacto: 22789\nSegundo Contacto: kelly\nTel�fono: (01 55) 52578000\nIP de Multifuncional o No. Serie: 180.177.140.105\nNombre: MARIBEL ZU�IGA CASTILLO\nM�dulo/Sector/Piso: SUC SAN MATEO EMEX_GSM\nExtensi�n: 22780\nDepartamento: Sucursal A\nEmpresa: Sucursal\nDescriba de manera clara la Solicitud o Falla que est� reportando.: no sirve el escaner no jala las hojas se escucha un ruido\nUsuarios Afectados: Menos de 10\n",
+    "2023-06-23 18:04:50 - HECTOR MANUEL ORDU�O LOPEZ (Observaciones adicionales)\nFolio recibido 23/06/2023 17:41:20\n\n",
+    "MARIBEL ZU�IGA CASTILLO",
+    "",
+    "",
+    "",
+    "0",
+    "2023-06-23 18:04:50",
+    "S245466@santander.com.mx\""
+]
