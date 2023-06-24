@@ -1,0 +1,24 @@
+esta es la funcion que quiero se ejecute por cada elemento del grupo
+export const fetchSaveDatas = async (ruta, datos)=>{
+    const $headeDate = {
+    "Acept": "*/*",
+    "Content-Type": "application/json"
+}
+    const data = JSON.stringify(datos);
+    const destino = `${api.url}${ruta}.php`
+    const fetchConfig = {
+        method: "POST",
+        headers: $headeDate,
+        body: data
+    }
+
+    const peticion = new Request(destino, fetchConfig);
+    try {
+        const resp = await fetch(peticion);
+        const result = await resp.text();
+        console.log(result);
+        // return result
+    } catch (error) {
+        throw new Error(`Peticion Fecht con problemas de servidor: ${error}`);
+    }
+}
