@@ -1,36 +1,88 @@
-TENGO 2944 ARRAY como el ejemplo de abajo, quiero validar el 6to array y validar que en la posicion 1 "INC035317965" el valor inicie con "INC"
-que sugieres que haga con JS
+al hacer submit se ejecuta la funcion openFile que abre un archivo csv y lo guarda en una base de datos, todo funciona correcto sube la informacion a la base pero const result = openFile(base, archivo, mostrarTiempo()) return result regresa indefinido tal vez por algo asincrono que no esta bien configurado que me sugieres para poder ver lo que resuelve el servidor 
 
-[
-    "035317965",
-    "INC035317965",
-    "2023-06-23 19:30:40",
-    "2023-06-23 19:36:36",
-    "",
-    "",
-    "TMX_EU_Resolutores_SDK_Zona_0",
-    "JOHANNY HERNANDEZ RENDON",
-    "Resuelto",
-    "Software Usuario Final",
-    "Software",
-    "Falla Navegador",
-    "Aplicación",
-    "Reportes de Navegadores (Microsoft Edge, Google Chrome)",
-    "true",
-    "0",
-    "EDIF. CORPORATIVO SANTA FE",
-    "JANETTE FIGUEROA CORREA",
-    "Z412404@santandertec.mx",
-    "357",
-    "357",
-    "Santander México",
-    "Variables:\n\nTipo de Falla: Otro.\nCorreo Electrónico: jfigueroac@santander.com.mx\nExtensión: 5548817205\nCelular: 554/881-7205\nExtensión de Segundo Contacto: 5548817205\nEspecifique en que momento o al hacer que aparece el error: No se pueden generar contraseñas de dominio\nSector/Modulo/Piso: OFNA CORPORATIVO STA FE CDMX_GSM\nDepartamento: SD Gestion Operativa\nEntidad: Corporativo\nExpediente: 805971\nSegundo Contacto: FIGUEROA CORREA JANETTE\nÚltimo Acceso Exitoso: Un Día\nTeléfono: 554/881-7205\nDescriba de manera clara la Solicitud o Falla que está reportando.: no marca error el IVR pero están registrándose como desbloqueo fallido.\n",
-    "2023-06-23 19:36:36 - JOHANNY HERNANDEZ RENDON (Notas de trabajo)\n**NO SE REALIZA CONEXION REMOTA**\r\nFALLA REAL: PROBLEMAS CON IVR DESBLOQUEOS DOMINIO \r\nVO.BO:FIGUEROA CORREA JANETTE\r\nING:JOHANNY HERNANDEZ RENDON\r\nSOLUCION:SE GENERA CONTRASEÑA Y VALIDA SU ACCESO DE FORMA CORRECTA\r\nZONA: TMX_EU_Resolutores_SDK_Zona_0\r\nCC: N/A\t\t  \t \t \t \t   \t   \t \t \t \t\t\t  \t\t\t\t \t\r\nSUC/CORP:EDIF. CORPORATIVO SANTA FE\r\nVERSION DE SO:20H2\r\nVersión SDK Click: 2.0\r\nDominio:GFSSCORP\n\n2023-06-23 19:36:36 - JOHANNY HERNANDEZ RENDON (Notas de trabajo)\nResolution has been modified in service Now to:\n\nRequest Type: Aplicación\nResolution Type: Soporte Técnico\nResolution Code: Solucionado (de forma permanente)\nResolution notes: \r\n**NO SE REALIZA CONEXION REMOTA**\r\nFALLA REAL: PROBLEMAS CON IVR DESBLOQUEOS DOMINIO \r\nVO.BO:FIGUEROA CORREA JANETTE\r\nING:JOHANNY HERNANDEZ RENDON\r\nSOLUCION:SE GENERA CONTRASEÑA Y VALIDA SU ACCESO DE FORMA CORRECTA\r\nZONA: TMX_EU_Resolutores_SDK_Zona_0\r\nCC: N/A\t\t  \t \t \t \t   \t   \t \t \t \t\t\t  \t\t\t\t \t\r\nSUC/CORP:EDIF. CORPORATIVO SANTA FE\r\nVERSION DE SO:20H2\r\nVersión SDK Click: 2.0\r\nDominio:GFSSCORP\n\n\n\n2023-06-23 19:36:36 - JOHANNY HERNANDEZ RENDON (Observaciones adicionales)\nNotas de resolución: \r\n**NO SE REALIZA CONEXION REMOTA**\r\nFALLA REAL: PROBLEMAS CON IVR DESBLOQUEOS DOMINIO \r\nVO.BO:FIGUEROA CORREA JANETTE\r\nING:JOHANNY HERNANDEZ RENDON\r\nSOLUCION:SE GENERA CONTRASEÑA Y VALIDA SU ACCESO DE FORMA CORRECTA\r\nZONA: TMX_EU_Resolutores_SDK_Zona_0\r\nCC: N/A\t\t  \t \t \t \t   \t   \t \t \t \t\t\t  \t\t\t\t \t\r\nSUC/CORP:EDIF. CORPORATIVO SANTA FE\r\nVERSION DE SO:20H2\r\nVersión SDK Click: 2.0\r\nDominio:GFSSCORP\n\n",
-    "JOHANNY HERNANDEZ RENDON",
-    "JOHANNY HERNANDEZ RENDON",
-    "Solucionado (de forma permanente)",
-    "INC035139185",
-    "0",
-    "2023-06-23 19:36:36",
-    "Z412404@santandertec.mx\""
-]
+for (const frmData of frmDatas) {
+    frmData.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const archivo = e.target[0].files[0]
+        const base = e.target.name
+        const result = openFile(base, archivo, mostrarTiempo())
+        return result
+    })
+}
+
+onst openFile = (tipo, archivo, tiempo)=>{
+
+    if (archivo.type != 'text/csv') {
+        console.log('Archivo invalido')
+    } else {
+        const lector = new FileReader();
+        lector.onload = (e)=>{
+            const contenido = e.target.result;
+            ajustCSV(tipo, contenido, tiempo)
+        }
+        lector.readAsText(archivo, 'windows-1252')
+    }
+}
+
+const ajustCSV = async (tipo, data, tiempo)=>{
+
+    let regex_pattern
+    let headerList
+    if (tipo === 'incidentes') {
+        regex_pattern = /\n\"INC/
+        headerList = '"task_effective_number'
+    }else{
+        regex_pattern = /\n\"TSK/
+    }
+
+
+    let filas = data.split(regex_pattern).map(element =>{
+
+        let fila = element.replaceAll(/\'/g, '');
+        let columnas = fila.split(/\",\"/)//las cadenas de texto se dividen en columnas
+        let rows = columnas[0] != headerList ? columnas : undefined;
+        return rows
+    });
+    filas.shift()
+    filas = filas.filter(registro=>{
+        return registro != undefined
+    })
+    filas = filas.filter(registro=>{
+        return registro != ''
+    })
+
+    const datasUp = []
+    const partData = 100;
+    for (let i = 0; i < filas.length; i+=partData) {
+        datasUp.push(filas.slice(i, i + partData))
+    }
+    for (const dataUp of datasUp) {
+        await fetchSaveDatas(tiempo, tipo, dataUp, filas.length)
+    }
+
+
+}
+
+export const fetchSaveDatas = async (fecha, ruta, datos, totalreg)=>{
+    const $headeDate = {
+    "Acept": "*/*",
+    "Content-Type": "application/json",
+    "time-update": fecha,
+}
+    const data = JSON.stringify(datos);
+    const destino = `${api.url}${ruta}.php`
+    const fetchConfig = {
+        method: "POST",
+        headers: $headeDate,
+        body: data
+    }
+
+    const peticion = new Request(destino, fetchConfig);
+    try {
+        const resp = await fetch(peticion);
+        const result = await resp.json();
+        return result
+    } catch (error) {
+        throw new Error(`Peticion Fecht con problemas de servidor: ${error}`);
+    }
+}
