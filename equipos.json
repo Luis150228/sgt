@@ -1,4 +1,4 @@
-al hacer submit se ejecuta la funcion openFile que abre un archivo csv y lo guarda en una base de datos, todo funciona correcto sube la informacion a la base pero const result = openFile(base, archivo, mostrarTiempo()) return result regresa indefinido tal vez por algo asincrono que no esta bien configurado que me sugieres para poder ver lo que resuelve el servidor
+al hacer submit se ejecuta la funcion openFile que abre un archivo csv y lo guarda en una base de datos, todo funciona correcto sube la informacion a la base pero const result = openFile(base, archivo, tiempo) return result regresa "undefined" tal vez por algo asincrono que no esta bien configurado que me sugieres para poder ver lo que resuelve el servidor
 
 for (const frmData of frmDatas) {
     frmData.addEventListener('submit', async (e)=>{
