@@ -1,5 +1,4 @@
 esta regresando {"code":"200","mnj":"Informacion Correcta","data":"2974"} el console log de "result"
-esta regresando {"code":"200","mnj":"Informacion Correcta","data":"2974"} el console log de "result"
 const openFile = (tipo, archivo, tiempo) => {
     return new Promise((resolve, reject) => {
         if (archivo.type != 'text/csv') {
@@ -23,4 +22,60 @@ const openFile = (tipo, archivo, tiempo) => {
             lector.readAsText(archivo, 'windows-1252');
         }
     });
+}1
+ este ajuste que sugieres da : 
+Antes de ajustCSV
+Recuperar terminó de cargarse: POST "<URL>".
+connect.js:111 {"code":"200","mnj":"Informacion Correcta","data":"2974"}
+fileReader.js:84 Después de ajustCSV
+index.js:40 undefined 
+
+for (const frmData of frmDatas) {
+    frmData.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const archivo = e.target[0].files[0]
+        const base = e.target.name
+        const tiempo = mostrarTiempo()
+        const result = await openFile(base, archivo, tiempo)
+        console.log(result); // index.js:40 undefined esto es la linea 40 de index.js
+    })
+}
+y ajustCSV solo regresa lo que viene en fetchSaveDatas por lo que no le veo problema ya que la informacion si se guarda en el servidor el problema es que no puedo hacer un return a la respuesta 
+
+const ajustCSV = async (tipo, data, tiempo)=>{
+
+    let regex_pattern
+    let headerList
+    if (tipo === 'incidentes') {
+        regex_pattern = /\n\"INC/
+        headerList = '"task_effective_number'
+    }else{
+        regex_pattern = /\n\"TSK/
+    }
+
+
+    let filas = data.split(regex_pattern).map(element =>{
+
+        let fila = element.replaceAll(/\'/g, '');
+        let columnas = fila.split(/\",\"/)//las cadenas de texto se dividen en columnas
+        let rows = columnas[0] != headerList ? columnas : undefined;
+        return rows
+    });
+    filas.shift()
+    filas = filas.filter(registro=>{
+        return registro != undefined
+    })
+    filas = filas.filter(registro=>{
+        return registro != ''
+    })
+
+    const datasUp = []
+    const partData = 100;
+    for (let i = 0; i < filas.length; i+=partData) {
+        datasUp.push(filas.slice(i, i + partData))
+    }
+
+    for (const dataUp of datasUp) {
+        await fetchSaveDatas(tiempo, tipo, dataUp, filas.length) // 
+    }
 }
