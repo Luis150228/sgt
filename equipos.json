@@ -5,7 +5,8 @@ for (const frmData of frmDatas) {
         e.preventDefault();
         const archivo = e.target[0].files[0]
         const base = e.target.name
-        const result = await openFile(base, archivo, mostrarTiempo())
+        const tiempo = mostrarTiempo()
+        const result = await openFile(base, archivo, tiempo)
         console.log(result);
     })
 }
