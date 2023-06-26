@@ -43,3 +43,12 @@ export const fetchSaveDatas = async (fecha, ruta, datos, totalreg, printProgress
         throw new Error(`Peticion Fecht con problemas de servidor: ${error}`);
     }
 }
+SELECT CONCAT('[', GROUP_CONCAT(json_row SEPARATOR ','), ']') AS resultado_json
+FROM (
+   SELECT CONCAT(
+      '{"columna1": "', columna1, '", ',
+      '"columna2": "', columna2, '", ',
+      '"columna3": "', columna3, '"}'
+   ) AS json_row
+   FROM tu_tabla
+) subconsulta;
