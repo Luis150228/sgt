@@ -1,81 +1,45 @@
-esta regresando {"code":"200","mnj":"Informacion Correcta","data":"2974"} el console log de "result"
-const openFile = (tipo, archivo, tiempo) => {
-    return new Promise((resolve, reject) => {
-        if (archivo.type != 'text/csv') {
-            console.log('Archivo inválido');
-            reject('Archivo inválido');
-        } else {
-            const lector = new FileReader();
-            lector.onload = (e) => {
-                const contenido = e.target.result;
-                console.log('Antes de ajustCSV');
-                ajustCSV(tipo, contenido, tiempo)
-                    .then((result) => {
-                        console.log('Después de ajustCSV');
-                        resolve(result);
-                    })
-                    .catch((error) => {
-                        console.log('Error en ajustCSV:', error);
-                        reject(error);
-                    });
-            }
-            lector.readAsText(archivo, 'windows-1252');
-        }
-    });
-}1
- este ajuste que sugieres da : 
-Antes de ajustCSV
-Recuperar terminó de cargarse: POST "<URL>".
-connect.js:111 {"code":"200","mnj":"Informacion Correcta","data":"2974"}
-fileReader.js:84 Después de ajustCSV
-index.js:40 undefined 
+buenos dias, puedes poyarme tengo la siguiente funcion y quiero que cada que cada que termina un const result = await resp.json() guarde el resultado en const resulAvance = [], y se vayan acumulando, actualmente sobre escribe la respuesta de const result = await resp.json(); y solo me da un length de 1 siempre en resulAvance y quiero tener todas las respuestas
 
-for (const frmData of frmDatas) {
-    frmData.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        const archivo = e.target[0].files[0]
-        const base = e.target.name
-        const tiempo = mostrarTiempo()
-        const result = await openFile(base, archivo, tiempo)
-        console.log(result); // index.js:40 undefined esto es la linea 40 de index.js
-    })
+export const fetchSaveDatas = async (fecha, ruta, datos, totalreg, printProgress, alert)=>{
+    const $headeDate = {
+    "Acept": "*/*",
+    "Content-Type": "application/json",
+    "time-update": fecha,
 }
-y ajustCSV solo regresa lo que viene en fetchSaveDatas por lo que no le veo problema ya que la informacion si se guarda en el servidor el problema es que no puedo hacer un return a la respuesta 
-
-const ajustCSV = async (tipo, data, tiempo)=>{
-
-    let regex_pattern
-    let headerList
-    if (tipo === 'incidentes') {
-        regex_pattern = /\n\"INC/
-        headerList = '"task_effective_number'
-    }else{
-        regex_pattern = /\n\"TSK/
+    const data = JSON.stringify(datos);
+    const destino = `${api.url}${ruta}.php`
+    const fetchConfig = {
+        method: "POST",
+        headers: $headeDate,
+        body: data
     }
 
-
-    let filas = data.split(regex_pattern).map(element =>{
-
-        let fila = element.replaceAll(/\'/g, '');
-        let columnas = fila.split(/\",\"/)//las cadenas de texto se dividen en columnas
-        let rows = columnas[0] != headerList ? columnas : undefined;
-        return rows
-    });
-    filas.shift()
-    filas = filas.filter(registro=>{
-        return registro != undefined
-    })
-    filas = filas.filter(registro=>{
-        return registro != ''
-    })
-
-    const datasUp = []
-    const partData = 100;
-    for (let i = 0; i < filas.length; i+=partData) {
-        datasUp.push(filas.slice(i, i + partData))
-    }
-
-    for (const dataUp of datasUp) {
-        await fetchSaveDatas(tiempo, tipo, dataUp, filas.length) // 
+    const peticion = new Request(destino, fetchConfig);
+    try {
+        const resulAvance = []
+        const resp = await fetch(peticion);
+        const result = await resp.json();
+        resulAvance.push(result);
+        console.log(resulAvance);
+        if (result.code === '200' && result.data[0].actualizado != 'NULL') {
+            printProgress.style.display = 'block'
+            const avance = Math.round((result.data[0].total/ totalreg)*100);
+            alert.innerHTML = `<div class="alert alert-success" role="alert">${result.mnj}: ${result.data[0].actualizado}</div>`
+            printProgress.innerHTML = `<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="${avance}" aria-valuemin="0"
+                                            aria-valuemax="100">
+                                            <div class="progress-bar bg-success text-light" style="width: ${avance}%">${avance}%</div>
+                                        </div>`
+        }else if (result.code === '200' && result.data[0].actualizado == 'NULL') {
+            alert.innerHTML = `<div class="alert alert-info" role="alert">
+                                    Actualizacion Completa
+                                </div>`
+        }else{
+            alert.innerHTML = `<div class="alert alert-danger" role="alert">
+                                    ${result.mnj}
+                                </div>`
+        }
+        return result
+    } catch (error) {
+        throw new Error(`Peticion Fecht con problemas de servidor: ${error}`);
     }
 }
