@@ -21,3 +21,12 @@ SELECT
   SUBSTRING_INDEX(SUBSTRING_INDEX(grupo, '_', -2), '_', 1) AS numero_zona
 FROM
   tu_tabla;
+
+SELECT
+  grupo,
+  SUBSTRING_INDEX(SUBSTRING_INDEX(grupo, 'Zona_', -1), '_', 1) AS numero_zona
+FROM
+  tu_tabla
+WHERE
+  grupo REGEXP 'Zona_[0-4]';
+
