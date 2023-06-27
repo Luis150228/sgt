@@ -1,28 +1,18 @@
-buen dia puedes apoyarme con deshabilitar btnSumit dentro del for todos los botones btnSumit
+quiero extraer el numero de zona de estos grupos con mysql
 
-const frmDatas = document.querySelectorAll('form')
-const inpFile = document.querySelectorAll('[type="file"]')
-const mnsLoad = document.querySelectorAll('.msj-load')
-const mnsAlert = document.querySelectorAll('.msj-alert')
-const BarProgressz = document.querySelectorAll('.zone-progressbar')
-const btnSumit = document.querySelectorAll('button[type="submit"]')
-const pText = document.querySelectorAll('p[class="card-text info-text-color"]')
-
-for (const [i, frmData] of Array.from(frmDatas).entries()) {
-    frmData.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        const archivo = e.target[0].files[0]
-        const base = e.target.name
-        const tiempo = mostrarTiempo()
-        btnSumit.style.display = 'none' /*quitar los botones en todas sus ubicaciones*/
-        const data = await openFile(base, archivo, tiempo, BarProgressz[i], mnsAlert[i])
-        pText[i].innerHTML = data.data[0].actualizado
-        mnsAlert[i].classList.toggle('msj-none');
-        setTimeout(() => {
-            mnsAlert[i].classList.toggle('msj-none');
-        }, 5000);
-        btnSumit.style.display = 'block' /*mostrar los botones en todas sus ubicaciones*/
-        inpFile[i].value = ''
-        BarProgressz[i].style.display = 'none'
-    })
-}
+TMX_EU_CAU_Zona_0_Metro_Edificios
+TMX_EU_CAU_Zona_0_Centro
+TMX_EU_CAU_Zona_3_Occidente
+TMX_EU_CAU_Zona_1_Occidente
+TMX_EU_CAU_Zona_0_Centro
+TMX_EU_CAU_Zona_0_Norte
+TMX_EU_Resolutores_SDK_Zona_0
+TMX_EU_Resolutores_SDK_Zona_1
+TMX_EU_Resolutores_SDK_Zona_1
+TMX_EU_Soporte_Sucursales_Zona_1
+TMX_EU_Resolutores_SDK_Zona_1
+TMX_EU_Resolutores_SDK_Zona_3
+TMX_EU_Resolutores_SDK_Zona_1
+TMX_EU_CAU_Zona_0_Metro_Edificios
+TMX_EU_Resolutores_SDK_Zona_0
+TMX_EU_Resolutores_SDK_Zona_0
