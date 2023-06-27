@@ -16,3 +16,8 @@ TMX_EU_Resolutores_SDK_Zona_1
 TMX_EU_CAU_Zona_0_Metro_Edificios
 TMX_EU_Resolutores_SDK_Zona_0
 TMX_EU_Resolutores_SDK_Zona_0
+SELECT 
+  grupo,
+  SUBSTRING_INDEX(SUBSTRING_INDEX(grupo, '_', -2), '_', 1) AS numero_zona
+FROM
+  tu_tabla;
