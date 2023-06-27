@@ -1,54 +1,28 @@
-buenos dias, puedes poyarme tengo la siguiente funcion y quiero que cada que cada que termina un const result = await resp.json() guarde el resultado en const resulAvance = [], y se vayan acumulando, actualmente sobre escribe la respuesta de const result = await resp.json(); y solo me da un length de 1 siempre en resulAvance y quiero tener todas las respuestas
+buen dia puedes apoyarme con deshabilitar btnSumit dentro del for todos los botones btnSumit
 
-export const fetchSaveDatas = async (fecha, ruta, datos, totalreg, printProgress, alert)=>{
-    const $headeDate = {
-    "Acept": "*/*",
-    "Content-Type": "application/json",
-    "time-update": fecha,
-}
-    const data = JSON.stringify(datos);
-    const destino = `${api.url}${ruta}.php`
-    const fetchConfig = {
-        method: "POST",
-        headers: $headeDate,
-        body: data
-    }
+const frmDatas = document.querySelectorAll('form')
+const inpFile = document.querySelectorAll('[type="file"]')
+const mnsLoad = document.querySelectorAll('.msj-load')
+const mnsAlert = document.querySelectorAll('.msj-alert')
+const BarProgressz = document.querySelectorAll('.zone-progressbar')
+const btnSumit = document.querySelectorAll('button[type="submit"]')
+const pText = document.querySelectorAll('p[class="card-text info-text-color"]')
 
-    const peticion = new Request(destino, fetchConfig);
-    try {
-        const resulAvance = []
-        const resp = await fetch(peticion);
-        const result = await resp.json();
-        resulAvance.push(result);
-        console.log(resulAvance);
-        if (result.code === '200' && result.data[0].actualizado != 'NULL') {
-            printProgress.style.display = 'block'
-            const avance = Math.round((result.data[0].total/ totalreg)*100);
-            alert.innerHTML = `<div class="alert alert-success" role="alert">${result.mnj}: ${result.data[0].actualizado}</div>`
-            printProgress.innerHTML = `<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="${avance}" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar bg-success text-light" style="width: ${avance}%">${avance}%</div>
-                                        </div>`
-        }else if (result.code === '200' && result.data[0].actualizado == 'NULL') {
-            alert.innerHTML = `<div class="alert alert-info" role="alert">
-                                    Actualizacion Completa
-                                </div>`
-        }else{
-            alert.innerHTML = `<div class="alert alert-danger" role="alert">
-                                    ${result.mnj}
-                                </div>`
-        }
-        return result
-    } catch (error) {
-        throw new Error(`Peticion Fecht con problemas de servidor: ${error}`);
-    }
+for (const [i, frmData] of Array.from(frmDatas).entries()) {
+    frmData.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const archivo = e.target[0].files[0]
+        const base = e.target.name
+        const tiempo = mostrarTiempo()
+        btnSumit.style.display = 'none' /*quitar los botones en todas sus ubicaciones*/
+        const data = await openFile(base, archivo, tiempo, BarProgressz[i], mnsAlert[i])
+        pText[i].innerHTML = data.data[0].actualizado
+        mnsAlert[i].classList.toggle('msj-none');
+        setTimeout(() => {
+            mnsAlert[i].classList.toggle('msj-none');
+        }, 5000);
+        btnSumit.style.display = 'block' /*mostrar los botones en todas sus ubicaciones*/
+        inpFile[i].value = ''
+        BarProgressz[i].style.display = 'none'
+    })
 }
-SELECT CONCAT('[', GROUP_CONCAT(json_row SEPARATOR ','), ']') AS resultado_json
-FROM (
-   SELECT CONCAT(
-      '{"columna1": "', columna1, '", ',
-      '"columna2": "', columna2, '", ',
-      '"columna3": "', columna3, '"}'
-   ) AS json_row
-   FROM tu_tabla
-) subconsulta;
