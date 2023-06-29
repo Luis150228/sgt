@@ -1,4 +1,65 @@
- quiero que si hay algun error en la peticion fetch ya sea ens resp o result este throw new Error(`Peticion Fetch con problemas de servidor: ${error}`); se imprima en alert.innerHTML
+
+function convertCSVtoJSON(csvData) {
+  const lines = csvData.split('\n');
+  const result = [];
+
+  const headers = lines[0].split(',');
+  for (let i = 1; i < lines.length; i++) {
+    const obj = {};
+    const currentLine = lines[i].split(',');
+
+    for (let j = 0; j < headers.length; j++) {
+      obj[headers[j]] = currentLine[j];
+    }
+
+    result.push(obj);
+  }
+
+  return result;
+}
+
+function saveJSON(jsonData) {
+  const url = 'save_json.php'; // Archivo PHP que maneja la solicitud y guarda el JSON
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(jsonData),
+  })
+    .then(response => {
+      if (response.ok) {
+        console.log('JSON guardado exitosamente');
+      } else {
+        throw new Error('Error al guardar el JSON');
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
+
+function handleFileSelect(event) {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    const csvData = e.target.result;
+    const jsonData = convertCSVtoJSON(csvData);
+    saveJSON(jsonData);
+  };
+
+  reader.readAsText(file);
+}
+
+const fileInput = document.getElementById('fileInput');
+fileInput.addEventListener('change', handleFileSelect);
+
+
+
+
+quiero que si hay algun error en la peticion fetch ya sea ens resp o result este throw new Error(`Peticion Fetch con problemas de servidor: ${error}`); se imprima en alert.innerHTML
 
 export const fetchSaveDatas = async (fecha, ruta, datos, totalreg, printProgress, alert, loader)=>{
     const $headeDate = {
