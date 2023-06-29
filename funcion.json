@@ -1,26 +1,46 @@
-tengo la siguiente funcion y requiero que cuando sean las 18 hrs le reste un dia a la fecha
+en la siguiente funcion es posible validar en js si const result = await resp.json(); esta regresando un json o no y en caso de que no muestre una alerta???/
 
-export const mostrarTiempo = ()=>{
-    const ahora = new Date()
-    // const fecha = ahora.toLocaleDateString();
-    const tiempo = ahora.toLocaleTimeString()
-    const fecha = ahora.toISOString().split('T')[0]
-    // const tiempo = ahora.toISOString().split('T')[1]
-    const printDate = `${fecha} ${tiempo}`
-
-    return printDate
+export const fetchSaveDatas = async (fecha, ruta, datos, totalreg, printProgress, alert, loader)=>{
+    const $headeDate = {
+    "Acept": "*/*",
+    "Content-Type": "application/json",
+    "time-update": fecha,
 }
-export const mostrarTiempo = () => {
-  const ahora = new Date();
+    const data = JSON.stringify(datos);
+    const destino = `${api.url}${ruta}.php`
+    const fetchConfig = {
+        method: "POST",
+        headers: $headeDate,
+        body: data
+    }
 
-  if (ahora.getHours() >= 18) {
-    // Restar un día a la fecha
-    ahora.setDate(ahora.getDate() - 1);
-  }
+    const peticion = new Request(destino, fetchConfig);
+    try {
+        const resp = await fetch(peticion);
+        const result = await resp.json();
+        loader.classList.toggle('msj-none');
 
-  const fecha = ahora.toISOString().split("T")[0];
-  const tiempo = ahora.toLocaleTimeString();
-  const printDate = `${fecha} ${tiempo}`;
+        if (result.code === '200' && result.data[0].actualizado != 'NULL') {
+            printProgress.style.display = 'block'
+            const avance = Math.round((result.data[0].total/ totalreg)*100);
+            alert.innerHTML = `<div class="alert alert-success" role="alert">${result.mnj}: ${result.data[0].actualizado}</div>`
+            printProgress.innerHTML = `<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="${avance}" aria-valuemin="0"
+                                            aria-valuemax="100">
+                                            <div class="progress-bar bg-success text-light" style="width: ${avance}%">${avance}%</div>
+                                        </div>`
+        }else if (result.code === '200' && result.data[0].actualizado == 'NULL') {
+            alert.innerHTML = `<div class="alert alert-info" role="alert">
+                                    Actualizacion Completa
+                                </div>`
+        }else{
+            alert.innerHTML = `<div class="alert alert-danger" role="alert">
+                                    ${result.mnj}
+                                </div>`
+        }
 
-  return printDate;
-};
+        return result
+
+    } catch (error) {
+        throw new Error(`Peticion Fecht con problemas de servidor: ${error}`);
+    }
+}
