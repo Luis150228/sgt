@@ -1,32 +1,12 @@
-quiero extraer el numero de zona de estos grupos con mysql
+tengo la siguiente funcion y requiero que cuando sean las 18 hrs le reste un dia a la fecha
 
-TMX_EU_CAU_Zona_0_Metro_Edificios
-TMX_EU_CAU_Zona_0_Centro
-TMX_EU_CAU_Zona_3_Occidente
-TMX_EU_CAU_Zona_1_Occidente
-TMX_EU_CAU_Zona_0_Centro
-TMX_EU_CAU_Zona_0_Norte
-TMX_EU_Resolutores_SDK_Zona_0
-TMX_EU_Resolutores_SDK_Zona_1
-TMX_EU_Resolutores_SDK_Zona_1
-TMX_EU_Soporte_Sucursales_Zona_1
-TMX_EU_Resolutores_SDK_Zona_1
-TMX_EU_Resolutores_SDK_Zona_3
-TMX_EU_Resolutores_SDK_Zona_1
-TMX_EU_CAU_Zona_0_Metro_Edificios
-TMX_EU_Resolutores_SDK_Zona_0
-TMX_EU_Resolutores_SDK_Zona_0
-SELECT 
-  grupo,
-  SUBSTRING_INDEX(SUBSTRING_INDEX(grupo, '_', -2), '_', 1) AS numero_zona
-FROM
-  tu_tabla;
+export const mostrarTiempo = ()=>{
+    const ahora = new Date()
+    // const fecha = ahora.toLocaleDateString();
+    const tiempo = ahora.toLocaleTimeString()
+    const fecha = ahora.toISOString().split('T')[0]
+    // const tiempo = ahora.toISOString().split('T')[1]
+    const printDate = `${fecha} ${tiempo}`
 
-SELECT
-  grupo,
-  SUBSTRING_INDEX(SUBSTRING_INDEX(grupo, 'Zona_', -1), '_', 1) AS numero_zona
-FROM
-  tu_tabla
-WHERE
-  grupo REGEXP 'Zona_[0-4]';
-
+    return printDate
+}
