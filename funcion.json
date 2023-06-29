@@ -10,3 +10,17 @@ export const mostrarTiempo = ()=>{
 
     return printDate
 }
+export const mostrarTiempo = () => {
+  const ahora = new Date();
+
+  if (ahora.getHours() >= 18) {
+    // Restar un día a la fecha
+    ahora.setDate(ahora.getDate() - 1);
+  }
+
+  const fecha = ahora.toISOString().split("T")[0];
+  const tiempo = ahora.toLocaleTimeString();
+  const printDate = `${fecha} ${tiempo}`;
+
+  return printDate;
+};
