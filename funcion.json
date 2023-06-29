@@ -1,4 +1,4 @@
-en la siguiente funcion es posible validar en js si const result = await resp.json(); esta regresando un json o no y en caso de que no muestre una alerta???/
+ quiero que si hay algun error en la peticion fetch ya sea ens resp o result este throw new Error(`Peticion Fetch con problemas de servidor: ${error}`); se imprima en alert.innerHTML
 
 export const fetchSaveDatas = async (fecha, ruta, datos, totalreg, printProgress, alert, loader)=>{
     const $headeDate = {
@@ -18,7 +18,6 @@ export const fetchSaveDatas = async (fecha, ruta, datos, totalreg, printProgress
     try {
         const resp = await fetch(peticion);
         const result = await resp.json();
-        loader.classList.toggle('msj-none');
 
         if (result.code === '200' && result.data[0].actualizado != 'NULL') {
             printProgress.style.display = 'block'
@@ -41,6 +40,6 @@ export const fetchSaveDatas = async (fecha, ruta, datos, totalreg, printProgress
         return result
 
     } catch (error) {
-        throw new Error(`Peticion Fecht con problemas de servidor: ${error}`);
+        throw new Error(`Peticion Fetch con problemas de servidor: ${error}`);
     }
 }
