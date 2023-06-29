@@ -1,0 +1,137 @@
+tengo las siguientes funciones para agregar valores a la tabla de servcenow mediante el procedimiento almacenado, pero solo puedo ejecutar todo este procedimiento solo cuando se hace submit a un frmDatas uno de ellos sube incidentes y el otro solicitudes y quisiera poder reazlizar los dos al mismo tiempo y no esperar a que uno termine para que pueda hacer el otro ya que si los ejecuto a los dos la base de datos empieza a mandar mensajes de key duplicada 
+
+const frmDatas = document.querySelectorAll('form')
+for (const [i, frmData] of Array.from(frmDatas).entries()) {
+    frmData.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const archivo = e.target[0].files[0]
+        const base = e.target.name
+        const tiempo = mostrarTiempo()
+        btnDisplaynone(btnSumit)
+        btnSumit[i].style.display = 'none'
+        const data = await openFile(base, archivo, tiempo, BarProgressz[i], mnsAlert[i])
+        pText[i].innerHTML = data.data[0].actualizado == 0 ? 'Sin Cambios' : data.data[0].actualizado
+        mnsAlert[i].classList.toggle('msj-none');
+        setTimeout(() => {
+            mnsAlert[i].classList.toggle('msj-none');
+        }, 10000);
+        BarProgressz[i].style.display = 'none'
+        btnDisplayBlock(btnSumit)
+        btnSumit[i].style.display = 'block'
+        inpFile[i].value = ''
+    })
+}
+
+export const openFile = (tipo, archivo, tiempo, print, alert) => {
+    return new Promise((resolve, reject) => {
+        if (archivo.type != 'text/csv') {
+            console.log('Archivo inválido');
+            reject('Archivo inválido');
+        } else {
+            const lector = new FileReader();
+            lector.onload = (e) => {
+                const contenido = e.target.result;
+                ajustCSV(tipo, contenido, tiempo, print, alert)
+                    .then((result) => resolve(result))
+                    .catch((error) => reject(error));
+            }
+            lector.readAsText(archivo, 'windows-1252');
+        }
+    });
+}
+
+const ajustCSV = async (tipo, data, tiempo, progressBar, alert)=>{
+
+    let regex_pattern
+    let headerList
+    if (tipo === 'incidentes') {
+        regex_pattern = /\n\"INC/
+        headerList = '"task_effective_number'
+    }else if (tipo === 'solicitudes'){
+        regex_pattern = /\n\"SCTASK/
+        headerList = '\"task_effective_number'
+    }
+
+
+    let filas = data.split(regex_pattern).map(element =>{
+
+        let fila = element.replaceAll(/\'/g, '');
+        let columnas = fila.split(/\",\"/)//las cadenas de texto se dividen en columnas
+        let rows = columnas[0] != headerList ? columnas : undefined;
+        return rows
+    });
+
+    filas.shift()
+    filas = filas.filter(registro=>{
+        return registro != undefined
+    })
+    filas = filas.filter(registro=>{
+        return registro != ''
+    })
+    const datasUp = []
+    let partData
+
+    if (filas.length >= 2000) {
+        partData = 200
+    }else if (filas.length >= 1000) {
+        partData = 100
+    }else if (filas.length >= 500){
+        partData = 50
+    }else{
+        partData = 10
+    }
+
+    for (let i = 0; i < filas.length; i+=partData) {
+        datasUp.push(filas.slice(i, i + partData))
+    }
+
+    let resultado
+    for (const dataUp of datasUp) {
+        resultado = await fetchSaveDatas(tiempo, tipo, dataUp, filas.length, progressBar, alert)
+    }
+    return resultado;
+}
+
+export const fetchSaveDatas = async (fecha, ruta, datos, totalreg, printProgress, alert)=>{
+    const $headeDate = {
+    "Acept": "*/*",
+    "Content-Type": "application/json",
+    "time-update": fecha,
+}
+    const data = JSON.stringify(datos);
+    const destino = `${api.url}${ruta}.php`
+    const fetchConfig = {
+        method: "POST",
+        headers: $headeDate,
+        body: data
+    }
+
+    const peticion = new Request(destino, fetchConfig);
+    try {
+        const resp = await fetch(peticion);
+        const result = await resp.json();
+
+        if (result.code === '200' && result.data[0].actualizado != 'NULL') {
+            printProgress.style.display = 'block'
+            const avance = Math.round((result.data[0].total/ totalreg)*100);
+            alert.innerHTML = `<div class="alert alert-success" role="alert">${result.mnj}: ${result.data[0].actualizado}</div>`
+            printProgress.innerHTML = `<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="${avance}" aria-valuemin="0"
+                                            aria-valuemax="100">
+                                            <div class="progress-bar bg-success text-light" style="width: ${avance}%">${avance}%</div>
+                                        </div>`
+        }else if (result.code === '200' && result.data[0].actualizado == 'NULL') {
+            alert.innerHTML = `<div class="alert alert-info" role="alert">
+                                    Actualizacion Completa
+                                </div>`
+        }else{
+            alert.innerHTML = `<div class="alert alert-danger" role="alert">
+                                    ${result.mnj}
+                                </div>`
+        }
+
+        return result
+
+    } catch (error) {
+        throw new Error(`Peticion Fecht con problemas de servidor: ${error}`);
+    }
+}
