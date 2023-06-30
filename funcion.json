@@ -1,15 +1,5 @@
-que hace esta funcion
+const objeto = [
+  { nombre: 'John Doe', edad: 30, ciudad: 'Nueva York' }
+];
 
-const jsonGet = (objeto)=>{
-    let queryString ="";
-    for (const key in obj[0]) {
-        if (obj[0].hasOwnProperty(key)) {
-            queryString += encodeURIComponent(key)+"="+encodeURIComponent(obj[0][key])+"&";
-        }
-    }
-
-    queryString = queryString.slice(0,1);
-    console.log(`?${queryString}`);
-
-    // return `?${queryString}`
-}
+jsonGet(objeto);
