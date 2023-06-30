@@ -16,3 +16,12 @@ for (var i = 0; i < lista.length; i++) {
 }
 
 console.log(lista);
+
+
+manda este error
+
+ements.js:24 Uncaught TypeError: Cannot read properties of null (reading 'slice')
+    at cadenaArray (elements.js:24:17)
+    at cardsUpdb (elements.js:44:9)
+    at index.js:19:1
+
