@@ -1,6 +1,8 @@
-tengo el diguiente archivo llamado ImportSaveFile.php <?php
+en este archivo estoy conviertiendo un csv pero quiero quitar la primer fila que contiene el titulo de las columanas que cambio sugieres <?php
+include_once '../classes/solImport.class.php';
+$_consult = new valores;
+
 $archivo_csv = '../dataUpdate/sc_task.csv';
-// $ruta = realpath($archivo_csv);
 
 // Abrir el archivo CSV en modo lectura
 if (($handle = fopen($archivo_csv, 'r')) !== false) {
@@ -16,230 +18,15 @@ if (($handle = fopen($archivo_csv, 'r')) !== false) {
 
         $result[] = $data;
     }
-
     fclose($handle);
-    
-    // Enviar $result por POST a otro archivo PHP en el servidor
-    $url = '../classes/solImport.class.php';
-    $post_data = http_build_query(array('data' => $result));
+    // Mostrar el resultado en JSON
     $dateOrder = date('Y-m-d H:i:s');
-    // Agregar el encabezado con la fecha y hora actual
-    $headers = array(
-        'Acept: */*',
-        'Content-Type: application/json',
-        'time-update: ' . $dateOrder
-    );
+    // Convertir el array a JSON
+    $json_result = json_encode($result);
 
-    $options = array(
-        'http' => array(
-            'method' => 'POST',
-            'header' => implode("\r\n", $headers),
-            'content' => $post_data
-        )
-    );
-    $context = stream_context_create($options);
-    $result_from_server = file_get_contents($url, false, $context);
-    // $result_from_server contiene la respuesta del otro archivo PHP en el servidor
-    // Puedes hacer lo que desees con la respuesta
+    $dataClass = $_consult->readDataSolicitudes($json_result, $dateOrder);
 
+    print_r($dataClass);
 } else {
     echo "Error al abrir el archivo CSV";
 }
-
-quiero mandar por post el $result al archivo solicitudes.php el cual esta ligado a la clase solImport.class.php
-<?php
-include_once "../classes/solImport.class.php";
-
-$_consult = new valores;
-
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, PUT, DELETE, GET');
-
-$contBody = file_get_contents('php://input');
-$bodyJson = json_decode($contBody, true);
-$headers = getallheaders();
-
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (isset($_GET['token']) && isset($_GET['catalogo'])) {
-        $dataClass = $_consult->readData($_GET['token'], $_GET['catalogo']);
-    } else if (isset($_GET['token']) && isset($_GET['bridge'])) {
-        $dataClass = $_consult->exceuteBridge($_GET['token'], $_GET['bridge']);
-    } else {
-        http_response_code(203);
-        header('Content-Type: application/json; charset=UTF-8');
-    }
-} else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($headers['time-update'])) {
-        $dataClass = $_consult->readDataSolicitudes($contBody, $headers['time-update']);
-    } elseif (isset($bodyJson['token']) && ($bodyJson['orden'] == 'menu')) {
-    }
-    http_response_code(200);
-} else if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
-    http_response_code(200);
-} else if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-    http_response_code(200);
-} else {
-    http_response_code(400);
-}
-
-header('Content-Type: application/json; charset=UTF-8');
-echo json_encode($dataClass);
-
-solImport.class.php: 
-<?php
-ini_set('max_execution_time', 300);
-require_once "../conexion/cnx.php";
-
-class valores extends cnx
-{
-
-    public function readDataSolicitudes($datos, $dateOrder)
-    {
-        $json = json_decode($datos, true);
-        $typeFolio = $json[0][1];
-
-        if (strpos($typeFolio, "SCTASK") === 0) {
-            foreach ($json as $value) {
-                $number = $value[1];
-                $request_item = $value[2];
-                $opened_at = $value[3];
-                $work_end = $value[4];
-                $closed_at = $value[5];
-                $sys_created_by = $value[6];
-                $assignment_group = $value[7];
-                $assigned_to = $value[8];
-                $state = $value[9];
-                $short_description = str_replace(array("'", '"', '__'), '', $value[10]);
-                $cat_item = $value[11];
-                $description = str_replace(array("'", '"', '__'), '', $value[12]);
-                $opened_by = $value[13];
-                $comments_and_work_notes = str_replace(array("'", '"', '__'), '', $value[14]);
-                $sys_updated_by = $value[15];
-                $sys_updated_on = $value[16];
-                $location = $value[17];
-                $u_zone = $value[18];
-                $data = $this->uploadData($number, $request_item, $opened_at, $work_end, $closed_at, $sys_created_by, $assignment_group, $assigned_to, $state, $short_description, $cat_item, $description, $opened_by, $comments_and_work_notes, $sys_updated_by, $sys_updated_on, $location, $u_zone, $dateOrder);
-            };
-            return $data;
-        } else {
-            $result = array(
-                "code" => "204",
-                "mnj" => "Error al subir informacion archivo incorrecto",
-                "data" => '',
-            );
-
-            return $result;
-        }
-    }
-
-    public function exceuteBridge($token, $puente)
-    {
-        $data = $this->useBridge($token, $puente);
-
-        return $data;
-    }
-
-    private function uploadData($number, $request_item, $opened_at, $work_end, $closed_at, $sys_created_by, $assignment_group, $assigned_to, $state, $short_description, $cat_item, $description, $opened_by, $comments_and_work_notes, $sys_updated_by, $sys_updated_on, $location, $u_zone, $dateOrder)
-    {
-        $sql = "CALL stp_addSolicitudes('$number', '$request_item', '$opened_at', '$work_end', '$closed_at', '$sys_created_by', '$assignment_group', '$assigned_to', '$state', '$short_description', '$cat_item','$description', '$opened_by', '$comments_and_work_notes', '$sys_updated_by', '$sys_updated_on', '$location', '$u_zone', '$dateOrder')";
-
-        $query = parent::getData($sql);
-
-        if (empty($query)) {
-            $result = array(
-                "code" => "204",
-                "mnj" => "Error al subir informacion archivo incorrecto",
-                "data" => "",
-            );
-        } else {
-            $result = array(
-                "code" => "200",
-                "mnj" => "Importacion correcta",
-                "data" => $query
-            );
-        }
-
-        return $result;
-    }
-
-    private function useBridge($tk, $p)
-    {
-        $sql = "CALL stp_addDBBridge('$tk', '$p')";
-        $query = parent::getData($sql);
-
-        if (empty($query)) {
-            $result = array(
-                "code" => "204",
-                "mnj" => "Error al subir informacion archivo incorrecto",
-                "data" => "",
-            );
-        } else {
-            $result = array(
-                "code" => "200",
-                "mnj" => "Importacion correcta en base principal",
-                "data" => $query
-            );
-        }
-
-        return $result;
-    }
-}
-
-lo que requiero es que $result de importSaveFile.php se envie y se pueda leer sin modificar solicitudes.php ni a solImport.class.php que adecuaciones debo hacer en importSaveFile.php  para esto
-////////////////
-<?php
-$archivo_csv = '../dataUpdate/sc_task.csv';
-
-// Obtener la fecha y hora actual en formato AAAA-MM-DD HH:MM:SS
-$fecha_actual = date("Y-m-d H:i:s");
-
-// Abrir el archivo CSV en modo lectura
-if (($handle = fopen($archivo_csv, 'r')) !== false) {
-    // Especificar la codificación del archivo como ISO-8859-1
-    stream_filter_append($handle, 'convert.iconv.ISO-8859-1/UTF-8');
-
-    // Ignorar la primera línea que contiene los títulos
-    fgetcsv($handle, 1000, ',');
-
-    // Leer los datos línea por línea y procesarlos
-    $result = array();
-    while (($data = fgetcsv($handle, 1000, ',')) !== false) {
-        // Quitar comillas dobles de cada elemento del array $data
-        $data = array_map(function ($value) {
-            return str_replace('"', '', $value);
-        }, $data);
-
-        // Agregar la fila actual al array $result
-        $result[] = $data;
-    }
-
-    fclose($handle);
-    // Ahora, $result contiene todas las filas del archivo CSV en un array multidimensional
-    // Cada fila es un array dentro de $result
-
-    // Enviar $result por POST a otro archivo PHP en el servidor (solicitudes.php)
-    $url = 'http://tu_servidor/solicitudes.php'; // Reemplaza con la URL correcta de solicitudes.php
-    $post_data = http_build_query(array('data' => $result));
-    $headers = array(
-        'Acept: */*',
-        'Content-Type: application/x-www-form-urlencoded',
-        'time-update: ' . $fecha_actual
-    );
-
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-    $result_from_server = curl_exec($ch);
-
-    curl_close($ch);
-
-    // $result_from_server contiene la respuesta del otro archivo PHP en el servidor
-    // Puedes hacer lo que desees con la respuesta
-} else {
-    echo "Error al abrir el archivo CSV";
-}
-?>
