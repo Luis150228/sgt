@@ -43,3 +43,45 @@ if (($handle = fopen($archivo_csv, 'r')) !== false) {
 } else {
     echo "Error al abrir el archivo CSV";
 }
+/////////////////////////////
+if (($handle = fopen($archivo_csv, 'r')) !== false) {
+    // Especificar la codificación del archivo como ISO-8859-1
+    stream_filter_append($handle, 'convert.iconv.ISO-8859-1/UTF-8');
+
+    // Leer los datos línea por línea y procesarlos
+    while (($data = fgetcsv($handle, 1000, ',')) !== false) {
+        // Resto del código...
+    }
+
+    fclose($handle);
+} else {
+    echo "Error al abrir el archivo CSV";
+}
+///////////////////////////////
+if (($handle = fopen($archivo_csv, 'r')) !== false) {
+    // Especificar la codificación del archivo como ISO-8859-1
+    stream_filter_append($handle, 'convert.iconv.ISO-8859-1/UTF-8');
+
+    // Leer los datos línea por línea y procesarlos
+    $result = array();
+    while (($data = fgetcsv($handle, 1000, ',')) !== false) {
+        // Resto del código...
+
+        // Agregar los datos al array
+        $result[] = array(
+            'ticket' => $task_effective_number,
+            'obsr' => $comments_and_work_notes,
+            'fecha' => $sys_updated_by
+        );
+    }
+
+    // Convertir el array a JSON
+    $json_result = json_encode($result);
+
+    // Mostrar el resultado en JSON
+    echo $json_result;
+
+    fclose($handle);
+} else {
+    echo "Error al abrir el archivo CSV";
+}
