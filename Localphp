@@ -1,0 +1,42 @@
+<?php
+// Carga de la librería PhpSpreadsheet
+require 'vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\IOFactory;
+
+// Ruta del archivo de Excel a importar
+$archivo_excel = 'ruta/archivo.xlsx';
+
+// Conexión a la base de datos MySQL utilizando PDO
+$host = 'nombre_del_host';
+$dbname = 'nombre_de_la_base_de_datos';
+$usuario = 'usuario_mysql';
+$contrasena = 'contrasena_mysql';
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $usuario, $contrasena);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Lectura del archivo de Excel
+    $spreadsheet = IOFactory::load($archivo_excel);
+    $worksheet = $spreadsheet->getActiveSheet();
+    $data = $worksheet->toArray();
+
+    // Procesar los datos e insertarlos en la base de datos
+    foreach ($data as $row) {
+        // Suponiendo que la primera columna es el nombre y la segunda columna es el valor a insertar
+        $nombre = $row[0];
+        $valor = $row[1];
+
+        // Insertar en la tabla de la base de datos
+        $stmt = $pdo->prepare("INSERT INTO tabla_mysql (nombre, valor) VALUES (:nombre, :valor)");
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':valor', $valor);
+        $stmt->execute();
+    }
+
+    echo "Importación exitosa";
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
+}
+?>
