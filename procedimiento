@@ -30,3 +30,44 @@ if (($handle = fopen($archivo_csv, 'r')) !== false) {
 } else {
     echo "Error al abrir el archivo CSV";
 }
+//////////
+<?php
+include_once '../classes/solImport.class.php';
+$_consult = new valores;
+
+$archivo_csv = '../dataUpdate/sc_task.csv';
+
+// Abrir el archivo CSV en modo lectura
+if (($handle = fopen($archivo_csv, 'r')) !== false) {
+    // Especificar la codificación del archivo como ISO-8859-1
+    stream_filter_append($handle, 'convert.iconv.ISO-8859-1/UTF-8');
+    
+    // Leer los datos línea por línea y procesarlos
+    $result = array();
+    $firstRowSkipped = false; // Variable para controlar si la primera fila ha sido leída
+    while (($data = fgetcsv($handle, 1000, ',')) !== false) {
+        // Si la primera fila no ha sido leída, omitir esta iteración para saltar los títulos
+        if (!$firstRowSkipped) {
+            $firstRowSkipped = true;
+            continue;
+        }
+
+        // Quuitar comillas dobles de cada elemento del array $data
+        $data = array_map(function ($value) {
+            return str_replace('"', '', $value);
+        }, $data);
+
+        $result[] = $data;
+    }
+    fclose($handle);
+    // Mostrar el resultado en JSON
+    $dateOrder = date('Y-m-d H:i:s');
+    // Convertir el array a JSON
+    $json_result = json_encode($result);
+
+    $dataClass = $_consult->readDataSolicitudes($json_result, $dateOrder);
+
+    print_r($dataClass);
+} else {
+    echo "Error al abrir el archivo CSV";
+}
