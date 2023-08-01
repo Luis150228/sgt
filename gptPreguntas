@@ -192,3 +192,59 @@ if (($handle = fopen($archivo_csv, 'r')) !== false) {
 }
 ?>
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<?php
+$archivo_csv = '../dataUpdate/sc_task.csv';
+
+// Obtener la fecha y hora actual en formato AAAA-MM-DD HH:MM:SS
+$fecha_actual = date("Y-m-d H:i:s");
+
+// Abrir el archivo CSV en modo lectura
+if (($handle = fopen($archivo_csv, 'r')) !== false) {
+    // Especificar la codificación del archivo como ISO-8859-1
+    stream_filter_append($handle, 'convert.iconv.ISO-8859-1/UTF-8');
+
+    // Ignorar la primera línea que contiene los títulos
+    fgetcsv($handle, 1000, ',');
+
+    // Leer los datos línea por línea y procesarlos
+    $result = array();
+    while (($data = fgetcsv($handle, 1000, ',')) !== false) {
+        // Quitar comillas dobles de cada elemento del array $data
+        $data = array_map(function ($value) {
+            return str_replace('"', '', $value);
+        }, $data);
+
+        // Agregar la fila actual al array $result
+        $result[] = $data;
+    }
+
+    fclose($handle);
+    // Ahora, $result contiene todas las filas del archivo CSV en un array multidimensional
+    // Cada fila es un array dentro de $result
+
+    // Enviar $result por POST al archivo PHP en tu servidor
+    $archivo_en_servidor = '/ruta/a/otro_archivo.php';
+    $post_data = http_build_query(array('data' => $result));
+
+    // Agregar el encabezado con la fecha y hora actual
+    $headers = array(
+        'Content-Type: application/x-www-form-urlencoded',
+        'X-Date: ' . $fecha_actual
+    );
+
+    $options = array(
+        'http' => array(
+            'method' => 'POST',
+            'header' => implode("\r\n", $headers),
+            'content' => $post_data
+        )
+    );
+    $context = stream_context_create($options);
+    $result_from_server = file_get_contents($archivo_en_servidor, false, $context);
+
+    // $result_from_server contiene la respuesta del archivo PHP en tu servidor
+    // Puedes hacer lo que desees con la respuesta
+} else {
+    echo "Error al abrir el archivo CSV";
+}
+?>
