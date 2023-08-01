@@ -1,0 +1,19 @@
+<?php
+$archivo_csv = 'datos.csv';
+
+// Abrir el archivo CSV en modo lectura
+if (($handle = fopen($archivo_csv, 'r')) !== false) {
+    // Leer los datos línea por línea y procesarlos
+    while (($data = fgetcsv($handle, 1000, ',')) !== false) {
+        $nombre = $data[0];
+        $edad = $data[1];
+        $ciudad = $data[2];
+
+        // Aquí puedes realizar cualquier acción con los datos, por ejemplo, mostrarlos en pantalla
+        echo "Nombre: $nombre, Edad: $edad, Ciudad: $ciudad<br>";
+    }
+    fclose($handle);
+} else {
+    echo "Error al abrir el archivo CSV";
+}
+?>
