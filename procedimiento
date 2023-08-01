@@ -186,3 +186,60 @@ class valores extends cnx
 }
 
 lo que requiero es que $result de importSaveFile.php se envie y se pueda leer sin modificar solicitudes.php ni a solImport.class.php que adecuaciones debo hacer en importSaveFile.php  para esto
+////////////////
+<?php
+$archivo_csv = '../dataUpdate/sc_task.csv';
+
+// Obtener la fecha y hora actual en formato AAAA-MM-DD HH:MM:SS
+$fecha_actual = date("Y-m-d H:i:s");
+
+// Abrir el archivo CSV en modo lectura
+if (($handle = fopen($archivo_csv, 'r')) !== false) {
+    // Especificar la codificación del archivo como ISO-8859-1
+    stream_filter_append($handle, 'convert.iconv.ISO-8859-1/UTF-8');
+
+    // Ignorar la primera línea que contiene los títulos
+    fgetcsv($handle, 1000, ',');
+
+    // Leer los datos línea por línea y procesarlos
+    $result = array();
+    while (($data = fgetcsv($handle, 1000, ',')) !== false) {
+        // Quitar comillas dobles de cada elemento del array $data
+        $data = array_map(function ($value) {
+            return str_replace('"', '', $value);
+        }, $data);
+
+        // Agregar la fila actual al array $result
+        $result[] = $data;
+    }
+
+    fclose($handle);
+    // Ahora, $result contiene todas las filas del archivo CSV en un array multidimensional
+    // Cada fila es un array dentro de $result
+
+    // Enviar $result por POST a otro archivo PHP en el servidor (solicitudes.php)
+    $url = 'http://tu_servidor/solicitudes.php'; // Reemplaza con la URL correcta de solicitudes.php
+    $post_data = http_build_query(array('data' => $result));
+    $headers = array(
+        'Acept: */*',
+        'Content-Type: application/x-www-form-urlencoded',
+        'time-update: ' . $fecha_actual
+    );
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+    $result_from_server = curl_exec($ch);
+
+    curl_close($ch);
+
+    // $result_from_server contiene la respuesta del otro archivo PHP en el servidor
+    // Puedes hacer lo que desees con la respuesta
+} else {
+    echo "Error al abrir el archivo CSV";
+}
+?>
