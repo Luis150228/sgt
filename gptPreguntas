@@ -1,0 +1,45 @@
+estoy abrindo de forma correcta el archivo pero en las cadenas de texto esta generando caracteres especiales como 'CASTA�ON HERNANDEZ (Notas de trabajo) Buen d�a ' creo que es por que el archivo de origen es un ANSI y quiero que respete las palapas con ñ o vocales con acentos, adicional quiero que se muestre el resultado en un json en lugar de una cadena de texto
+
+<?php
+$archivo_csv = '../dataUpdate/sc_task.csv';
+// $ruta = realpath($archivo_csv);
+
+// Abrir el archivo CSV en modo lectura
+if (($handle = fopen($archivo_csv, 'r')) !== false) {
+    // Leer los datos línea por línea y procesarlos
+    while (($data = fgetcsv($handle, 1000, ',')) !== false) {
+        // Quuitar comillas dobles de cada elemento del array $data
+        $data = array_map(function ($value) {
+            return str_replace('"', '', $value);
+        }, $data);
+
+        // Realizar ajustes en los datos
+        $task_effective_number = $data[0];
+        $number = $data[1];
+        $request_item = $data[2];
+        $opened_at = $data[3];
+        $work_end = $data[4];
+        $closed_at = $data[5];
+        $sys_created_by = $data[6];
+        $assignment_group = $data[7];
+        $assigned_to = $data[8];
+        $state = $data[9];
+        $short_description = $data[10];
+        $rcat_item = $data[11];
+        $description = $data[12];
+        $opened_by = $data[13];
+        $comments_and_work_notes = $data[14];
+        $sys_updated_by = $data[15];
+        $sys_updated_on = $data[16];
+        $location = $data[17];
+        $u_zone = $data[18];
+        $sys_mod_count = $data[19];
+
+        // Aquí puedes realizar cualquier acción con los datos, por ejemplo, mostrarlos en pantalla
+        echo "ticket: $task_effective_number, obsr: $comments_and_work_notes, fecha: $sys_updated_by<br>";
+    }
+
+    fclose($handle);
+} else {
+    echo "Error al abrir el archivo CSV";
+}
