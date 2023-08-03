@@ -1,111 +1,172 @@
-este es mi codigo que aber un archivo de CSV y lo procesa aproximadamente 1000 pueden ser mas o menos asi que es importante saber el total de registros, quiero que cada 100 registros se ejecute $dataClass = $_consult->readDataSolicitudes($json_result, $dateOrder); y al completar el total de los registros se ejecute $bridgeTraslate = $_consult->exceuteBridge($dataClass['code'], 'solicitudes');
+Con PhpSpreadsheet quiero poner el conenido siguiente en formato tabular por cada registro del objeto data
 
-<?php
-ini_set('max_execution_time', 300);
-include_once '../classes/solImport.class.php';
-include_once '../classes/incImport.class.php';
-$_consult = new valoresTks;
-$_consultInc = new valoresInc;
-
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, PUT, DELETE, GET');
-
-$archivo_csv = '../dataUpdate/' . $_GET['file'] . '.csv';
-// /*
-if (($handle = fopen($archivo_csv, 'r')) !== false) {
-    stream_filter_append($handle, 'convert.iconv.ISO-8859-1/UTF-8');
-    $result = array();
-    $firstRowSkipped = false;
-    while (($data = fgetcsv($handle, 1000, ',')) !== false) {
-        if (!$firstRowSkipped) {
-            $firstRowSkipped = true;
-            continue;
-        }
-        $data = array_map(function ($value) {
-            return str_replace('"', '', $value);
-        }, $data);
-
-        $result[] = $data;
+"data": [
+    {
+      "Folio": "INC035874741",
+      "Envio": "2023-07-20 10:37:27",
+      "Estado": "Activo",
+      "Categoria": "Dispositivo de usuario final",
+      "Problema": "",
+      "Proyecto": "Reportes de Fallas en Hardware en perifericos (Ceritificadoras, pinpad, scanner, biometricos, etc)",
+      "Grupo": "EUT CAU Sur",
+      "Ubicacion": "SUC. ZONA INDUSTRIAL (4902)",
+      "Region": "Sureste",
+      "Zona": "2",
+      "SLA": "1500",
+      "Tiempo": "7745",
+      "Estatus": "VENCIDO",
+      "Clasificacion": "HARDWARE",
+      "C.Costos": "4902",
+      "grup_asig": "TMX_EU_CAU_Zona_2_Sur",
+      "grup_tipo": "EUT CAU",
+      "medido": "EUT",
+      "area": "Sucursales",
+      "tipo": "Incidente",
+      "num_relacionado": "",
+      "resuelto": "0000-00-00 00:00:00"
+    },
+    {
+      "Folio": "INC035452804",
+      "Envio": "2023-06-29 11:06:00",
+      "Estado": "Activo",
+      "Categoria": "Comunicaciones Usuario Final",
+      "Problema": "",
+      "Proyecto": "Reportes de Fallas en Hardware en equipos de comunicaciones (teléfonía, Red, wireless, Cajeros)",
+      "Grupo": "EUT CAU Centro",
+      "Ubicacion": "SUC. ANTEA (2211)",
+      "Region": "Centro",
+      "Zona": "1",
+      "SLA": "210",
+      "Tiempo": "18966",
+      "Estatus": "VENCIDO",
+      "Clasificacion": "HARDWARE",
+      "C.Costos": "2211",
+      "grup_asig": "TMX_EU_CAU_Zona_1_Centro",
+      "grup_tipo": "EUT CAU",
+      "medido": "EUT",
+      "area": "Sucursales",
+      "tipo": "Incidente",
+      "num_relacionado": "",
+      "resuelto": "0000-00-00 00:00:00"
+    },
+    {
+      "Folio": "INC035921075",
+      "Envio": "2023-07-21 14:03:48",
+      "Estado": "Activo",
+      "Categoria": "Dispositivo de usuario final",
+      "Problema": "",
+      "Proyecto": "Reportes de Fallas en Hardware en perifericos (Ceritificadoras, pinpad, scanner, biometricos, etc)",
+      "Grupo": "EUT CAU Centro",
+      "Ubicacion": "SUC. PRINCIPAL LEON (4347)",
+      "Region": "Centro",
+      "Zona": "1",
+      "SLA": "1500",
+      "Tiempo": "6789",
+      "Estatus": "VENCIDO",
+      "Clasificacion": "HARDWARE",
+      "C.Costos": "4347",
+      "grup_asig": "TMX_EU_CAU_Zona_1_Centro",
+      "grup_tipo": "EUT CAU",
+      "medido": "EUT",
+      "area": "Sucursales",
+      "tipo": "Incidente",
+      "num_relacionado": "",
+      "resuelto": "0000-00-00 00:00:00"
+    },
+    {
+      "Folio": "INC035967865",
+      "Envio": "2023-07-24 10:59:32",
+      "Estado": "Activo",
+      "Categoria": "Dispositivo de usuario final",
+      "Problema": "",
+      "Proyecto": "Reportes de Fallas en Hardware en perifericos (Ceritificadoras, pinpad, scanner, biometricos, etc)",
+      "Grupo": "EUT CAU Centro",
+      "Ubicacion": "SUC. NUEVA VALLADOLID (7771)",
+      "Region": "Centro",
+      "Zona": "1",
+      "SLA": "1500",
+      "Tiempo": "6223",
+      "Estatus": "VENCIDO",
+      "Clasificacion": "HARDWARE",
+      "C.Costos": "7771",
+      "grup_asig": "TMX_EU_CAU_Zona_1_Centro",
+      "grup_tipo": "EUT CAU",
+      "medido": "EUT",
+      "area": "Sucursales",
+      "tipo": "Incidente",
+      "num_relacionado": "",
+      "resuelto": "0000-00-00 00:00:00"
+    },
+    {
+      "Folio": "INC036117358",
+      "Envio": "2023-07-31 18:12:40",
+      "Estado": "Activo",
+      "Categoria": "Comunicaciones del usuario final",
+      "Problema": "",
+      "Proyecto": "Reportes de Fallas en Hardware en equipos de comunicaciones (teléfonía, Red, wireless, Cajeros)",
+      "Grupo": "EUT CAU Centro",
+      "Ubicacion": "SUC. ANDRADE (0128)",
+      "Region": "Centro",
+      "Zona": "1",
+      "SLA": "1500",
+      "Tiempo": "2040",
+      "Estatus": "VENCIDO",
+      "Clasificacion": "HARDWARE",
+      "C.Costos": "128",
+      "grup_asig": "TMX_EU_CAU_Zona_1_Centro",
+      "grup_tipo": "EUT CAU",
+      "medido": "EUT",
+      "area": "Sucursales",
+      "tipo": "Incidente",
+      "num_relacionado": "",
+      "resuelto": "0000-00-00 00:00:00"
+    },
+    {
+      "Folio": "INC036133396",
+      "Envio": "2023-08-01 09:00:45",
+      "Estado": "Activo",
+      "Categoria": "Dispositivo Usuario Final",
+      "Problema": "",
+      "Proyecto": "Reportes de Fallas en Hardware en equipos de cómputo y perifericos (Desktop, laptop, nettop, mouse, Monitor, etc)",
+      "Grupo": "EUT CAU Centro",
+      "Ubicacion": "SUC. MARTINICA (4335)",
+      "Region": "Centro",
+      "Zona": "1",
+      "SLA": "1500",
+      "Tiempo": "1842",
+      "Estatus": "VENCIDO",
+      "Clasificacion": "HARDWARE",
+      "C.Costos": "4335",
+      "grup_asig": "TMX_EU_CAU_Zona_1_Centro",
+      "grup_tipo": "EUT CAU",
+      "medido": "EUT",
+      "area": "Sucursales",
+      "tipo": "Incidente",
+      "num_relacionado": "",
+      "resuelto": "0000-00-00 00:00:00"
+    },
+    {
+      "Folio": "INC036158755",
+      "Envio": "2023-08-02 09:50:44",
+      "Estado": "Activo",
+      "Categoria": "Dispositivo Usuario Final",
+      "Problema": "",
+      "Proyecto": "Reportes de Fallas en Hardware en perifericos (Ceritificadoras, pinpad, scanner, biometricos, etc)",
+      "Grupo": "EUT CAU Centro",
+      "Ubicacion": "SUC. TORRES LANDA (0482)",
+      "Region": "Centro",
+      "Zona": "1",
+      "SLA": "1500",
+      "Tiempo": "1042",
+      "Estatus": "EN TIEMPO",
+      "Clasificacion": "HARDWARE",
+      "C.Costos": "482",
+      "grup_asig": "TMX_EU_CAU_Zona_1_Centro",
+      "grup_tipo": "EUT CAU",
+      "medido": "EUT",
+      "area": "Sucursales",
+      "tipo": "Incidente",
+      "num_relacionado": "",
+      "resuelto": "0000-00-00 00:00:00"
     }
-    fclose($handle);
-    $dateOrder = date('Y-m-d H:i:s');
-    $json_result = json_encode($result);
-
-    $dataClass = $_consult->readDataSolicitudes($json_result, $dateOrder);
-    if ($dataClass['code'] == '200') {
-        $bridgeTraslate = $_consult->exceuteBridge($dataClass['code'], 'solicitudes');
-        header('Content-Type: application/json; charset=UTF-8');
-        echo json_encode($bridgeTraslate);
-    }
-
-} else {
-    $error = array(
-        'code' => '202',
-        'mnj' => 'Error al abrir el archivo CSV'
-    );
-    header('Content-Type: application/json; charset=UTF-8');
-    echo json_encode($error);
-}
-// */
-/////////////////////////////////////////////////////////////////////////////////////////
-<?php
-ini_set('max_execution_time', 300);
-include_once '../classes/solImport.class.php';
-include_once '../classes/incImport.class.php';
-$_consult = new valoresTks;
-$_consultInc = new valoresInc;
-
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, PUT, DELETE, GET');
-
-$archivo_csv = '../dataUpdate/' . $_GET['file'] . '.csv';
-
-// Comprobamos si el archivo CSV se puede abrir correctamente
-if (($handle = fopen($archivo_csv, 'r')) !== false) {
-    stream_filter_append($handle, 'convert.iconv.ISO-8859-1/UTF-8');
-    $result = array();
-    $firstRowSkipped = false;
-
-    while (($data = fgetcsv($handle, 1000, ',')) !== false) {
-        if (!$firstRowSkipped) {
-            $firstRowSkipped = true;
-            continue;
-        }
-        $data = array_map(function ($value) {
-            return str_replace('"', '', $value);
-        }, $data);
-
-        $result[] = $data;
-    }
-
-    fclose($handle);
-
-    // Dividir el arreglo $result en lotes de 100 registros
-    $batchSize = 100;
-    $batches = array_chunk($result, $batchSize);
-
-    // Procesar cada lote de 100 registros
-    foreach ($batches as $batch) {
-        $dateOrder = date('Y-m-d H:i:s');
-        $json_result = json_encode($batch);
-        $dataClass = $_consult->readDataSolicitudes($json_result, $dateOrder);
-        
-        // Puedes manejar la respuesta aquí o acumularla en un arreglo para procesamiento final
-        
-    }
-
-    // Ejecutar $bridgeTraslate después de procesar todos los lotes
-    if ($dataClass['code'] == '200') {
-        $bridgeTraslate = $_consult->exceuteBridge($dataClass['code'], 'solicitudes');
-        // Puedes manejar la respuesta aquí o acumularla en un arreglo para procesamiento final
-    }
-
-} else {
-    $error = array(
-        'code' => '202',
-        'mnj' => 'Error al abrir el archivo CSV'
-    );
-    header('Content-Type: application/json; charset=UTF-8');
-    echo json_encode($error);
-}
-?>
+]
