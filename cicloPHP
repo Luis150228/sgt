@@ -65,8 +65,6 @@ if (($handle = fopen($archivo_csv, 'r')) !== false) {
     stream_filter_append($handle, 'convert.iconv.ISO-8859-1/UTF-8');
     $result = array();
     $firstRowSkipped = false;
-    $recordCount = 0; // Variable para realizar un seguimiento de los registros procesados
-    $batchSize = 100; // Número de registros a procesar por lote
 
     while (($data = fgetcsv($handle, 1000, ',')) !== false) {
         if (!$firstRowSkipped) {
@@ -78,35 +76,30 @@ if (($handle = fopen($archivo_csv, 'r')) !== false) {
         }, $data);
 
         $result[] = $data;
-        $recordCount++;
-
-        // Ejecutar funciones cada 100 registros
-        if ($recordCount % $batchSize === 0) {
-            $dateOrder = date('Y-m-d H:i:s');
-            $json_result = json_encode($result);
-            $dataClass = $_consult->readDataSolicitudes($json_result, $dateOrder);
-            if ($dataClass['code'] == '200') {
-                $bridgeTraslate = $_consult->exceuteBridge($dataClass['code'], 'solicitudes');
-                // Puedes manejar la respuesta aquí o acumularla en un arreglo para procesamiento final
-            }
-
-            // Reiniciar el arreglo $result para el siguiente lote
-            $result = array();
-        }
-    }
-
-    // Procesar los registros restantes (si los hay) después de que termine el bucle
-    if (!empty($result)) {
-        $dateOrder = date('Y-m-d H:i:s');
-        $json_result = json_encode($result);
-        $dataClass = $_consult->readDataSolicitudes($json_result, $dateOrder);
-        if ($dataClass['code'] == '200') {
-            $bridgeTraslate = $_consult->exceuteBridge($dataClass['code'], 'solicitudes');
-            // Puedes manejar la respuesta aquí o acumularla en un arreglo para procesamiento final
-        }
     }
 
     fclose($handle);
+
+    // Dividir el arreglo $result en lotes de 100 registros
+    $batchSize = 100;
+    $batches = array_chunk($result, $batchSize);
+
+    // Procesar cada lote de 100 registros
+    foreach ($batches as $batch) {
+        $dateOrder = date('Y-m-d H:i:s');
+        $json_result = json_encode($batch);
+        $dataClass = $_consult->readDataSolicitudes($json_result, $dateOrder);
+        
+        // Puedes manejar la respuesta aquí o acumularla en un arreglo para procesamiento final
+        
+    }
+
+    // Ejecutar $bridgeTraslate después de procesar todos los lotes
+    if ($dataClass['code'] == '200') {
+        $bridgeTraslate = $_consult->exceuteBridge($dataClass['code'], 'solicitudes');
+        // Puedes manejar la respuesta aquí o acumularla en un arreglo para procesamiento final
+    }
+
 } else {
     $error = array(
         'code' => '202',
