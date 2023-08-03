@@ -170,3 +170,60 @@ Con PhpSpreadsheet quiero poner el conenido siguiente en formato tabular por cad
       "resuelto": "0000-00-00 00:00:00"
     }
 ]
+
+
+//////////////********************************************************************************************************************////////////////////////////////
+<?php
+require 'vendor/autoload.php'; // Asegúrate de incluir la ruta correcta a PhpSpreadsheet
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+// Datos que quieres mostrar
+$data = [
+    // Aquí colocas los datos del primer objeto
+    // ...
+    // Aquí colocas los datos del segundo objeto
+    // ...
+    // Y así sucesivamente
+];
+
+// Crear una nueva hoja de cálculo
+$spreadsheet = new Spreadsheet();
+$sheet = $spreadsheet->getActiveSheet();
+
+// Obtener las claves del primer registro para generar las columnas
+$firstRecord = reset($data);
+$columns = array_keys($firstRecord);
+
+// Escribir los encabezados de las columnas en la primera fila de la hoja
+$columnIndex = 1;
+foreach ($columns as $column) {
+    $sheet->setCellValueByColumnAndRow($columnIndex, 1, $column);
+    $columnIndex++;
+}
+
+// Escribir los datos en la hoja
+$rowIndex = 2; // Comenzar a partir de la segunda fila, ya que la primera fila contiene los encabezados
+foreach ($data as $record) {
+    $columnIndex = 1;
+    foreach ($record as $value) {
+        $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $value);
+        $columnIndex++;
+    }
+    $rowIndex++;
+}
+
+// Descargar el archivo
+$writer = new Xlsx($spreadsheet);
+$filename = 'datos_tabulares.xlsx';
+$writer->save($filename);
+
+// Descargar el archivo
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment; filename="' . $filename . '"');
+header('Cache-Control: max-age=0');
+readfile($filename);
+unlink($filename); // Eliminar el archivo después de la descarga
+exit;
+?>
