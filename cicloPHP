@@ -47,3 +47,72 @@ if (($handle = fopen($archivo_csv, 'r')) !== false) {
     echo json_encode($error);
 }
 // */
+/////////////////////////////////////////////////////////////////////////////////////////
+<?php
+ini_set('max_execution_time', 300);
+include_once '../classes/solImport.class.php';
+include_once '../classes/incImport.class.php';
+$_consult = new valoresTks;
+$_consultInc = new valoresInc;
+
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, PUT, DELETE, GET');
+
+$archivo_csv = '../dataUpdate/' . $_GET['file'] . '.csv';
+
+// Comprobamos si el archivo CSV se puede abrir correctamente
+if (($handle = fopen($archivo_csv, 'r')) !== false) {
+    stream_filter_append($handle, 'convert.iconv.ISO-8859-1/UTF-8');
+    $result = array();
+    $firstRowSkipped = false;
+    $recordCount = 0; // Variable para realizar un seguimiento de los registros procesados
+    $batchSize = 100; // Número de registros a procesar por lote
+
+    while (($data = fgetcsv($handle, 1000, ',')) !== false) {
+        if (!$firstRowSkipped) {
+            $firstRowSkipped = true;
+            continue;
+        }
+        $data = array_map(function ($value) {
+            return str_replace('"', '', $value);
+        }, $data);
+
+        $result[] = $data;
+        $recordCount++;
+
+        // Ejecutar funciones cada 100 registros
+        if ($recordCount % $batchSize === 0) {
+            $dateOrder = date('Y-m-d H:i:s');
+            $json_result = json_encode($result);
+            $dataClass = $_consult->readDataSolicitudes($json_result, $dateOrder);
+            if ($dataClass['code'] == '200') {
+                $bridgeTraslate = $_consult->exceuteBridge($dataClass['code'], 'solicitudes');
+                // Puedes manejar la respuesta aquí o acumularla en un arreglo para procesamiento final
+            }
+
+            // Reiniciar el arreglo $result para el siguiente lote
+            $result = array();
+        }
+    }
+
+    // Procesar los registros restantes (si los hay) después de que termine el bucle
+    if (!empty($result)) {
+        $dateOrder = date('Y-m-d H:i:s');
+        $json_result = json_encode($result);
+        $dataClass = $_consult->readDataSolicitudes($json_result, $dateOrder);
+        if ($dataClass['code'] == '200') {
+            $bridgeTraslate = $_consult->exceuteBridge($dataClass['code'], 'solicitudes');
+            // Puedes manejar la respuesta aquí o acumularla en un arreglo para procesamiento final
+        }
+    }
+
+    fclose($handle);
+} else {
+    $error = array(
+        'code' => '202',
+        'mnj' => 'Error al abrir el archivo CSV'
+    );
+    header('Content-Type: application/json; charset=UTF-8');
+    echo json_encode($error);
+}
+?>
