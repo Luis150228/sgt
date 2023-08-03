@@ -199,7 +199,8 @@ $columns = array_keys($firstRecord);
 // Escribir los encabezados de las columnas en la primera fila de la hoja
 $columnIndex = 1;
 foreach ($columns as $column) {
-    $sheet->setCellValueByColumnAndRow($columnIndex, 1, $column);
+    $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . '1';
+    $sheet->setCellValue($cellCoordinate, $column);
     $columnIndex++;
 }
 
@@ -208,7 +209,8 @@ $rowIndex = 2; // Comenzar a partir de la segunda fila, ya que la primera fila c
 foreach ($data as $record) {
     $columnIndex = 1;
     foreach ($record as $value) {
-        $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $value);
+        $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . $rowIndex;
+        $sheet->setCellValue($cellCoordinate, $value);
         $columnIndex++;
     }
     $rowIndex++;
