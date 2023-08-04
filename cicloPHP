@@ -1,297 +1,49 @@
-Con PhpSpreadsheet quiero poner el conenido siguiente en formato tabular por cada registro del objeto data
+del siguiente codigo quiero que en lugar de guardar el archivo en una ubicacion determinada se requiere que se descarge y el usuario guarde el archivo donde quiera 
 
-"data": [
-    {
-      "Folio": "INC035874741",
-      "Envio": "2023-07-20 10:37:27",
-      "Estado": "Activo",
-      "Categoria": "Dispositivo de usuario final",
-      "Problema": "",
-      "Proyecto": "Reportes de Fallas en Hardware en perifericos (Ceritificadoras, pinpad, scanner, biometricos, etc)",
-      "Grupo": "EUT CAU Sur",
-      "Ubicacion": "SUC. ZONA INDUSTRIAL (4902)",
-      "Region": "Sureste",
-      "Zona": "2",
-      "SLA": "1500",
-      "Tiempo": "7745",
-      "Estatus": "VENCIDO",
-      "Clasificacion": "HARDWARE",
-      "C.Costos": "4902",
-      "grup_asig": "TMX_EU_CAU_Zona_2_Sur",
-      "grup_tipo": "EUT CAU",
-      "medido": "EUT",
-      "area": "Sucursales",
-      "tipo": "Incidente",
-      "num_relacionado": "",
-      "resuelto": "0000-00-00 00:00:00"
-    },
-    {
-      "Folio": "INC035452804",
-      "Envio": "2023-06-29 11:06:00",
-      "Estado": "Activo",
-      "Categoria": "Comunicaciones Usuario Final",
-      "Problema": "",
-      "Proyecto": "Reportes de Fallas en Hardware en equipos de comunicaciones (teléfonía, Red, wireless, Cajeros)",
-      "Grupo": "EUT CAU Centro",
-      "Ubicacion": "SUC. ANTEA (2211)",
-      "Region": "Centro",
-      "Zona": "1",
-      "SLA": "210",
-      "Tiempo": "18966",
-      "Estatus": "VENCIDO",
-      "Clasificacion": "HARDWARE",
-      "C.Costos": "2211",
-      "grup_asig": "TMX_EU_CAU_Zona_1_Centro",
-      "grup_tipo": "EUT CAU",
-      "medido": "EUT",
-      "area": "Sucursales",
-      "tipo": "Incidente",
-      "num_relacionado": "",
-      "resuelto": "0000-00-00 00:00:00"
-    },
-    {
-      "Folio": "INC035921075",
-      "Envio": "2023-07-21 14:03:48",
-      "Estado": "Activo",
-      "Categoria": "Dispositivo de usuario final",
-      "Problema": "",
-      "Proyecto": "Reportes de Fallas en Hardware en perifericos (Ceritificadoras, pinpad, scanner, biometricos, etc)",
-      "Grupo": "EUT CAU Centro",
-      "Ubicacion": "SUC. PRINCIPAL LEON (4347)",
-      "Region": "Centro",
-      "Zona": "1",
-      "SLA": "1500",
-      "Tiempo": "6789",
-      "Estatus": "VENCIDO",
-      "Clasificacion": "HARDWARE",
-      "C.Costos": "4347",
-      "grup_asig": "TMX_EU_CAU_Zona_1_Centro",
-      "grup_tipo": "EUT CAU",
-      "medido": "EUT",
-      "area": "Sucursales",
-      "tipo": "Incidente",
-      "num_relacionado": "",
-      "resuelto": "0000-00-00 00:00:00"
-    },
-    {
-      "Folio": "INC035967865",
-      "Envio": "2023-07-24 10:59:32",
-      "Estado": "Activo",
-      "Categoria": "Dispositivo de usuario final",
-      "Problema": "",
-      "Proyecto": "Reportes de Fallas en Hardware en perifericos (Ceritificadoras, pinpad, scanner, biometricos, etc)",
-      "Grupo": "EUT CAU Centro",
-      "Ubicacion": "SUC. NUEVA VALLADOLID (7771)",
-      "Region": "Centro",
-      "Zona": "1",
-      "SLA": "1500",
-      "Tiempo": "6223",
-      "Estatus": "VENCIDO",
-      "Clasificacion": "HARDWARE",
-      "C.Costos": "7771",
-      "grup_asig": "TMX_EU_CAU_Zona_1_Centro",
-      "grup_tipo": "EUT CAU",
-      "medido": "EUT",
-      "area": "Sucursales",
-      "tipo": "Incidente",
-      "num_relacionado": "",
-      "resuelto": "0000-00-00 00:00:00"
-    },
-    {
-      "Folio": "INC036117358",
-      "Envio": "2023-07-31 18:12:40",
-      "Estado": "Activo",
-      "Categoria": "Comunicaciones del usuario final",
-      "Problema": "",
-      "Proyecto": "Reportes de Fallas en Hardware en equipos de comunicaciones (teléfonía, Red, wireless, Cajeros)",
-      "Grupo": "EUT CAU Centro",
-      "Ubicacion": "SUC. ANDRADE (0128)",
-      "Region": "Centro",
-      "Zona": "1",
-      "SLA": "1500",
-      "Tiempo": "2040",
-      "Estatus": "VENCIDO",
-      "Clasificacion": "HARDWARE",
-      "C.Costos": "128",
-      "grup_asig": "TMX_EU_CAU_Zona_1_Centro",
-      "grup_tipo": "EUT CAU",
-      "medido": "EUT",
-      "area": "Sucursales",
-      "tipo": "Incidente",
-      "num_relacionado": "",
-      "resuelto": "0000-00-00 00:00:00"
-    },
-    {
-      "Folio": "INC036133396",
-      "Envio": "2023-08-01 09:00:45",
-      "Estado": "Activo",
-      "Categoria": "Dispositivo Usuario Final",
-      "Problema": "",
-      "Proyecto": "Reportes de Fallas en Hardware en equipos de cómputo y perifericos (Desktop, laptop, nettop, mouse, Monitor, etc)",
-      "Grupo": "EUT CAU Centro",
-      "Ubicacion": "SUC. MARTINICA (4335)",
-      "Region": "Centro",
-      "Zona": "1",
-      "SLA": "1500",
-      "Tiempo": "1842",
-      "Estatus": "VENCIDO",
-      "Clasificacion": "HARDWARE",
-      "C.Costos": "4335",
-      "grup_asig": "TMX_EU_CAU_Zona_1_Centro",
-      "grup_tipo": "EUT CAU",
-      "medido": "EUT",
-      "area": "Sucursales",
-      "tipo": "Incidente",
-      "num_relacionado": "",
-      "resuelto": "0000-00-00 00:00:00"
-    },
-    {
-      "Folio": "INC036158755",
-      "Envio": "2023-08-02 09:50:44",
-      "Estado": "Activo",
-      "Categoria": "Dispositivo Usuario Final",
-      "Problema": "",
-      "Proyecto": "Reportes de Fallas en Hardware en perifericos (Ceritificadoras, pinpad, scanner, biometricos, etc)",
-      "Grupo": "EUT CAU Centro",
-      "Ubicacion": "SUC. TORRES LANDA (0482)",
-      "Region": "Centro",
-      "Zona": "1",
-      "SLA": "1500",
-      "Tiempo": "1042",
-      "Estatus": "EN TIEMPO",
-      "Clasificacion": "HARDWARE",
-      "C.Costos": "482",
-      "grup_asig": "TMX_EU_CAU_Zona_1_Centro",
-      "grup_tipo": "EUT CAU",
-      "medido": "EUT",
-      "area": "Sucursales",
-      "tipo": "Incidente",
-      "num_relacionado": "",
-      "resuelto": "0000-00-00 00:00:00"
-    }
-]
+// /*
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setTitle('Data');
 
+        // Obtener las claves del primer registro para generar las columnas
+        $firstRecord = reset($data);
+        $columns = array_keys($firstRecord);
 
-//////////////********************************************************************************************************************////////////////////////////////
-<?php
-require 'vendor/autoload.php'; // Asegúrate de incluir la ruta correcta a PhpSpreadsheet
-
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-
-// Datos que quieres mostrar
-$data = [
-    // Aquí colocas los datos del primer objeto
-    // ...
-    // Aquí colocas los datos del segundo objeto
-    // ...
-    // Y así sucesivamente
-];
-
-// Crear una nueva hoja de cálculo
-$spreadsheet = new Spreadsheet();
-$sheet = $spreadsheet->getActiveSheet();
-
-// Obtener las claves del primer registro para generar las columnas
-$firstRecord = reset($data);
-$columns = array_keys($firstRecord);
-
-// Escribir los encabezados de las columnas en la primera fila de la hoja
-$columnIndex = 1;
-foreach ($columns as $column) {
-    $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . '1';
-    $sheet->setCellValue($cellCoordinate, $column);
-    $columnIndex++;
-}
-
-// Escribir los datos en la hoja
-$rowIndex = 2; // Comenzar a partir de la segunda fila, ya que la primera fila contiene los encabezados
-foreach ($data as $record) {
-    $columnIndex = 1;
-    foreach ($record as $value) {
-        $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . $rowIndex;
-        $sheet->setCellValue($cellCoordinate, $value);
-        $columnIndex++;
-    }
-    $rowIndex++;
-}
-
-// Descargar el archivo
-$writer = new Xlsx($spreadsheet);
-$filename = 'datos_tabulares.xlsx';
-$writer->save($filename);
-
-// Descargar el archivo
-header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Disposition: attachment; filename="' . $filename . '"');
-header('Cache-Control: max-age=0');
-readfile($filename);
-unlink($filename); // Eliminar el archivo después de la descarga
-exit;
-?>
-/*******************************************************************************************************************************************/
-<?php
-require 'vendor/autoload.php'; // Asegúrate de incluir la ruta correcta a PhpSpreadsheet
-
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-use PhpOffice\PhpSpreadsheet\Style;
-
-// Datos que quieres mostrar
-$data = [
-    // Aquí colocas los datos del primer objeto
-    // ...
-    // Aquí colocas los datos del segundo objeto
-    // ...
-    // Y así sucesivamente
-];
-
-// Crear una nueva hoja de cálculo
-$spreadsheet = new Spreadsheet();
-$sheet = $spreadsheet->getActiveSheet();
-
-// Obtener las claves del primer registro para generar las columnas
-$firstRecord = reset($data);
-$columns = array_keys($firstRecord);
-
-// Escribir los encabezados de las columnas en la primera fila de la hoja
-$columnIndex = 1;
-foreach ($columns as $column) {
-    $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . '1';
-    $sheet->setCellValue($cellCoordinate, $column);
-    $columnIndex++;
-}
-
-// Escribir los datos en la hoja
-$rowIndex = 2; // Comenzar a partir de la segunda fila, ya que la primera fila contiene los encabezados
-foreach ($data as $record) {
-    $columnIndex = 1;
-    foreach ($record as $value) {
-        $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . $rowIndex;
-        $sheet->setCellValue($cellCoordinate, $value);
-
-        $statusCell = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex(array_search('Estatus', $columns) + 1) . $rowIndex;
-
-        // Aplicar formato a toda la fila cuando el campo "Estatus" sea "VENCIDO" (Color de fuente rojo)
-        if ($sheet->getCell($statusCell)->getValue() === 'VENCIDO') {
-            $sheet->getStyle($cellCoordinate)->getFont()->getColor()->setARGB(Style\Color::COLOR_RED);
+        // Escribir los encabezados de las columnas en la primera fila de la hoja
+        $columnIndex = 1;
+        foreach ($columns as $column) {
+            $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . '1';
+            $sheet->setCellValue($cellCoordinate, $column);
+            $columnIndex++;
         }
 
-        $columnIndex++;
-    }
-    $rowIndex++;
-}
+        // Escribir los datos en la hoja
+        $rowIndex = 2; // Comenzar a partir de la segunda fila, ya que la primera fila contiene los encabezados
+        foreach ($data as $record) {
+            $columnIndex = 1;
+            foreach ($record as $value) {
+                $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . $rowIndex;
+                $sheet->setCellValue($cellCoordinate, $value);
 
-// Descargar el archivo
-$writer = new Xlsx($spreadsheet);
-$filename = 'datos_tabulares.xlsx';
-$writer->save($filename);
+                $statusCell = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex(array_search('Estatus', $columns) + 1) . $rowIndex;
 
-// Descargar el archivo
-header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Disposition: attachment; filename="' . $filename . '"');
-header('Cache-Control: max-age=0');
-readfile($filename);
-unlink($filename); // Eliminar el archivo después de la descarga
-exit;
-?>
+                // Aplicar formato a toda la fila cuando el campo "Estatus" sea "VENCIDO" (Color de fuente rojo)
+                if ($sheet->getCell($statusCell)->getValue() === 'VENCIDO') {
+                    $sheet->getStyle($cellCoordinate)->getFont()->getColor()->setRGB('FF0000');
+                }
+
+                $columnIndex++;
+            }
+            $rowIndex++;
+        }
+
+
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('../xlsx/' . $namefile . '.xlsx');
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $namefile . '.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+        $writer->save('php://output');
