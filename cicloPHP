@@ -47,3 +47,50 @@ del siguiente codigo quiero que en lugar de guardar el archivo en una ubicacion 
 
         $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
         $writer->save('php://output');
+/**************************************************************************************************************************************************/
+// ... (código anterior)
+
+// Guardar el archivo en una ubicación determinada en el servidor
+$filepath = '../xlsx/' . $namefile . '.xlsx';
+$writer->save($filepath);
+
+// Verificar si el archivo se ha generado correctamente
+if (file_exists($filepath)) {
+    $fileCreationTime = filectime($filepath);
+
+    // Si el valor de filectime es válido (mayor que cero), consideramos que el archivo se ha generado correctamente
+    if ($fileCreationTime > 0) {
+        // Convertir el timestamp a formato de fecha y hora
+        $formattedCreationTime = date('Y-m-d H:i:s', $fileCreationTime);
+
+        // Construir la respuesta JSON de éxito
+        $response = array(
+            'status' => 'success',
+            'message' => 'El archivo se ha generado y guardado correctamente.',
+            'file_url' => $filepath,
+            'creation_time' => $formattedCreationTime
+        );
+    } else {
+        // Construir la respuesta JSON de error
+        $response = array(
+            'status' => 'error',
+            'message' => 'Hubo un problema al generar y guardar el archivo.'
+        );
+    }
+} else {
+    // Construir la respuesta JSON de error si el archivo no existe
+    $response = array(
+        'status' => 'error',
+        'message' => 'El archivo no se pudo guardar en la ubicación especificada.'
+    );
+}
+
+// Enviar la respuesta JSON
+header('Content-Type: application/json');
+echo json_encode($response);
+
+// Eliminar el archivo después de enviar la respuesta (opcional)
+if (file_exists($filepath)) {
+    unlink($filepath);
+}
+exit;
