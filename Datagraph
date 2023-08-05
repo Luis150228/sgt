@@ -76,6 +76,40 @@ valores =  [
         {x: 'Metro Norte', type:'COMUNICACIONES', COMUNICACIONES: 1},
         {x: 'Metro Norte', type:'MULTIFUNCIONALES', MULTIFUNCIONALES: 0}...
     ];
+
+const data = {
+  "D_R13T": [
+    { "Region": "Centro", "HARDWARE": "4", "SOFTWARE": "5", "COMUNICACIONES": "1", "MULTIFUNCIONALES": "2" },
+    { "Region": "Metro Norte", "HARDWARE": "5", "SOFTWARE": "6", "COMUNICACIONES": "1", "MULTIFUNCIONALES": "0" },
+    { "Region": "Metro Sur", "HARDWARE": "4", "SOFTWARE": "4", "COMUNICACIONES": "0", "MULTIFUNCIONALES": "0" },
+    { "Region": "Noreste", "HARDWARE": "0", "SOFTWARE": "6", "COMUNICACIONES": "4", "MULTIFUNCIONALES": "1" },
+    { "Region": "Noroeste", "HARDWARE": "2", "SOFTWARE": "3", "COMUNICACIONES": "0", "MULTIFUNCIONALES": "0" },
+    { "Region": "Norte", "HARDWARE": "2", "SOFTWARE": "2", "COMUNICACIONES": "1", "MULTIFUNCIONALES": "0" },
+    { "Region": "Occidente", "HARDWARE": "6", "SOFTWARE": "6", "COMUNICACIONES": "0", "MULTIFUNCIONALES": "2" },
+    { "Region": "Sur", "HARDWARE": "1", "SOFTWARE": "4", "COMUNICACIONES": "3", "MULTIFUNCIONALES": "0" },
+    { "Region": "Sureste", "HARDWARE": "4", "SOFTWARE": "7", "COMUNICACIONES": "3", "MULTIFUNCIONALES": "2" }
+  ]
+};
+
+// Obtener los topics (HARDWARE, SOFTWARE, COMUNICACIONES, MULTIFUNCIONALES)
+const topics = Object.keys(data["D_R13T"][0]).filter(key => key !== "Region");
+
+// Convertir el objeto al formato deseado
+const valores = [];
+data["D_R13T"].forEach(item => {
+  const region = item["Region"];
+  topics.forEach(topic => {
+    valores.push({
+      x: region,
+      type: topic,
+      [topic]: parseInt(item[topic])
+    });
+  });
+});
+
+console.log(valores);
+
+
 /************************************************/
 {
   "code": "200",
