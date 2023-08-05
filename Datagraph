@@ -1,0 +1,203 @@
+del siguiente objeto quiero un array con con solo el contenido del campo region ejemplo {"Centro", "Metro Norte", ...}
+/************************************************/
+"D_R13T": [
+    {
+      "Region": "Centro",
+      "HARDWARE": "4",
+      "SOFTWARE": "5",
+      "COMUNICACIONES": "1",
+      "MULTIFUNCIONALES": "2"
+    },
+    {
+      "Region": "Metro Norte",
+      "HARDWARE": "5",
+      "SOFTWARE": "6",
+      "COMUNICACIONES": "1",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Metro Sur",
+      "HARDWARE": "4",
+      "SOFTWARE": "4",
+      "COMUNICACIONES": "0",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Noreste",
+      "HARDWARE": "0",
+      "SOFTWARE": "6",
+      "COMUNICACIONES": "4",
+      "MULTIFUNCIONALES": "1"
+    },
+    {
+      "Region": "Noroeste",
+      "HARDWARE": "2",
+      "SOFTWARE": "3",
+      "COMUNICACIONES": "0",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Norte",
+      "HARDWARE": "2",
+      "SOFTWARE": "2",
+      "COMUNICACIONES": "1",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Occidente",
+      "HARDWARE": "6",
+      "SOFTWARE": "6",
+      "COMUNICACIONES": "0",
+      "MULTIFUNCIONALES": "2"
+    },
+    {
+      "Region": "Sur",
+      "HARDWARE": "1",
+      "SOFTWARE": "4",
+      "COMUNICACIONES": "3",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Sureste",
+      "HARDWARE": "4",
+      "SOFTWARE": "7",
+      "COMUNICACIONES": "3",
+      "MULTIFUNCIONALES": "2"
+    }
+  ]
+/************************************************/
+{
+  "code": "200",
+  "mnj": "Reportes Generados",
+  "D_R13T": [
+    {
+      "Region": "Centro",
+      "HARDWARE": "4",
+      "SOFTWARE": "5",
+      "COMUNICACIONES": "1",
+      "MULTIFUNCIONALES": "2"
+    },
+    {
+      "Region": "Metro Norte",
+      "HARDWARE": "5",
+      "SOFTWARE": "6",
+      "COMUNICACIONES": "1",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Metro Sur",
+      "HARDWARE": "4",
+      "SOFTWARE": "4",
+      "COMUNICACIONES": "0",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Noreste",
+      "HARDWARE": "0",
+      "SOFTWARE": "6",
+      "COMUNICACIONES": "4",
+      "MULTIFUNCIONALES": "1"
+    },
+    {
+      "Region": "Noroeste",
+      "HARDWARE": "2",
+      "SOFTWARE": "3",
+      "COMUNICACIONES": "0",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Norte",
+      "HARDWARE": "2",
+      "SOFTWARE": "2",
+      "COMUNICACIONES": "1",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Occidente",
+      "HARDWARE": "6",
+      "SOFTWARE": "6",
+      "COMUNICACIONES": "0",
+      "MULTIFUNCIONALES": "2"
+    },
+    {
+      "Region": "Sur",
+      "HARDWARE": "1",
+      "SOFTWARE": "4",
+      "COMUNICACIONES": "3",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Sureste",
+      "HARDWARE": "4",
+      "SOFTWARE": "7",
+      "COMUNICACIONES": "3",
+      "MULTIFUNCIONALES": "2"
+    }
+  ],
+  "D_R13V": [
+    {
+      "Region": "Centro",
+      "HARDWARE": "-8",
+      "SOFTWARE": "-10",
+      "COMUNICACIONES": "-8",
+      "MULTIFUNCIONALES": "-1"
+    },
+    {
+      "Region": "Metro Norte",
+      "HARDWARE": "-1",
+      "SOFTWARE": "-12",
+      "COMUNICACIONES": "-18",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Metro Sur",
+      "HARDWARE": "-2",
+      "SOFTWARE": "-13",
+      "COMUNICACIONES": "-16",
+      "MULTIFUNCIONALES": "-2"
+    },
+    {
+      "Region": "Noreste",
+      "HARDWARE": "-1",
+      "SOFTWARE": "-9",
+      "COMUNICACIONES": "-4",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Noroeste",
+      "HARDWARE": "-15",
+      "SOFTWARE": "-3",
+      "COMUNICACIONES": "-5",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Norte",
+      "HARDWARE": "-5",
+      "SOFTWARE": "-6",
+      "COMUNICACIONES": "-6",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Occidente",
+      "HARDWARE": "-12",
+      "SOFTWARE": "-6",
+      "COMUNICACIONES": "-3",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Sur",
+      "HARDWARE": "-5",
+      "SOFTWARE": "-8",
+      "COMUNICACIONES": "-8",
+      "MULTIFUNCIONALES": "0"
+    },
+    {
+      "Region": "Sureste",
+      "HARDWARE": "-8",
+      "SOFTWARE": "-12",
+      "COMUNICACIONES": "-8",
+      "MULTIFUNCIONALES": "-2"
+    }
+  ],
+  "D_R04": ""
+}
