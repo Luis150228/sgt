@@ -1,4 +1,4 @@
-del siguiente objeto quiero un array con con solo el contenido del campo region ejemplo {"Centro", "Metro Norte", ...}
+usando JS quiero convertir el D_R13T a un formato igual que valores
 /************************************************/
 "D_R13T": [
     {
@@ -65,6 +65,17 @@ del siguiente objeto quiero un array con con solo el contenido del campo region 
       "MULTIFUNCIONALES": "2"
     }
   ]
+
+valores =  [
+        {x: 'Centro', type:'HARDWARE', HARDWARE: 4},
+        {x: 'Centro', type:'SOFTWARE', SOFTWARE: 5},
+        {x: 'Centro', type:'COMUNICACIONES', COMUNICACIONES: 1},
+        {x: 'Centro', type:'MULTIFUNCIONALES', MULTIFUNCIONALES: 2},
+        {x: 'Metro Norte', type:'HARDWARE', HARDWARE: 5},
+        {x: 'Metro Norte', type:'SOFTWARE', SOFTWARE: 6},
+        {x: 'Metro Norte', type:'COMUNICACIONES', COMUNICACIONES: 1},
+        {x: 'Metro Norte', type:'MULTIFUNCIONALES', MULTIFUNCIONALES: 0}...
+    ];
 /************************************************/
 {
   "code": "200",
