@@ -94,21 +94,20 @@ const data = {
 // Obtener los topics (HARDWARE, SOFTWARE, COMUNICACIONES, MULTIFUNCIONALES)
 const topics = Object.keys(data["D_R13T"][0]).filter(key => key !== "Region");
 
-// Convertir el objeto al formato deseado
+// Convertir el objeto al formato deseado usando for...of
 const valores = [];
-data["D_R13T"].forEach(item => {
+for (const item of data["D_R13T"]) {
   const region = item["Region"];
-  topics.forEach(topic => {
+  for (const topic of topics) {
     valores.push({
       x: region,
       type: topic,
       [topic]: parseInt(item[topic])
     });
-  });
-});
+  }
+}
 
 console.log(valores);
-
 
 /************************************************/
 {
