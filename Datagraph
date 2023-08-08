@@ -1,13 +1,4 @@
-tengo el siguiente array de objetos 'D_R04' quiero convertirlo en un array de arrays dentro de 'formattedArray' usando los array area, tipo, grup_tipo y atencion, convertir los valores de "nuevo","abierto","en_Curso","en_Espera" a numero
-
-
-const area = ['area', null, null,null,null,null] // array con todas las distintos tipos de "area"
-const tipo =["tipo", "area", null,null,null,null]// array con todas las distintos tipos de "area" agrupado por "tipo"
-const grup_tipo =["grup_tipo", "tipo", null,null,null,null]// array con todas las distintos tipos de "tipo" agrupado por "grup_tipo"
-const atencion =["atencion", "grup_tipo", "nuevo","abierto","en_Curso","en_Espera"]// el contenido de cada objeto mostrando todos los tipos de "atencion" agrupados por "grup_tipo" y "nuevo","abierto","en_Curso","en_Espera" convertidos en numero
-
-const formattedArray = []
-
+en base al sigueinte array de objetos D_R04 crear un array con todos los tipos de "area" sin duplicados este array se llamara "areas" adicional crear un array con todos los "tipo" y su "area" que lleve las posibles convinaciones ejemplo [["Incidentes", "Corporativo"], ["Incidentes", "Sucursales"]] este segundo array se llamara "tipos" los pares no se pueden duplicar
 const D_R04 = [
     {
         "atencion": "EUT CAU Centro_IC",
