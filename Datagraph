@@ -418,3 +418,18 @@ const datos = [
         "en_Espera": "4"
     }
 ]
+const datos = [...]; // (tu array de objetos)
+
+const formattedArray = [];
+
+// Agregar la primera fila con encabezados
+const headers = Object.keys(datos[0]);
+formattedArray.push(headers);
+
+// Agregar las filas de datos
+for (const dato of datos) {
+    const values = Object.values(dato);
+    formattedArray.push(values);
+}
+
+console.log(formattedArray);
