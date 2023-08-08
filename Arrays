@@ -1,0 +1,18 @@
+const D_R04 = [/* ...tu array de objetos aquí... */];
+
+const areas = [...new Set(D_R04.map(item => item.area))];
+
+console.log(areas);
+
+const tipos = [];
+const tipoAreaPairs = [];
+
+D_R04.forEach(item => {
+    const pair = [item.tipo, item.area];
+    if (!tipoAreaPairs.some(existingPair => JSON.stringify(existingPair) === JSON.stringify(pair))) {
+        tipoAreaPairs.push(pair);
+        tipos.push(pair);
+    }
+});
+
+console.log(tipos);
