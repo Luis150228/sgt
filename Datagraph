@@ -1,13 +1,14 @@
-tengo el siguiente array de objetos 'datos' quiero convertirlo en un array de arrays como el siguiente 'datos_nuevos' quiero convertirlo en un array que lleve el siguiente formato y convertir los valores de "nuevo","abierto","en_Curso","en_Espera" a numero de preferencia de forma dinamica ya que pueden cambiar slos titulos
+tengo el siguiente array de objetos 'D_R04' quiero convertirlo en un array de arrays dentro de 'formattedArray' usando los array area, tipo, grup_tipo y atencion, convertir los valores de "nuevo","abierto","en_Curso","en_Espera" a numero
 
-const datos_nuevos = [
-    ['area', null, null,null,null,null],
-    ["tipo", "area", null,null,null,null],
-    ["grup_tipo", "tipo", null,null,null,null],
-    ["atencion", "grup_tipo", "nuevo","abierto","en_Curso","en_Espera"]...
-]
 
-const datos = [
+const area = ['area', null, null,null,null,null] // array con todas las distintos tipos de "area"
+const tipo =["tipo", "area", null,null,null,null]// array con todas las distintos tipos de "area" agrupado por "tipo"
+const grup_tipo =["grup_tipo", "tipo", null,null,null,null]// array con todas las distintos tipos de "tipo" agrupado por "grup_tipo"
+const atencion =["atencion", "grup_tipo", "nuevo","abierto","en_Curso","en_Espera"]// el contenido de cada objeto mostrando todos los tipos de "atencion" agrupados por "grup_tipo" y "nuevo","abierto","en_Curso","en_Espera" convertidos en numero
+
+const formattedArray = []
+
+const D_R04 = [
     {
         "atencion": "EUT CAU Centro_IC",
         "grup_tipo": "EUT CAU",
@@ -419,20 +420,3 @@ const datos = [
         "en_Espera": "0"
     }
 ]
-////////
-const datos_nuevos = [];
-const headers = Object.keys(datos[0]);
-const numericFields = ["nuevo", "abierto", "en_Curso", "en_Espera"];
-
-datos_nuevos.push(headers);
-
-for (const dato of datos) {
-    const dataRow = [dato[headers[0]], dato[headers[1]], null, null, null, null];
-    for (let i = 2; i < headers.length; i++) {
-        const value = dato[headers[i]];
-        dataRow[i + 2] = numericFields.includes(headers[i]) ? Number(value) : value;
-    }
-    datos_nuevos.push(dataRow);
-}
-
-console.log(datos_nuevos);
