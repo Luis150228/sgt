@@ -433,3 +433,53 @@ for (const dato of datos) {
 }
 
 console.log(formattedArray);
+
+
+//////////////////
+google.charts.load('current', {packages: ['tree']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+  const datos = [...]; // (tu array de objetos)
+
+  const data = new google.visualization.DataTable();
+  data.addColumn('string', 'Parent');
+  data.addColumn('string', 'Child');
+  data.addColumn('number', 'Size');
+
+  // Agregar las filas de datos
+  for (const dato of datos) {
+    data.addRow([
+      dato.grup_global || '',
+      dato.grup_tipo || '',
+      parseFloat(dato.nuevo) || 0
+    ]);
+  }
+
+  const options = {
+    tooltip: { isHtml: true },
+    generateTooltip: showFullTooltip
+  };
+
+  const chart = new google.visualization.TreeMap(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
+
+function showFullTooltip(row, size, value) {
+  const datos = [...]; // (tu array de objetos)
+  const dato = datos[row];
+
+  let tooltip = '<div style="background: #f9f9f9; padding: 10px;">';
+  tooltip += '<b>Grupo Global:</b> ' + (dato.grup_global || '') + '<br>';
+  tooltip += '<b>Grupo Tipo:</b> ' + (dato.grup_tipo || '') + '<br>';
+  tooltip += '<b>Tipo:</b> ' + (dato.tipo || '') + '<br>';
+  tooltip += '<b>Área:</b> ' + (dato.area || '') + '<br>';
+  tooltip += '<b>Nuevo:</b> ' + (dato.nuevo || '') + '<br>';
+  tooltip += '<b>Abierto:</b> ' + (dato.abierto || '') + '<br>';
+  tooltip += '<b>En Curso:</b> ' + (dato.en_Curso || '') + '<br>';
+  tooltip += '<b>En Espera:</b> ' + (dato.en_Espera || '') + '<br>';
+  tooltip += '</div>';
+
+  return tooltip;
+}
+
