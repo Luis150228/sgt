@@ -420,3 +420,22 @@ const D_R04 = [
         "en_Espera": "0"
     }
 ]
+////////)
+const area = ['area', null, null, null, null, null];
+const tipo = ['tipo', 'area', null, null, null, null];
+const grup_tipo = ['grup_tipo', 'tipo', null, null, null, null];
+const atencion = ['atencion', 'grup_tipo', 'nuevo', 'abierto', 'en_Curso', 'en_Espera'];
+
+const D_R04 = [
+  // ... (tu array de objetos D_R04)
+];
+
+const formattedArray = D_R04.map(obj => {
+  const formattedObj = [obj.area, obj.tipo, obj.grup_tipo, obj.atencion];
+  for (let i = 2; i < atencion.length; i++) {
+    formattedObj.push(parseFloat(obj[atencion[i]]));
+  }
+  return formattedObj;
+});
+
+console.log(formattedArray);
