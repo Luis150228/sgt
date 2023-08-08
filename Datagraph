@@ -419,3 +419,20 @@ const datos = [
         "en_Espera": "0"
     }
 ]
+////////
+const datos_nuevos = [];
+const headers = Object.keys(datos[0]);
+const numericFields = ["nuevo", "abierto", "en_Curso", "en_Espera"];
+
+datos_nuevos.push(headers);
+
+for (const dato of datos) {
+    const dataRow = [dato[headers[0]], dato[headers[1]], null, null, null, null];
+    for (let i = 2; i < headers.length; i++) {
+        const value = dato[headers[i]];
+        dataRow[i + 2] = numericFields.includes(headers[i]) ? Number(value) : value;
+    }
+    datos_nuevos.push(dataRow);
+}
+
+console.log(datos_nuevos);
