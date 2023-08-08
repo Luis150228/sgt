@@ -1,247 +1,420 @@
-usando JS quiero convertir el D_R13T a un formato igual que valores
-/************************************************/
-"D_R13T": [
+tengo el siguiente objeto quiero convertirlo en un array que lleve el siguiente formato la primer linea debe llevar los encabezados 
+
+[
+    ["grup_global","grup_tipo","tipo","area","nuevo","abierto","en_Curso","en_Espera"],
+    ["EUT CAU Centro","EUT CAU","Incidentes","Corporativo","1","13","0","0"]...etc
+
+]
+
+const datos = [
     {
-      "Region": "Centro",
-      "HARDWARE": "4",
-      "SOFTWARE": "5",
-      "COMUNICACIONES": "1",
-      "MULTIFUNCIONALES": "2"
+        "EUT CAU Centro",
+        "EUT CAU",
+        "Incidentes",
+        "Corporativo",
+        "1",
+        "13",
+        "0",
+        "0"
     },
     {
-      "Region": "Metro Norte",
-      "HARDWARE": "5",
-      "SOFTWARE": "6",
-      "COMUNICACIONES": "1",
-      "MULTIFUNCIONALES": "0"
+        "grup_global": "EUT CAU Metro Edificios",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Incidentes",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "5",
+        "en_Curso": "0",
+        "en_Espera": "1"
     },
     {
-      "Region": "Metro Sur",
-      "HARDWARE": "4",
-      "SOFTWARE": "4",
-      "COMUNICACIONES": "0",
-      "MULTIFUNCIONALES": "0"
+        "grup_global": "EUT CAU Metro Sucursales",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Incidentes",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "1",
+        "en_Curso": "0",
+        "en_Espera": "0"
     },
     {
-      "Region": "Noreste",
-      "HARDWARE": "0",
-      "SOFTWARE": "6",
-      "COMUNICACIONES": "4",
-      "MULTIFUNCIONALES": "1"
+        "grup_global": "EUT CAU Norte",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Incidentes",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "1",
+        "en_Curso": "0",
+        "en_Espera": "0"
     },
     {
-      "Region": "Noroeste",
-      "HARDWARE": "2",
-      "SOFTWARE": "3",
-      "COMUNICACIONES": "0",
-      "MULTIFUNCIONALES": "0"
+        "grup_global": "EUT CAU Occidente",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Incidentes",
+        "area": "Corporativo",
+        "nuevo": "6",
+        "abierto": "1",
+        "en_Curso": "0",
+        "en_Espera": "0"
     },
     {
-      "Region": "Norte",
-      "HARDWARE": "2",
-      "SOFTWARE": "2",
-      "COMUNICACIONES": "1",
-      "MULTIFUNCIONALES": "0"
+        "grup_global": "EUT CAU Sur",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Incidentes",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "7",
+        "en_Curso": "0",
+        "en_Espera": "0"
     },
     {
-      "Region": "Occidente",
-      "HARDWARE": "6",
-      "SOFTWARE": "6",
-      "COMUNICACIONES": "0",
-      "MULTIFUNCIONALES": "2"
+        "grup_global": "EUT GEST SW Distribuido",
+        "grup_tipo": "EUT GEST SW Distribuido",
+        "tipo": "Incidentes",
+        "area": "Corporativo",
+        "nuevo": "1",
+        "abierto": "0",
+        "en_Curso": "0",
+        "en_Espera": "0"
     },
     {
-      "Region": "Sur",
-      "HARDWARE": "1",
-      "SOFTWARE": "4",
-      "COMUNICACIONES": "3",
-      "MULTIFUNCIONALES": "0"
+        "grup_global": "EUT Correo",
+        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO",
+        "tipo": "Incidentes",
+        "area": "Corporativo",
+        "nuevo": "20",
+        "abierto": "12",
+        "en_Curso": "0",
+        "en_Espera": "0"
     },
     {
-      "Region": "Sureste",
-      "HARDWARE": "4",
-      "SOFTWARE": "7",
-      "COMUNICACIONES": "3",
-      "MULTIFUNCIONALES": "2"
+        "grup_global": "EUT Resolutores SDK",
+        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO",
+        "tipo": "Incidentes",
+        "area": "Corporativo",
+        "nuevo": "29",
+        "abierto": "20",
+        "en_Curso": "0",
+        "en_Espera": "61"
+    },
+    {
+        "grup_global": "EUT Soporte Sucursales",
+        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO",
+        "tipo": "Incidentes",
+        "area": "Corporativo",
+        "nuevo": "4",
+        "abierto": "0",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT Comunicaciones",
+        "grup_tipo": "EUT TELECOM",
+        "tipo": "Incidentes",
+        "area": "Corporativo",
+        "nuevo": "32",
+        "abierto": "17",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT Telefonia Movil",
+        "grup_tipo": "EUT TELECOM",
+        "tipo": "Incidentes",
+        "area": "Corporativo",
+        "nuevo": "1",
+        "abierto": "8",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT VIP",
+        "grup_tipo": "EUT VIP",
+        "tipo": "Incidentes",
+        "area": "Corporativo",
+        "nuevo": "2",
+        "abierto": "2",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT Multifuncional Lexmark",
+        "grup_tipo": "MULTIFUNCIONALES",
+        "tipo": "Incidentes",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "0",
+        "en_Curso": "0",
+        "en_Espera": "1"
+    },
+    {
+        "grup_global": "EUT CAU Centro",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Incidentes",
+        "area": "Sucursales",
+        "nuevo": "1",
+        "abierto": "19",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT CAU Metro Sucursales",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Incidentes",
+        "area": "Sucursales",
+        "nuevo": "4",
+        "abierto": "8",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT CAU Norte",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Incidentes",
+        "area": "Sucursales",
+        "nuevo": "0",
+        "abierto": "8",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT CAU Occidente",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Incidentes",
+        "area": "Sucursales",
+        "nuevo": "19",
+        "abierto": "9",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT CAU Sur",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Incidentes",
+        "area": "Sucursales",
+        "nuevo": "1",
+        "abierto": "21",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT Correo",
+        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO",
+        "tipo": "Incidentes",
+        "area": "Sucursales",
+        "nuevo": "5",
+        "abierto": "5",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT Resolutores SDK",
+        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO",
+        "tipo": "Incidentes",
+        "area": "Sucursales",
+        "nuevo": "43",
+        "abierto": "31",
+        "en_Curso": "0",
+        "en_Espera": "65"
+    },
+    {
+        "grup_global": "EUT Soporte Sucursales",
+        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO",
+        "tipo": "Incidentes",
+        "area": "Sucursales",
+        "nuevo": "18",
+        "abierto": "0",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT Comunicaciones",
+        "grup_tipo": "EUT TELECOM",
+        "tipo": "Incidentes",
+        "area": "Sucursales",
+        "nuevo": "79",
+        "abierto": "35",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT Telefonia Movil",
+        "grup_tipo": "EUT TELECOM",
+        "tipo": "Incidentes",
+        "area": "Sucursales",
+        "nuevo": "1",
+        "abierto": "0",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT Multifuncional Lexmark",
+        "grup_tipo": "MULTIFUNCIONALES",
+        "tipo": "Incidentes",
+        "area": "Sucursales",
+        "nuevo": "0",
+        "abierto": "8",
+        "en_Curso": "0",
+        "en_Espera": "1"
+    },
+    {
+        "grup_global": "EUT CAU Centro",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "16",
+        "en_Curso": "9",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT CAU Metro Edificios",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "0",
+        "en_Curso": "37",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT CAU Metro Sucursales",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "5",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT CAU Norte",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "6",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT CAU Occidente",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "9",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT CAU Sur",
+        "grup_tipo": "EUT CAU",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "14",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT GEST SW Distribuido",
+        "grup_tipo": "EUT GEST SW Distribuido",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "77",
+        "en_Curso": "7",
+        "en_Espera": "39"
+    },
+    {
+        "grup_global": "TMX_EU_Asignacion_Hardware",
+        "grup_tipo": "EUT HD Asignation",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "22",
+        "en_Curso": "8",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT Correo",
+        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "118",
+        "en_Curso": "3",
+        "en_Espera": "1"
+    },
+    {
+        "grup_global": "EUT Resolutores SDK",
+        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "32",
+        "en_Curso": "4",
+        "en_Espera": "2"
+    },
+    {
+        "grup_global": "EUT Soporte Sucursales",
+        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "5",
+        "en_Curso": "0",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT Ventanilla Unica",
+        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "0",
+        "en_Curso": "5",
+        "en_Espera": "1"
+    },
+    {
+        "grup_global": "EUT Comunicaciones",
+        "grup_tipo": "EUT TELECOM",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "66",
+        "en_Curso": "1",
+        "en_Espera": "11"
+    },
+    {
+        "grup_global": "EUT Telefonia Movil",
+        "grup_tipo": "EUT TELECOM",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "13",
+        "en_Curso": "27",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT VIP",
+        "grup_tipo": "EUT VIP",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "8",
+        "en_Curso": "7",
+        "en_Espera": "0"
+    },
+    {
+        "grup_global": "EUT Multifuncional Lexmark",
+        "grup_tipo": "MULTIFUNCIONALES",
+        "tipo": "Tareas",
+        "area": "Corporativo",
+        "nuevo": "0",
+        "abierto": "1",
+        "en_Curso": "0",
+        "en_Espera": "4"
     }
-  ]
-
-valores =  [
-        {x: 'Centro', type:'HARDWARE', HARDWARE: 4},
-        {x: 'Centro', type:'SOFTWARE', SOFTWARE: 5},
-        {x: 'Centro', type:'COMUNICACIONES', COMUNICACIONES: 1},
-        {x: 'Centro', type:'MULTIFUNCIONALES', MULTIFUNCIONALES: 2},
-        {x: 'Metro Norte', type:'HARDWARE', HARDWARE: 5},
-        {x: 'Metro Norte', type:'SOFTWARE', SOFTWARE: 6},
-        {x: 'Metro Norte', type:'COMUNICACIONES', COMUNICACIONES: 1},
-        {x: 'Metro Norte', type:'MULTIFUNCIONALES', MULTIFUNCIONALES: 0}...
-    ];
-
-const data = {
-  "D_R13T": [
-    { "Region": "Centro", "HARDWARE": "4", "SOFTWARE": "5", "COMUNICACIONES": "1", "MULTIFUNCIONALES": "2" },
-    { "Region": "Metro Norte", "HARDWARE": "5", "SOFTWARE": "6", "COMUNICACIONES": "1", "MULTIFUNCIONALES": "0" },
-    { "Region": "Metro Sur", "HARDWARE": "4", "SOFTWARE": "4", "COMUNICACIONES": "0", "MULTIFUNCIONALES": "0" },
-    { "Region": "Noreste", "HARDWARE": "0", "SOFTWARE": "6", "COMUNICACIONES": "4", "MULTIFUNCIONALES": "1" },
-    { "Region": "Noroeste", "HARDWARE": "2", "SOFTWARE": "3", "COMUNICACIONES": "0", "MULTIFUNCIONALES": "0" },
-    { "Region": "Norte", "HARDWARE": "2", "SOFTWARE": "2", "COMUNICACIONES": "1", "MULTIFUNCIONALES": "0" },
-    { "Region": "Occidente", "HARDWARE": "6", "SOFTWARE": "6", "COMUNICACIONES": "0", "MULTIFUNCIONALES": "2" },
-    { "Region": "Sur", "HARDWARE": "1", "SOFTWARE": "4", "COMUNICACIONES": "3", "MULTIFUNCIONALES": "0" },
-    { "Region": "Sureste", "HARDWARE": "4", "SOFTWARE": "7", "COMUNICACIONES": "3", "MULTIFUNCIONALES": "2" }
-  ]
-};
-
-// Obtener los topics (HARDWARE, SOFTWARE, COMUNICACIONES, MULTIFUNCIONALES)
-const topics = Object.keys(data["D_R13T"][0]).filter(key => key !== "Region");
-
-// Convertir el objeto al formato deseado usando for...of
-const valores = [];
-for (const item of data["D_R13T"]) {
-  const region = item["Region"];
-  for (const topic of topics) {
-    valores.push({
-      x: region,
-      type: topic,
-      [topic]: parseInt(item[topic])
-    });
-  }
-}
-
-console.log(valores);
-
-/************************************************/
-{
-  "code": "200",
-  "mnj": "Reportes Generados",
-  "D_R13T": [
-    {
-      "Region": "Centro",
-      "HARDWARE": "4",
-      "SOFTWARE": "5",
-      "COMUNICACIONES": "1",
-      "MULTIFUNCIONALES": "2"
-    },
-    {
-      "Region": "Metro Norte",
-      "HARDWARE": "5",
-      "SOFTWARE": "6",
-      "COMUNICACIONES": "1",
-      "MULTIFUNCIONALES": "0"
-    },
-    {
-      "Region": "Metro Sur",
-      "HARDWARE": "4",
-      "SOFTWARE": "4",
-      "COMUNICACIONES": "0",
-      "MULTIFUNCIONALES": "0"
-    },
-    {
-      "Region": "Noreste",
-      "HARDWARE": "0",
-      "SOFTWARE": "6",
-      "COMUNICACIONES": "4",
-      "MULTIFUNCIONALES": "1"
-    },
-    {
-      "Region": "Noroeste",
-      "HARDWARE": "2",
-      "SOFTWARE": "3",
-      "COMUNICACIONES": "0",
-      "MULTIFUNCIONALES": "0"
-    },
-    {
-      "Region": "Norte",
-      "HARDWARE": "2",
-      "SOFTWARE": "2",
-      "COMUNICACIONES": "1",
-      "MULTIFUNCIONALES": "0"
-    },
-    {
-      "Region": "Occidente",
-      "HARDWARE": "6",
-      "SOFTWARE": "6",
-      "COMUNICACIONES": "0",
-      "MULTIFUNCIONALES": "2"
-    },
-    {
-      "Region": "Sur",
-      "HARDWARE": "1",
-      "SOFTWARE": "4",
-      "COMUNICACIONES": "3",
-      "MULTIFUNCIONALES": "0"
-    },
-    {
-      "Region": "Sureste",
-      "HARDWARE": "4",
-      "SOFTWARE": "7",
-      "COMUNICACIONES": "3",
-      "MULTIFUNCIONALES": "2"
-    }
-  ],
-  "D_R13V": [
-    {
-      "Region": "Centro",
-      "HARDWARE": "-8",
-      "SOFTWARE": "-10",
-      "COMUNICACIONES": "-8",
-      "MULTIFUNCIONALES": "-1"
-    },
-    {
-      "Region": "Metro Norte",
-      "HARDWARE": "-1",
-      "SOFTWARE": "-12",
-      "COMUNICACIONES": "-18",
-      "MULTIFUNCIONALES": "0"
-    },
-    {
-      "Region": "Metro Sur",
-      "HARDWARE": "-2",
-      "SOFTWARE": "-13",
-      "COMUNICACIONES": "-16",
-      "MULTIFUNCIONALES": "-2"
-    },
-    {
-      "Region": "Noreste",
-      "HARDWARE": "-1",
-      "SOFTWARE": "-9",
-      "COMUNICACIONES": "-4",
-      "MULTIFUNCIONALES": "0"
-    },
-    {
-      "Region": "Noroeste",
-      "HARDWARE": "-15",
-      "SOFTWARE": "-3",
-      "COMUNICACIONES": "-5",
-      "MULTIFUNCIONALES": "0"
-    },
-    {
-      "Region": "Norte",
-      "HARDWARE": "-5",
-      "SOFTWARE": "-6",
-      "COMUNICACIONES": "-6",
-      "MULTIFUNCIONALES": "0"
-    },
-    {
-      "Region": "Occidente",
-      "HARDWARE": "-12",
-      "SOFTWARE": "-6",
-      "COMUNICACIONES": "-3",
-      "MULTIFUNCIONALES": "0"
-    },
-    {
-      "Region": "Sur",
-      "HARDWARE": "-5",
-      "SOFTWARE": "-8",
-      "COMUNICACIONES": "-8",
-      "MULTIFUNCIONALES": "0"
-    },
-    {
-      "Region": "Sureste",
-      "HARDWARE": "-8",
-      "SOFTWARE": "-12",
-      "COMUNICACIONES": "-8",
-      "MULTIFUNCIONALES": "-2"
-    }
-  ],
-  "D_R04": ""
-}
+]
