@@ -1,5 +1,7 @@
-en base al sigueinte array de objetos D_R04 crear un array con todos los tipos de "area" sin duplicados este array se llamara "areas" adicional crear un array con todos los "tipo" y su "area" que lleve las posibles convinaciones ejemplo [["Incidentes", "Corporativo"], ["Incidentes", "Sucursales"]] este segundo array se llamara "tipos" los pares no se pueden duplicar
-const D_R04 = [
+hay una forma de optimizar este codigo JS a ES6 y evitar codigo repetido
+
+import datos from './data.json' assert { type: 'json' };
+datos = [
     {
         "atencion": "EUT CAU Centro_IC",
         "grup_tipo": "EUT CAU",
@@ -411,3 +413,47 @@ const D_R04 = [
         "en_Espera": "0"
     }
 ]
+
+const formattedArray = [];
+const indices = new Set();
+
+for (let item of datos) {
+  const indice = [item.area, null, null, null, null, null];
+  if (!indices.has(JSON.stringify(indice))) {
+    indices.add(JSON.stringify(indice));
+    formattedArray.push(indice);
+  }
+}
+
+for (let item of datos) {
+  const indice = [item.tipo, item.area, null, null, null, null];
+  if (!indices.has(JSON.stringify(indice))) {
+    indices.add(JSON.stringify(indice));
+    formattedArray.push(indice);
+  }
+}
+
+for (let item of datos) {
+  const indice = [item.grup_tipo, item.tipo, null, null, null, null];
+  if (!indices.has(JSON.stringify(indice))) {
+    indices.add(JSON.stringify(indice));
+    formattedArray.push(indice);
+  }
+}
+
+for (let item of datos) {
+  const indice = [
+    item.atencion,
+    item.grup_tipo,
+    parseInt(item.nuevo),
+    parseInt(item.abierto),
+    parseInt(item.en_Curso),
+    parseInt(item.en_Espera),
+  ];
+  if (!indices.has(JSON.stringify(indice))) {
+    indices.add(JSON.stringify(indice));
+    formattedArray.push(indice);
+  }
+}
+
+console.log(formattedArray);
