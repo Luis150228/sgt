@@ -3,15 +3,19 @@ import datos from './data.json' assert { type: 'json' };
 const formattedArray = [];
 const indices = new Set();
 
-const keys = ['area', 'tipo', 'grup_tipo', 'atencion'];
+const keys = ['atencion', 'grup_tipo', 'tipo', 'area'];
 const valueKeys = ['nuevo', 'abierto', 'en_Curso', 'en_Espera'];
 
 for (let item of datos) {
   for (let i = 0; i < keys.length; i++) {
-    const indice = keys.slice(i).map(key => (i === 0 ? item[key] : null));
-    for (let valueKey of valueKeys) {
-      indice.push(i === 3 ? parseInt(item[valueKey]) : null);
-    }
+    const indice = keys.map((key, index) => {
+      if (index <= i) {
+        return item[key];
+      } else if (valueKeys.includes(key)) {
+        return parseInt(item[key]);
+      }
+      return null;
+    });
     if (!indices.has(JSON.stringify(indice))) {
       indices.add(JSON.stringify(indice));
       formattedArray.push(indice);
