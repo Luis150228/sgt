@@ -1,337 +1,138 @@
-quiero convertir el siguiente array de objetos a un array de arrays con JS 
+tengo el siguiente objeto, quiero hacer un un gafico de columnas con googleCharts em donde se agrupen las regiones y sus folios positivos y negativos 
+['centro', 'HARDWARE', 6, -5]//HARDWARE
+['centro',"SOFTWARE", 5," -15]//SOFTWARE
+['centro',"COMUNICACIONES", 1, -12]//COMUNICACIONES
+['centro',"MULTIFUNCIONALES", 0, -1]//MULTIFUNCIONALES"
 
-ejemplo :
-
-{
-    "id": "BacklogEUT",
-    "parent": null,
-    "nuevo": "290",
-    "abierto": "595",
-    "en_curso": "142",
-    "en_espera": "179"
-},
-pasando los numeros que estan como string a enteros numericos
-["BacklogEUT", NULL, 290, 595, 142, 179]
-
-const DR04 = [
-    {
-        "id": "BacklogEUT",
-        "parent": null,
-        "nuevo": "290",
-        "abierto": "595",
-        "en_curso": "142",
-        "en_espera": "179"
-    },
-    {
-        "id": "Corporativo",
-        "parent": "BacklogEUT",
-        "nuevo": "106",
-        "abierto": "470",
-        "en_curso": "142",
-        "en_espera": "116"
-    },
-    {
-        "id": "Sucursales",
-        "parent": "BacklogEUT",
-        "nuevo": "184",
-        "abierto": "125",
-        "en_curso": "0",
-        "en_espera": "63"
-    },
-    {
-        "id": "Incidentes_Corp",
-        "parent": "Corporativo",
-        "nuevo": "106",
-        "abierto": "84",
-        "en_curso": "0",
-        "en_espera": "63"
-    },
-    {
-        "id": "Incidentes_Sucu",
-        "parent": "Sucursales",
-        "nuevo": "184",
-        "abierto": "125",
-        "en_curso": "0",
-        "en_espera": "63"
-    },
-    {
-        "id": "Tareas_Corp",
-        "parent": "Corporativo",
-        "nuevo": "0",
-        "abierto": "386",
-        "en_curso": "142",
-        "en_espera": "53"
-    },
-    {
-        "id": "EUT CAU_IncCor",
-        "parent": "Incidentes_Corp",
-        "nuevo": "12",
-        "abierto": "28",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT CAU_IncSuc",
-        "parent": "Incidentes_Sucu",
-        "nuevo": "31",
-        "abierto": "53",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT CAU_TarCor",
-        "parent": "Tareas_Corp",
-        "nuevo": "0",
-        "abierto": "35",
-        "en_curso": "69",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT GVIP_IncCor",
-        "parent": "Incidentes_Corp",
-        "nuevo": "8",
-        "abierto": "0",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT GVIP_TarCor",
-        "parent": "Tareas_Corp",
-        "nuevo": "0",
-        "abierto": "11",
-        "en_curso": "8",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT HDA_TarCor",
-        "parent": "Tareas_Corp",
-        "nuevo": "0",
-        "abierto": "28",
-        "en_curso": "12",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT SOPORTE SUC, SDK Y CORREO_IncCor",
-        "parent": "Incidentes_Corp",
-        "nuevo": "52",
-        "abierto": "34",
-        "en_curso": "0",
-        "en_espera": "63"
-    },
-    {
-        "id": "EUT SOPORTE SUC, SDK Y CORREO_IncSuc",
-        "parent": "Incidentes_Sucu",
-        "nuevo": "58",
-        "abierto": "44",
-        "en_curso": "0",
-        "en_espera": "63"
-    },
-    {
-        "id": "EUT SOPORTE SUC, SDK Y CORREO_TarCor",
-        "parent": "Tareas_Corp",
-        "nuevo": "0",
-        "abierto": "174",
-        "en_curso": "11",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT SWD_IncCor",
-        "parent": "Incidentes_Corp",
-        "nuevo": "1",
-        "abierto": "0",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT SWD_TarCor",
-        "parent": "Tareas_Corp",
-        "nuevo": "0",
-        "abierto": "92",
-        "en_curso": "10",
-        "en_espera": "40"
-    },
-    {
-        "id": "EUT TELECOM_IncCor",
-        "parent": "Incidentes_Corp",
-        "nuevo": "33",
-        "abierto": "21",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT TELECOM_IncSuc",
-        "parent": "Incidentes_Sucu",
-        "nuevo": "95",
-        "abierto": "15",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT TELECOM_TarCor",
-        "parent": "Tareas_Corp",
-        "nuevo": "0",
-        "abierto": "46",
-        "en_curso": "32",
-        "en_espera": "12"
-    },
-    {
-        "id": "MULTIFUNCIONALES_IncCor",
-        "parent": "Incidentes_Corp",
-        "nuevo": "0",
-        "abierto": "1",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "MULTIFUNCIONALES_IncSuc",
-        "parent": "Incidentes_Sucu",
-        "nuevo": "0",
-        "abierto": "13",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "MULTIFUNCIONALES_TarCor",
-        "parent": "Tareas_Corp",
-        "nuevo": "0",
-        "abierto": "0",
-        "en_curso": "0",
-        "en_espera": "1"
-    },
-    {
-        "id": "EUT CAU Centro_IC",
-        "parent": "EUT CAU_IncCor",
-        "nuevo": "12",
-        "abierto": "28",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT CAU Centro_IS",
-        "parent": "EUT CAU_IncSuc",
-        "nuevo": "31",
-        "abierto": "53",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT CAU Centro_TC",
-        "parent": "EUT CAU_TarCor",
-        "nuevo": "0",
-        "abierto": "35",
-        "en_curso": "69",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT VIP_IC",
-        "parent": "EUT GVIP_IncCor",
-        "nuevo": "8",
-        "abierto": "0",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT VIP_TC",
-        "parent": "EUT GVIP_TarCor",
-        "nuevo": "0",
-        "abierto": "11",
-        "en_curso": "8",
-        "en_espera": "0"
-    },
-    {
-        "id": "TMX_EU_Asignacion_Hardware_TC",
-        "parent": "EUT HDA_TarCor",
-        "nuevo": "0",
-        "abierto": "28",
-        "en_curso": "12",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT Correo_IC",
-        "parent": "EUT SOPORTE SUC, SDK Y CORREO_IncCor",
-        "nuevo": "52",
-        "abierto": "34",
-        "en_curso": "0",
-        "en_espera": "63"
-    },
-    {
-        "id": "EUT Correo_IS",
-        "parent": "EUT SOPORTE SUC, SDK Y CORREO_IncSuc",
-        "nuevo": "58",
-        "abierto": "44",
-        "en_curso": "0",
-        "en_espera": "63"
-    },
-    {
-        "id": "EUT Correo_TC",
-        "parent": "EUT SOPORTE SUC, SDK Y CORREO_TarCor",
-        "nuevo": "0",
-        "abierto": "174",
-        "en_curso": "11",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT SW Distribuido_IC",
-        "parent": "EUT SWD_IncCor",
-        "nuevo": "1",
-        "abierto": "0",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT SW Distribuido_TC",
-        "parent": "EUT SWD_TarCor",
-        "nuevo": "0",
-        "abierto": "92",
-        "en_curso": "10",
-        "en_espera": "40"
-    },
-    {
-        "id": "EUT Comunicaciones_IC",
-        "parent": "EUT TELECOM_IncCor",
-        "nuevo": "33",
-        "abierto": "21",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT Comunicaciones_IS",
-        "parent": "EUT TELECOM_IncSuc",
-        "nuevo": "95",
-        "abierto": "15",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT Comunicaciones_TC",
-        "parent": "EUT TELECOM_TarCor",
-        "nuevo": "0",
-        "abierto": "46",
-        "en_curso": "32",
-        "en_espera": "12"
-    },
-    {
-        "id": "EUT Multifuncional Lexmark_IC",
-        "parent": "MULTIFUNCIONALES_IncCor",
-        "nuevo": "0",
-        "abierto": "1",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT Multifuncional Lexmark_IS",
-        "parent": "MULTIFUNCIONALES_IncSuc",
-        "nuevo": "0",
-        "abierto": "13",
-        "en_curso": "0",
-        "en_espera": "0"
-    },
-    {
-        "id": "EUT Multifuncional Lexmark_TC",
-        "parent": "MULTIFUNCIONALES_TarCor",
-        "nuevo": "0",
-        "abierto": "0",
-        "en_curso": "0",
-        "en_espera": "1"
-    }
+const datos = [
+    [
+        {
+            "Region": "Centro",
+            "HARDWARE": "6",
+            "SOFTWARE": "5",
+            "COMUNICACIONES": "1",
+            "MULTIFUNCIONALES": "0"
+        },
+        {
+            "Region": "Metro Norte",
+            "HARDWARE": "0",
+            "SOFTWARE": "1",
+            "COMUNICACIONES": "2",
+            "MULTIFUNCIONALES": "0"
+        },
+        {
+            "Region": "Metro Sur",
+            "HARDWARE": "2",
+            "SOFTWARE": "10",
+            "COMUNICACIONES": "3",
+            "MULTIFUNCIONALES": "0"
+        },
+        {
+            "Region": "Noreste",
+            "HARDWARE": "6",
+            "SOFTWARE": "6",
+            "COMUNICACIONES": "2",
+            "MULTIFUNCIONALES": "3"
+        },
+        {
+            "Region": "Noroeste",
+            "HARDWARE": "6",
+            "SOFTWARE": "2",
+            "COMUNICACIONES": "2",
+            "MULTIFUNCIONALES": "1"
+        },
+        {
+            "Region": "Norte",
+            "HARDWARE": "2",
+            "SOFTWARE": "4",
+            "COMUNICACIONES": "1",
+            "MULTIFUNCIONALES": "0"
+        },
+        {
+            "Region": "Occidente",
+            "HARDWARE": "6",
+            "SOFTWARE": "3",
+            "COMUNICACIONES": "2",
+            "MULTIFUNCIONALES": "2"
+        },
+        {
+            "Region": "Sur",
+            "HARDWARE": "4",
+            "SOFTWARE": "1",
+            "COMUNICACIONES": "4",
+            "MULTIFUNCIONALES": "1"
+        },
+        {
+            "Region": "Sureste",
+            "HARDWARE": "6",
+            "SOFTWARE": "5",
+            "COMUNICACIONES": "2",
+            "MULTIFUNCIONALES": "1"
+        }
+    ],
+    [
+        {
+            "Region": "Centro",
+            "HARDWARE": "-5",
+            "SOFTWARE": "-15",
+            "COMUNICACIONES": "-12",
+            "MULTIFUNCIONALES": "-1"
+        },
+        {
+            "Region": "Metro Norte",
+            "HARDWARE": "0",
+            "SOFTWARE": "-15",
+            "COMUNICACIONES": "-19",
+            "MULTIFUNCIONALES": "0"
+        },
+        {
+            "Region": "Metro Sur",
+            "HARDWARE": "0",
+            "SOFTWARE": "-15",
+            "COMUNICACIONES": "-10",
+            "MULTIFUNCIONALES": "0"
+        },
+        {
+            "Region": "Noreste",
+            "HARDWARE": "0",
+            "SOFTWARE": "-13",
+            "COMUNICACIONES": "-8",
+            "MULTIFUNCIONALES": "0"
+        },
+        {
+            "Region": "Noroeste",
+            "HARDWARE": "-14",
+            "SOFTWARE": "-7",
+            "COMUNICACIONES": "-6",
+            "MULTIFUNCIONALES": "0"
+        },
+        {
+            "Region": "Norte",
+            "HARDWARE": "-1",
+            "SOFTWARE": "-8",
+            "COMUNICACIONES": "-6",
+            "MULTIFUNCIONALES": "0"
+        },
+        {
+            "Region": "Occidente",
+            "HARDWARE": "-8",
+            "SOFTWARE": "-11",
+            "COMUNICACIONES": "-5",
+            "MULTIFUNCIONALES": "0"
+        },
+        {
+            "Region": "Sur",
+            "HARDWARE": "-3",
+            "SOFTWARE": "-10",
+            "COMUNICACIONES": "-9",
+            "MULTIFUNCIONALES": "0"
+        },
+        {
+            "Region": "Sureste",
+            "HARDWARE": "-9",
+            "SOFTWARE": "-14",
+            "COMUNICACIONES": "-8",
+            "MULTIFUNCIONALES": "-1"
+        }
+    ]
 ]
