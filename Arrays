@@ -16,3 +16,23 @@ D_R04.forEach(item => {
 });
 
 console.log(tipos);
+
+function showFullTooltip(row, size, value) {
+  const rowData = data.getValue(row, 0);
+  const abiertoValue = data.getValue(row, 2);
+  const nuevoValue = data.getValue(row, 3);
+  const cursoValue = data.getValue(row, 4);
+  const pendienteValue = data.getValue(row, 5);
+
+  return `
+    <div style="background:#272B30; padding:10px; border-style:none">
+      <span style="font-family:Verdana"><b>${rowData}</b>,</span><br>
+      Datatable row: ${row}<br>
+      ${data.getColumnLabel(2)}: ${abiertoValue}<br>
+      ${data.getColumnLabel(3)}: ${nuevoValue}<br>
+      ${data.getColumnLabel(4)}: ${cursoValue}<br>
+      ${data.getColumnLabel(5)}: ${pendienteValue}<br>
+    </div>
+  `;
+}
+
