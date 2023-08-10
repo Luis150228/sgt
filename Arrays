@@ -1,246 +1,364 @@
-tengo el siguiente objeto, quiero hacer un un gafico de columnas con googleCharts em donde se agrupen las regiones y sus folios positivos y negativos 
-['centro', 'HARDWARE', 6, -5]//HARDWARE
-['centro',"SOFTWARE", 5," -15]//SOFTWARE
-['centro',"COMUNICACIONES", 1, -12]//COMUNICACIONES
-['centro',"MULTIFUNCIONALES", 0, -1]//MULTIFUNCIONALES"
+quiero crear un grafico de columnas con googleCHart y el siguiete grupo de datos:
 
-const datos = [
-    [
-        {
-            "Region": "Centro",
-            "HARDWARE": "6",
-            "SOFTWARE": "5",
-            "COMUNICACIONES": "1",
-            "MULTIFUNCIONALES": "0"
-        },
-        {
-            "Region": "Metro Norte",
-            "HARDWARE": "0",
-            "SOFTWARE": "1",
-            "COMUNICACIONES": "2",
-            "MULTIFUNCIONALES": "0"
-        },
-        {
-            "Region": "Metro Sur",
-            "HARDWARE": "2",
-            "SOFTWARE": "10",
-            "COMUNICACIONES": "3",
-            "MULTIFUNCIONALES": "0"
-        },
-        {
-            "Region": "Noreste",
-            "HARDWARE": "6",
-            "SOFTWARE": "6",
-            "COMUNICACIONES": "2",
-            "MULTIFUNCIONALES": "3"
-        },
-        {
-            "Region": "Noroeste",
-            "HARDWARE": "6",
-            "SOFTWARE": "2",
-            "COMUNICACIONES": "2",
-            "MULTIFUNCIONALES": "1"
-        },
-        {
-            "Region": "Norte",
-            "HARDWARE": "2",
-            "SOFTWARE": "4",
-            "COMUNICACIONES": "1",
-            "MULTIFUNCIONALES": "0"
-        },
-        {
-            "Region": "Occidente",
-            "HARDWARE": "6",
-            "SOFTWARE": "3",
-            "COMUNICACIONES": "2",
-            "MULTIFUNCIONALES": "2"
-        },
-        {
-            "Region": "Sur",
-            "HARDWARE": "4",
-            "SOFTWARE": "1",
-            "COMUNICACIONES": "4",
-            "MULTIFUNCIONALES": "1"
-        },
-        {
-            "Region": "Sureste",
-            "HARDWARE": "6",
-            "SOFTWARE": "5",
-            "COMUNICACIONES": "2",
-            "MULTIFUNCIONALES": "1"
-        },
-        {
-            "Region": "Centro",
-            "HARDWARE": "-5",
-            "SOFTWARE": "-15",
-            "COMUNICACIONES": "-12",
-            "MULTIFUNCIONALES": "-1"
-        },
-        {
-            "Region": "Metro Norte",
-            "HARDWARE": "0",
-            "SOFTWARE": "-15",
-            "COMUNICACIONES": "-19",
-            "MULTIFUNCIONALES": "0"
-        },
-        {
-            "Region": "Metro Sur",
-            "HARDWARE": "0",
-            "SOFTWARE": "-15",
-            "COMUNICACIONES": "-10",
-            "MULTIFUNCIONALES": "0"
-        },
-        {
-            "Region": "Noreste",
-            "HARDWARE": "0",
-            "SOFTWARE": "-13",
-            "COMUNICACIONES": "-8",
-            "MULTIFUNCIONALES": "0"
-        },
-        {
-            "Region": "Noroeste",
-            "HARDWARE": "-14",
-            "SOFTWARE": "-7",
-            "COMUNICACIONES": "-6",
-            "MULTIFUNCIONALES": "0"
-        },
-        {
-            "Region": "Norte",
-            "HARDWARE": "-1",
-            "SOFTWARE": "-8",
-            "COMUNICACIONES": "-6",
-            "MULTIFUNCIONALES": "0"
-        },
-        {
-            "Region": "Occidente",
-            "HARDWARE": "-8",
-            "SOFTWARE": "-11",
-            "COMUNICACIONES": "-5",
-            "MULTIFUNCIONALES": "0"
-        },
-        {
-            "Region": "Sur",
-            "HARDWARE": "-3",
-            "SOFTWARE": "-10",
-            "COMUNICACIONES": "-9",
-            "MULTIFUNCIONALES": "0"
-        },
-        {
-            "Region": "Sureste",
-            "HARDWARE": "-9",
-            "SOFTWARE": "-14",
-            "COMUNICACIONES": "-8",
-            "MULTIFUNCIONALES": "-1"
-        }
-    ]
+[
+    {
+        "x": "CENTRO",
+        "type": "HARDWARE",
+        "HARDWARE": 5
+    },
+    {
+        "x": "CENTRO",
+        "type": "SOFTWARE",
+        "SOFTWARE": 5
+    },
+    {
+        "x": "CENTRO",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": 1
+    },
+    {
+        "x": "CENTRO",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": 0
+    },
+    {
+        "x": "METRO NORTE",
+        "type": "HARDWARE",
+        "HARDWARE": 0
+    },
+    {
+        "x": "METRO NORTE",
+        "type": "SOFTWARE",
+        "SOFTWARE": 1
+    },
+    {
+        "x": "METRO NORTE",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": 2
+    },
+    {
+        "x": "METRO NORTE",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": 0
+    },
+    {
+        "x": "METRO SUR",
+        "type": "HARDWARE",
+        "HARDWARE": 2
+    },
+    {
+        "x": "METRO SUR",
+        "type": "SOFTWARE",
+        "SOFTWARE": 9
+    },
+    {
+        "x": "METRO SUR",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": 2
+    },
+    {
+        "x": "METRO SUR",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": 0
+    },
+    {
+        "x": "NORESTE",
+        "type": "HARDWARE",
+        "HARDWARE": 6
+    },
+    {
+        "x": "NORESTE",
+        "type": "SOFTWARE",
+        "SOFTWARE": 4
+    },
+    {
+        "x": "NORESTE",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": 1
+    },
+    {
+        "x": "NORESTE",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": 2
+    },
+    {
+        "x": "NOROESTE",
+        "type": "HARDWARE",
+        "HARDWARE": 6
+    },
+    {
+        "x": "NOROESTE",
+        "type": "SOFTWARE",
+        "SOFTWARE": 2
+    },
+    {
+        "x": "NOROESTE",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": 2
+    },
+    {
+        "x": "NOROESTE",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": 1
+    },
+    {
+        "x": "NORTE",
+        "type": "HARDWARE",
+        "HARDWARE": 2
+    },
+    {
+        "x": "NORTE",
+        "type": "SOFTWARE",
+        "SOFTWARE": 2
+    },
+    {
+        "x": "NORTE",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": 1
+    },
+    {
+        "x": "NORTE",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": 0
+    },
+    {
+        "x": "OCCIDENTE",
+        "type": "HARDWARE",
+        "HARDWARE": 5
+    },
+    {
+        "x": "OCCIDENTE",
+        "type": "SOFTWARE",
+        "SOFTWARE": 3
+    },
+    {
+        "x": "OCCIDENTE",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": 2
+    },
+    {
+        "x": "OCCIDENTE",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": 2
+    },
+    {
+        "x": "SUR",
+        "type": "HARDWARE",
+        "HARDWARE": 4
+    },
+    {
+        "x": "SUR",
+        "type": "SOFTWARE",
+        "SOFTWARE": 1
+    },
+    {
+        "x": "SUR",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": 4
+    },
+    {
+        "x": "SUR",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": 1
+    },
+    {
+        "x": "SURESTE",
+        "type": "HARDWARE",
+        "HARDWARE": 6
+    },
+    {
+        "x": "SURESTE",
+        "type": "SOFTWARE",
+        "SOFTWARE": 4
+    },
+    {
+        "x": "SURESTE",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": 2
+    },
+    {
+        "x": "SURESTE",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": 1
+    },
+    {
+        "x": "CENTRO",
+        "type": "HARDWARE",
+        "HARDWARE": -6
+    },
+    {
+        "x": "CENTRO",
+        "type": "SOFTWARE",
+        "SOFTWARE": -15
+    },
+    {
+        "x": "CENTRO",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": -12
+    },
+    {
+        "x": "CENTRO",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": -1
+    },
+    {
+        "x": "METRO NORTE",
+        "type": "HARDWARE",
+        "HARDWARE": 0
+    },
+    {
+        "x": "METRO NORTE",
+        "type": "SOFTWARE",
+        "SOFTWARE": -15
+    },
+    {
+        "x": "METRO NORTE",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": -19
+    },
+    {
+        "x": "METRO NORTE",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": 0
+    },
+    {
+        "x": "METRO SUR",
+        "type": "HARDWARE",
+        "HARDWARE": 0
+    },
+    {
+        "x": "METRO SUR",
+        "type": "SOFTWARE",
+        "SOFTWARE": -16
+    },
+    {
+        "x": "METRO SUR",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": -11
+    },
+    {
+        "x": "METRO SUR",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": 0
+    },
+    {
+        "x": "NORESTE",
+        "type": "HARDWARE",
+        "HARDWARE": 0
+    },
+    {
+        "x": "NORESTE",
+        "type": "SOFTWARE",
+        "SOFTWARE": -15
+    },
+    {
+        "x": "NORESTE",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": -9
+    },
+    {
+        "x": "NORESTE",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": -1
+    },
+    {
+        "x": "NOROESTE",
+        "type": "HARDWARE",
+        "HARDWARE": -14
+    },
+    {
+        "x": "NOROESTE",
+        "type": "SOFTWARE",
+        "SOFTWARE": -7
+    },
+    {
+        "x": "NOROESTE",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": -6
+    },
+    {
+        "x": "NOROESTE",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": 0
+    },
+    {
+        "x": "NORTE",
+        "type": "HARDWARE",
+        "HARDWARE": -1
+    },
+    {
+        "x": "NORTE",
+        "type": "SOFTWARE",
+        "SOFTWARE": -10
+    },
+    {
+        "x": "NORTE",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": -6
+    },
+    {
+        "x": "NORTE",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": 0
+    },
+    {
+        "x": "OCCIDENTE",
+        "type": "HARDWARE",
+        "HARDWARE": -9
+    },
+    {
+        "x": "OCCIDENTE",
+        "type": "SOFTWARE",
+        "SOFTWARE": -11
+    },
+    {
+        "x": "OCCIDENTE",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": -5
+    },
+    {
+        "x": "OCCIDENTE",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": 0
+    },
+    {
+        "x": "SUR",
+        "type": "HARDWARE",
+        "HARDWARE": -3
+    },
+    {
+        "x": "SUR",
+        "type": "SOFTWARE",
+        "SOFTWARE": -10
+    },
+    {
+        "x": "SUR",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": -9
+    },
+    {
+        "x": "SUR",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": 0
+    },
+    {
+        "x": "SURESTE",
+        "type": "HARDWARE",
+        "HARDWARE": -9
+    },
+    {
+        "x": "SURESTE",
+        "type": "SOFTWARE",
+        "SOFTWARE": -15
+    },
+    {
+        "x": "SURESTE",
+        "type": "COMUNICACIONES",
+        "COMUNICACIONES": -8
+    },
+    {
+        "x": "SURESTE",
+        "type": "MULTIFUNCIONALES",
+        "MULTIFUNCIONALES": -1
+    }
 ]
-////////////////////////////////////////////////////////
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
-  const datos = [
-    // ... (tus datos)
-  ];
-
-  const data = new google.visualization.DataTable();
-  data.addColumn('string', 'Region');
-  data.addColumn('number', 'HARDWARE');
-  data.addColumn('number', 'SOFTWARE');
-  data.addColumn('number', 'COMUNICACIONES');
-  data.addColumn('number', 'MULTIFUNCIONALES');
-
-  // Agregar datos positivos y negativos a la tabla
-  datos[0].forEach(regionData => {
-    const regionName = regionData.Region;
-    const rowData = [regionName];
-    Object.keys(regionData).forEach(key => {
-      if (key !== 'Region') {
-        rowData.push(parseInt(regionData[key]));
-      }
-    });
-    data.addRow(rowData);
-  });
-
-  datos[1].forEach(regionData => {
-    const regionName = regionData.Region;
-    const rowData = [regionName];
-    Object.keys(regionData).forEach(key => {
-      if (key !== 'Region') {
-        rowData.push(parseInt(regionData[key]));
-      }
-    });
-    data.addRow(rowData);
-  });
-
-  const options = {
-    title: 'Folios Positivos y Negativos por Región',
-    width: 800,
-    height: 600,
-    isStacked: true,
-    vAxis: {
-      title: 'Folios'
-    },
-    hAxis: {
-      title: 'Región'
-    }
-  };
-
-  const chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-  chart.draw(data, options);
-}
-////////////////////////////////////////////////////////////////////////////////////////////////
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
-  const datos = [
-    // ... (tus datos)
-  ];
-
-  const data = new google.visualization.DataTable();
-  data.addColumn('string', 'Region');
-  data.addColumn('number', 'Positivos');
-  data.addColumn('number', 'Negativos');
-
-  const formattedData = [];
-
-  datos[0].forEach(regionData => {
-    const formattedRegionData = [regionData.Region];
-    Object.keys(regionData).forEach(key => {
-      if (key !== 'Region' && parseInt(regionData[key]) >= 0) {
-        formattedRegionData.push(parseInt(regionData[key]));
-      }
-    });
-    formattedData.push(formattedRegionData);
-  });
-
-  datos[1].forEach(regionData => {
-    const formattedRegionData = formattedData.find(item => item[0] === regionData.Region);
-    if (formattedRegionData) {
-      Object.keys(regionData).forEach(key => {
-        if (key !== 'Region' && parseInt(regionData[key]) < 0) {
-          formattedRegionData.push(Math.abs(parseInt(regionData[key])));
-        }
-      });
-    }
-  });
-
-  data.addRows(formattedData);
-
-  const options = {
-    title: 'Folios Positivos y Negativos por Región',
-    width: 800,
-    height: 600,
-    isStacked: true,
-    vAxis: {
-      title: 'Folios'
-    },
-    hAxis: {
-      title: 'Región'
-    }
-  };
-
-  const chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-  chart.draw(data, options);
-}
