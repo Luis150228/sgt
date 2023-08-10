@@ -1,517 +1,56 @@
-tengo un array de obejetos con el siguiente contenido en un archivo json y estoy creando un grafico de arbol con googleChart pero quiero mostrar con la funcion showFullTooltip y requiero hacerle modificaciones para poder ver no solo los datos de 'abierto', 'nuevo', 'curso', 'pendiente' ya que solo el apartado de size muestra los datos de 'abierto' pero requiero ver el resto
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 
-[
-    {
-        "atencion": "EUT CAU Centro_IC",
-        "grup_tipo": "EUT CAU_IncCor",
-        "tipo": "Incidentes_Corp",
-        "area": "Corporativo",
-        "nuevo": "1",
-        "abierto": "11",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT CAU Metro Edificios_IC",
-        "grup_tipo": "EUT CAU_IncCor",
-        "tipo": "Incidentes_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "8",
-        "en_Curso": "0",
-        "en_Espera": "3"
-    },
-    {
-        "atencion": "EUT CAU Norte_IC",
-        "grup_tipo": "EUT CAU_IncCor",
-        "tipo": "Incidentes_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "1",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT CAU Occidente_IC",
-        "grup_tipo": "EUT CAU_IncCor",
-        "tipo": "Incidentes_Corp",
-        "area": "Corporativo",
-        "nuevo": "6",
-        "abierto": "0",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT CAU Sur_IC",
-        "grup_tipo": "EUT CAU_IncCor",
-        "tipo": "Incidentes_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "8",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT Comunicaciones_IC",
-        "grup_tipo": "EUT TELECOM_IncCor",
-        "tipo": "Incidentes_Corp",
-        "area": "Corporativo",
-        "nuevo": "28",
-        "abierto": "17",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT Correo_IC",
-        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO_IncCor",
-        "tipo": "Incidentes_Corp",
-        "area": "Corporativo",
-        "nuevo": "20",
-        "abierto": "12",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT Multifuncional Lexmark_IC",
-        "grup_tipo": "MULTIFUNCIONALES_IncCor",
-        "tipo": "Incidentes_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "1",
-        "en_Curso": "0",
-        "en_Espera": "1"
-    },
-    {
-        "atencion": "EUT Resolutores SDK_IC",
-        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO_IncCor",
-        "tipo": "Incidentes_Corp",
-        "area": "Corporativo",
-        "nuevo": "33",
-        "abierto": "25",
-        "en_Curso": "0",
-        "en_Espera": "62"
-    },
-    {
-        "atencion": "EUT Soporte Sucursales_IC",
-        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO_IncCor",
-        "tipo": "Incidentes_Corp",
-        "area": "Corporativo",
-        "nuevo": "4",
-        "abierto": "0",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT SW Distribuido_IC",
-        "grup_tipo": "EUT SWD_IncCor",
-        "tipo": "Incidentes_Corp",
-        "area": "Corporativo",
-        "nuevo": "1",
-        "abierto": "0",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT Telefonia Movil_IC",
-        "grup_tipo": "EUT TELECOM_IncCor",
-        "tipo": "Incidentes_Corp",
-        "area": "Corporativo",
-        "nuevo": "2",
-        "abierto": "2",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT VIP_IC",
-        "grup_tipo": "EUT GVIP_IncCor",
-        "tipo": "Incidentes_Corp",
-        "area": "Corporativo",
-        "nuevo": "5",
-        "abierto": "1",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT CAU Centro_TC",
-        "grup_tipo": "EUT CAU_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "12",
-        "en_Curso": "7",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT CAU Metro Edificios_TC",
-        "grup_tipo": "EUT CAU_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "6",
-        "en_Curso": "61",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT CAU Metro Sucursales_TC",
-        "grup_tipo": "EUT CAU_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "8",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT CAU Norte_TC",
-        "grup_tipo": "EUT CAU_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "11",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT CAU Occidente_TC",
-        "grup_tipo": "EUT CAU_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "10",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT CAU Sur_TC",
-        "grup_tipo": "EUT CAU_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "10",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT Comunicaciones_TC",
-        "grup_tipo": "EUT TELECOM_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "42",
-        "en_Curso": "1",
-        "en_Espera": "11"
-    },
-    {
-        "atencion": "EUT Correo_TC",
-        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "124",
-        "en_Curso": "1",
-        "en_Espera": "1"
-    },
-    {
-        "atencion": "EUT Multifuncional Lexmark_TC",
-        "grup_tipo": "MULTIFUNCIONALES_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "0",
-        "en_Curso": "0",
-        "en_Espera": "3"
-    },
-    {
-        "atencion": "EUT Resolutores SDK_TC",
-        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "30",
-        "en_Curso": "5",
-        "en_Espera": "4"
-    },
-    {
-        "atencion": "EUT Soporte Sucursales_TC",
-        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "5",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT SW Distribuido_TC",
-        "grup_tipo": "EUT SWD_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "91",
-        "en_Curso": "6",
-        "en_Espera": "43"
-    },
-    {
-        "atencion": "EUT Telefonia Movil_TC",
-        "grup_tipo": "EUT TELECOM_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "28",
-        "en_Curso": "8",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT Ventanilla Unica_TC",
-        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "0",
-        "en_Curso": "5",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT VIP_TC",
-        "grup_tipo": "EUT GVIP_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "7",
-        "en_Curso": "7",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "TMX_EU_Asignacion_Hardware_TC",
-        "grup_tipo": "EUT HDA_TarCor",
-        "tipo": "Tareas_Corp",
-        "area": "Corporativo",
-        "nuevo": "0",
-        "abierto": "62",
-        "en_Curso": "6",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT CAU Centro_IS",
-        "grup_tipo": "EUT CAU_IncSuc",
-        "tipo": "Incidentes_Sucu",
-        "area": "Sucursales",
-        "nuevo": "0",
-        "abierto": "15",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT CAU Metro Sucursales_IS",
-        "grup_tipo": "EUT CAU_IncSuc",
-        "tipo": "Incidentes_Sucu",
-        "area": "Sucursales",
-        "nuevo": "0",
-        "abierto": "5",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT CAU Norte_IS",
-        "grup_tipo": "EUT CAU_IncSuc",
-        "tipo": "Incidentes_Sucu",
-        "area": "Sucursales",
-        "nuevo": "2",
-        "abierto": "5",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT CAU Occidente_IS",
-        "grup_tipo": "EUT CAU_IncSuc",
-        "tipo": "Incidentes_Sucu",
-        "area": "Sucursales",
-        "nuevo": "19",
-        "abierto": "8",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT CAU Sur_IS",
-        "grup_tipo": "EUT CAU_IncSuc",
-        "tipo": "Incidentes_Sucu",
-        "area": "Sucursales",
-        "nuevo": "1",
-        "abierto": "30",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT Comunicaciones_IS",
-        "grup_tipo": "EUT TELECOM_IncSuc",
-        "tipo": "Incidentes_Sucu",
-        "area": "Sucursales",
-        "nuevo": "87",
-        "abierto": "31",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT Correo_IS",
-        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO_IncSuc",
-        "tipo": "Incidentes_Sucu",
-        "area": "Sucursales",
-        "nuevo": "6",
-        "abierto": "5",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT Multifuncional Lexmark_IS",
-        "grup_tipo": "MULTIFUNCIONALES_IncSuc",
-        "tipo": "Incidentes_Sucu",
-        "area": "Sucursales",
-        "nuevo": "0",
-        "abierto": "11",
-        "en_Curso": "0",
-        "en_Espera": "1"
-    },
-    {
-        "atencion": "EUT Resolutores SDK_IS",
-        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO_IncSuc",
-        "tipo": "Incidentes_Sucu",
-        "area": "Sucursales",
-        "nuevo": "38",
-        "abierto": "38",
-        "en_Curso": "0",
-        "en_Espera": "66"
-    },
-    {
-        "atencion": "EUT Soporte Sucursales_IS",
-        "grup_tipo": "EUT SOPORTE SUC, SDK Y CORREO_IncSuc",
-        "tipo": "Incidentes_Sucu",
-        "area": "Sucursales",
-        "nuevo": "16",
-        "abierto": "1",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    },
-    {
-        "atencion": "EUT Telefonia Movil_IS",
-        "grup_tipo": "EUT TELECOM_IncSuc",
-        "tipo": "Incidentes_Sucu",
-        "area": "Sucursales",
-        "nuevo": "1",
-        "abierto": "0",
-        "en_Curso": "0",
-        "en_Espera": "0"
-    }
-]
-
-import datos from './data.json' assert { type: 'json' };
-console.log(datos);
-
-const formattedArray = [];
-const indices = new Set();
-
-formattedArray.push(['Backlog EUT', null, null, null, null, null]);
-
-for (let item of datos) {
-  const indice = [item.area, 'Backlog EUT', null, null, null, null];
-  if (!indices.has(JSON.stringify(indice))) {
-    indices.add(JSON.stringify(indice));
-    formattedArray.push(indice);
-  }
-}
-
-for (let item of datos) {
-  const indice = [item.tipo, item.area, null, null, null, null];
-  if (!indices.has(JSON.stringify(indice))) {
-    indices.add(JSON.stringify(indice));
-    formattedArray.push(indice);
-  }
-}
-
-for (let item of datos) {
-  const indice = [item.grup_tipo, item.tipo, null, null, null, null];
-  if (!indices.has(JSON.stringify(indice))) {
-    indices.add(JSON.stringify(indice));
-    formattedArray.push(indice);
-  }
-}
-
-for (let item of datos) {
-  const indice = [
-    item.atencion,
-    item.grup_tipo,
-    parseInt(item.nuevo),
-    parseInt(item.abierto),
-    parseInt(item.en_Curso),
-    parseInt(item.en_Espera),
-  ];
-  if (!indices.has(JSON.stringify(indice))) {
-    indices.add(JSON.stringify(indice));
-    formattedArray.push(indice);
-  }
-}
-
-console.log(formattedArray);
-google.charts.load('current', { packages: ['treemap'] });
-
-const drawChart = () => {
+function drawChart() {
   const data = new google.visualization.DataTable();
-  data.addColumn('string', 'ID');
-  data.addColumn('string', 'Parent');
-  data.addColumn('number', 'abierto');
-  data.addColumn('number', 'nuevo');
-  data.addColumn('number', 'curso');
-  data.addColumn('number', 'pendiente');
-  data.addRows(formattedArray);
-  const tree = new google.visualization.TreeMap(document.getElementById('chart_arbol'));
+  data.addColumn('string', 'Región');
+  data.addColumn('number', 'HARDWARE');
+  data.addColumn('number', 'SOFTWARE');
+  data.addColumn('number', 'COMUNICACIONES');
+  data.addColumn('number', 'MULTIFUNCIONALES');
+
+  const rawData = [
+    // ... (tus datos)
+  ];
+
+  const formattedData = [];
+
+  rawData.forEach(entry => {
+    const region = entry.x;
+    const type = entry.type;
+    const value = entry[type];
+    
+    let regionData = formattedData.find(item => item[0] === region);
+    if (!regionData) {
+      regionData = [region, 0, 0, 0, 0];
+      formattedData.push(regionData);
+    }
+    
+    const typeIndex = {
+      'HARDWARE': 1,
+      'SOFTWARE': 2,
+      'COMUNICACIONES': 3,
+      'MULTIFUNCIONALES': 4
+    }[type];
+    
+    regionData[typeIndex] += value;
+  });
+
+  data.addRows(formattedData);
 
   const options = {
-    // For v49 or before
-    highlightOnMouseOver: true,
-    maxDepth: 1,
-    maxPostDepth: 2,
-    minHighlightColor: '#8c6bb1',
-    midHighlightColor: '#9ebcda',
-    maxHighlightColor: '#edf8fb',
-    minColor: '#009688',
-    midColor: '#f7f7f7',
-    maxColor: '#ee8100',
-    headerHeight: 15,
-    showScale: true,
-    generateTooltip: showFullTooltip,
-    height: 500,
-    useWeightedAverageForAggregation: true,
+    title: 'Folios por Región y Tipo',
+    width: 800,
+    height: 600,
+    isStacked: true,
+    vAxis: {
+      title: 'Folios'
+    },
+    hAxis: {
+      title: 'Región'
+    }
   };
 
-  tree.draw(data, options);
-  function showFullTooltip(row, size, value) {
-    return (
-      '<div style="background:#272B30; padding:10px; border-style:none">' +
-      '<span style="font-family:Verdana"><b>' +
-      data.getValue(row, 0) +
-      '</b>, ' +
-      '</span><br>' +
-      'Datatable row: ' +
-      row +
-      '<br>' +
-      data.getColumnLabel(2) +
-      ': ' +
-      size +
-      '<br>' +
-      data.getColumnLabel(3) +
-      ': ' +
-      size +
-      '<br>' +
-      data.getColumnLabel(4) +
-      ': ' +
-      size +
-      '<br>' +
-      data.getColumnLabel(5) +
-      ': ' +
-      size +
-      '<br>' +
-      ' </div>'
-    );
-  }
-};
-
-google.charts.setOnLoadCallback(drawChart);
+  const chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
