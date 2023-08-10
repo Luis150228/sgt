@@ -33,7 +33,9 @@ function drawChart() {
       'MULTIFUNCIONALES': 4
     }[type];
     
-    regionData[typeIndex] += value;
+    if (value >= 0) {
+      regionData[typeIndex] += value;
+    }
   });
 
   data.addRows(formattedData);
