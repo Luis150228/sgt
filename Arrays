@@ -136,3 +136,58 @@ const datos = [
         }
     ]
 ]
+////////////////////////////////////////////////////////
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+  const datos = [
+    // ... (tus datos)
+  ];
+
+  const data = new google.visualization.DataTable();
+  data.addColumn('string', 'Region');
+  data.addColumn('number', 'HARDWARE');
+  data.addColumn('number', 'SOFTWARE');
+  data.addColumn('number', 'COMUNICACIONES');
+  data.addColumn('number', 'MULTIFUNCIONALES');
+
+  // Agregar datos positivos y negativos a la tabla
+  datos[0].forEach(regionData => {
+    const regionName = regionData.Region;
+    const rowData = [regionName];
+    Object.keys(regionData).forEach(key => {
+      if (key !== 'Region') {
+        rowData.push(parseInt(regionData[key]));
+      }
+    });
+    data.addRow(rowData);
+  });
+
+  datos[1].forEach(regionData => {
+    const regionName = regionData.Region;
+    const rowData = [regionName];
+    Object.keys(regionData).forEach(key => {
+      if (key !== 'Region') {
+        rowData.push(parseInt(regionData[key]));
+      }
+    });
+    data.addRow(rowData);
+  });
+
+  const options = {
+    title: 'Folios Positivos y Negativos por Región',
+    width: 800,
+    height: 600,
+    isStacked: true,
+    vAxis: {
+      title: 'Folios'
+    },
+    hAxis: {
+      title: 'Región'
+    }
+  };
+
+  const chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
