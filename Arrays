@@ -68,9 +68,7 @@ const datos = [
             "SOFTWARE": "5",
             "COMUNICACIONES": "2",
             "MULTIFUNCIONALES": "1"
-        }
-    ],
-    [
+        },
         {
             "Region": "Centro",
             "HARDWARE": "-5",
@@ -174,6 +172,61 @@ function drawChart() {
     });
     data.addRow(rowData);
   });
+
+  const options = {
+    title: 'Folios Positivos y Negativos por Región',
+    width: 800,
+    height: 600,
+    isStacked: true,
+    vAxis: {
+      title: 'Folios'
+    },
+    hAxis: {
+      title: 'Región'
+    }
+  };
+
+  const chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
+////////////////////////////////////////////////////////////////////////////////////////////////
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+  const datos = [
+    // ... (tus datos)
+  ];
+
+  const data = new google.visualization.DataTable();
+  data.addColumn('string', 'Region');
+  data.addColumn('number', 'Positivos');
+  data.addColumn('number', 'Negativos');
+
+  const formattedData = [];
+
+  datos[0].forEach(regionData => {
+    const formattedRegionData = [regionData.Region];
+    Object.keys(regionData).forEach(key => {
+      if (key !== 'Region' && parseInt(regionData[key]) >= 0) {
+        formattedRegionData.push(parseInt(regionData[key]));
+      }
+    });
+    formattedData.push(formattedRegionData);
+  });
+
+  datos[1].forEach(regionData => {
+    const formattedRegionData = formattedData.find(item => item[0] === regionData.Region);
+    if (formattedRegionData) {
+      Object.keys(regionData).forEach(key => {
+        if (key !== 'Region' && parseInt(regionData[key]) < 0) {
+          formattedRegionData.push(Math.abs(parseInt(regionData[key])));
+        }
+      });
+    }
+  });
+
+  data.addRows(formattedData);
 
   const options = {
     title: 'Folios Positivos y Negativos por Región',
