@@ -1,20 +1,25 @@
-$rowIndex = 2; // Comenzar a partir de la segunda fila, ya que la primera fila contiene los encabezados
-foreach ($data as $record) {
-    $columnIndex = 1;
-    foreach ($record as $value) {
-        $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . $rowIndex;
-        $sheet->setCellValue($cellCoordinate, $value);
+en el siguiente codigo quiero agregar que se ajusten el ancho de la columna al contenido o se autoajuste 
 
-        // Ajustar el ancho de la columna al contenido
-        $sheet->getColumnDimension(\PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex))->setAutoSize(true);
+        // Obtener las claves del primer registro para generar las columnas
+        $firstRecord = reset($data);
+        $columns = array_keys($firstRecord);
 
-        if ($sheet->getCell($statusCell)->getValue() === 'VENCIDO') {
-            // Aplicar formato de fuente roja a toda la fila desde la columna A hasta la última columna
-            $range = 'A' . $rowIndex . ':' . \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex(count($record)) . $rowIndex;
-            $sheet->getStyle($range)->getFont()->getColor()->setRGB('FF0000');
+        // Establecer estilos para los encabezados (títulos)
+        $headerStyle = [
+            'font' => ['bold' => true, 'color' => ['rgb' => 'FF0000']],
+            'alignment' => ['horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex(count($columns)) . '1')->applyFromArray($headerStyle);
+
+        // Fijar la primera fila (encabezados) para que esté siempre visible mientras se desplaza por la hoja
+        $sheet->freezePane('A2');
+
+        // Activar autofiltro en la primera fila (encabezados)
+        $sheet->setAutoFilter('A1:' . \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex(count($columns)) . '1');
+        // Escribir los encabezados de las columnas en la primera fila de la hoja
+        $columnIndex = 1;
+        foreach ($columns as $column) {
+            $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . '1';
+            $sheet->setCellValue($cellCoordinate, $column);
+            $columnIndex++;
         }
-
-        $columnIndex++;
-    }
-    $rowIndex++;
-}
