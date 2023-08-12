@@ -1,32 +1,40 @@
-$incidentesCAU = array_filter($data, function($item) {
-    return $item['type'] === 'Incidentes CAU';
+require 'vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+// Crear un nuevo objeto Spreadsheet
+$spreadsheet = new Spreadsheet();
+
+// Crear una hoja
+$sheet = $spreadsheet->getActiveSheet();
+$sheet->setTitle('Incidentes');
+
+// Obtener los datos del array
+$data = // Aquí debes agregar el array de datos que proporcionaste
+
+// Filtrar los datos para obtener Incidentes SDK y CAU
+$incidentesSDK = array_filter($data, function ($item) {
+    return $item['type'] == 'Incidentes SDK';
 });
 
-$incidentesSDK = array_filter($data, function($item) {
-    return $item['type'] === 'Incidentes SDK';
+$incidentesCAU = array_filter($data, function ($item) {
+    return $item['type'] == 'Incidentes CAU';
 });
 
-$solicitudesCAU = array_filter($data, function($item) {
-    return $item['type'] === 'Solicitudes CAU';
-});
+// Crear la tabla de Incidentes SDK
+$sheet->fromArray($incidentesSDK, null, 'A1');
+$sheet->setCellValue('A' . (count($incidentesSDK) + 2), 'Tabla de Incidentes SDK');
 
-$solicitudesSDK = array_filter($data, function($item) {
-    return $item['type'] === 'Solicitudes SDK';
-});
+// Crear una hoja nueva para la tabla de Incidentes CAU
+$spreadsheet->createSheet();
+$sheetCAU = $spreadsheet->getSheet(1);
+$sheetCAU->setTitle('Incidentes CAU');
 
-$totalIncidentes = count($incidentesCAU) + count($incidentesSDK);
-$totalSolicitudes = count($solicitudesCAU) + count($solicitudesSDK);
+// Crear la tabla de Incidentes CAU
+$sheetCAU->fromArray($incidentesCAU, null, 'A1');
+$sheetCAU->setCellValue('A' . (count($incidentesCAU) + 2), 'Tabla de Incidentes CAU');
 
-$porcentajeIncidentesCAU = (count($incidentesCAU) / $totalIncidentes) * 100;
-$porcentajeIncidentesSDK = (count($incidentesSDK) / $totalIncidentes) * 100;
-
-$porcentajeSolicitudesCAU = (count($solicitudesCAU) / $totalSolicitudes) * 100;
-$porcentajeSolicitudesSDK = (count($solicitudesSDK) / $totalSolicitudes) * 100;
-
-echo "Incidentes CAU: " . count($incidentesCAU) . " (" . round($porcentajeIncidentesCAU, 2) . "%)\n";
-echo "Incidentes SDK: " . count($incidentesSDK) . " (" . round($porcentajeIncidentesSDK, 2) . "%)\n";
-echo "Total de Incidentes: " . $totalIncidentes . "\n\n";
-
-echo "Solicitudes CAU: " . count($solicitudesCAU) . " (" . round($porcentajeSolicitudesCAU, 2) . "%)\n";
-echo "Solicitudes SDK: " . count($solicitudesSDK) . " (" . round($porcentajeSolicitudesSDK, 2) . "%)\n";
-echo "Total de Solicitudes: " . $totalSolicitudes . "\n";
+// Guardar el archivo
+$writer = new Xlsx($spreadsheet);
+$writer->save('incidentes.xlsx');
