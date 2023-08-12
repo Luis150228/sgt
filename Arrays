@@ -1,364 +1,43 @@
-quiero crear un grafico de columnas con googleCHart y el siguiete grupo de datos:
-
-[
-    {
-        "x": "CENTRO",
-        "type": "HARDWARE",
-        "HARDWARE": 5
-    },
-    {
-        "x": "CENTRO",
-        "type": "SOFTWARE",
-        "SOFTWARE": 5
-    },
-    {
-        "x": "CENTRO",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": 1
-    },
-    {
-        "x": "CENTRO",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": 0
-    },
-    {
-        "x": "METRO NORTE",
-        "type": "HARDWARE",
-        "HARDWARE": 0
-    },
-    {
-        "x": "METRO NORTE",
-        "type": "SOFTWARE",
-        "SOFTWARE": 1
-    },
-    {
-        "x": "METRO NORTE",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": 2
-    },
-    {
-        "x": "METRO NORTE",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": 0
-    },
-    {
-        "x": "METRO SUR",
-        "type": "HARDWARE",
-        "HARDWARE": 2
-    },
-    {
-        "x": "METRO SUR",
-        "type": "SOFTWARE",
-        "SOFTWARE": 9
-    },
-    {
-        "x": "METRO SUR",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": 2
-    },
-    {
-        "x": "METRO SUR",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": 0
-    },
-    {
-        "x": "NORESTE",
-        "type": "HARDWARE",
-        "HARDWARE": 6
-    },
-    {
-        "x": "NORESTE",
-        "type": "SOFTWARE",
-        "SOFTWARE": 4
-    },
-    {
-        "x": "NORESTE",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": 1
-    },
-    {
-        "x": "NORESTE",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": 2
-    },
-    {
-        "x": "NOROESTE",
-        "type": "HARDWARE",
-        "HARDWARE": 6
-    },
-    {
-        "x": "NOROESTE",
-        "type": "SOFTWARE",
-        "SOFTWARE": 2
-    },
-    {
-        "x": "NOROESTE",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": 2
-    },
-    {
-        "x": "NOROESTE",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": 1
-    },
-    {
-        "x": "NORTE",
-        "type": "HARDWARE",
-        "HARDWARE": 2
-    },
-    {
-        "x": "NORTE",
-        "type": "SOFTWARE",
-        "SOFTWARE": 2
-    },
-    {
-        "x": "NORTE",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": 1
-    },
-    {
-        "x": "NORTE",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": 0
-    },
-    {
-        "x": "OCCIDENTE",
-        "type": "HARDWARE",
-        "HARDWARE": 5
-    },
-    {
-        "x": "OCCIDENTE",
-        "type": "SOFTWARE",
-        "SOFTWARE": 3
-    },
-    {
-        "x": "OCCIDENTE",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": 2
-    },
-    {
-        "x": "OCCIDENTE",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": 2
-    },
-    {
-        "x": "SUR",
-        "type": "HARDWARE",
-        "HARDWARE": 4
-    },
-    {
-        "x": "SUR",
-        "type": "SOFTWARE",
-        "SOFTWARE": 1
-    },
-    {
-        "x": "SUR",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": 4
-    },
-    {
-        "x": "SUR",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": 1
-    },
-    {
-        "x": "SURESTE",
-        "type": "HARDWARE",
-        "HARDWARE": 6
-    },
-    {
-        "x": "SURESTE",
-        "type": "SOFTWARE",
-        "SOFTWARE": 4
-    },
-    {
-        "x": "SURESTE",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": 2
-    },
-    {
-        "x": "SURESTE",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": 1
-    },
-    {
-        "x": "CENTRO",
-        "type": "HARDWARE",
-        "HARDWARE": -6
-    },
-    {
-        "x": "CENTRO",
-        "type": "SOFTWARE",
-        "SOFTWARE": -15
-    },
-    {
-        "x": "CENTRO",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": -12
-    },
-    {
-        "x": "CENTRO",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": -1
-    },
-    {
-        "x": "METRO NORTE",
-        "type": "HARDWARE",
-        "HARDWARE": 0
-    },
-    {
-        "x": "METRO NORTE",
-        "type": "SOFTWARE",
-        "SOFTWARE": -15
-    },
-    {
-        "x": "METRO NORTE",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": -19
-    },
-    {
-        "x": "METRO NORTE",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": 0
-    },
-    {
-        "x": "METRO SUR",
-        "type": "HARDWARE",
-        "HARDWARE": 0
-    },
-    {
-        "x": "METRO SUR",
-        "type": "SOFTWARE",
-        "SOFTWARE": -16
-    },
-    {
-        "x": "METRO SUR",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": -11
-    },
-    {
-        "x": "METRO SUR",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": 0
-    },
-    {
-        "x": "NORESTE",
-        "type": "HARDWARE",
-        "HARDWARE": 0
-    },
-    {
-        "x": "NORESTE",
-        "type": "SOFTWARE",
-        "SOFTWARE": -15
-    },
-    {
-        "x": "NORESTE",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": -9
-    },
-    {
-        "x": "NORESTE",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": -1
-    },
-    {
-        "x": "NOROESTE",
-        "type": "HARDWARE",
-        "HARDWARE": -14
-    },
-    {
-        "x": "NOROESTE",
-        "type": "SOFTWARE",
-        "SOFTWARE": -7
-    },
-    {
-        "x": "NOROESTE",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": -6
-    },
-    {
-        "x": "NOROESTE",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": 0
-    },
-    {
-        "x": "NORTE",
-        "type": "HARDWARE",
-        "HARDWARE": -1
-    },
-    {
-        "x": "NORTE",
-        "type": "SOFTWARE",
-        "SOFTWARE": -10
-    },
-    {
-        "x": "NORTE",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": -6
-    },
-    {
-        "x": "NORTE",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": 0
-    },
-    {
-        "x": "OCCIDENTE",
-        "type": "HARDWARE",
-        "HARDWARE": -9
-    },
-    {
-        "x": "OCCIDENTE",
-        "type": "SOFTWARE",
-        "SOFTWARE": -11
-    },
-    {
-        "x": "OCCIDENTE",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": -5
-    },
-    {
-        "x": "OCCIDENTE",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": 0
-    },
-    {
-        "x": "SUR",
-        "type": "HARDWARE",
-        "HARDWARE": -3
-    },
-    {
-        "x": "SUR",
-        "type": "SOFTWARE",
-        "SOFTWARE": -10
-    },
-    {
-        "x": "SUR",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": -9
-    },
-    {
-        "x": "SUR",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": 0
-    },
-    {
-        "x": "SURESTE",
-        "type": "HARDWARE",
-        "HARDWARE": -9
-    },
-    {
-        "x": "SURESTE",
-        "type": "SOFTWARE",
-        "SOFTWARE": -15
-    },
-    {
-        "x": "SURESTE",
-        "type": "COMUNICACIONES",
-        "COMUNICACIONES": -8
-    },
-    {
-        "x": "SURESTE",
-        "type": "MULTIFUNCIONALES",
-        "MULTIFUNCIONALES": -1
-    }
-]
+DELIMITER //
+CREATE FUNCTION procesar_fecha(fecha_inicial DATE) RETURNS VARCHAR(100)
+BEGIN
+    DECLARE dia_semana INT;
+    DECLARE fecha_inicio DATE;
+    DECLARE fecha_fin DATE;
+    DECLARE resultado VARCHAR(100);
+    
+    SET dia_semana = WEEKDAY(fecha_inicial);
+    
+    CASE
+        WHEN dia_semana = 0 THEN
+            SET fecha_inicio = DATE_SUB(fecha_inicial, INTERVAL 2 DAY);
+            SET fecha_fin = DATE_ADD(fecha_inicial, INTERVAL 3 DAY);
+        WHEN dia_semana = 1 THEN
+            SET fecha_inicio = DATE_SUB(fecha_inicial, INTERVAL 4 DAY);
+            SET fecha_fin = DATE_ADD(fecha_inicial, INTERVAL 2 DAY);
+        WHEN dia_semana = 2 THEN
+            SET fecha_inicio = DATE_SUB(fecha_inicial, INTERVAL 5 DAY);
+            SET fecha_fin = DATE_ADD(fecha_inicial, INTERVAL 1 DAY);
+        WHEN dia_semana = 3 THEN
+            SET fecha_inicio = DATE_SUB(fecha_inicial, INTERVAL 6 DAY);
+            SET fecha_fin = fecha_inicial;
+        WHEN dia_semana = 4 THEN
+            SET fecha_inicio = fecha_inicial;
+            SET fecha_fin = DATE_ADD(fecha_inicial, INTERVAL 6 DAY);
+        WHEN dia_semana = 5 THEN
+            SET fecha_inicio = DATE_SUB(fecha_inicial, INTERVAL 1 DAY);
+            SET fecha_fin = DATE_ADD(fecha_inicial, INTERVAL 5 DAY);
+        WHEN dia_semana = 6 THEN
+            SET fecha_inicio = DATE_SUB(fecha_inicial, INTERVAL 2 DAY);
+            SET fecha_fin = DATE_ADD(fecha_inicial, INTERVAL 4 DAY);
+    END CASE;
+    
+    SET resultado = CONCAT(
+        DAY(fecha_inicio), '/', MONTH(fecha_inicio), ' - ',
+        DAY(fecha_fin), '/', MONTH(fecha_fin)
+    );
+    
+    RETURN resultado;
+END;
+//
+DELIMITER ;
