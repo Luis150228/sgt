@@ -3,38 +3,64 @@ require 'vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-// Crear un nuevo objeto Spreadsheet
+// Crear un nuevo objeto de hoja de cálculo
 $spreadsheet = new Spreadsheet();
-
-// Crear una hoja
 $sheet = $spreadsheet->getActiveSheet();
-$sheet->setTitle('Incidentes');
 
-// Obtener los datos del array
-$data = // Aquí debes agregar el array de datos que proporcionaste
+// Obtener el array de datos que proporcionaste
+$data = array(/* ... */); // Tu array de datos aquí
 
-// Filtrar los datos para obtener Incidentes SDK y CAU
-$incidentesSDK = array_filter($data, function ($item) {
-    return $item['type'] == 'Incidentes SDK';
+// Filtrar los registros por tipo de solicitud
+$incidentesSDK = array_filter($data, function($item) {
+    return $item['type'] === 'Incidentes SDK';
 });
 
-$incidentesCAU = array_filter($data, function ($item) {
-    return $item['type'] == 'Incidentes CAU';
+$incidentesCAU = array_filter($data, function($item) {
+    return $item['type'] === 'Incidentes CAU';
 });
 
-// Crear la tabla de Incidentes SDK
-$sheet->fromArray($incidentesSDK, null, 'A1');
-$sheet->setCellValue('A' . (count($incidentesSDK) + 2), 'Tabla de Incidentes SDK');
+// Fila de inicio
+$row = 9;
 
-// Crear una hoja nueva para la tabla de Incidentes CAU
-$spreadsheet->createSheet();
-$sheetCAU = $spreadsheet->getSheet(1);
-$sheetCAU->setTitle('Incidentes CAU');
+// Agregar los encabezados a la primera tabla
+$sheet->setCellValue('A' . $row, 'Ticket');
+$sheet->setCellValue('B' . $row, 'ID Externo');
+$sheet->setCellValue('C' . $row, 'Fecha Envio');
+$sheet->setCellValue('D' . $row, 'Fecha Cierre');
+// Agregar más encabezados aquí
 
-// Crear la tabla de Incidentes CAU
-$sheetCAU->fromArray($incidentesCAU, null, 'A1');
-$sheetCAU->setCellValue('A' . (count($incidentesCAU) + 2), 'Tabla de Incidentes CAU');
+// Llenar la primera tabla con los datos de Incidentes SDK
+$row++;
+foreach ($incidentesSDK as $item) {
+    $sheet->setCellValue('A' . $row, $item['ticket']);
+    $sheet->setCellValue('B' . $row, $item['id_externo']);
+    $sheet->setCellValue('C' . $row, $item['fecha_envio']);
+    $sheet->setCellValue('D' . $row, $item['fecha_cierre']);
+    // Agregar más datos aquí
+    $row++;
+}
 
-// Guardar el archivo
+// Dejar una fila de espacio
+$row++;
+
+// Agregar los encabezados a la segunda tabla
+$sheet->setCellValue('A' . $row, 'Ticket');
+$sheet->setCellValue('B' . $row, 'ID Externo');
+$sheet->setCellValue('C' . $row, 'Fecha Envio');
+$sheet->setCellValue('D' . $row, 'Fecha Cierre');
+// Agregar más encabezados aquí
+
+// Llenar la segunda tabla con los datos de Incidentes CAU
+$row++;
+foreach ($incidentesCAU as $item) {
+    $sheet->setCellValue('A' . $row, $item['ticket']);
+    $sheet->setCellValue('B' . $row, $item['id_externo']);
+    $sheet->setCellValue('C' . $row, $item['fecha_envio']);
+    $sheet->setCellValue('D' . $row, $item['fecha_cierre']);
+    // Agregar más datos aquí
+    $row++;
+}
+
+// Guardar la hoja de cálculo en un archivo
 $writer = new Xlsx($spreadsheet);
-$writer->save('incidentes.xlsx');
+$writer->save('hoja.xlsx');
