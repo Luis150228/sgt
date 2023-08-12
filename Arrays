@@ -1,21 +1,20 @@
-EN EL SIGUIENTE CODIGO EL FORMATO DE FUENTE EN COLOR ROJO SOLO SE ESTA APLICANDO POSTERIOR A LA COLUMNA DE ESTATUS, PERO REQUIERO QUE SE APLIQUE DESDE LA COLUMNA A HASTA LA ULTIMA COLUMNA 
+$rowIndex = 2; // Comenzar a partir de la segunda fila, ya que la primera fila contiene los encabezados
+foreach ($data as $record) {
+    $columnIndex = 1;
+    foreach ($record as $value) {
+        $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . $rowIndex;
+        $sheet->setCellValue($cellCoordinate, $value);
 
-        $rowIndex = 2; // Comenzar a partir de la segunda fila, ya que la primera fila contiene los encabezados
-        foreach ($data as $record) {
-            $columnIndex = 1;
-            foreach ($record as $value) {
-                $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . $rowIndex;
-                $sheet->setCellValue($cellCoordinate, $value);
-                $statusCell = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex(array_search('Estatus', $columns) + 1) . $rowIndex;
+        // Ajustar el ancho de la columna al contenido
+        $sheet->getColumnDimension(\PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex))->setAutoSize(true);
 
-                // Ajustar el ancho de la columna al contenido
-                $sheet->getColumnDimension(\PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex))->setAutoSize(true);
-
-                // Aplicar formato a toda la fila cuando el campo "Estatus" sea "VENCIDO" (Color de fuente rojo)
-                if ($sheet->getCell($statusCell)->getValue() === 'VENCIDO') {
-                    $sheet->getStyle($cellCoordinate)->getFont()->getColor()->setRGB('FF0000');
-                }
-                $columnIndex++;
-            }
-            $rowIndex++;
+        if ($sheet->getCell($statusCell)->getValue() === 'VENCIDO') {
+            // Aplicar formato de fuente roja a toda la fila desde la columna A hasta la última columna
+            $range = 'A' . $rowIndex . ':' . \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex(count($record)) . $rowIndex;
+            $sheet->getStyle($range)->getFont()->getColor()->setRGB('FF0000');
         }
+
+        $columnIndex++;
+    }
+    $rowIndex++;
+}
