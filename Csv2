@@ -2,6 +2,7 @@ require 'vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Color;
 
 // Crear un nuevo objeto de hoja de cálculo
 $spreadsheet = new Spreadsheet();
@@ -29,6 +30,14 @@ $sheet->setCellValue('C' . $row, 'Fecha Envio');
 $sheet->setCellValue('D' . $row, 'Fecha Cierre');
 // Agregar más encabezados aquí
 
+// Aplicar formato a la fila de encabezados
+$headerStyle = $sheet->getStyle('A' . $row . ':D' . $row);
+$headerStyle->getFont()->setBold(true);
+$headerStyle->getFont()->setColor(new Color(Color::COLOR_RED));
+
+// Ajustar el ancho de la columna A al ancho de 95px
+$sheet->getColumnDimension('A')->setWidth(95);
+
 // Llenar la primera tabla con los datos de Incidentes SDK
 $row++;
 foreach ($incidentesSDK as $item) {
@@ -50,6 +59,14 @@ $sheet->setCellValue('C' . $row, 'Fecha Envio');
 $sheet->setCellValue('D' . $row, 'Fecha Cierre');
 // Agregar más encabezados aquí
 
+// Aplicar formato a la fila de encabezados
+$headerStyle = $sheet->getStyle('A' . $row . ':D' . $row);
+$headerStyle->getFont()->setBold(true);
+$headerStyle->getFont()->setColor(new Color(Color::COLOR_RED));
+
+// Ajustar el ancho de la columna A al ancho de 95px
+$sheet->getColumnDimension('A')->setWidth(95);
+
 // Llenar la segunda tabla con los datos de Incidentes CAU
 $row++;
 foreach ($incidentesCAU as $item) {
@@ -60,6 +77,12 @@ foreach ($incidentesCAU as $item) {
     // Agregar más datos aquí
     $row++;
 }
+
+// Ajustar el ancho de las columnas al contenido
+$sheet->getColumnDimension('B')->setAutoSize(true);
+$sheet->getColumnDimension('C')->setAutoSize(true);
+$sheet->getColumnDimension('D')->setAutoSize(true);
+// Ajustar más columnas aquí
 
 // Guardar la hoja de cálculo en un archivo
 $writer = new Xlsx($spreadsheet);
