@@ -1,43 +1,88 @@
-DELIMITER //
-CREATE FUNCTION procesar_fecha(fecha_inicial DATE) RETURNS VARCHAR(100)
-BEGIN
-    DECLARE dia_semana INT;
-    DECLARE fecha_inicio DATE;
-    DECLARE fecha_fin DATE;
-    DECLARE resultado VARCHAR(100);
-    
-    SET dia_semana = WEEKDAY(fecha_inicial);
-    
-    CASE
-        WHEN dia_semana = 0 THEN
-            SET fecha_inicio = DATE_SUB(fecha_inicial, INTERVAL 2 DAY);
-            SET fecha_fin = DATE_ADD(fecha_inicial, INTERVAL 3 DAY);
-        WHEN dia_semana = 1 THEN
-            SET fecha_inicio = DATE_SUB(fecha_inicial, INTERVAL 4 DAY);
-            SET fecha_fin = DATE_ADD(fecha_inicial, INTERVAL 2 DAY);
-        WHEN dia_semana = 2 THEN
-            SET fecha_inicio = DATE_SUB(fecha_inicial, INTERVAL 5 DAY);
-            SET fecha_fin = DATE_ADD(fecha_inicial, INTERVAL 1 DAY);
-        WHEN dia_semana = 3 THEN
-            SET fecha_inicio = DATE_SUB(fecha_inicial, INTERVAL 6 DAY);
-            SET fecha_fin = fecha_inicial;
-        WHEN dia_semana = 4 THEN
-            SET fecha_inicio = fecha_inicial;
-            SET fecha_fin = DATE_ADD(fecha_inicial, INTERVAL 6 DAY);
-        WHEN dia_semana = 5 THEN
-            SET fecha_inicio = DATE_SUB(fecha_inicial, INTERVAL 1 DAY);
-            SET fecha_fin = DATE_ADD(fecha_inicial, INTERVAL 5 DAY);
-        WHEN dia_semana = 6 THEN
-            SET fecha_inicio = DATE_SUB(fecha_inicial, INTERVAL 2 DAY);
-            SET fecha_fin = DATE_ADD(fecha_inicial, INTERVAL 4 DAY);
-    END CASE;
-    
-    SET resultado = CONCAT(
-        DAY(fecha_inicio), '/', MONTH(fecha_inicio), ' - ',
-        DAY(fecha_fin), '/', MONTH(fecha_fin)
-    );
-    
-    RETURN resultado;
-END;
-//
-DELIMITER ;
+Tengo la siguiente funcion que genera un archivo de excel con PHPSpreadSheet, requiero la modifiques en que los titulos vayan centrados y fuente color rojo, si es posible fijar la primera fila de los titulos y agregarles la opcion de filtro y en la opcion donde el campo de estatus es vencido quiero que el formato aplique desde la columna a hasta la ultima columna 
+private function saveReportSDKCAU($data, $namefile)
+    {
+        $semanal = $data[0]['SEMANAL'];
+
+        if ($namefile == 'CAU_INC') {
+            $fileName = 'CAU Reporte Incidentes';
+        } elseif ($namefile == 'CAU_INCK') {
+            $fileName = 'CAU Reporte Incidentes KS';
+        } elseif ($namefile == 'CAU_SOL') {
+            $fileName = 'CAU Reporte Solicitudes';
+        } elseif ($namefile == 'SDK_INC') {
+            $fileName = 'SDK Reporte Incidentes';
+        } elseif ($namefile == 'SDK_INCK') {
+            $fileName = 'SDK Reporte Incidentes KS';
+        } elseif ($namefile == 'SDK_SOL') {
+            $fileName = 'SDK Reporte Solicitudes';
+        }
+
+        $saveFile = $fileName . ' ' . $semanal;
+
+        $filePath = '../xlsx/weeklyReports/' . $saveFile . '.xlsx';
+        unlink($filePath);
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setTitle($namefile);
+
+        // Obtener las claves del primer registro para generar las columnas
+        $firstRecord = reset($data);
+        $columns = array_keys($firstRecord);
+
+        // Escribir los encabezados de las columnas en la primera fila de la hoja
+        $columnIndex = 1;
+        foreach ($columns as $column) {
+            $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . '1';
+            $sheet->setCellValue($cellCoordinate, $column);
+            $columnIndex++;
+        }
+
+        $rowIndex = 2; // Comenzar a partir de la segunda fila, ya que la primera fila contiene los encabezados
+        foreach ($data as $record) {
+            $columnIndex = 1;
+            foreach ($record as $value) {
+                $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . $rowIndex;
+                $sheet->setCellValue($cellCoordinate, $value);
+                $statusCell = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex(array_search('Estatus', $columns) + 1) . $rowIndex;
+
+                // Aplicar formato a toda la fila cuando el campo "Estatus" sea "VENCIDO" (Color de fuente rojo)
+                if ($sheet->getCell($statusCell)->getValue() === 'VENCIDO') {
+                    $sheet->getStyle($cellCoordinate)->getFont()->getColor()->setRGB('FF0000');
+                }
+
+                $columnIndex++;
+            }
+            $rowIndex++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        $writer->save($filePath);
+
+        if (file_exists($filePath)) {
+            $fileCreationTime = filectime($filePath);
+            if ($fileCreationTime > 0) {
+                $formattedCreationTime = date('Y-m-d H:i:s', $fileCreationTime);
+                $response = array(
+                    "code" => "204",
+                    'mnj' => 'El archivo se ha generado y guardado correctamente.',
+                    'status' => 'success',
+                    'file_url' => $filePath,
+                    'creation_time' => $formattedCreationTime
+                );
+            } else {
+                $response = array(
+                    "code" => "204",
+                    "mnj" => "Hubo un problema al generar y guardar el archivo.",
+                    'status' => 'error'
+                );
+            }
+        } else {
+            $response = array(
+                "code" => "204",
+                "mnj" => "El archivo no se pudo guardar en la ubicación especificada.",
+                'status' => 'error'
+            );
+        }
+
+        return $response;
+    }
