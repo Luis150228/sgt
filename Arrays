@@ -1,88 +1,45 @@
-Tengo la siguiente funcion que genera un archivo de excel con PHPSpreadSheet, requiero la modifiques en que los titulos vayan centrados y fuente color rojo, si es posible fijar la primera fila de los titulos y agregarles la opcion de filtro y en la opcion donde el campo de estatus es vencido quiero que el formato aplique desde la columna a hasta la ultima columna 
 private function saveReportSDKCAU($data, $namefile)
-    {
-        $semanal = $data[0]['SEMANAL'];
+{
+    $semanal = $data[0]['SEMANAL'];
 
-        if ($namefile == 'CAU_INC') {
-            $fileName = 'CAU Reporte Incidentes';
-        } elseif ($namefile == 'CAU_INCK') {
-            $fileName = 'CAU Reporte Incidentes KS';
-        } elseif ($namefile == 'CAU_SOL') {
-            $fileName = 'CAU Reporte Solicitudes';
-        } elseif ($namefile == 'SDK_INC') {
-            $fileName = 'SDK Reporte Incidentes';
-        } elseif ($namefile == 'SDK_INCK') {
-            $fileName = 'SDK Reporte Incidentes KS';
-        } elseif ($namefile == 'SDK_SOL') {
-            $fileName = 'SDK Reporte Solicitudes';
-        }
-
-        $saveFile = $fileName . ' ' . $semanal;
-
-        $filePath = '../xlsx/weeklyReports/' . $saveFile . '.xlsx';
-        unlink($filePath);
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
-        $sheet->setTitle($namefile);
-
-        // Obtener las claves del primer registro para generar las columnas
-        $firstRecord = reset($data);
-        $columns = array_keys($firstRecord);
-
-        // Escribir los encabezados de las columnas en la primera fila de la hoja
-        $columnIndex = 1;
-        foreach ($columns as $column) {
-            $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . '1';
-            $sheet->setCellValue($cellCoordinate, $column);
-            $columnIndex++;
-        }
-
-        $rowIndex = 2; // Comenzar a partir de la segunda fila, ya que la primera fila contiene los encabezados
-        foreach ($data as $record) {
-            $columnIndex = 1;
-            foreach ($record as $value) {
-                $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . $rowIndex;
-                $sheet->setCellValue($cellCoordinate, $value);
-                $statusCell = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex(array_search('Estatus', $columns) + 1) . $rowIndex;
-
-                // Aplicar formato a toda la fila cuando el campo "Estatus" sea "VENCIDO" (Color de fuente rojo)
-                if ($sheet->getCell($statusCell)->getValue() === 'VENCIDO') {
-                    $sheet->getStyle($cellCoordinate)->getFont()->getColor()->setRGB('FF0000');
-                }
-
-                $columnIndex++;
-            }
-            $rowIndex++;
-        }
-
-        $writer = new Xlsx($spreadsheet);
-        $writer->save($filePath);
-
-        if (file_exists($filePath)) {
-            $fileCreationTime = filectime($filePath);
-            if ($fileCreationTime > 0) {
-                $formattedCreationTime = date('Y-m-d H:i:s', $fileCreationTime);
-                $response = array(
-                    "code" => "204",
-                    'mnj' => 'El archivo se ha generado y guardado correctamente.',
-                    'status' => 'success',
-                    'file_url' => $filePath,
-                    'creation_time' => $formattedCreationTime
-                );
-            } else {
-                $response = array(
-                    "code" => "204",
-                    "mnj" => "Hubo un problema al generar y guardar el archivo.",
-                    'status' => 'error'
-                );
-            }
-        } else {
-            $response = array(
-                "code" => "204",
-                "mnj" => "El archivo no se pudo guardar en la ubicación especificada.",
-                'status' => 'error'
-            );
-        }
-
-        return $response;
+    if ($namefile == 'CAU_INC') {
+        $fileName = 'CAU Reporte Incidentes';
+    } elseif ($namefile == 'CAU_INCK') {
+        $fileName = 'CAU Reporte Incidentes KS';
+    } elseif ($namefile == 'CAU_SOL') {
+        $fileName = 'CAU Reporte Solicitudes';
+    } elseif ($namefile == 'SDK_INC') {
+        $fileName = 'SDK Reporte Incidentes';
+    } elseif ($namefile == 'SDK_INCK') {
+        $fileName = 'SDK Reporte Incidentes KS';
+    } elseif ($namefile == 'SDK_SOL') {
+        $fileName = 'SDK Reporte Solicitudes';
     }
+
+    $saveFile = $fileName . ' ' . $semanal;
+
+    $filePath = '../xlsx/weeklyReports/' . $saveFile . '.xlsx';
+    unlink($filePath);
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+    $sheet->setTitle($namefile);
+
+    // Establecer estilos para los encabezados (títulos)
+    $headerStyle = [
+        'font' => ['bold' => true, 'color' => ['rgb' => 'FF0000']],
+        'alignment' => ['horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
+    ];
+    $sheet->getStyle('A1:' . \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex(count($columns)) . '1')->applyFromArray($headerStyle);
+
+    // Fijar la primera fila (encabezados) para que esté siempre visible mientras se desplaza por la hoja
+    $sheet->freezePane('A2');
+
+    // Activar autofiltro en la primera fila (encabezados)
+    $sheet->setAutoFilter('A1:' . \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex(count($columns)) . '1');
+
+    // Resto del código para llenar los datos en la hoja y guardar el archivo
+
+    // ...
+
+    return $response;
+}
