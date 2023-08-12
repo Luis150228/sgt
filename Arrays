@@ -1,411 +1,73 @@
-Array
-(
-[0] => Array
-(
-[ticket] => SCTASK11515324
-[id_externo] => RITM009858663
-[fecha_envio] => 2023-07-21 14:55:12
-[fecha_cierre] => 2023-08-09 04:19:19
-[time] => 9334
-[nivel1] => Instalación de Software solicitado
-[nivel2] => Instalación de Software
-[nivel3] =>
-[grupo_asignado] => EUT Resolutores SDK
-[resuelto] => 2023-08-09 04:19:19
-[estatus] => VENCIDO
-[type] => Solicitudes SDK
-[SEMANAL] => 04 AGO - 10 AGO
-)
+require 'vendor/autoload.php';
 
-[1] => Array
-(
-[ticket] => SCTASK11558573
-[id_externo] => RITM009895413
-[fecha_envio] => 2023-07-26 13:28:39
-[fecha_cierre] => 2023-08-08 18:48:39
-[time] => 7070
-[nivel1] => Instalación de Software solicitado
-[nivel2] => Instalación de Software
-[nivel3] =>
-[grupo_asignado] => EUT Resolutores SDK
-[resuelto] => 2023-08-08 18:48:39
-[estatus] => VENCIDO
-[type] => Solicitudes SDK
-[SEMANAL] => 04 AGO - 10 AGO
-)
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 
-[2] => Array
-(
-[ticket] => SCTASK11558215
-[id_externo] => RITM009895112
-[fecha_envio] => 2023-07-26 12:58:35
-[fecha_cierre] => 2023-08-07 15:52:27
-[time] => 6173
-[nivel1] => Backup Information between Equipments Request Fulfillment
-[nivel2] => Solicitud de Respaldo de información entre equipos
-[nivel3] =>
-[grupo_asignado] => EUT Resolutores SDK
-[resuelto] => 2023-08-07 15:52:27
-[estatus] => VENCIDO
-[type] => Solicitudes SDK
-[SEMANAL] => 04 AGO - 10 AGO
-)
+$data = /* Tu array de datos aquí */;
 
-[3] => Array
-(
-[ticket] => SCTASK11597559
-[id_externo] => RITM009929680
-[fecha_envio] => 2023-07-31 11:23:03
-[fecha_cierre] => 2023-08-10 14:02:58
-[time] => 6159
-[nivel1] => Software Replication Request Fulfillment
-[nivel2] => Replicación de software
-[nivel3] =>
-[grupo_asignado] => EUT Resolutores SDK
-[resuelto] => 2023-08-10 14:02:58
-[estatus] => VENCIDO
-[type] => Solicitudes SDK
-[SEMANAL] => 04 AGO - 10 AGO
-)
+$spreadsheet = new Spreadsheet();
+$sheetNames = array('Incidentes', 'Solicitudes');
 
-[4] => Array
-(
-[ticket] => SCTASK11560263
-[id_externo] => RITM009896930
-[fecha_envio] => 2023-07-26 16:35:07
-[fecha_cierre] => 2023-08-07 17:15:55
-[time] => 6040
-[nivel1] => Browsers Request Fulfillment
-[nivel2] => Solicitudes en Navegadores
-[nivel3] =>
-[grupo_asignado] => EUT Resolutores SDK
-[resuelto] => 2023-08-07 17:15:54
-[estatus] => VENCIDO
-[type] => Solicitudes SDK
-[SEMANAL] => 04 AGO - 10 AGO
-)
+foreach ($sheetNames as $sheetName) {
+    $sheet = $spreadsheet->createSheet();
+    $spreadsheet->setActiveSheetIndexByName($sheetName);
+    $activeSheet = $spreadsheet->getActiveSheet();
 
-[5] => Array
-(
-[ticket] => SCTASK11641839
-[id_externo] => RITM009967757
-[fecha_envio] => 2023-08-03 12:21:13
-[fecha_cierre] => 2023-08-10 17:04:13
-[time] => 4033
-[nivel1] => Fulfill tasks for ServiceNow Request
-[nivel2] => Instalación / configuración de software
-[nivel3] =>
-[grupo_asignado] => EUT Resolutores SDK
-[resuelto] => 2023-08-10 17:04:13
-[estatus] => VENCIDO
-[type] => Solicitudes SDK
-[SEMANAL] => 04 AGO - 10 AGO
-)
+    $activeSheet->setCellValue('A1', "Cumplimiento de $sheetName Atendidos Via Remota vs Sitio");
+    $activeSheet->getStyle('A1')->getFont()->setBold(true);
+    
+    $activeSheet->setCellValue('A2', "Consulta del periodo " . date('Y') . " del " . $data[0]['SEMANAL']);
+    
+    $activeSheet->setCellValue('A4', 'Estatus');
+    $activeSheet->setCellValue('B4', 'Folios');
+    $activeSheet->setCellValue('C4', '% Meta');
+    $activeSheet->setCellValue('D4', '% Alcance');
 
-[6] => Array
-(
-[ticket] => SCTASK11673089
-[id_externo] => RITM009994354
-[fecha_envio] => 2023-08-07 15:59:20
-[fecha_cierre] => 2023-08-07 17:36:17
-[time] => 96
-[nivel1] => Solicitud de configurar impresora
-[nivel2] => Instalación / configuración de software
-[nivel3] =>
-[grupo_asignado] => EUT CAU Metro Edificios
-[resuelto] => 2023-08-07 17:36:17
-[estatus] => EN TIEMPO
-[type] => Solicitudes CAU
-[SEMANAL] => 04 AGO - 10 AGO
-)
+    $activeSheet->setCellValue('A5', 'Via Remota');
+    $activeSheet->setCellValue('B5', count($incidentesSDK));
+    $activeSheet->setCellValue('C5', 'Mayor 70.00');
+    $activeSheet->setCellValue('D5', number_format($porcentajeIncidentesSDK, 2));
+    
+    $activeSheet->setCellValue('A6', 'En Sitio');
+    $activeSheet->setCellValue('B6', count($incidentesCAU));
+    $activeSheet->setCellValue('C6', 'Menor 30.00');
+    $activeSheet->setCellValue('D6', number_format($porcentajeIncidentesCAU, 2));
+    
+    $activeSheet->setCellValue('A7', 'Total General');
+    $activeSheet->setCellValue('B7', $totalIncidentes);
 
-[7] => Array
-(
-[ticket] => SCTASK11682646
-[id_externo] => RITM010002725
-[fecha_envio] => 2023-08-08 09:15:53
-[fecha_cierre] => 2023-08-10 08:39:17
-[time] => 1463
-[nivel1] => Fulfill tasks for ServiceNow Request
-[nivel2] => Instalación / configuración de software
-[nivel3] =>
-[grupo_asignado] => EUT CAU Metro Edificios
-[resuelto] => 2023-08-10 08:39:17
-[estatus] => EN TIEMPO
-[type] => Solicitudes CAU
-[SEMANAL] => 04 AGO - 10 AGO
-)
+    $activeSheet->getStyle('A4:D4')->getFont()->setBold(true);
+    $activeSheet->getStyle('A5:A7')->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setARGB('FFFF0000'); // Red background
+    $activeSheet->getStyle('A5:A7')->getFont()->setColor(new \PhpOffice\PhpSpreadsheet\Style\Color(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE));
+    
+    $row = 9;
+    $isRedBackground = false;
 
-[8] => Array
-(
-[ticket] => SCTASK11684215
-[id_externo] => RITM010004106
-[fecha_envio] => 2023-08-08 11:07:25
-[fecha_cierre] => 2023-08-09 18:40:00
-[time] => 1202
-[nivel1] => Fulfill tasks for ServiceNow Request
-[nivel2] => Instalación / configuración de software
-[nivel3] =>
-[grupo_asignado] => EUT CAU Metro Edificios
-[resuelto] => 2023-08-09 18:40:00
-[estatus] => EN TIEMPO
-[type] => Solicitudes CAU
-[SEMANAL] => 04 AGO - 10 AGO
-)
+    foreach ($data as $item) {
+        if ($sheetName === 'Incidentes' && $item['type'] === 'Incidentes CAU') {
+            if ($item['estatus'] === 'VENCIDO') {
+                $activeSheet->getStyle('A' . $row . ':D' . $row)->getFont()->setColor(new \PhpOffice\PhpSpreadsheet\Style\Color(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED));
+            }
+            if ($isRedBackground) {
+                $activeSheet->getStyle('A' . $row)->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setARGB('FFFF0000'); // Red background
+            }
+        } else if ($sheetName === 'Solicitudes' && $item['type'] === 'Solicitudes CAU') {
+            if ($item['estatus'] === 'VENCIDO') {
+                $activeSheet->getStyle('A' . $row . ':D' . $row)->getFont()->setColor(new \PhpOffice\PhpSpreadsheet\Style\Color(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED));
+            }
+            if ($isRedBackground) {
+                $activeSheet->getStyle('A' . $row)->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setARGB('FFFF0000'); // Red background
+            }
+        }
 
-[9] => Array
-(
-[ticket] => SCTASK11710900
-[id_externo] => RITM010027033
-[fecha_envio] => 2023-08-10 09:29:32
-[fecha_cierre] => 2023-08-10 11:00:17
-[time] => 90
-[nivel1] => INSTALACIÓN DE SOFTWARE
-[nivel2] => Instalación / configuración de software
-[nivel3] =>
-[grupo_asignado] => EUT CAU Metro Edificios
-[resuelto] => 2023-08-10 11:00:17
-[estatus] => EN TIEMPO
-[type] => Solicitudes CAU
-[SEMANAL] => 04 AGO - 10 AGO
-)
+        $activeSheet->setCellValue('A' . $row, $item['estatus']);
+        $activeSheet->setCellValue('B' . $row, $item['ticket']);
+        $row++;
+    }
+    $spreadsheet->getActiveSheet()->setTitle($sheetName);
+}
 
-[10] => Array
-(
-[ticket] => SCTASK11627052
-[id_externo] => RITM009955164
-[fecha_envio] => 2023-08-02 11:55:55
-[fecha_cierre] => 2023-08-04 11:46:26
-[time] => 1490
-[nivel1] => Fulfill tasks for ServiceNow Request
-[nivel2] => Instalación / configuración de software
-[nivel3] =>
-[grupo_asignado] => EUT CAU Centro
-[resuelto] => 2023-08-04 11:46:26
-[estatus] => EN TIEMPO
-[type] => Solicitudes CAU
-[SEMANAL] => 04 AGO - 10 AGO
-)
-
-[11] => Array
-(
-[ticket] => SCTASK11627061
-[id_externo] => RITM009955173
-[fecha_envio] => 2023-08-02 11:56:42
-[fecha_cierre] => 2023-08-04 11:48:07
-[time] => 1491
-[nivel1] => Fulfill tasks for ServiceNow Request
-[nivel2] => Instalación / configuración de software
-[nivel3] =>
-[grupo_asignado] => EUT CAU Centro
-[resuelto] => 2023-08-04 11:48:07
-[estatus] => EN TIEMPO
-[type] => Solicitudes CAU
-[SEMANAL] => 04 AGO - 10 AGO
-)
-
-[12] => Array
-(
-[ticket] => INC036205124
-[id_externo] => INC036205124
-[fecha_envio] => 2023-08-04 10:32:27
-[fecha_cierre] => 0000-00-00 00:00:00
-[time] => 1709
-[nivel1] => Software Usuario Final
-[nivel2] => Software
-[nivel3] => Aplicación
-[grupo_asignado] => EUT Resolutores SDK
-[resuelto] => 2023-08-08 14:01:47
-[estatus] => VENCIDO
-[type] => Incidentes SDK
-[SEMANAL] => 04 AGO - 10 AGO
-)
-
-[13] => Array
-(
-[ticket] => INC036241913
-[id_externo] => INC036241913
-[fecha_envio] => 2023-08-07 08:39:00
-[fecha_cierre] => 0000-00-00 00:00:00
-[time] => 1599
-[nivel1] => Software Usuario Final
-[nivel2] => Office 365 - Herramientas colaborativas (Teams, Sharepoint, etc…)
-[nivel3] =>
-[grupo_asignado] => EUT Resolutores SDK
-[resuelto] => 2023-08-09 10:18:55
-[estatus] => VENCIDO
-[type] => Incidentes SDK
-[SEMANAL] => 04 AGO - 10 AGO
-)
-
-[14] => Array
-(
-[ticket] => INC036210766
-[id_externo] => INC036210766
-[fecha_envio] => 2023-08-04 17:15:57
-[fecha_cierre] => 0000-00-00 00:00:00
-[time] => 1539
-[nivel1] => Software Usuario Final
-[nivel2] => Software
-[nivel3] =>
-[grupo_asignado] => EUT Resolutores SDK
-[resuelto] => 2023-08-08 17:55:32
-[estatus] => VENCIDO
-[type] => Incidentes SDK
-[SEMANAL] => 04 AGO - 10 AGO
-)
-
-[15] => Array
-(
-[ticket] => INC036245966
-[id_externo] => INC036245966
-[fecha_envio] => 2023-08-07 12:01:52
-[fecha_cierre] => 0000-00-00 00:00:00
-[time] => 1418
-[nivel1] => Software Usuario Final
-[nivel2] => Software
-[nivel3] =>
-[grupo_asignado] => EUT Resolutores SDK
-[resuelto] => 2023-08-09 10:39:56
-[estatus] => VENCIDO
-[type] => Incidentes SDK
-[SEMANAL] => 04 AGO - 10 AGO
-)
-
-[16] => Array
-(
-[ticket] => INC036288517
-[id_externo] => INC036288517
-[fecha_envio] => 2023-08-09 08:45:20
-[fecha_cierre] => 0000-00-00 00:00:00
-[time] => 1362
-[nivel1] => Software Usuario Final
-[nivel2] => Office 365 - Herramientas colaborativas (Teams, Sharepoint, etc…)
-[nivel3] =>
-[grupo_asignado] => EUT Resolutores SDK
-[resuelto] => 2023-08-10 18:57:47
-[estatus] => VENCIDO
-[type] => Incidentes SDK
-[SEMANAL] => 04 AGO - 10 AGO
-)
-
-[17] => Array
-(
-[ticket] => INC036184254
-[id_externo] => INC036184254
-[fecha_envio] => 2023-08-03 12:06:44
-[fecha_cierre] => 0000-00-00 00:00:00
-[time] => 1027
-[nivel1] => Software Usuario Final
-[nivel2] => Office 365 - Herramientas colaborativas (Teams, Sharepoint, etc…)
-[nivel3] =>
-[grupo_asignado] => EUT Resolutores SDK
-[resuelto] => 2023-08-04 16:44:42
-[estatus] => VENCIDO
-[type] => Incidentes SDK
-[SEMANAL] => 04 AGO - 10 AGO
-)
-
-[18] => Array
-(
-[ticket] => INC036244888
-[id_externo] =>
-[fecha_envio] => 2023-08-07 11:01:50
-[fecha_cierre] => 0000-00-00 00:00:00
-[time] => 116
-[nivel1] => Software Usuario Final
-[nivel2] => Office 365 - Herramientas colaborativas (Teams, Sharepoint, etc…)
-[nivel3] => Aplicación
-[grupo_asignado] => EUT CAU Centro
-[resuelto] => 2023-08-07 12:58:33
-[estatus] => EN TIEMPO
-[type] => Incidentes CAU
-[SEMANAL] => 04 AGO - 10 AGO
-)
-
-[19] => Array
-(
-[ticket] => INC036265815
-[id_externo] =>
-[fecha_envio] => 2023-08-08 08:40:44
-[fecha_cierre] => 0000-00-00 00:00:00
-[time] => 92
-[nivel1] => Software Usuario Final
-[nivel2] => Office 365 - Herramientas colaborativas (Teams, Sharepoint, etc…)
-[nivel3] =>
-[grupo_asignado] => EUT CAU Centro
-[resuelto] => 2023-08-08 10:13:26
-[estatus] => EN TIEMPO
-[type] => Incidentes CAU
-[SEMANAL] => 04 AGO - 10 AGO
-)
-
-[20] => Array
-(
-[ticket] => INC036265896
-[id_externo] =>
-[fecha_envio] => 2023-08-08 08:44:25
-[fecha_cierre] => 0000-00-00 00:00:00
-[time] => 136
-[nivel1] => Software Usuario Final
-[nivel2] => Office 365 - Herramientas colaborativas (Teams, Sharepoint, etc…)
-[nivel3] =>
-[grupo_asignado] => EUT CAU Centro
-[resuelto] => 2023-08-08 11:00:38
-[estatus] => EN TIEMPO
-[type] => Incidentes CAU
-[SEMANAL] => 04 AGO - 10 AGO
-)
-
-[21] => Array
-(
-[ticket] => INC036272439
-[id_externo] =>
-[fecha_envio] => 2023-08-08 15:03:54
-[fecha_cierre] => 0000-00-00 00:00:00
-[time] => 520
-[nivel1] => Software Usuario Final
-[nivel2] => Branch Software
-[nivel3] =>
-[grupo_asignado] => EUT CAU Centro
-[resuelto] => 2023-08-09 11:14:36
-[estatus] => VENCIDO
-[type] => Incidentes CAU
-[SEMANAL] => 04 AGO - 10 AGO
-)
-
-[22] => Array
-(
-[ticket] => INC036287835
-[id_externo] =>
-[fecha_envio] => 2023-08-09 08:14:58
-[fecha_cierre] => 0000-00-00 00:00:00
-[time] => 105
-[nivel1] => Software Usuario Final
-[nivel2] => Office 365 - Herramientas colaborativas (Teams, Sharepoint, etc…)
-[nivel3] =>
-[grupo_asignado] => EUT CAU Centro
-[resuelto] => 2023-08-09 10:00:55
-[estatus] => EN TIEMPO
-[type] => Incidentes CAU
-[SEMANAL] => 04 AGO - 10 AGO
-)
-
-[23] => Array
-(
-[ticket] => INC036315766
-[id_externo] =>
-[fecha_envio] => 2023-08-10 14:11:07
-[fecha_cierre] => 0000-00-00 00:00:00
-[time] => 37
-[nivel1] => Software Usuario Final
-[nivel2] => Office 365 - Herramientas colaborativas (Teams, Sharepoint, etc…)
-[nivel3] => Desconocido
-[grupo_asignado] => EUT CAU Centro
-[resuelto] => 2023-08-10 14:48:29
-[estatus] => EN TIEMPO
-[type] => Incidentes CAU
-[SEMANAL] => 04 AGO - 10 AGO
-)
-
-)
+$writer = new Xlsx($spreadsheet);
+$writer->save('incidentes_solicitudes.xlsx');
