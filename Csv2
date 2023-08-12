@@ -1,25 +1,32 @@
-<?php
-$archivo_csv = 'datos.csv';
+$incidentesCAU = array_filter($data, function($item) {
+    return $item['type'] === 'Incidentes CAU';
+});
 
-// Abrir el archivo CSV en modo lectura
-if (($handle = fopen($archivo_csv, 'r')) !== false) {
-    // Leer los datos línea por línea y procesarlos
-    while (($data = fgetcsv($handle, 1000, ',')) !== false) {
-        // Quuitar comillas dobles de cada elemento del array $data
-        $data = array_map(function ($value) {
-            return str_replace('"', '', $value);
-        }, $data);
+$incidentesSDK = array_filter($data, function($item) {
+    return $item['type'] === 'Incidentes SDK';
+});
 
-        // Realizar ajustes en los datos
-        $nombre = $data[0];
-        $edad = $data[1];
-        $ciudad = $data[2];
+$solicitudesCAU = array_filter($data, function($item) {
+    return $item['type'] === 'Solicitudes CAU';
+});
 
-        // Aquí puedes realizar cualquier acción con los datos, por ejemplo, mostrarlos en pantalla
-        echo "Nombre: $nombre, Edad: $edad, Ciudad: $ciudad<br>";
-    }
-    fclose($handle);
-} else {
-    echo "Error al abrir el archivo CSV";
-}
-?>
+$solicitudesSDK = array_filter($data, function($item) {
+    return $item['type'] === 'Solicitudes SDK';
+});
+
+$totalIncidentes = count($incidentesCAU) + count($incidentesSDK);
+$totalSolicitudes = count($solicitudesCAU) + count($solicitudesSDK);
+
+$porcentajeIncidentesCAU = (count($incidentesCAU) / $totalIncidentes) * 100;
+$porcentajeIncidentesSDK = (count($incidentesSDK) / $totalIncidentes) * 100;
+
+$porcentajeSolicitudesCAU = (count($solicitudesCAU) / $totalSolicitudes) * 100;
+$porcentajeSolicitudesSDK = (count($solicitudesSDK) / $totalSolicitudes) * 100;
+
+echo "Incidentes CAU: " . count($incidentesCAU) . " (" . round($porcentajeIncidentesCAU, 2) . "%)\n";
+echo "Incidentes SDK: " . count($incidentesSDK) . " (" . round($porcentajeIncidentesSDK, 2) . "%)\n";
+echo "Total de Incidentes: " . $totalIncidentes . "\n\n";
+
+echo "Solicitudes CAU: " . count($solicitudesCAU) . " (" . round($porcentajeSolicitudesCAU, 2) . "%)\n";
+echo "Solicitudes SDK: " . count($solicitudesSDK) . " (" . round($porcentajeSolicitudesSDK, 2) . "%)\n";
+echo "Total de Solicitudes: " . $totalSolicitudes . "\n";
