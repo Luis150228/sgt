@@ -1,3 +1,14 @@
+const input = `...tu cadena de entrada...`; // Aquí deberías poner la cadena completa
+const lines = input.split("\n");
+
+const parsedData = lines.map(line => {
+    return line.match(/(".*?"|[^,]+)(?=,|$)/g);
+});
+
+console.log(parsedData);
+
+
+
 tengo la siguiente cadena es un archivo dividido por , comas pero en algunos casos variables hay registros que estan envueltos en "" por el ejemplo en la linea 6 ,761.78,208.36,"1,063.50",309.71,401.08, esto genera una falla y crea una columna de mas ya que estoy dividiendo las columnas por let columnas = fila.split(/\,/); quiero evitar que se cree esa columna extra ya que deben ser 99 columnas solamente
 
 VQ_987_DESBLOQUEO_SIP,KPIS,TalkTime,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:02:58,00:00:00,00:00:00,00:05:33,00:00:02,00:00:00,00:00:00,00:34:19,00:33:51,00:14:15,00:27:37,01:48:37,01:10:25,01:21:05,01:16:08,01:01:44,01:39:39,01:16:46,00:49:12,00:46:26,01:11:23,00:16:42,00:29:24,01:09:06,01:40:45,00:56:59,01:02:27,00:32:13,01:19:00,01:16:14,00:35:46,00:58:35,00:30:59,01:32:17,00:34:41,00:20:46,01:15:34,01:53:31,00:37:17,02:21:08,00:35:33,01:19:13,00:52:19,00:34:59,00:59:42,00:28:35,00:33:21,00:17:40,00:16:46,00:05:47,00:25:26,00:21:11,00:03:57,00:15:32,00:14:01,00:36:13,00:05:53,00:20:13,00:00:00,00:00:00,00:00:01,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00
