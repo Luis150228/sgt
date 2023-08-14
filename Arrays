@@ -1,55 +1,19 @@
-ahora tengo el siguiente archivo pero esta dividido por comas entre comillas "," pero hay un campo donde trae comentarios variados y estos pueden incluir ' y  " lo que ocaciona que se creen columnas que no deberian; la primer fila incluye los encabezados que sugieres para dividir este archivo de forma correcta
+puedes apoyarme en ajustar esta funcion para convertirla en su version de async await en lugar de usar promesas
 
-"task_effective_number","number","sys_created_on","work_end","closed_at","closed_by","assignment_group","assigned_to","state","category","subcategory","u_short_description_call","u_request_type","short_description","made_sla","u_zone","location","caller_id","sys_updated_by","calendar_duration","business_duration","company","description","comments_and_work_notes","opened_by","resolved_by","close_code","parent_incident","child_incidents","sys_updated_on","sys_created_by"
-"INC036405180","INC036405180","2023-08-14 08:51:48","","","","TMX_EU_Resolutores_SDK_Zona_2","","Nuevo","Software Usuario Final","Software","Falla Navegador","","Reportes de Navegadores (Microsoft Edge, Google Chrome)","verdadero","Zone 2","SUC. PRINCIPAL TEPATITLAN (4743)","ARTURO BECERRA GARCIA","D708482@santander.com.mx","0","0","Santander México","Variables:
-
-Tipo de Falla: No carga la Pagina
-IP del Equipo: 180.177.216.136
-Correo Electrónico: D708482@santander.com.mx
-Extensión: 37630
-Extensión de Segundo Contacto: 37632
-Especifique en que momento o al hacer que aparece el error: NO CARGA LA PAQUETERIA OFFICE
-Sector/Modulo/Piso: SUC PRINC TEPATITLAN JAL_GSM
-Departamento: Sucursal AA
-Entidad: Sucursal
-Expediente: 439203
-Segundo Contacto: OMAR MEDINA
-Último Acceso Exitoso: Un Día
-Teléfono: 378/786-4468
-Describa de manera clara la Solicitud o Falla que está reportando.: NO CARGA LA PAQUETERIA OFFICE
-","","ARTURO BECERRA GARCIA","","","","0","2023-08-14 08:51:49","D708482@santander.com.mx"
-"INC036405152","INC036405152","2023-08-14 08:50:40","2023-08-14 08:51:43","","","TMX_EU_Resolutores_SDK_Zona_1","CRISTINA GISSEL CRESPO GOMEZ","Resuelto","Software Usuario Final","Software","Falla Navegador","Aplicación","Reportes de Navegadores (Microsoft Edge, Google Chrome)","verdadero","Zone 1","SUC. BOULEVARD AEROPUERTO (2236)","MARIA DOLORES ROMERO ACEVEDO","Z520198@santandertec.mx","63","63","Santander México","Variables:
-
-Tipo de Falla: Otro.
-Correo Electrónico: ecuenta5suc2236@santander.com.mx
-Extensión: 72562
-Extensión de Segundo Contacto: 72562
-Sector/Modulo/Piso: SUC BOULEVARD AEROPUERTO DF_GSM
-Departamento: Sucursal AA
-Entidad: Sucursal
-Expediente: 401154
-Segundo Contacto: MARIA DOLORES ROMERO ACEVEDO
-Último Acceso Exitoso: Un Día
-Teléfono: 72562
-Describa de manera clara la Solicitud o Falla que está reportando.: El IVR no está generando contraseñas de Dominio
-*Se le apoya generando contraseña desde TIM*
-","2023-08-14 08:51:43 - CRISTINA GISSEL CRESPO GOMEZ (Notas de trabajo)
-Resolution has been modified in service Now to:
-
-Request Type: Aplicación
-Resolution Type: Soporte Técnico
-Resolution Code: Solucionado (solución temporal)
-Resolution notes: *** NO SE REALIZA CONEXION REMOTA ***ATENCION REAL: IVR NO PROPORCIONA CONTRASEÑAS
-VOBO:  MARIA DOLORES ROMERO ACEVEDO
-ING: CRISTINA GISSEL CRESPO 
-SOLUCION: SE PROPORCIONA CONTRASEÑA Y LOGRA ACCESAR.
-
-
-
-2023-08-14 08:51:43 - CRISTINA GISSEL CRESPO GOMEZ (Observaciones adicionales)
-Notas de resolución: *** NO SE REALIZA CONEXION REMOTA ***ATENCION REAL: IVR NO PROPORCIONA CONTRASEÑAS
-VOBO:  MARIA DOLORES ROMERO ACEVEDO
-ING: CRISTINA GISSEL CRESPO 
-SOLUCION: SE PROPORCIONA CONTRASEÑA Y LOGRA ACCESAR.
-
-","CRISTINA GISSEL CRESPO GOMEZ","CRISTINA GISSEL CRESPO GOMEZ","Solucionado (solución temporal)","INC036114564","0","2023-08-14 08:51:43","Z520198@santandertec.mx"
+const openFile = (tipo, archivo, tiempo, print, alert, loader, btnalt) => {
+  return new Promise((resolve, reject) => {
+    if (archivo.type != 'text/csv') {
+      console.log('Archivo inválido');
+      reject('Archivo inválido');
+    } else {
+      const lector = new FileReader();
+      lector.onload = (e) => {
+        const contenido = e.target.result;
+        ajustCSV(tipo, contenido, tiempo, print, alert, loader, btnalt)
+          .then((result) => resolve(result))
+          .catch((error) => reject(error));
+      };
+      lector.readAsText(archivo, 'windows-1252');
+    }
+  });
+};
