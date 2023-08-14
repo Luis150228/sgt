@@ -1,4 +1,154 @@
-const openFile = async (tipo, archivo, tiempo, print, alert, loader, btnalt) => {
+tengo el siguiente error dbupdate.js:110 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'data')
+    at HTMLFormElement.<anonymous> (dbupdate.js:110:52)
+
+en el archivo dbupdate.js esta es la linea 110 const getResp = await fetchGet(procesarArchivo.data[0].type, { token: 'sasal', bridge: procesarArchivo.data[0].type });
+for (const [i, frmData] of Array.from(frmDatas).entries()) {
+  frmData.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    // console.log(frmDatas);
+    for (const frmDataObj of frmDatas) {
+      const inpsFile = frmDataObj.querySelectorAll('input[type="file"]');
+      const buttons = frmDataObj.querySelectorAll('button[type="submit"]');
+      // console.log(buttons);
+      for (const button of buttons) {
+        button.style.display = 'none';
+      }
+      for (const inpFile of inpsFile) {
+        inpFile.style.display = 'none';
+      }
+    }
+    const archivo = e.target[0].files[0];
+    const base = e.target.name;
+    const tiempo = mostrarTiempo();
+    btnDisplaynone(btnSumit);
+    btnSumit[i].style.display = 'none';
+    mnsLoad[i].classList.toggle('msj-none');
+    setTimeout(() => {
+      mnsLoad[i].classList.toggle('msj-none');
+      btnsAlt[i].classList.toggle('btn');
+    }, 15000);
+    const procesarArchivo = await openFile(base, archivo, tiempo, BarProgressz[i], mnsAlert[i], mnsLoad[i], btnsAlt[i]);
+    console.log(procesarArchivo);
+    const getResp = await fetchGet(procesarArchivo.data[0].type, { token: 'sasal', bridge: procesarArchivo.data[0].type });
+
+    for (const frmDataObj of frmDatas) {
+      const inpsFile = frmDataObj.querySelectorAll('input[type="file"]');
+      const buttons = frmDataObj.querySelectorAll('button[type="submit"]');
+      // console.log(buttons);
+      for (const button of buttons) {
+        button.style.display = 'block';
+      }
+      for (const inpFile of inpsFile) {
+        inpFile.style.display = 'block';
+      }
+    }
+    pText[i].innerHTML = data.data[0].actualizado == 0 ? 'Sin Cambios' : data.data[0].actualizado;
+    linkDb[i].setAttribute('href', getResp.data[0].link == 0 ? '#' : getResp.data[0].link);
+    mnsLoad[i].classList.toggle('msj-none');
+    mnsAlert[i].classList.toggle('msj-none');
+    setTimeout(() => {
+      mnsAlert[i].classList.toggle('msj-none');
+    }, 10000);
+    btnDisplayBlock(btnSumit);
+    btnSumit[i].style.display = 'block';
+    inpFile[i].value = '';
+    BarProgressz[i].style.display = 'none';
+  });
+}
+
+y la funcion openFile esta en el archivo fileReader.js
+
+import { fetchSaveDatas } from './connect.js';
+
+const ajustCSV = async (tipo, string, tiempo, progressBar, alert, loader, btnalt) => {
+  let regex_pattern;
+  let headerList;
+  let replaceDataA;
+  let replaceDataB;
+  let replaceDataResultA;
+  let replaceDataResultB;
+  let column;
+  if (tipo === 'incidentes') {
+    regex_pattern = /\n\"INC/;
+    replaceDataA = /\'/g;
+    replaceDataB = '';
+    replaceDataResultA = ''
+    replaceDataResultB = ''
+    column = /\",\"/;
+    headerList = '"task_effective_number';
+    
+  } else if (tipo === 'solicitudes') {
+    regex_pattern = /\n\"SCTASK/;
+    replaceDataA = /\'/g;
+    replaceDataB = '';
+    replaceDataResultA = ''
+    replaceDataResultB = ''
+    column = /\",\"/;
+    headerList = '"task_effective_number';
+    
+  } else if (tipo === 'unlocks') {
+    regex_pattern = /\n\"CALL/;
+    replaceDataA = /\'/g;
+    replaceDataB = '';
+    replaceDataResultA = ''
+    replaceDataResultB = ''
+    column = /\",\"/;
+    headerList = '"number';
+    
+  } else if (tipo === 'ccpulse') {
+    regex_pattern = /\r\n/;
+    replaceDataA = /"(\d),/g;
+    replaceDataB = /\",\"/g
+    replaceDataResultA = '$1';
+    replaceDataResultB = ',';
+    // column = /\,/;
+    column = /(".*?"|[^,]+)(?=,|$)/g;
+    headerList = '"number';
+    
+  }
+
+  const registros = async (filas)=>{
+    console.log(filas);
+      const datasUp = [];
+  let partData;
+
+  if (filas.length >= 2000) {
+    partData = 100;
+  } else if (filas.length >= 1000) {
+    partData = 50;
+  } else if (filas.length >= 500) {
+    partData = 20;
+  } else {
+    partData = 10;
+  }
+  // const partData = Math.round(filas.length / 10)
+
+  for (let i = 0; i < filas.length; i += partData) {
+    datasUp.push(filas.slice(i, i + partData));
+  }
+
+  loader.classList.toggle('msj-none');
+
+  let resultado;
+  for (const dataUp of datasUp) {
+    resultado = await fetchSaveDatas(tiempo, tipo, dataUp, filas.length, progressBar, alert, btnalt);
+    // resultado = datasUp
+  }
+  return resultado;
+  // console.log(resultado);
+  }
+
+  Papa.parse (string, {
+    delimiter: ",",
+    header: true,
+    skipEmptyLines: false,
+    complete: async (results)=>{
+      await registros(results.data);      
+    }
+  })
+};
+
+export const openFile = async (tipo, archivo, tiempo, print, alert, loader, btnalt) => {
   if (archivo.type !== 'text/csv') {
     console.log('Archivo inválido');
     throw new Error('Archivo inválido');
@@ -22,25 +172,4 @@ const openFile = async (tipo, archivo, tiempo, print, alert, loader, btnalt) => 
       throw error;
     }
   }
-};
-
-
-puedes apoyarme en ajustar esta funcion para convertirla en su version de async await en lugar de usar promesas
-
-const openFile = (tipo, archivo, tiempo, print, alert, loader, btnalt) => {
-  return new Promise((resolve, reject) => {
-    if (archivo.type != 'text/csv') {
-      console.log('Archivo inválido');
-      reject('Archivo inválido');
-    } else {
-      const lector = new FileReader();
-      lector.onload = (e) => {
-        const contenido = e.target.result;
-        ajustCSV(tipo, contenido, tiempo, print, alert, loader, btnalt)
-          .then((result) => resolve(result))
-          .catch((error) => reject(error));
-      };
-      lector.readAsText(archivo, 'windows-1252');
-    }
-  });
 };
