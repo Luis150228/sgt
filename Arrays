@@ -1,3 +1,30 @@
+const openFile = async (tipo, archivo, tiempo, print, alert, loader, btnalt) => {
+  if (archivo.type !== 'text/csv') {
+    console.log('Archivo inválido');
+    throw new Error('Archivo inválido');
+  } else {
+    const lector = new FileReader();
+    
+    const contenido = await new Promise((resolve, reject) => {
+      lector.onload = (e) => {
+        resolve(e.target.result);
+      };
+      lector.onerror = (e) => {
+        reject(e);
+      };
+      lector.readAsText(archivo, 'windows-1252');
+    });
+
+    try {
+      const result = await ajustCSV(tipo, contenido, tiempo, print, alert, loader, btnalt);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+};
+
+
 puedes apoyarme en ajustar esta funcion para convertirla en su version de async await en lugar de usar promesas
 
 const openFile = (tipo, archivo, tiempo, print, alert, loader, btnalt) => {
