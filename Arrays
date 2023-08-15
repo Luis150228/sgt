@@ -1,1 +1,8 @@
+
+$fecha_original = "29/08/2023 00:00";
+$fecha_objeto = DateTime::createFromFormat('d/m/Y H:i', $fecha_original);
+$fecha_convertida = $fecha_objeto->format('Y-m-d');
+
+echo $fecha_convertida; // Esto imprimirá: 2023-08-29
+
 SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(STR_TO_DATE(duracion_texto, '%H:%i:%s')))) AS tiempo_total_atencion FROM tiempos_atencion;
