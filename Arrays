@@ -1,3 +1,27 @@
+// Tu array original
+$yourArray = [
+    // ... tu contenido aquí ...
+];
+
+// Recorremos el array principal
+foreach ($yourArray as &$innerArray) {
+    // Obtenemos las claves
+    $keys = array_keys($innerArray);
+
+    // Recorremos las claves y modificamos las que tienen formato de fecha
+    foreach ($keys as $key) {
+        if (preg_match('/^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}$/', $key)) {
+            $newKey = substr($key, -5); // Obtenemos los últimos 5 dígitos
+            $innerArray[$newKey] = $innerArray[$key]; // Creamos una nueva clave con los últimos 5 dígitos
+            unset($innerArray[$key]); // Eliminamos la clave anterior
+        }
+    }
+}
+
+// Ahora $yourArray contiene las claves modificadas
+
+/////////////////////////////////////////////////////////////////////////////
+
 en php tengo el siguiente array quiero que donde este el elemento Object vacio poner el Object previo que si tiene valor y adiocional en cada elemento agregar uno nuevo que se llame fecha que tenga el valor del nombre del array 0 [11/08/2023 00:00] 
 
 Array
