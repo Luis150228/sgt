@@ -1,8 +1,60 @@
+php tengo el siguiente array quiero saber la suma de todos los minutos sacar el total de las llamadas y el promedio de minutos por llamada
 
-$fecha_original = "29/08/2023 00:00";
-$fecha_objeto = DateTime::createFromFormat('d/m/Y H:i', $fecha_original);
-$fecha_convertida = $fecha_objeto->format('Y-m-d');
-
-echo $fecha_convertida; // Esto imprimirá: 2023-08-29
-
-SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(STR_TO_DATE(duracion_texto, '%H:%i:%s')))) AS tiempo_total_atencion FROM tiempos_atencion;
+[
+    {
+      "call_id": "CALL2428120",
+      "abierto": "2023-08-04 08:10:28",
+      "actualizado": "2023-08-04 08:20:36",
+      "segundos": "608",
+      "minutos": "10",
+      "cumplimiento": "En Tiempo",
+      "categoria": "LIBERACIONTF",
+      "descripcion": "Liberación de usuario en plataforma",
+      "usuario": "Z520198@santandertec.mx",
+      "nombre": "CRISTINA GISSEL CRESPO GOMEZ",
+      "SEMANA": "04 AGO - 10 AGO",
+      "REPORTE": "unlocks"
+    },
+    {
+      "call_id": "CALL2428277",
+      "abierto": "2023-08-04 08:50:49",
+      "actualizado": "2023-08-04 08:56:51",
+      "segundos": "362",
+      "minutos": "6",
+      "cumplimiento": "En Tiempo",
+      "categoria": "LIBERACIONTF",
+      "descripcion": "Liberacion de usuario en plataforma",
+      "usuario": "Z045580@santandertec.mx",
+      "nombre": "LEONARDO FABIAN MENDOZA ORTIZ",
+      "SEMANA": "04 AGO - 10 AGO",
+      "REPORTE": "unlocks"
+    },
+    {
+      "call_id": "CALL2428309",
+      "abierto": "2023-08-04 08:58:45",
+      "actualizado": "2023-08-04 09:00:40",
+      "segundos": "115",
+      "minutos": "1",
+      "cumplimiento": "En Tiempo",
+      "categoria": "LIBERACIONTF",
+      "descripcion": "Liberacion de usuario en plataforma (TF)",
+      "usuario": "Z703469@santander.com.mx",
+      "nombre": "EFRAIN CORONEL PERALES",
+      "SEMANA": "04 AGO - 10 AGO",
+      "REPORTE": "unlocks"
+    },
+    {
+      "call_id": "CALL2428312",
+      "abierto": "2023-08-04 08:59:12",
+      "actualizado": "2023-08-04 09:01:50",
+      "segundos": "158",
+      "minutos": "2",
+      "cumplimiento": "En Tiempo",
+      "categoria": "LIBERACIONTF",
+      "descripcion": "Liberacion de usuario en plataforma (TF)",
+      "usuario": "Z530213@santandertec.mx",
+      "nombre": "JOSE JOAQUIN VITE ALARCON",
+      "SEMANA": "04 AGO - 10 AGO",
+      "REPORTE": "unlocks"
+    }
+]
