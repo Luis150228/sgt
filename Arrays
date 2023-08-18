@@ -1,60 +1,95 @@
-php tengo el siguiente array quiero saber la suma de todos los minutos sacar el total de las llamadas y el promedio de minutos por llamada
+tengo el siguiente array y quiero mostrar su contenido en phpSpreadSheet
 
-[
-    {
-      "call_id": "CALL2428120",
-      "abierto": "2023-08-04 08:10:28",
-      "actualizado": "2023-08-04 08:20:36",
-      "segundos": "608",
-      "minutos": "10",
-      "cumplimiento": "En Tiempo",
-      "categoria": "LIBERACIONTF",
-      "descripcion": "Liberación de usuario en plataforma",
-      "usuario": "Z520198@santandertec.mx",
-      "nombre": "CRISTINA GISSEL CRESPO GOMEZ",
-      "SEMANA": "04 AGO - 10 AGO",
-      "REPORTE": "unlocks"
-    },
-    {
-      "call_id": "CALL2428277",
-      "abierto": "2023-08-04 08:50:49",
-      "actualizado": "2023-08-04 08:56:51",
-      "segundos": "362",
-      "minutos": "6",
-      "cumplimiento": "En Tiempo",
-      "categoria": "LIBERACIONTF",
-      "descripcion": "Liberacion de usuario en plataforma",
-      "usuario": "Z045580@santandertec.mx",
-      "nombre": "LEONARDO FABIAN MENDOZA ORTIZ",
-      "SEMANA": "04 AGO - 10 AGO",
-      "REPORTE": "unlocks"
-    },
-    {
-      "call_id": "CALL2428309",
-      "abierto": "2023-08-04 08:58:45",
-      "actualizado": "2023-08-04 09:00:40",
-      "segundos": "115",
-      "minutos": "1",
-      "cumplimiento": "En Tiempo",
-      "categoria": "LIBERACIONTF",
-      "descripcion": "Liberacion de usuario en plataforma (TF)",
-      "usuario": "Z703469@santander.com.mx",
-      "nombre": "EFRAIN CORONEL PERALES",
-      "SEMANA": "04 AGO - 10 AGO",
-      "REPORTE": "unlocks"
-    },
-    {
-      "call_id": "CALL2428312",
-      "abierto": "2023-08-04 08:59:12",
-      "actualizado": "2023-08-04 09:01:50",
-      "segundos": "158",
-      "minutos": "2",
-      "cumplimiento": "En Tiempo",
-      "categoria": "LIBERACIONTF",
-      "descripcion": "Liberacion de usuario en plataforma (TF)",
-      "usuario": "Z530213@santandertec.mx",
-      "nombre": "JOSE JOAQUIN VITE ALARCON",
-      "SEMANA": "04 AGO - 10 AGO",
-      "REPORTE": "unlocks"
-    }
-]
+Array
+(
+[0] => Array
+(
+[TIPO] => INC_CAU
+[Zona] => 0
+[cumplimiento] => 0.9192
+[incidentes] => 421
+[validas] => 387
+)
+
+[1] => Array
+(
+[TIPO] => INC_CAU
+[Zona] => 1
+[cumplimiento] => 0.6862
+[incidentes] => 376
+[validas] => 258
+)
+
+[2] => Array
+(
+[TIPO] => INC_CAU
+[Zona] => 2
+[cumplimiento] => 0.6081
+[incidentes] => 74
+[validas] => 45
+)
+
+[3] => Array
+(
+[TIPO] => INC_CAU
+[Zona] => 3
+[cumplimiento] => 0.6667
+[incidentes] => 18
+[validas] => 12
+)
+
+[4] => Array
+(
+[TIPO] => INC_CAU_TOTAL
+[Zona] => -
+[cumplimiento] => 0.789651293
+[incidentes] => 889
+[validas] => 702
+)
+
+[5] => Array
+(
+[TIPO] => INC_SDK
+[Zona] =>
+[cumplimiento] => 0.48826291
+[incidentes] => 213
+[validas] => 104
+)
+
+[6] => Array
+(
+[TIPO] => SOL_CAU
+[Zona] =>
+[cumplimiento] => 0.952261306
+[incidentes] => 398
+[validas] => 379
+)
+
+[7] => Array
+(
+[TIPO] => SOL_SDK
+[Zona] =>
+[cumplimiento] => 0.879746835
+[incidentes] => 158
+[validas] => 139
+)
+
+[8] => Array
+(
+[TIPO] => CAU_K
+[Zona] =>
+[cumplimiento] => 0.064116985
+[incidentes] => 57
+[validas] =>
+)
+
+[9] => Array
+(
+[TIPO] => SDK_K
+[Zona] =>
+[cumplimiento] => 0.014084507
+[incidentes] => 3
+[validas] =>
+)
+
+)
