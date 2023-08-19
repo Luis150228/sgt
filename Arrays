@@ -1,95 +1,17 @@
-tengo el siguiente array y quiero mostrar su contenido en phpSpreadSheet
+<?php
+// Crear una instancia de la aplicación Outlook
+$outlook = new COM('Outlook.Application') or die('Outlook no está instalado.');
 
-Array
-(
-[0] => Array
-(
-[TIPO] => INC_CAU
-[Zona] => 0
-[cumplimiento] => 0.9192
-[incidentes] => 421
-[validas] => 387
-)
+// Crear un nuevo objeto de correo electrónico
+$mail = $outlook->CreateItem(0);
 
-[1] => Array
-(
-[TIPO] => INC_CAU
-[Zona] => 1
-[cumplimiento] => 0.6862
-[incidentes] => 376
-[validas] => 258
-)
+// Configurar el destinatario, asunto y cuerpo del correo
+$mail->Recipients->Add('destinatario@example.com');
+$mail->Subject = 'Asunto del correo';
+$mail->Body = 'Contenido del correo';
 
-[2] => Array
-(
-[TIPO] => INC_CAU
-[Zona] => 2
-[cumplimiento] => 0.6081
-[incidentes] => 74
-[validas] => 45
-)
+// Enviar el correo
+$mail->Send();
 
-[3] => Array
-(
-[TIPO] => INC_CAU
-[Zona] => 3
-[cumplimiento] => 0.6667
-[incidentes] => 18
-[validas] => 12
-)
-
-[4] => Array
-(
-[TIPO] => INC_CAU_TOTAL
-[Zona] => -
-[cumplimiento] => 0.789651293
-[incidentes] => 889
-[validas] => 702
-)
-
-[5] => Array
-(
-[TIPO] => INC_SDK
-[Zona] =>
-[cumplimiento] => 0.48826291
-[incidentes] => 213
-[validas] => 104
-)
-
-[6] => Array
-(
-[TIPO] => SOL_CAU
-[Zona] =>
-[cumplimiento] => 0.952261306
-[incidentes] => 398
-[validas] => 379
-)
-
-[7] => Array
-(
-[TIPO] => SOL_SDK
-[Zona] =>
-[cumplimiento] => 0.879746835
-[incidentes] => 158
-[validas] => 139
-)
-
-[8] => Array
-(
-[TIPO] => CAU_K
-[Zona] =>
-[cumplimiento] => 0.064116985
-[incidentes] => 57
-[validas] =>
-)
-
-[9] => Array
-(
-[TIPO] => SDK_K
-[Zona] =>
-[cumplimiento] => 0.014084507
-[incidentes] => 3
-[validas] =>
-)
-
-)
+echo 'Correo enviado desde Outlook.';
+?>
