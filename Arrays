@@ -1,4 +1,5 @@
 <?php
+extension=php_com_dotnet.dll
 // Crear una instancia de la aplicación Outlook
 $outlook = new COM('Outlook.Application') or die('Outlook no está instalado.');
 
