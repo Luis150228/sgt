@@ -20,3 +20,36 @@ $mail->Send();
 
 echo 'Correo enviado desde Outlook.';
 ?>
+
+<?php
+// Crear una instancia de la aplicación Outlook
+$outlook = new COM('Outlook.Application') or die('Outlook no está instalado.');
+
+// Crear un nuevo objeto de correo electrónico
+$mail = $outlook->CreateItem(0);
+
+// Configurar el destinatario, asunto y cuerpo del correo
+$mail->Recipients->Add('destinatario@example.com');
+$mail->Subject = 'Asunto del correo';
+$mail->Body = 'Contenido del correo';
+
+// Adjuntar archivos desde una carpeta
+$adjuntosDir = 'ruta/de/la/carpeta'; // Ruta a la carpeta que contiene los archivos
+$adjuntos = scandir($adjuntosDir); // Obtener la lista de archivos en la carpeta
+
+foreach ($adjuntos as $archivo) {
+    if ($archivo !== '.' && $archivo !== '..') {
+        $rutaArchivo = $adjuntosDir . '/' . $archivo;
+        $attachment = $mail->Attachments->Add($rutaArchivo);
+    }
+}
+
+// Mostrar la ventana del correo en Outlook para revisar antes de enviar
+$mail->Display = true;
+
+// No enviar automáticamente
+$mail->Send();
+
+echo 'Correo con archivos adjuntos listo para ser revisado y enviado desde Outlook.';
+?>
+
