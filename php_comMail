@@ -1,0 +1,35 @@
+En mi siguinte codigo el texto con acentos aparece de forma incorrecta en el correo poniendo caracteres extraños
+
+
+    private function sendWeeklyReports($datos, $semana, $mes)
+    {
+        // */
+        // Crear una instancia de la aplicación Outlook
+        $outlook = new COM('Outlook.Application') or die('Outlook no está instalado.');
+
+        // Crear un nuevo objeto de correo electrónico
+        $mail = $outlook->CreateItem(0);
+
+        // Configurar el destinatario, asunto y cuerpo del correo
+        $mail->Recipients->Add('C356882@produban.com.mx');
+        $mail->Subject = 'PRELIMINAR: Seguimiento Sonda y Tablero de Control SDK ' . $mes . ' - SEMANA ' . $semana;
+
+        // Adjuntar archivos desde una carpeta
+        $adjuntosDir = $datos['targetFiles']; // Ruta a la carpeta que contiene los archivos
+        $adjuntos = scandir($adjuntosDir); // Obtener la lista de archivos en la carpeta
+
+        foreach ($adjuntos as $archivo) {
+            if ($archivo !== '.' && $archivo !== '..') {
+                $rutaArchivo = $adjuntosDir . '/' . $archivo;
+                $attachment = $mail->Attachments->Add($rutaArchivo);
+            }
+        }
+
+        $mail->Body = 'Buen día a todos;
+
+Favor de enviar sus observaciones a más tardar el Martes a las 10:00, para realizar los ajustes correspondientes.
+';
+        // Enviar el correo
+        $mail->Send();
+        // */
+    }
