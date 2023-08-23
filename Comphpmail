@@ -1,84 +1,22 @@
-const data = [
-  // ... (tus objetos aquí)
-];
-
-const tbody = document.getElementById("telTable").getElementsByTagName("tbody")[0];
-
-const rows = data.map(item => {
-  const row = document.createElement("tr");
-  for (const key in item) {
-    const cell = document.createElement("td");
-    cell.textContent = item[key];
-    row.appendChild(cell);
-  }
-  return row;
-});
-
-tbody.innerHTML = "";
-tbody.append(...rows);
-
-
-
-tengo el siguiente objeto en JS quiero crear una tabla usando map o for of con cada registros usando los siguientes encabezados 
-
-<thead>
-      <tr>
-      <th scope="col">Fecha</th>
-      <th scope="col">Recibidas</th>
-      <th scope="col">Contestadas</th>
-      <th scope="col">Abandono</th>
-      <th scope="col">Abandono < 10seg</th>
-      <th scope="col">% Abandono</th>
-      <th scope="col">AHT Tiempo</th>
-      </tr>
-  </thead>
-[
-    {
-        "fecha": "2023-08-18",
-        "recibidas": "1049",
-        "atendidas": "962",
-        "abandonadas": "87",
-        "abandono_menos10": "18",
-        "prc_abandono": "6.69",
-        "tiempoAHT": "00:06:17",
-        "nummin": "362801",
-        "rangosem": "18 AGO - 24 AGO",
-        "anhio": "2023"
-    },
-    {
-        "fecha": "2023-08-19",
-        "recibidas": "77",
-        "atendidas": "75",
-        "abandonadas": "2",
-        "abandono_menos10": "2",
-        "prc_abandono": "0.00",
-        "tiempoAHT": "00:07:23",
-        "nummin": "33272",
-        "rangosem": "18 AGO - 24 AGO",
-        "anhio": "2023"
-    },
-    {
-        "fecha": "2023-08-20",
-        "recibidas": "26",
-        "atendidas": "25",
-        "abandonadas": "1",
-        "abandono_menos10": "0",
-        "prc_abandono": "3.85",
-        "tiempoAHT": "00:05:34",
-        "nummin": "8354",
-        "rangosem": "18 AGO - 24 AGO",
-        "anhio": "2023"
-    },
-    {
-        "fecha": "2023-08-21",
-        "recibidas": "1810",
-        "atendidas": "1518",
-        "abandonadas": "292",
-        "abandono_menos10": "40",
-        "prc_abandono": "14.24",
-        "tiempoAHT": "00:06:42",
-        "nummin": "610480",
-        "rangosem": "18 AGO - 24 AGO",
-        "anhio": "2023"
+function deleteFoldersInDirectory($directoryPath) {
+    if (!is_dir($directoryPath)) {
+        return; // Si no es un directorio válido, no hay nada que borrar
     }
-]
+
+    $dirContent = scandir($directoryPath);
+
+    foreach ($dirContent as $item) {
+        if ($item != "." && $item != "..") {
+            $itemPath = $directoryPath . DIRECTORY_SEPARATOR . $item;
+
+            if (is_dir($itemPath)) {
+                // Borrar el directorio y su contenido recursivamente
+                deleteFoldersInDirectory($itemPath);
+                rmdir($itemPath); // Borrar el directorio actual
+            }
+        }
+    }
+}
+
+$targetDirectory = "/ruta/del/directorio";
+deleteFoldersInDirectory($targetDirectory);
