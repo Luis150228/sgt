@@ -1,3 +1,24 @@
+const data = [
+  // ... (tus objetos aquí)
+];
+
+const tbody = document.getElementById("telTable").getElementsByTagName("tbody")[0];
+
+const rows = data.map(item => {
+  const row = document.createElement("tr");
+  for (const key in item) {
+    const cell = document.createElement("td");
+    cell.textContent = item[key];
+    row.appendChild(cell);
+  }
+  return row;
+});
+
+tbody.innerHTML = "";
+tbody.append(...rows);
+
+
+
 tengo el siguiente objeto en JS quiero crear una tabla usando map o for of con cada registros usando los siguientes encabezados 
 
 <thead>
