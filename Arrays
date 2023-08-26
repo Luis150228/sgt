@@ -1,55 +1,135 @@
-<?php
+tengo el siguiente objeto y con JS quiero ajustarlo de la sigueinte forma 
 
-Fatal error: Uncaught com_exception: <b>Source:</b> Microsoft Outlook<br/><b>Description:</b> Esta propiedad es de solo lectura. in C:\xampp\htdocs\santecReportsAPI\classes\reportsWeeklyeut.class.php:949 Stack trace: #0 C:\xampp\htdocs\santecReportsAPI\classes\reportsWeeklyeut.class.php(139): valores->saveReportDash(Array, Array, '313 04 AGO - 10...') #1 C:\xampp\htdocs\santecReportsAPI\classes\reportsWeeklyeut.class.php(38): valores->createReportDash('12345766758', 'true', '313 04 AGO - 10...') #2 C:\xampp\htdocs\santecReportsAPI\rutes\reportsWeeklyeut.php(24): valores->createReportsdashboard('12345766758', 'true') #3 {main} thrown in C:\xampp\htdocs\santecReportsAPI\classes\reportsWeeklyeut.class.php on line 949
-
-
-extension=php_com_dotnet.dll
-// Crear una instancia de la aplicación Outlook
-$outlook = new COM('Outlook.Application') or die('Outlook no está instalado.');
-
-// Crear un nuevo objeto de correo electrónico
-$mail = $outlook->CreateItem(0);
-
-// Configurar el destinatario, asunto y cuerpo del correo
-$mail->Recipients->Add('destinatario@example.com');
-$mail->Subject = 'Asunto del correo';
-$mail->Body = 'Contenido del correo';
-
-// Enviar el correo
-$mail->Send();
-
-echo 'Correo enviado desde Outlook.';
-?>
-
-<?php
-// Crear una instancia de la aplicación Outlook
-$outlook = new COM('Outlook.Application') or die('Outlook no está instalado.');
-
-// Crear un nuevo objeto de correo electrónico
-$mail = $outlook->CreateItem(0);
-
-// Configurar el destinatario, asunto y cuerpo del correo
-$mail->Recipients->Add('destinatario@example.com');
-$mail->Subject = 'Asunto del correo';
-$mail->Body = 'Contenido del correo';
-
-// Adjuntar archivos desde una carpeta
-$adjuntosDir = 'ruta/de/la/carpeta'; // Ruta a la carpeta que contiene los archivos
-$adjuntos = scandir($adjuntosDir); // Obtener la lista de archivos en la carpeta
-
-foreach ($adjuntos as $archivo) {
-    if ($archivo !== '.' && $archivo !== '..') {
-        $rutaArchivo = $adjuntosDir . '/' . $archivo;
-        $attachment = $mail->Attachments->Add($rutaArchivo);
+[
+    {
+        "noe": "25",
+        "num_pedido": "c-100156",
+        "npvr": "13",
+        "proveedor": "Alta masiva origen",
+        "f_entrada": "2023-08-25 15:15:54",
+        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
+        "motivo": "Alta masiva inicial",
+        "documentacion": null,
+        "observaciones": "{\"fecha\":\"2023-08-25 15:15:54\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
+        "usr_registro": "TEMP",
+        "f_registro": "2023-08-25 15:15:54"
+    },
+    {
+        "noe": "24",
+        "num_pedido": "c-100155",
+        "npvr": "13",
+        "proveedor": "Alta masiva origen",
+        "f_entrada": "2023-08-25 15:14:54",
+        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
+        "motivo": "Renovacion de baterias",
+        "documentacion": null,
+        "observaciones": "{\"fecha\":\"2023-08-25 15:14:54\",\"usuario\":\"TEMP\",\"observacion\":\"Se realizara alta masiva de equipos nettop\"}",
+        "usr_registro": "TEMP",
+        "f_registro": "2023-08-25 15:14:54"
+    },
+    {
+        "noe": "23",
+        "num_pedido": "c-100154",
+        "npvr": "13",
+        "proveedor": "Alta masiva origen",
+        "f_entrada": "2023-08-25 15:13:45",
+        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
+        "motivo": "Renovacion de baterias",
+        "documentacion": null,
+        "observaciones": "{\"fecha\":\"2023-08-25 15:13:45\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
+        "usr_registro": "TEMP",
+        "f_registro": "2023-08-25 15:13:45"
+    },
+    {
+        "noe": "22",
+        "num_pedido": "c-100153",
+        "npvr": "13",
+        "proveedor": "Alta masiva origen",
+        "f_entrada": "2023-08-25 15:10:30",
+        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
+        "motivo": "Renovacion de baterias",
+        "documentacion": null,
+        "observaciones": "{\"fecha\":\"2023-08-25 15:10:30\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
+        "usr_registro": "TEMP",
+        "f_registro": "2023-08-25 15:10:30"
+    },
+    {
+        "noe": "20",
+        "num_pedido": "c-100152",
+        "npvr": "13",
+        "proveedor": "Alta masiva origen",
+        "f_entrada": "2023-08-25 15:09:58",
+        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
+        "motivo": "Renovacion de baterias",
+        "documentacion": null,
+        "observaciones": "{\"fecha\":\"2023-08-25 15:09:58\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
+        "usr_registro": "TEMP",
+        "f_registro": "2023-08-25 15:09:58"
+    },
+    {
+        "noe": "16",
+        "num_pedido": "c-100151",
+        "npvr": "13",
+        "proveedor": "Alta masiva origen",
+        "f_entrada": "2023-08-25 14:53:28",
+        "almacen": "EDIF. CORPORATIVO PATIO SANTA FE",
+        "motivo": "Renovacion de baterias",
+        "documentacion": null,
+        "observaciones": "{\"fecha\":\"2023-08-25 14:53:28\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
+        "usr_registro": "TEMP",
+        "f_registro": "2023-08-25 14:53:28"
+    },
+    {
+        "noe": "15",
+        "num_pedido": "c-100151",
+        "npvr": "13",
+        "proveedor": "Alta masiva origen",
+        "f_entrada": "2023-08-25 14:22:22",
+        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
+        "motivo": "Renovacion de baterias",
+        "documentacion": null,
+        "observaciones": "{\"fecha\":\"2023-08-25 14:22:22\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
+        "usr_registro": "TEMP",
+        "f_registro": "2023-08-25 14:22:22"
+    },
+    {
+        "noe": "7",
+        "num_pedido": "eut00001",
+        "npvr": "13",
+        "proveedor": "Alta masiva origen",
+        "f_entrada": "2023-08-22 12:56:00",
+        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
+        "motivo": "sin motivo",
+        "documentacion": "Scan Factura",
+        "observaciones": "ninguno",
+        "usr_registro": "C356882",
+        "f_registro": "2023-08-22 12:56:00"
+    },
+    {
+        "noe": "1",
+        "num_pedido": "c-100151",
+        "npvr": "7",
+        "proveedor": "Dell Computer Mexico S.A de C.V.",
+        "f_entrada": "2021-11-22 12:56:00",
+        "almacen": "EDIF. CORPORATIVO PATIO SANTA FE",
+        "motivo": "sin motivo",
+        "documentacion": "Scan Factura",
+        "observaciones": "ninguno",
+        "usr_registro": "z054688",
+        "f_registro": "2021-11-22 12:57:47"
     }
-}
+]
 
-// Mostrar la ventana del correo en Outlook para revisar antes de enviar
-$mail->Display = true;
-
-// No enviar automáticamente
-$mail->Send();
-
-echo 'Correo con archivos adjuntos listo para ser revisado y enviado desde Outlook.';
-?>
-
+<tbody id="oe-list">
+    <tr>
+      <td>7</td>
+      <td>eut00001</td>
+      <td>HP</td>
+      <td>2021-11-22</td>
+      <td>CTOS Qro</td>
+      <td>Proyecto</td>
+      <td class="align-middle"><a href="http://" target="_blank" rel="noopener noreferrer"
+          class="bi bi-file-earmark-pdf-fill"></a></td>
+      <td>C356882</td>
+      <td>2023-08-22 12:56:00</td>
+    </tr>
