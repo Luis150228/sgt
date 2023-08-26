@@ -1,162 +1,101 @@
-const addRowsToTable = (dataArray) => {
-  const tbody = document.getElementById("oe-list");
-
-  for (const item of dataArray) {
-    const newRow = document.createElement("tr");
-
-    newRow.innerHTML = `
-      <td>${item.noe}</td>
-      <td>${item.num_pedido}</td>
-      <td>${item.proveedor}</td>
-      <td>${item.f_entrada.split(" ")[0]}</td>
-      <td>${item.almacen}</td>
-      <td>${item.motivo}</td>
-      <td class="align-middle">${item.documentacion ? `<a href="${item.documentacion}" target="_blank" rel="noopener noreferrer" class="bi bi-file-earmark-pdf-fill"></a>` : ""}</td>
-      <td>${item.usr_registro}</td>
-      <td>${item.f_registro}</td>
-    `;
-
-    tbody.appendChild(newRow);
-  }
-};
-
-addRowsToTable(data);
-
-
-
-
-tengo el siguiente objeto y con JS quiero ajustarlo de la sigueinte forma 
+Tengo el siguiente objeto un array con 3 grupos quiero por cada grupo crear un elemento httml por ejemplo un boton que al darle click muestre el contenido del grupo
 
 [
-    {
-        "noe": "25",
-        "num_pedido": "c-100156",
-        "npvr": "13",
-        "proveedor": "Alta masiva origen",
-        "f_entrada": "2023-08-25 15:15:54",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "motivo": "Alta masiva inicial",
-        "documentacion": null,
-        "observaciones": "{\"fecha\":\"2023-08-25 15:15:54\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
-        "usr_registro": "TEMP",
-        "f_registro": "2023-08-25 15:15:54"
-    },
-    {
-        "noe": "24",
-        "num_pedido": "c-100155",
-        "npvr": "13",
-        "proveedor": "Alta masiva origen",
-        "f_entrada": "2023-08-25 15:14:54",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "motivo": "Renovacion de baterias",
-        "documentacion": null,
-        "observaciones": "{\"fecha\":\"2023-08-25 15:14:54\",\"usuario\":\"TEMP\",\"observacion\":\"Se realizara alta masiva de equipos nettop\"}",
-        "usr_registro": "TEMP",
-        "f_registro": "2023-08-25 15:14:54"
-    },
-    {
-        "noe": "23",
-        "num_pedido": "c-100154",
-        "npvr": "13",
-        "proveedor": "Alta masiva origen",
-        "f_entrada": "2023-08-25 15:13:45",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "motivo": "Renovacion de baterias",
-        "documentacion": null,
-        "observaciones": "{\"fecha\":\"2023-08-25 15:13:45\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
-        "usr_registro": "TEMP",
-        "f_registro": "2023-08-25 15:13:45"
-    },
-    {
-        "noe": "22",
-        "num_pedido": "c-100153",
-        "npvr": "13",
-        "proveedor": "Alta masiva origen",
-        "f_entrada": "2023-08-25 15:10:30",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "motivo": "Renovacion de baterias",
-        "documentacion": null,
-        "observaciones": "{\"fecha\":\"2023-08-25 15:10:30\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
-        "usr_registro": "TEMP",
-        "f_registro": "2023-08-25 15:10:30"
-    },
-    {
-        "noe": "20",
-        "num_pedido": "c-100152",
-        "npvr": "13",
-        "proveedor": "Alta masiva origen",
-        "f_entrada": "2023-08-25 15:09:58",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "motivo": "Renovacion de baterias",
-        "documentacion": null,
-        "observaciones": "{\"fecha\":\"2023-08-25 15:09:58\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
-        "usr_registro": "TEMP",
-        "f_registro": "2023-08-25 15:09:58"
-    },
-    {
-        "noe": "16",
-        "num_pedido": "c-100151",
-        "npvr": "13",
-        "proveedor": "Alta masiva origen",
-        "f_entrada": "2023-08-25 14:53:28",
-        "almacen": "EDIF. CORPORATIVO PATIO SANTA FE",
-        "motivo": "Renovacion de baterias",
-        "documentacion": null,
-        "observaciones": "{\"fecha\":\"2023-08-25 14:53:28\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
-        "usr_registro": "TEMP",
-        "f_registro": "2023-08-25 14:53:28"
-    },
-    {
-        "noe": "15",
-        "num_pedido": "c-100151",
-        "npvr": "13",
-        "proveedor": "Alta masiva origen",
-        "f_entrada": "2023-08-25 14:22:22",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "motivo": "Renovacion de baterias",
-        "documentacion": null,
-        "observaciones": "{\"fecha\":\"2023-08-25 14:22:22\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
-        "usr_registro": "TEMP",
-        "f_registro": "2023-08-25 14:22:22"
-    },
-    {
-        "noe": "7",
-        "num_pedido": "eut00001",
-        "npvr": "13",
-        "proveedor": "Alta masiva origen",
-        "f_entrada": "2023-08-22 12:56:00",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "motivo": "sin motivo",
-        "documentacion": "Scan Factura",
-        "observaciones": "ninguno",
-        "usr_registro": "C356882",
-        "f_registro": "2023-08-22 12:56:00"
-    },
-    {
-        "noe": "1",
-        "num_pedido": "c-100151",
-        "npvr": "7",
-        "proveedor": "Dell Computer Mexico S.A de C.V.",
-        "f_entrada": "2021-11-22 12:56:00",
-        "almacen": "EDIF. CORPORATIVO PATIO SANTA FE",
-        "motivo": "sin motivo",
-        "documentacion": "Scan Factura",
-        "observaciones": "ninguno",
-        "usr_registro": "z054688",
-        "f_registro": "2021-11-22 12:57:47"
-    }
+    [
+        {
+            "noe": "25",
+            "num_pedido": "c-100156",
+            "npvr": "13",
+            "proveedor": "Alta masiva origen",
+            "f_entrada": "2023-08-25 15:15:54",
+            "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
+            "motivo": "Alta masiva inicial",
+            "documentacion": null,
+            "observaciones": "{\"fecha\":\"2023-08-25 15:15:54\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
+            "usr_registro": "TEMP",
+            "f_registro": "2023-08-25 15:15:54"
+        },
+        {
+            "noe": "24",
+            "num_pedido": "c-100155",
+            "npvr": "13",
+            "proveedor": "Alta masiva origen",
+            "f_entrada": "2023-08-25 15:14:54",
+            "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
+            "motivo": "Renovacion de baterias",
+            "documentacion": null,
+            "observaciones": "{\"fecha\":\"2023-08-25 15:14:54\",\"usuario\":\"TEMP\",\"observacion\":\"Se realizara alta masiva de equipos nettop\"}",
+            "usr_registro": "TEMP",
+            "f_registro": "2023-08-25 15:14:54"
+        },
+        {
+            "noe": "23",
+            "num_pedido": "c-100154",
+            "npvr": "13",
+            "proveedor": "Alta masiva origen",
+            "f_entrada": "2023-08-25 15:13:45",
+            "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
+            "motivo": "Renovacion de baterias",
+            "documentacion": null,
+            "observaciones": "{\"fecha\":\"2023-08-25 15:13:45\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
+            "usr_registro": "TEMP",
+            "f_registro": "2023-08-25 15:13:45"
+        }
+    ],
+    [
+        {
+            "noe": "22",
+            "num_pedido": "c-100153",
+            "npvr": "13",
+            "proveedor": "Alta masiva origen",
+            "f_entrada": "2023-08-25 15:10:30",
+            "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
+            "motivo": "Renovacion de baterias",
+            "documentacion": null,
+            "observaciones": "{\"fecha\":\"2023-08-25 15:10:30\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
+            "usr_registro": "TEMP",
+            "f_registro": "2023-08-25 15:10:30"
+        },
+        {
+            "noe": "20",
+            "num_pedido": "c-100152",
+            "npvr": "13",
+            "proveedor": "Alta masiva origen",
+            "f_entrada": "2023-08-25 15:09:58",
+            "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
+            "motivo": "Renovacion de baterias",
+            "documentacion": null,
+            "observaciones": "{\"fecha\":\"2023-08-25 15:09:58\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
+            "usr_registro": "TEMP",
+            "f_registro": "2023-08-25 15:09:58"
+        },
+        {
+            "noe": "15",
+            "num_pedido": "c-100151",
+            "npvr": "13",
+            "proveedor": "Alta masiva origen",
+            "f_entrada": "2023-08-25 14:22:22",
+            "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
+            "motivo": "Renovacion de baterias",
+            "documentacion": null,
+            "observaciones": "{\"fecha\":\"2023-08-25 14:22:22\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
+            "usr_registro": "TEMP",
+            "f_registro": "2023-08-25 14:22:22"
+        }
+    ],
+    [
+        {
+            "noe": "7",
+            "num_pedido": "eut00001",
+            "npvr": "13",
+            "proveedor": "Alta masiva origen",
+            "f_entrada": "2023-08-22 12:56:00",
+            "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
+            "motivo": "sin motivo",
+            "documentacion": "Scan Factura",
+            "observaciones": "ninguno",
+            "usr_registro": "C356882",
+            "f_registro": "2023-08-22 12:56:00"
+        }
+    ]
 ]
-
-<tbody id="oe-list">
-    <tr>
-      <td>7</td>
-      <td>eut00001</td>
-      <td>HP</td>
-      <td>2021-11-22</td>
-      <td>CTOS Qro</td>
-      <td>Proyecto</td>
-      <td class="align-middle"><a href="http://" target="_blank" rel="noopener noreferrer"
-          class="bi bi-file-earmark-pdf-fill"></a></td>
-      <td>C356882</td>
-      <td>2023-08-22 12:56:00</td>
-    </tr>
