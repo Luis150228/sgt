@@ -1,3 +1,30 @@
+const addRowsToTable = (dataArray) => {
+  const tbody = document.getElementById("oe-list");
+
+  for (const item of dataArray) {
+    const newRow = document.createElement("tr");
+
+    newRow.innerHTML = `
+      <td>${item.noe}</td>
+      <td>${item.num_pedido}</td>
+      <td>${item.proveedor}</td>
+      <td>${item.f_entrada.split(" ")[0]}</td>
+      <td>${item.almacen}</td>
+      <td>${item.motivo}</td>
+      <td class="align-middle">${item.documentacion ? `<a href="${item.documentacion}" target="_blank" rel="noopener noreferrer" class="bi bi-file-earmark-pdf-fill"></a>` : ""}</td>
+      <td>${item.usr_registro}</td>
+      <td>${item.f_registro}</td>
+    `;
+
+    tbody.appendChild(newRow);
+  }
+};
+
+addRowsToTable(data);
+
+
+
+
 tengo el siguiente objeto y con JS quiero ajustarlo de la sigueinte forma 
 
 [
