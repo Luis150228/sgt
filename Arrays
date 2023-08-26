@@ -1,101 +1,35 @@
-Tengo el siguiente objeto un array con 3 grupos quiero por cada grupo crear un elemento httml por ejemplo un boton que al darle click muestre el contenido del grupo
+// Tu arreglo anidado
+const data = [
+    [...],  // Primer grupo de elementos
+    [...],  // Segundo grupo de elementos
+    [...],  // Tercer grupo de elementos
+];
 
-[
-    [
-        {
-            "noe": "25",
-            "num_pedido": "c-100156",
-            "npvr": "13",
-            "proveedor": "Alta masiva origen",
-            "f_entrada": "2023-08-25 15:15:54",
-            "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-            "motivo": "Alta masiva inicial",
-            "documentacion": null,
-            "observaciones": "{\"fecha\":\"2023-08-25 15:15:54\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
-            "usr_registro": "TEMP",
-            "f_registro": "2023-08-25 15:15:54"
-        },
-        {
-            "noe": "24",
-            "num_pedido": "c-100155",
-            "npvr": "13",
-            "proveedor": "Alta masiva origen",
-            "f_entrada": "2023-08-25 15:14:54",
-            "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-            "motivo": "Renovacion de baterias",
-            "documentacion": null,
-            "observaciones": "{\"fecha\":\"2023-08-25 15:14:54\",\"usuario\":\"TEMP\",\"observacion\":\"Se realizara alta masiva de equipos nettop\"}",
-            "usr_registro": "TEMP",
-            "f_registro": "2023-08-25 15:14:54"
-        },
-        {
-            "noe": "23",
-            "num_pedido": "c-100154",
-            "npvr": "13",
-            "proveedor": "Alta masiva origen",
-            "f_entrada": "2023-08-25 15:13:45",
-            "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-            "motivo": "Renovacion de baterias",
-            "documentacion": null,
-            "observaciones": "{\"fecha\":\"2023-08-25 15:13:45\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
-            "usr_registro": "TEMP",
-            "f_registro": "2023-08-25 15:13:45"
+// Función para buscar elementos que cumplan con ciertos criterios
+function buscarElementos(criterio, valor) {
+    const resultados = [];
+
+    for (const grupo of data) {
+        for (const elemento of grupo) {
+            if (criterio in elemento && elemento[criterio] === valor) {
+                resultados.push(elemento);
+            }
         }
-    ],
-    [
-        {
-            "noe": "22",
-            "num_pedido": "c-100153",
-            "npvr": "13",
-            "proveedor": "Alta masiva origen",
-            "f_entrada": "2023-08-25 15:10:30",
-            "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-            "motivo": "Renovacion de baterias",
-            "documentacion": null,
-            "observaciones": "{\"fecha\":\"2023-08-25 15:10:30\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
-            "usr_registro": "TEMP",
-            "f_registro": "2023-08-25 15:10:30"
-        },
-        {
-            "noe": "20",
-            "num_pedido": "c-100152",
-            "npvr": "13",
-            "proveedor": "Alta masiva origen",
-            "f_entrada": "2023-08-25 15:09:58",
-            "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-            "motivo": "Renovacion de baterias",
-            "documentacion": null,
-            "observaciones": "{\"fecha\":\"2023-08-25 15:09:58\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
-            "usr_registro": "TEMP",
-            "f_registro": "2023-08-25 15:09:58"
-        },
-        {
-            "noe": "15",
-            "num_pedido": "c-100151",
-            "npvr": "13",
-            "proveedor": "Alta masiva origen",
-            "f_entrada": "2023-08-25 14:22:22",
-            "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-            "motivo": "Renovacion de baterias",
-            "documentacion": null,
-            "observaciones": "{\"fecha\":\"2023-08-25 14:22:22\",\"usuario\":\"TEMP\",\"observacion\":\"ninoguna\"}",
-            "usr_registro": "TEMP",
-            "f_registro": "2023-08-25 14:22:22"
-        }
-    ],
-    [
-        {
-            "noe": "7",
-            "num_pedido": "eut00001",
-            "npvr": "13",
-            "proveedor": "Alta masiva origen",
-            "f_entrada": "2023-08-22 12:56:00",
-            "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-            "motivo": "sin motivo",
-            "documentacion": "Scan Factura",
-            "observaciones": "ninguno",
-            "usr_registro": "C356882",
-            "f_registro": "2023-08-22 12:56:00"
-        }
-    ]
-]
+    }
+
+    return resultados;
+}
+
+// Ejemplo de uso
+const criterioBusqueda = "motivo";
+const valorBusqueda = "Renovacion de baterias";
+
+const resultados = buscarElementos(criterioBusqueda, valorBusqueda);
+
+if (resultados.length > 0) {
+    for (const resultado of resultados) {
+        console.log(resultado);
+    }
+} else {
+    console.log("No se encontraron elementos que cumplan con los criterios de búsqueda.");
+}
