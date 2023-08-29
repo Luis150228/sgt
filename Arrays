@@ -1,90 +1,61 @@
-const arreglo = [
-    {
-        "id": "2",
-        "descripcion": "BATERIA LAPTOP",
-        "grupo": "Accesorio"
-    },
-    // ... (otros objetos)
-    {
-        "id": "198",
-        "descripcion": "TECLADO INALAMBRICO",
-        "grupo": "Accesorio"
+quiero saber como funcionan las siguientes clases en JS de los siguietes dor archivos y como los implemento en mi codigo
+
+almacen.class.js: 
+const regDuble = /"/gi;
+const regSingel = /'/gi;
+
+export class Odc {
+    constructor(factura, proveedor, equipo, cantidad, almacen, motivo, observacion, adjunto, responsable){
+        this.id = new Date().getTime();
+        this.num_pedido = factura;
+        this.npvr = proveedor;
+        this.idequipo = equipo;
+        this.cantidad = cantidad;
+        this.entrada = new Date().getTime();
+        this.almacen = almacen;
+        this.motivo = motivo;
+        this.observaciones = observacion;
+        this.adjunto = adjunto;
+        this.responsable = responsable
     }
-];
 
-const registrosAccesorio = arreglo.filter(objeto => objeto.grupo === "Accesorio");
+}
 
-console.log(registrosAccesorio);
-
-
-
-
-en el siguiente arreglo quiero poder mostrar solo los registros que tengan "grupo" con el valor "Accesorio" en JS
-
-[
-    {
-        "id": "2",
-        "descripcion": "BATERIA LAPTOP",
-        "grupo": "Accesorio"
-    },
-    {
-        "id": "200",
-        "descripcion": "CANDADO",
-        "grupo": "Accesorio"
-    },
-    {
-        "id": "23",
-        "descripcion": "CARGADOR LAPTOP",
-        "grupo": "Accesorio"
-    },
-    {
-        "id": "70",
-        "descripcion": "DESKTOP",
-        "grupo": "EAF"
-    },
-    {
-        "id": "196",
-        "descripcion": "DIADEMA",
-        "grupo": "Accesorio"
-    },
-    {
-        "id": "76",
-        "descripcion": "LAPTOP",
-        "grupo": "EAF"
-    },
-    {
-        "id": "201",
-        "descripcion": "MOCHILA",
-        "grupo": "Accesorio"
-    },
-    {
-        "id": "197",
-        "descripcion": "MONITOR",
-        "grupo": "EAF"
-    },
-    {
-        "id": "199",
-        "descripcion": "MOUSE INALAMBRICO",
-        "grupo": "Accesorio"
-    },
-    {
-        "id": "98",
-        "descripcion": "NETTOP",
-        "grupo": "EAF"
-    },
-    {
-        "id": "104",
-        "descripcion": "PROYECTOR",
-        "grupo": "EAF"
-    },
-    {
-        "id": "105",
-        "descripcion": "SERVIDOR",
-        "grupo": "EAF"
-    },
-    {
-        "id": "198",
-        "descripcion": "TECLADO INALAMBRICO",
-        "grupo": "Accesorio"
+export class OdcAdjunto {
+    constructor(factura, adjunto){
+        this.id = new Date().getTime();
+        this.num_pedido = factura;
+        this.adjunto = adjunto;
     }
-]
+
+}
+
+y almacen-list.class.js:
+
+export class OdcManager{
+    constructor(){
+        this.elementos = []
+    }
+    agregarElemento(elemento){
+        this.elementos.push(elemento)
+    }
+    eliminarElemento(){
+        this.elementos = this.elementos
+    }
+    modificarElemento(id, factura, proveedor, equipo, cantidad, almacen, motivo, observacion, adjunto, responsable) {
+        for (const elemento of this.elementos) {
+            if (elemento.id == id) {
+                elemento.num_pedido = factura;
+                elemento.npvr = proveedor;
+                elemento.idequipo = equipo;
+                elemento.cantidad = cantidad;
+                elemento.almacen = almacen;
+                elemento.motivo = motivo;
+                elemento.observaciones = observacion;
+                elemento.adjunto = adjunto;
+                elemento.responsable = responsable
+                break;
+            }
+        }
+    }
+}
