@@ -1,3 +1,24 @@
+const arreglo = [
+    {
+        "id": "2",
+        "descripcion": "BATERIA LAPTOP",
+        "grupo": "Accesorio"
+    },
+    // ... (otros objetos)
+    {
+        "id": "198",
+        "descripcion": "TECLADO INALAMBRICO",
+        "grupo": "Accesorio"
+    }
+];
+
+const registrosAccesorio = arreglo.filter(objeto => objeto.grupo === "Accesorio");
+
+console.log(registrosAccesorio);
+
+
+
+
 en el siguiente arreglo quiero poder mostrar solo los registros que tengan "grupo" con el valor "Accesorio" en JS
 
 [
