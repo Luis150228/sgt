@@ -1,35 +1,69 @@
-// Tu arreglo anidado
-const data = [
-    [...],  // Primer grupo de elementos
-    [...],  // Segundo grupo de elementos
-    [...],  // Tercer grupo de elementos
-];
+en el siguiente arreglo quiero poder mostrar solo los registros que tengan "grupo" con el valor "Accesorio" en JS
 
-// Función para buscar elementos que cumplan con ciertos criterios
-function buscarElementos(criterio, valor) {
-    const resultados = [];
-
-    for (const grupo of data) {
-        for (const elemento of grupo) {
-            if (criterio in elemento && elemento[criterio] === valor) {
-                resultados.push(elemento);
-            }
-        }
+[
+    {
+        "id": "2",
+        "descripcion": "BATERIA LAPTOP",
+        "grupo": "Accesorio"
+    },
+    {
+        "id": "200",
+        "descripcion": "CANDADO",
+        "grupo": "Accesorio"
+    },
+    {
+        "id": "23",
+        "descripcion": "CARGADOR LAPTOP",
+        "grupo": "Accesorio"
+    },
+    {
+        "id": "70",
+        "descripcion": "DESKTOP",
+        "grupo": "EAF"
+    },
+    {
+        "id": "196",
+        "descripcion": "DIADEMA",
+        "grupo": "Accesorio"
+    },
+    {
+        "id": "76",
+        "descripcion": "LAPTOP",
+        "grupo": "EAF"
+    },
+    {
+        "id": "201",
+        "descripcion": "MOCHILA",
+        "grupo": "Accesorio"
+    },
+    {
+        "id": "197",
+        "descripcion": "MONITOR",
+        "grupo": "EAF"
+    },
+    {
+        "id": "199",
+        "descripcion": "MOUSE INALAMBRICO",
+        "grupo": "Accesorio"
+    },
+    {
+        "id": "98",
+        "descripcion": "NETTOP",
+        "grupo": "EAF"
+    },
+    {
+        "id": "104",
+        "descripcion": "PROYECTOR",
+        "grupo": "EAF"
+    },
+    {
+        "id": "105",
+        "descripcion": "SERVIDOR",
+        "grupo": "EAF"
+    },
+    {
+        "id": "198",
+        "descripcion": "TECLADO INALAMBRICO",
+        "grupo": "Accesorio"
     }
-
-    return resultados;
-}
-
-// Ejemplo de uso
-const criterioBusqueda = "motivo";
-const valorBusqueda = "Renovacion de baterias";
-
-const resultados = buscarElementos(criterioBusqueda, valorBusqueda);
-
-if (resultados.length > 0) {
-    for (const resultado of resultados) {
-        console.log(resultado);
-    }
-} else {
-    console.log("No se encontraron elementos que cumplan con los criterios de búsqueda.");
-}
+]
