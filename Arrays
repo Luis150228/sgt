@@ -14,7 +14,7 @@ ajustado:{
     }...
 
 
-[
+const filas = [
     {
         "inventario": "CALL2467706",
         "sys_created_by": "Z045580@santandertec.mx"
