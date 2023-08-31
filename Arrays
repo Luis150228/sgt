@@ -1,61 +1,78 @@
-quiero saber como funcionan las siguientes clases en JS de los siguietes dor archivos y como los implemento en mi codigo
+tengo el diguiente objeto llamado filas y quiero agregarle a cada registro unos valores mas con JS 
 
-almacen.class.js: 
-const regDuble = /"/gi;
-const regSingel = /'/gi;
+original : {
+        "inventario": "CALL2467706",
+        "sys_created_by": "Z045580@santandertec.mx"
+    }...
 
-export class Odc {
-    constructor(factura, proveedor, equipo, cantidad, almacen, motivo, observacion, adjunto, responsable){
-        this.id = new Date().getTime();
-        this.num_pedido = factura;
-        this.npvr = proveedor;
-        this.idequipo = equipo;
-        this.cantidad = cantidad;
-        this.entrada = new Date().getTime();
-        this.almacen = almacen;
-        this.motivo = motivo;
-        this.observaciones = observacion;
-        this.adjunto = adjunto;
-        this.responsable = responsable
+ajustado:{
+        "inventario": "CALL2467706",
+        "sys_created_by": "Z045580@santandertec.mx",
+        "fecha": "2023-08-29".
+        "tipo": "Llamada",
+        "origen": "Centro"
+    }...
+
+
+[
+    {
+        "inventario": "CALL2467706",
+        "sys_created_by": "Z045580@santandertec.mx"
+    },
+    {
+        "inventario": "CALL2467886",
+        "sys_created_by": "Z045580@santandertec.mx"
+    },
+    {
+        "inventario": "CALL2468028",
+        "sys_created_by": "Z520198@santandertec.mx"
+    },
+    {
+        "inventario": "CALL2468067",
+        "sys_created_by": "Z442397@santandertec.mx"
+    },
+    {
+        "inventario": "CALL2468138",
+        "sys_created_by": "Z412404@santandertec.mx"
+    },
+    {
+        "inventario": "CALL2468156",
+        "sys_created_by": "Z520198@santandertec.mx"
+    },
+    {
+        "inventario": "CALL2468158",
+        "sys_created_by": "Z530214@santandertec.mx"
+    },
+    {
+        "inventario": "CALL2468175",
+        "sys_created_by": "Z530214@santandertec.mx"
+    },
+    {
+        "inventario": "CALL2468181",
+        "sys_created_by": "Z551835@santandertec.mx"
+    },
+    {
+        "inventario": "CALL2468227",
+        "sys_created_by": "Z703469@santander.com.mx"
+    },
+    {
+        "inventario": "CALL2468377",
+        "sys_created_by": "Z520198@santandertec.mx"
+    },
+    {
+        "inventario": "CALL2468441",
+        "sys_created_by": "Z339921@santandertec.mx"
+    },
+    {
+        "inventario": "CALL2468445",
+        "sys_created_by": "Z339921@santandertec.mx"
+    },
+    {
+        "inventario": "CALL2468446",
+        "sys_created_by": "Z530213@santandertec.mx"
+    },
+    {
+        "inventario": "CALL2468454",
+        "sys_created_by": "Z812794@prbmx.produbanmx.corp"
     }
-
-}
-
-export class OdcAdjunto {
-    constructor(factura, adjunto){
-        this.id = new Date().getTime();
-        this.num_pedido = factura;
-        this.adjunto = adjunto;
-    }
-
-}
-
-y almacen-list.class.js:
-
-export class OdcManager{
-    constructor(){
-        this.elementos = []
-    }
-    agregarElemento(elemento){
-        this.elementos.push(elemento)
-    }
-    eliminarElemento(){
-        this.elementos = this.elementos
-    }
-    modificarElemento(id, factura, proveedor, equipo, cantidad, almacen, motivo, observacion, adjunto, responsable) {
-        for (const elemento of this.elementos) {
-            if (elemento.id == id) {
-                elemento.num_pedido = factura;
-                elemento.npvr = proveedor;
-                elemento.idequipo = equipo;
-                elemento.cantidad = cantidad;
-                elemento.almacen = almacen;
-                elemento.motivo = motivo;
-                elemento.observaciones = observacion;
-                elemento.adjunto = adjunto;
-                elemento.responsable = responsable
-                break;
-            }
-        }
-    }
-}
+]
