@@ -1,69 +1,29 @@
-quiero filtrar el siguiente objeto con JS en base a su "id"
+en base a la siguiente clase quiero una funcion para eliminar un elemento en base al id con JS
 
-[
-    {
-        "id": "1235",
-        "noe": "29",
-        "grupo_equipo": "Accesorio",
-        "tipo_equipo": "Bateria Laptop",
-        "marca": "DELL",
-        "idequipo": "2",
-        "modelo": "B-57001",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "empresa": "Banco Santander",
-        "stock": "1443",
-        "var_token": "c356882"
-    },
-    {
-        "id": "1238",
-        "noe": "29",
-        "grupo_equipo": "Accesorio",
-        "tipo_equipo": "DIADEMA",
-        "marca": "DELL",
-        "idequipo": "196",
-        "modelo": "UC300",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "empresa": "Banco Santander",
-        "stock": "54",
-        "var_token": "c356882"
-    },
-    {
-        "id": "1236",
-        "noe": "29",
-        "grupo_equipo": "Accesorio",
-        "tipo_equipo": "DIADEMA",
-        "marca": "DELL",
-        "idequipo": "196",
-        "modelo": "UC300",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "empresa": "Empresa 3",
-        "stock": "600",
-        "var_token": "c356882"
-    },
-    {
-        "id": "1237",
-        "noe": "29",
-        "grupo_equipo": "Accesorio",
-        "tipo_equipo": "TECLADO INALAMBRICO",
-        "marca": "DELL",
-        "idequipo": "198",
-        "modelo": "GENERICO",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "empresa": "EUT Santander",
-        "stock": "78",
-        "var_token": "c356882"
-    },
-    {
-        "id": "1239",
-        "noe": "29",
-        "grupo_equipo": "EAF",
-        "tipo_equipo": "DESKTOP",
-        "marca": "DELL",
-        "idequipo": "71",
-        "modelo": "OPTIPLEX 150",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "empresa": "Banco Santander",
-        "stock": "398",
-        "var_token": "c356882"
+export class OdcManager{
+    constructor(){
+        this.elementos = []
     }
-]
+    agregarElemento(elemento){
+        this.elementos.push(elemento)
+    }
+    eliminarElemento(){
+        this.elementos = this.elementos
+    }
+    modificarElemento(id, factura, proveedor, equipo, cantidad, almacen, motivo, observacion, adjunto, responsable) {
+        for (const elemento of this.elementos) {
+            if (elemento.id == id) {
+                elemento.num_pedido = factura;
+                elemento.npvr = proveedor;
+                elemento.idequipo = equipo;
+                elemento.cantidad = cantidad;
+                elemento.almacen = almacen;
+                elemento.motivo = motivo;
+                elemento.observaciones = observacion;
+                elemento.adjunto = adjunto;
+                elemento.responsable = responsable
+                break;
+            }
+        }
+    }
+}
