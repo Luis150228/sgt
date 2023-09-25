@@ -1,29 +1,25 @@
-en base a la siguiente clase quiero una funcion para eliminar un elemento en base al id con JS
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maps</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+</head>
+<body>
+	<div id="map"></div>
+<script src="script.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
+</body>
+</html>
 
-export class OdcManager{
-    constructor(){
-        this.elementos = []
-    }
-    agregarElemento(elemento){
-        this.elementos.push(elemento)
-    }
-    eliminarElemento(){
-        this.elementos = this.elementos
-    }
-    modificarElemento(id, factura, proveedor, equipo, cantidad, almacen, motivo, observacion, adjunto, responsable) {
-        for (const elemento of this.elementos) {
-            if (elemento.id == id) {
-                elemento.num_pedido = factura;
-                elemento.npvr = proveedor;
-                elemento.idequipo = equipo;
-                elemento.cantidad = cantidad;
-                elemento.almacen = almacen;
-                elemento.motivo = motivo;
-                elemento.observaciones = observacion;
-                elemento.adjunto = adjunto;
-                elemento.responsable = responsable
-                break;
-            }
-        }
-    }
+
+function iniciarMap(){
+    var coord = {lat:-34.5956145 ,lng: -58.4431949};
+    var map = new google.maps.Map(document.getElementById('map'),{
+      zoom: 10,
+      center: coord
+    });
+    var marker = new google.maps.Marker({
+      position: coord,
+      map: map
+    });
 }
