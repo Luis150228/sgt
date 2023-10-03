@@ -1,0 +1,86 @@
+export const bubbleAlert = (idNav, valor) => {
+	const nav = document.getElementById(`${idNav}`);
+	if (nav.hasChildNodes()) {
+		const trigger = nav.lastChild;
+		if (valor > 0) {
+			/*
+			data-bs-toggle="tooltip" data-bs-title="Default tooltip"
+			*/
+			if (trigger.classList[0] !== 'bubbleAlert') {
+				const spanLink = document.createElement('span');
+				spanLink.classList.add('bubbleAlert');
+				spanLink.setAttribute('data-bs-toggle', 'tooltip');
+				spanLink.setAttribute('data-bs-placement', 'bottom');
+				spanLink.setAttribute('data-bs-title', valor);
+				const aLink = document.createElement('a');
+				aLink.innerHTML = '<i class="bi bi-bell-fill"></i>';
+				spanLink.appendChild(aLink);
+				nav.appendChild(spanLink);
+			}
+
+			const toolTips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+			for (const toolTip of toolTips) {
+				new bootstrap.Tooltip(toolTip);
+			}
+			// console.log(toolTips);
+		} else if (valor <= 0) {
+			if (trigger.classList[0] === 'bubbleAlert') {
+				nav.removeChild(trigger);
+			}
+		}
+	}
+};
+
+/************************************************************************/
+CSS
+
+.bubbleAlert{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 30px;
+    left: 135px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: greenyellow;
+    color: #353a3f;
+    z-index: 6;
+    cursor: pointer;
+}
+
+.bubbleAlert::before,
+.bubbleAlert::after{
+content: '';
+display: block;
+position: absolute;
+border: 50%;
+border: 1px solid greenyellow;
+left: -10px;
+right: -10px;
+top: -10px;
+bottom: -10px;
+border-radius: 50%;
+animation: pulse 1.5s linear infinite;
+opacity: 0;
+backface-visibility: hidden;
+}
+
+.bubbleAlert::after {
+    animation-delay: 0.5s
+}
+
+@keyframes pulse {
+    0%{
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
