@@ -1,40 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Iniciar Sesión</title>
-    <script src="https://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
-</head>
-<body>
-    <h2>Iniciar Sesión</h2>
-    <form id="loginForm">
-        <label for="username">Usuario:</label>
-        <input type="text" id="username" name="username" required><br><br>
-
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required><br><br>
-
-        <button type="button" onclick="checkLogin()">Iniciar Sesión</button>
-    </form>
-
-    <p id="message"></p>
-
-    <script>
-        function checkLogin() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-
-            // Cifra la contraseña utilizando SHA-256
-            var hashedPassword = CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
-
-            // Envia los datos cifrados al servidor
-            $.post("auth.php", { username: username, password: hashedPassword }, function(data) {
-                if (data === "success") {
-                    document.getElementById("message").innerHTML = "Inicio de sesión exitoso";
-                } else {
-                    document.getElementById("message").innerHTML = "Usuario o contraseña incorrectos";
-                }
-            });
-        }
-    </script>
-</body>
-</html>
+[
+    {
+        "fecha": "2023-10-06",
+        "recibidas": "839",
+        "atendidas": "825",
+        "abandonadas": "14",
+        "abandono_menos10": "5",
+        "prc_abandono": "1.08",
+        "tiempoAHT": "00:06:10",
+        "nummin": "305892",
+        "rangosem": "06 OCT - 12 OCT",
+        "anhio": "2023"
+    },
+    {
+        "fecha": "2023-10-07",
+        "recibidas": "89",
+        "atendidas": "89",
+        "abandonadas": "0",
+        "abandono_menos10": "0",
+        "prc_abandono": "0.00",
+        "tiempoAHT": "00:05:24",
+        "nummin": "28908",
+        "rangosem": "06 OCT - 12 OCT",
+        "anhio": "2023"
+    },
+    {
+        "fecha": "2023-10-08",
+        "recibidas": "24",
+        "atendidas": "24",
+        "abandonadas": "0",
+        "abandono_menos10": "0",
+        "prc_abandono": "0.00",
+        "tiempoAHT": "00:04:42",
+        "nummin": "6786",
+        "rangosem": "06 OCT - 12 OCT",
+        "anhio": "2023"
+    }
+]
