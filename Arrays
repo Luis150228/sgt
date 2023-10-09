@@ -1,3 +1,15 @@
+const tbody = document.getElementById('miTablaBody');
+
+for (const item of data) {
+  const row = document.createElement('tr');
+  for (const value of Object.values(item)) {
+    const cell = document.createElement('td');
+    cell.textContent = value;
+    row.appendChild(cell);
+  }
+  tbody.appendChild(row);
+}
+
 [
     {
         "fecha": "2023-10-06",
