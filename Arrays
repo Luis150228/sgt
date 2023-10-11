@@ -1,1 +1,17 @@
-Fatal error: Uncaught com_exception: Failed to create COM object `Outlook.Application': Invalid syntax in C:\xampp\htdocs\santecReportsAPI\classes\reportsWeeklyeut.class.php:1036 Stack trace: #0 C:\xampp\htdocs\santecReportsAPI\classes\reportsWeeklyeut.class.php(1036): com->__construct('Outlook.Applica...') #1 C:\xampp\htdocs\santecReportsAPI\classes\reportsWeeklyeut.class.php(79): valores->sendWeeklyReports(Array, '29 SEP - 05 OCT', 'OCTUBRE') #2 C:\xampp\htdocs\santecReportsAPI\classes\reportsWeeklyeut.class.php(15): valores->rangoSemanal('12345766758', 'true') #3 C:\xampp\htdocs\santecReportsAPI\rutes\reportsWeeklyeut.php(28): valores->eut_weeklyrange('12345766758', 'true') #4 {main} thrown in C:\xampp\htdocs\santecReportsAPI\classes\reportsWeeklyeut.class.php on line 1036
+
+
+hashpassword.js:4 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'digest')
+    at prossPws (hashpassword.js:4:41)
+    at HTMLFormElement.<anonymous> (login.js:29:20)
+
+    esta es la lina 29 del login.js: const psw = await prossPws(password);
+
+    esta es el contenido completo de hashpassword.js:
+    export const prossPws = async (password) => {
+	const encoder = new TextEncoder();
+	const data = encoder.encode(password);
+	const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+	const hashArray = Array.from(new Uint8Array(hashBuffer));
+	const hashHex = hashArray.map((byte) => byte.toString(16).padStart(2, '0')).join('');
+	return hashHex;
+};
