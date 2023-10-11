@@ -38,3 +38,23 @@ const prossPws = (password) => {
 const password = 'contraseña_a_hashear';
 const hashedPassword = prossPws(password);
 console.log(hashedPassword);
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Página</title>
+    <!-- Agregar la etiqueta de script para CryptoJS desde el CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+</head>
+<body>
+
+<!-- Contenido de tu página -->
+
+<!-- Tu script de JavaScript -->
+<script src="login.js"></script>
+
+</body>
+</html>
+
