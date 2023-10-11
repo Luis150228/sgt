@@ -22,3 +22,19 @@ if (crypto.subtle) {
 } else {
   console.error('La Web Cryptography API no está disponible en este entorno.');
 }
+https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js
+
+// Importa CryptoJS desde el CDN, por lo que no es necesario usar 'require' o 'import'
+// CryptoJS ya estará disponible globalmente
+// No es necesario hacer 'npm install' para CryptoJS
+
+// Esta función procesa la contraseña utilizando CryptoJS
+const prossPws = (password) => {
+    const hashedPassword = CryptoJS.SHA256(password).toString();
+    return hashedPassword;
+};
+
+// Ejemplo de uso
+const password = 'contraseña_a_hashear';
+const hashedPassword = prossPws(password);
+console.log(hashedPassword);
