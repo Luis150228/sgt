@@ -1,60 +1,27 @@
+CREATE DEFINER=`u170798671_rangeldiaz`@`%` PROCEDURE `userLogg`(usr VARCHAR(18))
+BEGIN
+/*Procedimiento usado en API*/
+DECLARE u VARCHAR(8);
+DECLARE var_id INT;
+DECLARE edo INT;
+DECLARE life INT;
 
+SET u = (SELECT `user` FROM coboradores_catalogo WHERE `user` = usr AND estatus = 1);
+call TokenDrop();
+/*DELETE FROM idtokens WHERE (ididtokens >= 1) AND (usuario = u) AND catovatechDate() >= expira;*/
 
-hashpassword.js:4 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'digest')
-    at prossPws (hashpassword.js:4:41)
-    at HTMLFormElement.<anonymous> (login.js:29:20)
+SET var_id = (SELECT idcoboradore FROM coboradores_catalogo WHERE user = usr AND estatus = 1);
+SET edo = (SELECT COUNT(idu) FROM idtokens WHERE idu = var_id);
+SET life = (SELECT TIMESTAMPDIFF(MINUTE, catovatechDate(), expira) FROM idtokens WHERE idu = var_id);
 
-    esta es la lina 29 del login.js: const psw = await prossPws(password);
+IF edo >= 1 THEN 
+	SELECT CONCAT('Hay una sesion activa debe esperar ', life, ' min. para volver a acceder al sistema') code_msg, '403' AS 'code', 'warning' as 'typeAlert';
+ELSE
+	IF u = usr THEN
+		SELECT idcoboradore as 'id', 'pass' AS code_msg, '202' AS 'code', 'success' as 'typeAlert', pass as 'Password' FROM coboradores_catalogo where user = u;		
+	ELSE
+		SELECT 'Las Credenciales son invalidas' code_msg, '403' AS 'code', 'danger' as 'typeAlert';
+	END IF;
+END IF;
 
-    esta es el contenido completo de hashpassword.js:
-    export const prossPws = async (password) => {
-	const encoder = new TextEncoder();
-	const data = encoder.encode(password);
-	const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-	const hashArray = Array.from(new Uint8Array(hashBuffer));
-	const hashHex = hashArray.map((byte) => byte.toString(16).padStart(2, '0')).join('');
-	return hashHex;
-};
-
-if (crypto.subtle) {
-  // Tu código que utiliza crypto.subtle
-  const psw = await prossPws(password);
-} else {
-  console.error('La Web Cryptography API no está disponible en este entorno.');
-}
-https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js
-
-// Importa CryptoJS desde el CDN, por lo que no es necesario usar 'require' o 'import'
-// CryptoJS ya estará disponible globalmente
-// No es necesario hacer 'npm install' para CryptoJS
-
-// Esta función procesa la contraseña utilizando CryptoJS
-const prossPws = (password) => {
-    const hashedPassword = CryptoJS.SHA256(password).toString();
-    return hashedPassword;
-};
-
-// Ejemplo de uso
-const password = 'contraseña_a_hashear';
-const hashedPassword = prossPws(password);
-console.log(hashedPassword);
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Página</title>
-    <!-- Agregar la etiqueta de script para CryptoJS desde el CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
-</head>
-<body>
-
-<!-- Contenido de tu página -->
-
-<!-- Tu script de JavaScript -->
-<script src="login.js"></script>
-
-</body>
-</html>
-
+END
