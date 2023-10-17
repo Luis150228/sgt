@@ -1,88 +1,20 @@
-con JS quiero mostrar solo un elemento dando el numero de "id"
+btnModal.addEventListener('click', (e) => {
+    const frm = document.getElementById('frm-adf-trancit');
+    const data = Object.fromEntries(new FormData(frm));
+    const orden = e.target.dataset.orden;
+    console.log(data);
+    console.log(orden);
+});
 
-[
-    {
-        "id": "7291",
-        "idinv": "1",
-        "noe": "1",
-        "idequipo": "80",
-        "tipo_equipo": "LAPTOP",
-        "marca": "DELL",
-        "modelo": "LATITUDE 5400",
-        "etiqueta": "1120010447",
-        "usr_origen": "CAUSUR",
-        "almacen_origen": "CAU SUR",
-        "usr_resguardo": "TEMP",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "tipo_almacen": "Virtual",
-        "empresa": "1",
-        "num_asignacion": "1697157818123",
-        "adf": "12345678900000003",
-        "estatus": "1",
-        "comentarios": null,
-        "f_registro": "2023-10-12 18:43:44"
-    },
-    {
-        "id": "7291",
-        "idinv": "280",
-        "noe": "1",
-        "idequipo": "80",
-        "tipo_equipo": "LAPTOP",
-        "marca": "DELL",
-        "modelo": "LATITUDE 5400",
-        "etiqueta": "90421120010288",
-        "usr_origen": "CAUSUR",
-        "almacen_origen": "CAU SUR",
-        "usr_resguardo": "TEMP",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "tipo_almacen": "Virtual",
-        "empresa": "1",
-        "num_asignacion": "1695921511280",
-        "adf": "12345678900000001",
-        "estatus": "1",
-        "comentarios": null,
-        "f_registro": "2023-09-28 11:19:10"
-    },
-    {
-        "id": "7291",
-        "idinv": "281",
-        "noe": "1",
-        "idequipo": "80",
-        "tipo_equipo": "LAPTOP",
-        "marca": "DELL",
-        "modelo": "LATITUDE 5400",
-        "etiqueta": "90421120010324",
-        "usr_origen": "CAUSUR",
-        "almacen_origen": "CAU SUR",
-        "usr_resguardo": "TEMP",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "tipo_almacen": "Virtual",
-        "empresa": "1",
-        "num_asignacion": "1695921678606",
-        "adf": "12345678900000001",
-        "estatus": "1",
-        "comentarios": null,
-        "f_registro": "2023-09-28 11:21:29"
-    },
-    {
-        "id": "7291",
-        "idinv": "282",
-        "noe": "1",
-        "idequipo": "80",
-        "tipo_equipo": "LAPTOP",
-        "marca": "DELL",
-        "modelo": "LATITUDE 5400",
-        "etiqueta": "90421120010325",
-        "usr_origen": "CAUSUR",
-        "almacen_origen": "CAU SUR",
-        "usr_resguardo": "TEMP",
-        "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-        "tipo_almacen": "Fisico",
-        "empresa": "1",
-        "num_asignacion": "1695921666345",
-        "adf": "12345678900000002",
-        "estatus": "1",
-        "comentarios": null,
-        "f_registro": "2023-09-28 11:21:29"
-    }
-]
+en este codigo estoy recolectando los datos de un formulario y quiero agregar a esos datos el valor de orden 
+
+la variable data trae los siguientes datos 
+
+{
+    "ide": "1120010447",
+    "num-adf": "12345678900000003",
+    "usr-envia": "CAUSUR",
+    "almacen-origen": "CAU SUR"
+}
+
+de que forma le agrego un elemento mas en este caso orden
