@@ -1,0 +1,8 @@
+<template id="miTemplate">
+    <p>Contenido del template</p>
+</template>
+var miTemplate = document.getElementById('miTemplate');
+
+var divContenedor = document.getElementById('miDiv'); // Reemplaza 'miDiv' con el ID de tu div
+var contenidoClonado = document.importNode(miTemplate.content, true);
+divContenedor.appendChild(contenidoClonado);
