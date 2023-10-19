@@ -1,124 +1,23 @@
-{
-  "code": "200",
-  "mnj": "Consulta correcta: se mostrara su stock ",
-  "type": "success",
-  "data": [
-    {
-      "id": "7296",
-      "noe": "1",
-      "grupo_equipo": "Accesorio",
-      "tipo_equipo": "DIADEMA",
-      "marca": "DELL",
-      "idequipo": "196",
-      "modelo": "UC300",
-      "almacen": "CAU SUR",
-      "empresa": "Banco Santander",
-      "stock": "11",
-      "usr_resguardo": "C356882"
-    },
-    {
-      "id": "7297",
-      "noe": "1",
-      "grupo_equipo": "Accesorio",
-      "tipo_equipo": "DIADEMA",
-      "marca": "DELL",
-      "idequipo": "196",
-      "modelo": "UC300",
-      "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-      "empresa": "Banco Santander",
-      "stock": "39",
-      "usr_resguardo": "TEMP"
-    },
-    {
-      "id": "7291",
-      "noe": "1",
-      "grupo_equipo": "EAF",
-      "tipo_equipo": "LAPTOP",
-      "marca": "DELL",
-      "idequipo": "80",
-      "modelo": "LATITUDE 5400",
-      "almacen": "CAU SUR",
-      "empresa": "Banco Santander",
-      "stock": "9",
-      "usr_resguardo": "C356882"
-    },
-    {
-      "id": "7292",
-      "noe": "1",
-      "grupo_equipo": "EAF",
-      "tipo_equipo": "LAPTOP",
-      "marca": "DELL",
-      "idequipo": "80",
-      "modelo": "LATITUDE 5400",
-      "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-      "empresa": "Banco Santander",
-      "stock": "15",
-      "usr_resguardo": "TEMP"
-    },
-    {
-      "id": "7293",
-      "noe": "1",
-      "grupo_equipo": "EAF",
-      "tipo_equipo": "LAPTOP",
-      "marca": "DELL",
-      "idequipo": "81",
-      "modelo": "LATITUDE 5410",
-      "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-      "empresa": "EUT Santander",
-      "stock": "189",
-      "usr_resguardo": "TEMP"
-    },
-    {
-      "id": "7294",
-      "noe": "1",
-      "grupo_equipo": "EAF",
-      "tipo_equipo": "LAPTOP",
-      "marca": "DELL",
-      "idequipo": "85",
-      "modelo": "LATITUDE 7400",
-      "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-      "empresa": "Banco Santander",
-      "stock": "55",
-      "usr_resguardo": "TEMP"
-    },
-    {
-      "id": "7295",
-      "noe": "2",
-      "grupo_equipo": "EAF",
-      "tipo_equipo": "LAPTOP",
-      "marca": "DELL",
-      "idequipo": "86",
-      "modelo": "LATITUDE 7480",
-      "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-      "empresa": "Banco Santander",
-      "stock": "16",
-      "usr_resguardo": "TEMP"
-    },
-    {
-      "id": "7298",
-      "noe": "5",
-      "grupo_equipo": "Accesorio",
-      "tipo_equipo": "Bateria Laptop",
-      "marca": "DELL",
-      "idequipo": "2",
-      "modelo": "B-57001",
-      "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-      "empresa": "Banco Santander",
-      "stock": "60",
-      "usr_resguardo": "TEMP"
-    },
-    {
-      "id": "7299",
-      "noe": "5",
-      "grupo_equipo": "EAF",
-      "tipo_equipo": "LAPTOP",
-      "marca": "DELL",
-      "idequipo": "77",
-      "modelo": "E5450",
-      "almacen": "EDIF. CORPORATIVO CTOSS QUERETARO",
-      "empresa": "Banco Santander",
-      "stock": "3",
-      "usr_resguardo": "TEMP"
+function agruparYSumarStock(data, campoAgrupacion) {
+  const resultado = {};
+
+  for (const item of data) {
+    const claveGrupo = item[campoAgrupacion];
+
+    if (!resultado[claveGrupo]) {
+      resultado[claveGrupo] = 0;
     }
-  ]
+
+    resultado[claveGrupo] += parseInt(item.stock, 10);
+  }
+
+  return resultado;
 }
+
+// Ejemplo de uso:
+const datos = /* Tu objeto de datos */;
+const resultadoAgrupadoPorGrupo = agruparYSumarStock(datos.data, 'grupo_equipo');
+const resultadoAgrupadoPorTipo = agruparYSumarStock(datos.data, 'tipo_equipo');
+
+console.log('Resultado agrupado por Grupo:', resultadoAgrupadoPorGrupo);
+console.log('Resultado agrupado por Tipo:', resultadoAgrupadoPorTipo);
