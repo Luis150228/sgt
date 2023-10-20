@@ -1,23 +1,23 @@
-function agruparYSumarStock(data, campoAgrupacion) {
-  const resultado = {};
+usando JS quiero convertir el primer elemento o ajustarlo al segundo elemento usando ES6 con for of o  for in, lo que consideres mejor
 
-  for (const item of data) {
-    const claveGrupo = item[campoAgrupacion];
-
-    if (!resultado[claveGrupo]) {
-      resultado[claveGrupo] = 0;
-    }
-
-    resultado[claveGrupo] += parseInt(item.stock, 10);
+{
+  "graphModelo": {
+      "UC300": 50,
+      "LATITUDE 5400": 24,
+      "LATITUDE 5410": 189,
+      "LATITUDE 7400": 55,
+      "LATITUDE 7480": 16,
+      "B-57001": 60,
+      "E5450": 3
   }
-
-  return resultado;
 }
 
-// Ejemplo de uso:
-const datos = /* Tu objeto de datos */;
-const resultadoAgrupadoPorGrupo = agruparYSumarStock(datos.data, 'grupo_equipo');
-const resultadoAgrupadoPorTipo = agruparYSumarStock(datos.data, 'tipo_equipo');
-
-console.log('Resultado agrupado por Grupo:', resultadoAgrupadoPorGrupo);
-console.log('Resultado agrupado por Tipo:', resultadoAgrupadoPorTipo);
+[
+  ["UC300", 50],
+  ["LATITUDE 5400", 24],
+  ["LATITUDE 5410", 189],
+  ["LATITUDE 7400", 55],
+  ["LATITUDE 7480", 16],
+  ["B-57001", 60],
+  ["E5450", 3]
+]
