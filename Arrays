@@ -1,23 +1,17 @@
-usando JS quiero convertir el primer elemento o ajustarlo al segundo elemento usando ES6 con for of o  for in, lo que consideres mejor
+const graphModelo = {
+  "UC300": 50,
+  "LATITUDE 5400": 24,
+  "LATITUDE 5410": 189,
+  "LATITUDE 7400": 55,
+  "LATITUDE 7480": 16,
+  "B-57001": 60,
+  "E5450": 3
+};
 
-{
-  "graphModelo": {
-      "UC300": 50,
-      "LATITUDE 5400": 24,
-      "LATITUDE 5410": 189,
-      "LATITUDE 7400": 55,
-      "LATITUDE 7480": 16,
-      "B-57001": 60,
-      "E5450": 3
-  }
+const transformedArray = [];
+
+for (const [modelo, cantidad] of Object.entries(graphModelo)) {
+  transformedArray.push([modelo, cantidad]);
 }
 
-[
-  ["UC300", 50],
-  ["LATITUDE 5400", 24],
-  ["LATITUDE 5410", 189],
-  ["LATITUDE 7400", 55],
-  ["LATITUDE 7480", 16],
-  ["B-57001", 60],
-  ["E5450", 3]
-]
+console.log(transformedArray);
