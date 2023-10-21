@@ -4,6 +4,7 @@ require 'vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Cell\DataType;
 
 $data = json_decode('[
   {"grupo_equipo":"EAF","tipo_equipo":"LAPTOP","modelo":"LATITUDE 5400","almacen":"CTOSS","stock":"1","usr_resguardo":"TEMP","empresa":"Banco Santander","num_etiqueta":"2320481871","serie":"F4Z8Q13","adf":null,"observacion":"proyecto renovacion","f_modifica":"2023-10-20 11:19:25","f_registro":"2023-09-28 10:43:36"},
@@ -38,19 +39,19 @@ $sheet->setCellValue('M1', 'f_registro');
 // Escribir datos
 $row = 2;
 foreach ($data as $item) {
-    $sheet->setCellValue('A' . $row, $item['grupo_equipo']);
-    $sheet->setCellValue('B' . $row, $item['tipo_equipo']);
-    $sheet->setCellValue('C' . $row, $item['modelo']);
-    $sheet->setCellValue('D' . $row, $item['almacen']);
-    $sheet->setCellValue('E' . $row, $item['stock']);
-    $sheet->setCellValue('F' . $row, $item['usr_resguardo']);
-    $sheet->setCellValue('G' . $row, $item['empresa']);
-    $sheet->setCellValue('H' . $row, $item['num_etiqueta']);
-    $sheet->setCellValue('I' . $row, $item['serie']);
-    $sheet->setCellValue('J' . $row, $item['adf']);
-    $sheet->setCellValue('K' . $row, $item['observacion']);
-    $sheet->setCellValue('L' . $row, $item['f_modifica']);
-    $sheet->setCellValue('M' . $row, $item['f_registro']);
+    $sheet->setCellValueExplicit('A' . $row, $item['grupo_equipo'], DataType::TYPE_STRING);
+    $sheet->setCellValueExplicit('B' . $row, $item['tipo_equipo'], DataType::TYPE_STRING);
+    $sheet->setCellValueExplicit('C' . $row, $item['modelo'], DataType::TYPE_STRING);
+    $sheet->setCellValueExplicit('D' . $row, $item['almacen'], DataType::TYPE_STRING);
+    $sheet->setCellValueExplicit('E' . $row, $item['stock'], DataType::TYPE_STRING);
+    $sheet->setCellValueExplicit('F' . $row, $item['usr_resguardo'], DataType::TYPE_STRING);
+    $sheet->setCellValueExplicit('G' . $row, $item['empresa'], DataType::TYPE_STRING);
+    $sheet->setCellValueExplicit('H' . $row, $item['num_etiqueta'], DataType::TYPE_STRING);
+    $sheet->setCellValueExplicit('I' . $row, $item['serie'], DataType::TYPE_STRING);
+    $sheet->setCellValueExplicit('J' . $row, $item['adf'], DataType::TYPE_STRING);
+    $sheet->setCellValueExplicit('K' . $row, $item['observacion'], DataType::TYPE_STRING);
+    $sheet->setCellValueExplicit('L' . $row, $item['f_modifica'], DataType::TYPE_STRING);
+    $sheet->setCellValueExplicit('M' . $row, $item['f_registro'], DataType::TYPE_STRING);
     
     $row++;
 }
