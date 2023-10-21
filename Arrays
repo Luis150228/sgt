@@ -1,94 +1,64 @@
-quiero crear una hoja llamada stock con el siguiente contenido usando phpSpreadSheet
+<?php
 
-[
-  {
-    "grupo_equipo": "EAF",
-    "tipo_equipo": "LAPTOP",
-    "modelo": "LATITUDE 5400",
-    "almacen": "CTOSS",
-    "stock": "1",
-    "usr_resguardo": "TEMP",
-    "empresa": "Banco Santander",
-    "num_etiqueta": "2320481871",
-    "serie": "F4Z8Q13",
-    "adf": null,
-    "observacion": "proyecto renovacion",
-    "f_modifica": "2023-10-20 11:19:25",
-    "f_registro": "2023-09-28 10:43:36"
-  },
-  {
-    "grupo_equipo": "EAF",
-    "tipo_equipo": "LAPTOP",
-    "modelo": "LATITUDE 5400",
-    "almacen": "CTOSS",
-    "stock": "1",
-    "usr_resguardo": "TEMP",
-    "empresa": "Banco Santander",
-    "num_etiqueta": "2320481322",
-    "serie": "84YDL13",
-    "adf": null,
-    "observacion": "proyecto renovacion",
-    "f_modifica": "2023-10-20 11:19:25",
-    "f_registro": "2023-09-28 10:43:36"
-  },
-  {
-    "grupo_equipo": "EAF",
-    "tipo_equipo": "LAPTOP",
-    "modelo": "LATITUDE 5410",
-    "almacen": "CTOSS",
-    "stock": "1",
-    "usr_resguardo": "TEMP",
-    "empresa": "EUT Santander",
-    "num_etiqueta": "1120010692",
-    "serie": "DXN3573",
-    "adf": null,
-    "observacion": "proyecto renovacion",
-    "f_modifica": "2023-10-20 11:19:25",
-    "f_registro": "2023-09-28 10:48:37"
-  },
-  {
-    "grupo_equipo": "EAF",
-    "tipo_equipo": "LAPTOP",
-    "modelo": "LATITUDE 5410",
-    "almacen": "CTOSS",
-    "stock": "1",
-    "usr_resguardo": "TEMP",
-    "empresa": "EUT Santander",
-    "num_etiqueta": "1120010693",
-    "serie": "FKRY373",
-    "adf": null,
-    "observacion": "proyecto renovacion",
-    "f_modifica": "2023-10-20 11:19:25",
-    "f_registro": "2023-09-28 10:48:37"
-  },
-  {
-    "grupo_equipo": "EAF",
-    "tipo_equipo": "LAPTOP",
-    "modelo": "LATITUDE 5410",
-    "almacen": "CTOSS",
-    "stock": "1",
-    "usr_resguardo": "TEMP",
-    "empresa": "EUT Santander",
-    "num_etiqueta": "1120010695",
-    "serie": "4HRY373",
-    "adf": null,
-    "observacion": "proyecto renovacion",
-    "f_modifica": "2023-10-20 11:19:25",
-    "f_registro": "2023-09-28 10:48:37"
-  },
-  {
-    "grupo_equipo": "EAF",
-    "tipo_equipo": "LAPTOP",
-    "modelo": "LATITUDE 5410",
-    "almacen": "CTOSS",
-    "stock": "1",
-    "usr_resguardo": "TEMP",
-    "empresa": "EUT Santander",
-    "num_etiqueta": "1120010566",
-    "serie": "36DY373",
-    "adf": null,
-    "observacion": "proyecto renovacion",
-    "f_modifica": "2023-10-20 11:19:25",
-    "f_registro": "2023-09-28 10:48:37"
-  }
-]
+require 'vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+$data = json_decode('[
+  {"grupo_equipo":"EAF","tipo_equipo":"LAPTOP","modelo":"LATITUDE 5400","almacen":"CTOSS","stock":"1","usr_resguardo":"TEMP","empresa":"Banco Santander","num_etiqueta":"2320481871","serie":"F4Z8Q13","adf":null,"observacion":"proyecto renovacion","f_modifica":"2023-10-20 11:19:25","f_registro":"2023-09-28 10:43:36"},
+  {"grupo_equipo":"EAF","tipo_equipo":"LAPTOP","modelo":"LATITUDE 5400","almacen":"CTOSS","stock":"1","usr_resguardo":"TEMP","empresa":"Banco Santander","num_etiqueta":"2320481322","serie":"84YDL13","adf":null,"observacion":"proyecto renovacion","f_modifica":"2023-10-20 11:19:25","f_registro":"2023-09-28 10:43:36"},
+  {"grupo_equipo":"EAF","tipo_equipo":"LAPTOP","modelo":"LATITUDE 5410","almacen":"CTOSS","stock":"1","usr_resguardo":"TEMP","empresa":"EUT Santander","num_etiqueta":"1120010692","serie":"DXN3573","adf":null,"observacion":"proyecto renovacion","f_modifica":"2023-10-20 11:19:25","f_registro":"2023-09-28 10:48:37"},
+  {"grupo_equipo":"EAF","tipo_equipo":"LAPTOP","modelo":"LATITUDE 5410","almacen":"CTOSS","stock":"1","usr_resguardo":"TEMP","empresa":"EUT Santander","num_etiqueta":"1120010693","serie":"FKRY373","adf":null,"observacion":"proyecto renovacion","f_modifica":"2023-10-20 11:19:25","f_registro":"2023-09-28 10:48:37"},
+  {"grupo_equipo":"EAF","tipo_equipo":"LAPTOP","modelo":"LATITUDE 5410","almacen":"CTOSS","stock":"1","usr_resguardo":"TEMP","empresa":"EUT Santander","num_etiqueta":"1120010695","serie":"4HRY373","adf":null,"observacion":"proyecto renovacion","f_modifica":"2023-10-20 11:19:25","f_registro":"2023-09-28 10:48:37"},
+  {"grupo_equipo":"EAF","tipo_equipo":"LAPTOP","modelo":"LATITUDE 5410","almacen":"CTOSS","stock":"1","usr_resguardo":"TEMP","empresa":"EUT Santander","num_etiqueta":"1120010566","serie":"36DY373","adf":null,"observacion":"proyecto renovacion","f_modifica":"2023-10-20 11:19:25","f_registro":"2023-09-28 10:48:37"}
+]', true);
+
+// Crear una instancia de Spreadsheet
+$spreadsheet = new Spreadsheet();
+
+// Crear una nueva hoja llamada "stock"
+$sheet = $spreadsheet->createSheet()->setTitle('stock');
+
+// Escribir encabezados
+$sheet->setCellValue('A1', 'grupo_equipo');
+$sheet->setCellValue('B1', 'tipo_equipo');
+$sheet->setCellValue('C1', 'modelo');
+$sheet->setCellValue('D1', 'almacen');
+$sheet->setCellValue('E1', 'stock');
+$sheet->setCellValue('F1', 'usr_resguardo');
+$sheet->setCellValue('G1', 'empresa');
+$sheet->setCellValue('H1', 'num_etiqueta');
+$sheet->setCellValue('I1', 'serie');
+$sheet->setCellValue('J1', 'adf');
+$sheet->setCellValue('K1', 'observacion');
+$sheet->setCellValue('L1', 'f_modifica');
+$sheet->setCellValue('M1', 'f_registro');
+
+// Escribir datos
+$row = 2;
+foreach ($data as $item) {
+    $sheet->setCellValue('A' . $row, $item['grupo_equipo']);
+    $sheet->setCellValue('B' . $row, $item['tipo_equipo']);
+    $sheet->setCellValue('C' . $row, $item['modelo']);
+    $sheet->setCellValue('D' . $row, $item['almacen']);
+    $sheet->setCellValue('E' . $row, $item['stock']);
+    $sheet->setCellValue('F' . $row, $item['usr_resguardo']);
+    $sheet->setCellValue('G' . $row, $item['empresa']);
+    $sheet->setCellValue('H' . $row, $item['num_etiqueta']);
+    $sheet->setCellValue('I' . $row, $item['serie']);
+    $sheet->setCellValue('J' . $row, $item['adf']);
+    $sheet->setCellValue('K' . $row, $item['observacion']);
+    $sheet->setCellValue('L' . $row, $item['f_modifica']);
+    $sheet->setCellValue('M' . $row, $item['f_registro']);
+    
+    $row++;
+}
+
+// Crear un objeto Writer (escritor)
+$writer = new Xlsx($spreadsheet);
+
+// Guardar el archivo en el servidor o enviarlo al navegador
+$writer->save('stock.xlsx');
+
+echo "Archivo 'stock.xlsx' creado exitosamente!";
