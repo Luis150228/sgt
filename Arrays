@@ -1,235 +1,31 @@
-El sigueinte error esta saliendo usando googleCharts y me aparece este error :Invalid column index 3. Should be an integer in the range [0-2].×
- 
- const totalStock = [
-  [
-      "activos",
-      null,
-      397
-  ],
-  [
-      "CAU SUR",
-      "activos",
-      20
-  ],
-  [
-      "CTOSS",
-      "activos",
-      348
-  ],
-  [
-      "PATIO SANTA FE",
-      "activos",
-      29
-  ],
-  [
-      "Banco Santander_1",
-      "CTOSS",
-      161
-  ],
-  [
-      "Banco Santander_2",
-      "PATIO SANTA FE",
-      27
-  ],
-  [
-      "Banco Santander_4",
-      "CAU SUR",
-      20
-  ],
-  [
-      "EUT Santander_1",
-      "CTOSS",
-      187
-  ],
-  [
-      "EUT Santander_2",
-      "PATIO SANTA FE",
-      2
-  ],
-  [
-      "Bateria Laptop_1_1",
-      "Banco Santander_1",
-      54
-  ],
-  [
-      "Bateria Laptop_2_1",
-      "Banco Santander_2",
-      6
-  ],
-  [
-      "DIADEMA_1_1",
-      "Banco Santander_1",
-      32
-  ],
-  [
-      "DIADEMA_2_1",
-      "Banco Santander_2",
-      7
-  ],
-  [
-      "DIADEMA_4_1",
-      "Banco Santander_4",
-      11
-  ],
-  [
-      "LAPTOP_1_1",
-      "Banco Santander_1",
-      75
-  ],
-  [
-      "LAPTOP_1_2",
-      "EUT Santander_1",
-      187
-  ],
-  [
-      "LAPTOP_2_1",
-      "Banco Santander_2",
-      14
-  ],
-  [
-      "LAPTOP_2_2",
-      "EUT Santander_2",
-      2
-  ],
-  [
-      "LAPTOP_4_1",
-      "Banco Santander_4",
-      9
-  ],
-  [
-      "B-57001_1_1",
-      "Bateria Laptop_1_1",
-      54
-  ],
-  [
-      "B-57001_2_2",
-      "Bateria Laptop_2_1",
-      6
-  ],
-  [
-      "E5450_1_1",
-      "LAPTOP_1_1",
-      2
-  ],
-  [
-      "E5450_2_2",
-      "LAPTOP_2_1",
-      1
-  ],
-  [
-      "LATITUDE 5400_1_1",
-      "LAPTOP_1_1",
-      2
-  ],
-  [
-      "LATITUDE 5400_2_2",
-      "LAPTOP_2_1",
-      13
-  ],
-  [
-      "LATITUDE 5400_4_4",
-      "LAPTOP_4_1",
-      9
-  ],
-  [
-      "LATITUDE 5410_1_1",
-      "LAPTOP_1_2",
-      187
-  ],
-  [
-      "LATITUDE 5410_2_2",
-      "LAPTOP_2_2",
-      2
-  ],
-  [
-      "LATITUDE 7400_1_1",
-      "LAPTOP_1_1",
-      55
-  ],
-  [
-      "LATITUDE 7480_1_1",
-      "LAPTOP_1_1",
-      16
-  ],
-  [
-      "UC300_1_1",
-      "DIADEMA_1_1",
-      32
-  ],
-  [
-      "UC300_2_2",
-      "DIADEMA_2_1",
-      7
-  ],
-  [
-      "UC300_4_4",
-      "DIADEMA_4_1",
-      11
-  ]
-]
+<?php
 
-google.charts.load('current', {packages:['treemap']});
-const totalStockActivo = () => {
-	const data = new google.visualization.DataTable();
-	data.addColumn('string', 'ID');
-	data.addColumn('string', 'Parent');
-	data.addColumn('number', 'Stock');
-	data.addRows(totalStock);
+require 'vendor/autoload.php';
 
-	const tree = new google.visualization.TreeMap(document.getElementById("barchart_equipos"));
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-	const options = {
-		enableHighlight: true,
-		maxDepth: 1,
-		maxPostDepth: 2,
-		minHighlightColor: '#fa3939',
-		midHighlightColor: '#753f3f',
-		maxHighlightColor: '#575757',
-		minColor: '#575757',
-		midColor: '#995757',
-		maxColor: '#fa3939',
-		headerHeight: 15,
-		showScale: true,
-		generateTooltip: showFullTooltip,
-		height: 300,
-		useWeightedAverageForAggregation: true,
-		titleTextStyle: {
-			font: 16,
-			color: '#ffffff',
-		},
-		legend: {
-			textStyle: {
-				color: '#ffffff',
-			},
-		},
-		// Use click to highlight and double-click to drill down.
-		eventsConfig: {
-			highlight: ['mousein'],
-			unhighlight: ['mouseout'],
-			rollup: ['dblclick'],
-			drilldown: ['click'],
-		},
-	};
+// Crear una instancia de Spreadsheet
+$spreadsheet = new Spreadsheet();
 
-	tree.draw(data, options);
-	function showFullTooltip(row, size, value) {
-		const rowData = data.getValue(row, 0);
-		const TotalValue = data.getValue(row, 2);
-		const nuevoValue = data.getValue(row, 3);
-		const abiertoValue = data.getValue(row, 4);
-		const cursoValue = data.getValue(row, 5);
-		const pendienteValue = data.getValue(row, 6);
+// Obtener la hoja activa
+$sheet = $spreadsheet->getActiveSheet();
 
-		return `
-      <div style="background:#272B30; padding:10px; border-style:none">
-        <span style="font-family:Verdana"><b>${rowData}</b>,</span><br>
-        Total: ${TotalValue}<br>
-        ${data.getColumnLabel(3)}: ${nuevoValue}<br>
-        ${data.getColumnLabel(4)}: ${abiertoValue}<br>
-        ${data.getColumnLabel(5)}: ${cursoValue}<br>
-        ${data.getColumnLabel(6)}: ${pendienteValue}<br>
-      </div>
-    `;
-	}
-};
-google.charts.setOnLoadCallback(totalStockActivo);
+// Escribir datos en celdas
+$sheet->setCellValue('A1', 'Hello World !');
+
+// Establecer algunas propiedades del documento
+$spreadsheet->getProperties()
+    ->setCreator('Your Name')
+    ->setLastModifiedBy('Your Name')
+    ->setTitle('Test Document')
+    ->setSubject('Test Document')
+    ->setDescription('This is a test document');
+
+// Crear un objeto Writer (escritor)
+$writer = new Xlsx($spreadsheet);
+
+// Guardar el archivo en el servidor o enviarlo al navegador
+$writer->save('hello_world.xlsx');
+
+echo "Archivo creado exitosamente!";
