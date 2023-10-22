@@ -1,38 +1,59 @@
-[
-    {
-        "fecha": "2023-08-18",
-        "recibidas": "1049",
-        "atendidas": "962",
-        "abandonadas": "87",
-        "abandono_menos10": "18",
-        "prc_abandono": "6.69",
-        "tiempoAHT": "00:06:17",
-        "nummin": "362801",
-        "rangosem": "18 AGO - 24 AGO",
-        "anhio": "2023"
-    },
-    {
-        "fecha": "2023-08-19",
-        "recibidas": "77",
-        "atendidas": "75",
-        "abandonadas": "2",
-        "abandono_menos10": "2",
-        "prc_abandono": "0.00",
-        "tiempoAHT": "00:07:23",
-        "nummin": "33272",
-        "rangosem": "18 AGO - 24 AGO",
-        "anhio": "2023"
-    },
-    {
-        "fecha": "2023-08-20",
-        "recibidas": "26",
-        "atendidas": "25",
-        "abandonadas": "1",
-        "abandono_menos10": "0",
-        "prc_abandono": "3.85",
-        "tiempoAHT": "00:05:34",
-        "nummin": "8354",
-        "rangosem": "18 AGO - 24 AGO",
-        "anhio": "2023"
+const btnPags = (grup, destino, itemsPorPagina = 5) => {
+    const target = document.getElementById(destino);
+    target.innerHTML = ``;
+    
+    // Crear solo los primeros botones
+    for (let i = 0; i < Math.min(itemsPorPagina, grup.length); i++) {
+        const liBtns = document.createElement('li');
+        liBtns.classList.add('page-item');
+        const aBtns = document.createElement('a');
+        aBtns.classList.add('page-link');
+        aBtns.setAttribute('href', '#');
+        aBtns.setAttribute('data-i', i);
+        const txtBtn = i + 1;
+        aBtns.innerHTML = txtBtn;
+        liBtns.appendChild(aBtns);
+        target.appendChild(liBtns);
     }
-]
+
+    const btnPageItem = target.querySelectorAll('.page-link');
+
+    for (const liBtns of btnPageItem) {
+        liBtns.addEventListener('click', (e) => {
+            // Obtener el índice del botón clickeado
+            const idx = parseInt(e.target.dataset.i);
+
+            // Calcular el rango de elementos a mostrar
+            const start = idx * itemsPorPagina;
+            const end = start + itemsPorPagina;
+
+            // Crear solo los botones necesarios
+            for (let i = start; i < Math.min(end, grup.length); i++) {
+                const liBtns = document.createElement('li');
+                liBtns.classList.add('page-item');
+                const aBtns = document.createElement('a');
+                aBtns.classList.add('page-link');
+                aBtns.setAttribute('href', '#');
+                aBtns.setAttribute('data-i', i);
+                const txtBtn = i + 1;
+                aBtns.innerHTML = txtBtn;
+                liBtns.appendChild(aBtns);
+                target.appendChild(liBtns);
+            }
+
+            // Desactivar los botones no utilizados
+            for (const noClick of btnPageItem) {
+                if (noClick !== liBtns) {
+                    noClick.classList.remove('disabled');
+                }
+            }
+
+            // Activar/desactivar la clase 'disabled' en el botón clickeado
+            if (!liBtns.classList.contains('disabled')) {
+                liBtns.classList.add('disabled');
+            } else {
+                liBtns.classList.toggle('disabled');
+            }
+        });
+    }
+};
