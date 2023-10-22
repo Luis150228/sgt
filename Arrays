@@ -7,8 +7,8 @@ export const buscarElementos = (criterio, valor, data) => {
 
     for (const elemento of data) {
         // Verifica si el criterio existe en el elemento y si es una cadena
-        if (elemento[criterio] && typeof elemento[criterio] === 'string' &&
-            elemento[criterio].toLowerCase().includes(valor.toLowerCase())) {
+        if (elemento[criterio] !== undefined && typeof elemento[criterio] === 'string' &&
+            elemento[criterio].toLowerCase().indexOf(valor.toLowerCase()) !== -1) {
             resultados.push(elemento);
         }
     }
