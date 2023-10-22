@@ -1,17 +1,260 @@
-export const buscarElementos = (criterio, valor, data) => {
-    console.log(criterio);
-    console.log(valor);
-    console.log(data);
+tengo las siguientes funciones para crear grupos con el total de los registros y asi poder paginarlos pueden ser mas 1000 regustros por lo que si los grupos son de 5 objetos me va a crear 200 botones de cada pagina, lo que requiero es una ajuste a la funcion  btnPags para que no creee los 200 botones sino que cree solo los primeros 5 y si se da click al 5to boton cambien esos prmeros 5 botones por los siguienes botones ejemplo al inicio estan los botones del 1,2,3,4,5 si doy click en el 5 ahora debe mostrar los botones 6,7,8,9,10 y si doy click en 10 haga lo mismo pero si doy clic en el primer boton por ejemplo en 6 regrese los botones 1,2,3,4,5
 
-    const resultados = [];
+const presentInv = (data, items = 15) => {
+	let jsonTable = grupoTabla(data, items);
+	addRowsTablaInv(jsonTable[0], 'inv-list');
+	btnPags(jsonTable, 'ul-pag');
 
-    for (const elemento of data) {
-        // Verifica si el criterio existe en el elemento y si es una cadena
-        if (elemento[criterio] !== undefined && typeof elemento[criterio] === 'string' &&
-            elemento[criterio].toLowerCase().indexOf(valor.toLowerCase()) !== -1) {
-            resultados.push(elemento);
-        }
-    }
+	const btnPageItem = document.querySelectorAll('.page-link');
+	const itemsPags = document.querySelectorAll('[data-items]');
 
-    return resultados;
+	for (const itemPag of itemsPags) {
+		itemPag.addEventListener('click', (e) => {
+			if (e.target.className === 'dropdown-item') {
+				const showItems = parseInt(e.target.dataset.items);
+				presentInv(data, showItems);
+			}
+		});
+	}
+
+	for (const item of btnPageItem) {
+		item.addEventListener('click', (e) => {
+			const pag = parseInt(e.target.dataset.i);
+			addRowsTablaInv(jsonTable[pag], 'inv-list');
+		});
+	}
 };
+
+const grupoTabla = (json, elementos) => {
+	const neoGroup = [];
+	let group = [];
+
+	for (const item of json) {
+		group.push(item);
+		if (group.length === elementos) {
+			neoGroup.push(group);
+			group = [];
+		}
+	}
+
+	if (group.length > 0) {
+		neoGroup.push(group);
+	}
+
+	return neoGroup;
+};
+
+const addRowsTablaInv = (dataArray, elemento) => {
+	const tbody = document.getElementById(elemento);
+	tbody.innerHTML = '';
+	for (const item of dataArray) {
+		const newRow = document.createElement('tr');
+		newRow.innerHTML = `
+      <td>${item.modelo}</td>
+      <td>${item.semaforo}</td>
+      <td>${item.expediente}</td>
+      <td>${item.num_movil}</td>
+      <td>${item.imei}</td>
+      <td>${item.nombre_plan.trim()}</td>
+      <td>${item.mes_restante}/${item.meses_plan}</td>
+      <td>${item.estatus_int.toUpperCase()}</td>
+      <td>${item.expediente}</td>
+      <td>${item.asignado_a}</td>
+      <td>${item.enrollment_date}</td>
+      <td><button type="button" class="btn btn-secondary btn-sm" data-asignar="true" data-stock="${item.num_movil}">Admin Line</button></td>`;
+
+		tbody.appendChild(newRow);
+	}
+};
+
+const btnPags = (grup, destino) => {
+	const target = document.getElementById(destino);
+	target.innerHTML = ``;
+	grup.map((item, index) => {
+		const liBtns = document.createElement('li');
+		liBtns.classList.add('page-item');
+		const aBtns = document.createElement('a');
+		aBtns.classList.add('page-link');
+		aBtns.setAttribute('href', '#');
+		aBtns.setAttribute('data-i', index);
+		const txtBtn = index + 1;
+		aBtns.innerHTML = txtBtn;
+		liBtns.appendChild(aBtns);
+		target.appendChild(liBtns);
+	});
+
+	const btnPageItem = target.querySelectorAll('.page-link');
+
+	for (const liBtns of btnPageItem) {
+		liBtns.addEventListener('click', (e) => {
+			for (const noClick of btnPageItem) {
+				if (noClick !== liBtns) {
+					noClick.classList.remove('disabled');
+				}
+			}
+
+			const idx = parseInt(e.target.dataset.i);
+			if (!btnPageItem[idx].classList.contains('disabled')) {
+				btnPageItem[idx].classList.add('disabled');
+			} else {
+				btnPageItem[idx].classList.toggle('disabled');
+			}
+		});
+	}
+};
+
+
+const data = [
+    {
+        "division": "Santander",
+        "num_movil": "4421270153",
+        "estatus_tel": "AC",
+        "motivo_tel": "RECCL",
+        "iccid": "8952020518462580417 ",
+        "imei": "358917497425739",
+        "estatus_cta": "AC",
+        "nombre_plan": "TMSLE CC 2000 DD 18 ",
+        "monto_plan": "283.62",
+        "marca": "SAM            ",
+        "modelo": "SM-A035M        ",
+        "modelo_img": "A03",
+        "meses_plan": "18",
+        "date_ini": "2022-08-31",
+        "date_fin": "2024-02-29",
+        "estatus_adeudum": "CON ADENDUM",
+        "mes_restante": "4",
+        "dias_restantes": "130",
+        "semaforo": "verde",
+        "asignado_a": "RODOLFO MANUEL LOPEZ PINEDA",
+        "expediente": "C104135",
+        "email": "C104135@santander.com.mx",
+        "area": "Domain Expert (JOSE ANTONIO LUNA CUELLAR)",
+        "puesto": "Software Engineering",
+        "puestoFam": "Software Engineering",
+        "empresa_santander": "OFNA CETOS QUERETARO_GSM",
+        "workday_status": null,
+        "estatus_int": "Asignado",
+        "observacion_int": null,
+        "update_file": "2023-03-28 14:00:22",
+        "update_usr_data": "2023-04-24 13:26:12",
+        "enrollment_model": "SM-A217M",
+        "enrollment_date": "2023-09-08 14:27:03",
+        "semaforo_enrollment": "Enrolado",
+        "edoUser": "perm_identity",
+        "updateWorkday": "2023-10-10 16:40:55"
+    },
+    {
+        "division": "SGT",
+        "num_movil": "4421275251",
+        "estatus_tel": "AC",
+        "motivo_tel": "TARDS",
+        "iccid": "8952020023163834254 ",
+        "imei": "357467542038468",
+        "estatus_cta": "AC",
+        "nombre_plan": "TMSLE CC 2000 DD 18 ",
+        "monto_plan": "283.62",
+        "marca": "SAM            ",
+        "modelo": "SM-A325M        ",
+        "modelo_img": "A32",
+        "meses_plan": "18",
+        "date_ini": "2022-12-14",
+        "date_fin": "2024-06-14",
+        "estatus_adeudum": "CON ADENDUM",
+        "mes_restante": "7",
+        "dias_restantes": "236",
+        "semaforo": "verde",
+        "asignado_a": "RAUL JIMENEZ LOPEZ",
+        "expediente": "C339448",
+        "email": "rajimenez@gruposantander.com.mx",
+        "area": "INFRA PROTECT IT ANALYST III (ALFREDO VEGA ANGELES)",
+        "puesto": "Technology Risk & Cybersecurity",
+        "puestoFam": "Technology Risk & Cybersecurity",
+        "empresa_santander": "OFNA TECH AND OPER QRO_PMX",
+        "workday_status": null,
+        "estatus_int": "Disponible",
+        "observacion_int": null,
+        "update_file": "2023-03-28 13:55:45",
+        "update_usr_data": "2023-09-11 11:33:14",
+        "enrollment_model": "SM-A307G",
+        "enrollment_date": "2023-04-26 16:28:05",
+        "semaforo_enrollment": "No_Enrolado",
+        "edoUser": "perm_identity",
+        "updateWorkday": "2023-10-10 16:35:07"
+    },
+    {
+        "division": "SGT",
+        "num_movil": "4421577669",
+        "estatus_tel": "AC",
+        "motivo_tel": "CAMCA",
+        "iccid": "8952020020167027380 ",
+        "imei": "357467541430286",
+        "estatus_cta": "AC",
+        "nombre_plan": "TMSLE CC 2000 DD 18 ",
+        "monto_plan": "283.62",
+        "marca": "SAM            ",
+        "modelo": "SM-A325M        ",
+        "modelo_img": "A32",
+        "meses_plan": "18",
+        "date_ini": "2022-12-14",
+        "date_fin": "2024-06-14",
+        "estatus_adeudum": "CON ADENDUM",
+        "mes_restante": "7",
+        "dias_restantes": "236",
+        "semaforo": "verde",
+        "asignado_a": "JUAN ISRAEL LOPEZ LUGO",
+        "expediente": "C270271",
+        "email": "juanlopezlu@gruposantander.com.mx",
+        "area": "INFRA MAINF IT SPECIALIST I (EMILIO ALVAREZ RIVERA)",
+        "puesto": "Product & IT Project Management",
+        "puestoFam": "Product & IT Project Management",
+        "empresa_santander": "OFNA TECH AND OPER QRO_PMX",
+        "workday_status": null,
+        "estatus_int": "Asignado",
+        "observacion_int": null,
+        "update_file": "2023-03-28 13:55:39",
+        "update_usr_data": "2023-04-25 09:23:04",
+        "enrollment_model": "SM-A307G",
+        "enrollment_date": "2023-04-19 13:27:01",
+        "semaforo_enrollment": "No_Enrolado",
+        "edoUser": "perm_identity",
+        "updateWorkday": "2023-10-10 16:40:53"
+    },
+    {
+        "division": "SGT",
+        "num_movil": "4421579281",
+        "estatus_tel": "AC",
+        "motivo_tel": "CAMCA",
+        "iccid": "8952020617363353211 ",
+        "imei": "357467540562220",
+        "estatus_cta": "AC",
+        "nombre_plan": "TMSLE CC 2000 DD 18 ",
+        "monto_plan": "283.62",
+        "marca": "SAM            ",
+        "modelo": "SM-A325M        ",
+        "modelo_img": "A32",
+        "meses_plan": "18",
+        "date_ini": "2022-12-13",
+        "date_fin": "2024-06-13",
+        "estatus_adeudum": "CON ADENDUM",
+        "mes_restante": "7",
+        "dias_restantes": "235",
+        "semaforo": "verde",
+        "asignado_a": "BLAS RICARDO ROBLES LOPEZ",
+        "expediente": "C341213",
+        "email": "blrobles@gruposantander.com.mx",
+        "area": "INFRA ENG IT EXPERT II (RAFAEL EDUARDO MELENDEZ OROZCO)",
+        "puesto": "Product & IT Project Management",
+        "puestoFam": "Product & IT Project Management",
+        "empresa_santander": "OFNA TECH AND OPER QRO_PMX",
+        "workday_status": null,
+        "estatus_int": "Asignado",
+        "observacion_int": null,
+        "update_file": "2023-03-28 13:55:46",
+        "update_usr_data": "2023-04-25 09:23:02",
+        "enrollment_model": "SM-A217M",
+        "enrollment_date": "2023-05-17 18:03:03",
+        "semaforo_enrollment": "No_Enrolado",
+        "edoUser": "perm_identity",
+        "updateWorkday": "2023-10-10 16:44:01"
+    }
+]
