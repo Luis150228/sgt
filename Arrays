@@ -1,65 +1,329 @@
-<?php
+usando ES6 de JS quiero crear un funcion donde  se indique el tipo de elemento y se realice una busqueda de todos los registros que cumplan esa caracteristica por ejemplo que en la funcion se indique el criterio que seria el campo, el valor que seria el texto buscado y la data que seria el siguiente objeto
 
-require 'vendor/autoload.php';
+export const buscarElementos = (criterio, valor, data) => {
+	console.log(criterio);
+	console.log(valor);
+	console.log(data);
+	const resultados = [];
 
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-use PhpOffice\PhpSpreadsheet\Cell\DataType;
+	for (const grupo of data) {
+		for (const elemento of grupo) {
+			if (criterio in elemento && elemento[criterio].toLowerCase().includes(valor.toLowerCase())) {
+				resultados.push(elemento);
+			}
+		}
+	}
 
-$data = json_decode('[
-  {"grupo_equipo":"EAF","tipo_equipo":"LAPTOP","modelo":"LATITUDE 5400","almacen":"CTOSS","stock":"1","usr_resguardo":"TEMP","empresa":"Banco Santander","num_etiqueta":"2320481871","serie":"F4Z8Q13","adf":null,"observacion":"proyecto renovacion","f_modifica":"2023-10-20 11:19:25","f_registro":"2023-09-28 10:43:36"},
-  {"grupo_equipo":"EAF","tipo_equipo":"LAPTOP","modelo":"LATITUDE 5400","almacen":"CTOSS","stock":"1","usr_resguardo":"TEMP","empresa":"Banco Santander","num_etiqueta":"2320481322","serie":"84YDL13","adf":null,"observacion":"proyecto renovacion","f_modifica":"2023-10-20 11:19:25","f_registro":"2023-09-28 10:43:36"},
-  {"grupo_equipo":"EAF","tipo_equipo":"LAPTOP","modelo":"LATITUDE 5410","almacen":"CTOSS","stock":"1","usr_resguardo":"TEMP","empresa":"EUT Santander","num_etiqueta":"1120010692","serie":"DXN3573","adf":null,"observacion":"proyecto renovacion","f_modifica":"2023-10-20 11:19:25","f_registro":"2023-09-28 10:48:37"},
-  {"grupo_equipo":"EAF","tipo_equipo":"LAPTOP","modelo":"LATITUDE 5410","almacen":"CTOSS","stock":"1","usr_resguardo":"TEMP","empresa":"EUT Santander","num_etiqueta":"1120010693","serie":"FKRY373","adf":null,"observacion":"proyecto renovacion","f_modifica":"2023-10-20 11:19:25","f_registro":"2023-09-28 10:48:37"},
-  {"grupo_equipo":"EAF","tipo_equipo":"LAPTOP","modelo":"LATITUDE 5410","almacen":"CTOSS","stock":"1","usr_resguardo":"TEMP","empresa":"EUT Santander","num_etiqueta":"1120010695","serie":"4HRY373","adf":null,"observacion":"proyecto renovacion","f_modifica":"2023-10-20 11:19:25","f_registro":"2023-09-28 10:48:37"},
-  {"grupo_equipo":"EAF","tipo_equipo":"LAPTOP","modelo":"LATITUDE 5410","almacen":"CTOSS","stock":"1","usr_resguardo":"TEMP","empresa":"EUT Santander","num_etiqueta":"1120010566","serie":"36DY373","adf":null,"observacion":"proyecto renovacion","f_modifica":"2023-10-20 11:19:25","f_registro":"2023-09-28 10:48:37"}
-]', true);
+	return resultados;
+};
 
-// Crear una instancia de Spreadsheet
-$spreadsheet = new Spreadsheet();
+tengo la siguiente funcion pero no sirve
 
-// Crear una nueva hoja llamada "stock"
-$sheet = $spreadsheet->createSheet()->setTitle('stock');
-
-// Escribir encabezados
-$sheet->setCellValue('A1', 'grupo_equipo');
-$sheet->setCellValue('B1', 'tipo_equipo');
-$sheet->setCellValue('C1', 'modelo');
-$sheet->setCellValue('D1', 'almacen');
-$sheet->setCellValue('E1', 'stock');
-$sheet->setCellValue('F1', 'usr_resguardo');
-$sheet->setCellValue('G1', 'empresa');
-$sheet->setCellValue('H1', 'num_etiqueta');
-$sheet->setCellValue('I1', 'serie');
-$sheet->setCellValue('J1', 'adf');
-$sheet->setCellValue('K1', 'observacion');
-$sheet->setCellValue('L1', 'f_modifica');
-$sheet->setCellValue('M1', 'f_registro');
-
-// Escribir datos
-$row = 2;
-foreach ($data as $item) {
-    $sheet->setCellValueExplicit('A' . $row, $item['grupo_equipo'], DataType::TYPE_STRING);
-    $sheet->setCellValueExplicit('B' . $row, $item['tipo_equipo'], DataType::TYPE_STRING);
-    $sheet->setCellValueExplicit('C' . $row, $item['modelo'], DataType::TYPE_STRING);
-    $sheet->setCellValueExplicit('D' . $row, $item['almacen'], DataType::TYPE_STRING);
-    $sheet->setCellValueExplicit('E' . $row, $item['stock'], DataType::TYPE_STRING);
-    $sheet->setCellValueExplicit('F' . $row, $item['usr_resguardo'], DataType::TYPE_STRING);
-    $sheet->setCellValueExplicit('G' . $row, $item['empresa'], DataType::TYPE_STRING);
-    $sheet->setCellValueExplicit('H' . $row, $item['num_etiqueta'], DataType::TYPE_STRING);
-    $sheet->setCellValueExplicit('I' . $row, $item['serie'], DataType::TYPE_STRING);
-    $sheet->setCellValueExplicit('J' . $row, $item['adf'], DataType::TYPE_STRING);
-    $sheet->setCellValueExplicit('K' . $row, $item['observacion'], DataType::TYPE_STRING);
-    $sheet->setCellValueExplicit('L' . $row, $item['f_modifica'], DataType::TYPE_STRING);
-    $sheet->setCellValueExplicit('M' . $row, $item['f_registro'], DataType::TYPE_STRING);
-    
-    $row++;
-}
-
-// Crear un objeto Writer (escritor)
-$writer = new Xlsx($spreadsheet);
-
-// Guardar el archivo en el servidor o enviarlo al navegador
-$writer->save('stock.xlsx');
-
-echo "Archivo 'stock.xlsx' creado exitosamente!";
+const data = [
+    [
+        {
+            "division": "SGT",
+            "num_movil": "4421048578",
+            "estatus_tel": "AC",
+            "motivo_tel": "TARDS",
+            "iccid": "8952020023163746110 ",
+            "imei": "355748171732576",
+            "estatus_cta": "AC",
+            "nombre_plan": "TP EMP CC 2 DD 18   ",
+            "monto_plan": "283.62",
+            "marca": "SAM            ",
+            "modelo": "SM-A042M        ",
+            "modelo_img": "GENERICO",
+            "meses_plan": "18",
+            "date_ini": "2023-07-25",
+            "date_fin": "2025-01-25",
+            "estatus_adeudum": "CON ADENDUM",
+            "mes_restante": "15",
+            "dias_restantes": "461",
+            "semaforo": "verde",
+            "asignado_a": "JORGE ROBERTO CHAVEZ JIMENEZ",
+            "expediente": "C346447",
+            "email": "jorchavez@gruposantander.com.mx",
+            "area": "INFRA CHG IT SPECIALIST II (ARTURO IZQUIERDO SANCHEZ)",
+            "puesto": "Systems Infrastructure & Communication Platforms",
+            "puestoFam": "Systems Infrastructure & Communication Platforms",
+            "empresa_santander": "OFNA TECH AND OPER QRO_PMX",
+            "workday_status": null,
+            "estatus_int": "Asignado",
+            "observacion_int": null,
+            "update_file": "2023-03-28 13:55:40",
+            "update_usr_data": "2023-04-25 09:23:02",
+            "enrollment_model": "SM-A217M",
+            "enrollment_date": "2023-09-08 13:22:04",
+            "semaforo_enrollment": "Enrolado",
+            "edoUser": "perm_identity",
+            "updateWorkday": "2023-10-10 16:26:40"
+        },
+        {
+            "division": "SGT",
+            "num_movil": "4421057913",
+            "estatus_tel": "AC",
+            "motivo_tel": "CAMCA",
+            "iccid": "8952020020461671289 ",
+            "imei": "356776978647126",
+            "estatus_cta": "AC",
+            "nombre_plan": "TP EMP CC 2 DD 18   ",
+            "monto_plan": "283.62",
+            "marca": "SAM            ",
+            "modelo": "SM-A042M        ",
+            "modelo_img": "GENERICO",
+            "meses_plan": "18",
+            "date_ini": "2023-07-10",
+            "date_fin": "2025-01-10",
+            "estatus_adeudum": "CON ADENDUM",
+            "mes_restante": "14",
+            "dias_restantes": "446",
+            "semaforo": "verde",
+            "asignado_a": "FERNANDO OLIVERIO ORTIZ VIVEROS",
+            "expediente": "C327427",
+            "email": "fortiz@gruposantander.com.mx",
+            "area": "Ld III-Service Leader II_GSM (GUILLERMINA HERNANDEZ GENIS)",
+            "puesto": "Product & IT Project Management",
+            "puestoFam": "Product & IT Project Management",
+            "empresa_santander": "OFNA TECH AND OPER QRO_PMX",
+            "workday_status": null,
+            "estatus_int": "Asignado",
+            "observacion_int": null,
+            "update_file": "2023-03-28 13:55:40",
+            "update_usr_data": "2023-04-25 09:23:02",
+            "enrollment_model": "SM-A217M",
+            "enrollment_date": "2023-09-07 19:46:02",
+            "semaforo_enrollment": "Enrolado",
+            "edoUser": "perm_identity",
+            "updateWorkday": "2023-10-10 16:27:00"
+        },
+        {
+            "division": "SGT",
+            "num_movil": "4421062014",
+            "estatus_tel": "AC",
+            "motivo_tel": "CAPPR",
+            "iccid": "8952020216360584850 ",
+            "imei": "357467541430260",
+            "estatus_cta": "AC",
+            "nombre_plan": "TPLUS E 5 DDCB 18   ",
+            "monto_plan": "516.38",
+            "marca": "SAM            ",
+            "modelo": "SM-A325M        ",
+            "modelo_img": "A32",
+            "meses_plan": "18",
+            "date_ini": "2022-12-14",
+            "date_fin": "2024-06-14",
+            "estatus_adeudum": "CON ADENDUM",
+            "mes_restante": "7",
+            "dias_restantes": "236",
+            "semaforo": "verde",
+            "asignado_a": "JOSE EDGAR ESCOBAR SEPULVEDA",
+            "expediente": "C028544",
+            "email": "eescobar@gruposantander.com.mx",
+            "area": "INFRA MAINF IT SPECIALIST III (JUAN CARLOS HERNANDEZ RODRIGUEZ)",
+            "puesto": "Product & IT Project Management",
+            "puestoFam": "Product & IT Project Management",
+            "empresa_santander": "OFNA TECH AND OPER QRO_PMX",
+            "workday_status": null,
+            "estatus_int": "Asignado",
+            "observacion_int": null,
+            "update_file": "2023-03-28 13:55:46",
+            "update_usr_data": "2023-04-25 09:23:02",
+            "enrollment_model": "SM-A325M",
+            "enrollment_date": "2023-09-08 12:43:05",
+            "semaforo_enrollment": "Enrolado",
+            "edoUser": "perm_identity",
+            "updateWorkday": "2023-10-10 16:22:50"
+        },
+        {
+            "division": "SGT",
+            "num_movil": "4421064897",
+            "estatus_tel": "AC",
+            "motivo_tel": "CAMCA",
+            "iccid": "8952020023163783832 ",
+            "imei": "357494913683193",
+            "estatus_cta": "AC",
+            "nombre_plan": "TPLUS E 5 DDCB 18   ",
+            "monto_plan": "516.38",
+            "marca": "SAM            ",
+            "modelo": "SM-A146M        ",
+            "modelo_img": "GENERICO",
+            "meses_plan": "18",
+            "date_ini": "2023-09-04",
+            "date_fin": "2025-03-04",
+            "estatus_adeudum": "CON ADENDUM",
+            "mes_restante": "16",
+            "dias_restantes": "499",
+            "semaforo": "verde",
+            "asignado_a": "RALF SANDYANY DURETT",
+            "expediente": "C412397",
+            "email": "rdurett@gruposantander.com.mx",
+            "area": "RECURSOS HUMANOS (FACUNDO GARCIA COLLA)",
+            "puesto": "Incidents & Problems Management",
+            "puestoFam": "Incidents & Problems Management",
+            "empresa_santander": "OFNA TECH AND OPER QRO_PMX",
+            "workday_status": null,
+            "estatus_int": "asignado",
+            "observacion_int": null,
+            "update_file": null,
+            "update_usr_data": "2023-09-11 11:37:35",
+            "enrollment_model": null,
+            "enrollment_date": "0000-00-00 00:00:00",
+            "semaforo_enrollment": "No_Enrolado",
+            "edoUser": "perm_identity",
+            "updateWorkday": "2023-10-10 16:28:40"
+        },
+        {
+            "division": "SGT",
+            "num_movil": "4421069973",
+            "estatus_tel": "AC",
+            "motivo_tel": "CAMCA",
+            "iccid": "8952020518460780928 ",
+            "imei": "357467541525374",
+            "estatus_cta": "AC",
+            "nombre_plan": "TMSLE CC 2000 DD 18 ",
+            "monto_plan": "283.62",
+            "marca": "SAM            ",
+            "modelo": "SM-A325M        ",
+            "modelo_img": "A32",
+            "meses_plan": "18",
+            "date_ini": "2022-12-13",
+            "date_fin": "2024-06-13",
+            "estatus_adeudum": "CON ADENDUM",
+            "mes_restante": "7",
+            "dias_restantes": "235",
+            "semaforo": "verde",
+            "asignado_a": "ELSA MARISOL CAMPOS RAMIREZ",
+            "expediente": "C057273",
+            "email": "elcampos@gruposantander.com.mx",
+            "area": "IDENTITY ACCESS MANAGEMENT (Jesus Perez Duerto)",
+            "puesto": "Technology Risk & Cybersecurity",
+            "puestoFam": "Technology Risk & Cybersecurity",
+            "empresa_santander": "OFNA TECH AND OPER QRO_PMX",
+            "workday_status": null,
+            "estatus_int": "Asignado",
+            "observacion_int": null,
+            "update_file": "2023-03-28 13:55:44",
+            "update_usr_data": "2023-04-25 09:23:03",
+            "enrollment_model": "SM-A325M",
+            "enrollment_date": "2023-09-08 13:16:05",
+            "semaforo_enrollment": "Enrolado",
+            "edoUser": "perm_identity",
+            "updateWorkday": "2023-10-10 16:40:05"
+        },
+        {
+            "division": "SGT",
+            "num_movil": "4421072506",
+            "estatus_tel": "AC",
+            "motivo_tel": "CAMCA",
+            "iccid": "8952020216360581971 ",
+            "imei": "357467541522439",
+            "estatus_cta": "AC",
+            "nombre_plan": "TMSLE CC 2000 DD 18 ",
+            "monto_plan": "283.62",
+            "marca": "SAM            ",
+            "modelo": "SM-A325M        ",
+            "modelo_img": "A32",
+            "meses_plan": "18",
+            "date_ini": "2022-12-14",
+            "date_fin": "2024-06-14",
+            "estatus_adeudum": "CON ADENDUM",
+            "mes_restante": "7",
+            "dias_restantes": "236",
+            "semaforo": "verde",
+            "asignado_a": "GUSTAVO RAFAEL SOLIS MARRON",
+            "expediente": "C065239",
+            "email": "gsolis@gruposantander.com.mx",
+            "area": "DE Tec Informacion CIO (GONZALO EZEQUIEL DE HOZ)",
+            "puesto": "Product & IT Project Management",
+            "puestoFam": "Product & IT Project Management",
+            "empresa_santander": "OFNA CETOS QUERETARO_GSM",
+            "workday_status": null,
+            "estatus_int": "Asignado",
+            "observacion_int": null,
+            "update_file": "2023-03-28 13:55:43",
+            "update_usr_data": "2023-04-25 09:23:02",
+            "enrollment_model": "SM-A217M",
+            "enrollment_date": "2023-09-08 08:32:05",
+            "semaforo_enrollment": "Enrolado",
+            "edoUser": "perm_identity",
+            "updateWorkday": "2023-10-10 16:49:55"
+        },
+        {
+            "division": "SGT",
+            "num_movil": "4421077981",
+            "estatus_tel": "AC",
+            "motivo_tel": "TARDS",
+            "iccid": "8952020023163813795 ",
+            "imei": "355748171734150",
+            "estatus_cta": "AC",
+            "nombre_plan": "TP EMP CC 2 DD 18   ",
+            "monto_plan": "283.62",
+            "marca": "SAM            ",
+            "modelo": "SM-A042M        ",
+            "modelo_img": "GENERICO",
+            "meses_plan": "18",
+            "date_ini": "2023-07-25",
+            "date_fin": "2025-01-25",
+            "estatus_adeudum": "CON ADENDUM",
+            "mes_restante": "15",
+            "dias_restantes": "461",
+            "semaforo": "verde",
+            "asignado_a": "CESAR EDUARDO SERRANO COVARRUBIAS",
+            "expediente": "C327488",
+            "email": "cserrano@santander.com.mx",
+            "area": "Subdir Audit Regulatorias (MIREYA LADIR QUEZADA GUERRERO)",
+            "puesto": "Governance",
+            "puestoFam": "Governance",
+            "empresa_santander": "OFNA CETOS QUERETARO_GSM",
+            "workday_status": null,
+            "estatus_int": "Asignado",
+            "observacion_int": null,
+            "update_file": "2023-03-28 13:55:40",
+            "update_usr_data": "2023-04-25 09:23:02",
+            "enrollment_model": "SM-A042M",
+            "enrollment_date": "2023-09-08 06:18:05",
+            "semaforo_enrollment": "Enrolado",
+            "edoUser": "perm_identity",
+            "updateWorkday": "2023-10-10 13:11:59"
+        },
+        {
+            "division": "SGT",
+            "num_movil": "4421104022",
+            "estatus_tel": "AC",
+            "motivo_tel": "RECCL",
+            "iccid": "8952020020461672683 ",
+            "imei": "356552498011204",
+            "estatus_cta": "AC",
+            "nombre_plan": "TMSLE CC 2000 DD 18 ",
+            "monto_plan": "283.62",
+            "marca": "SAM            ",
+            "modelo": "SM-A035M        ",
+            "modelo_img": "A03",
+            "meses_plan": "18",
+            "date_ini": "2023-03-01",
+            "date_fin": "2024-09-01",
+            "estatus_adeudum": "CON ADENDUM",
+            "mes_restante": "10",
+            "dias_restantes": "315",
+            "semaforo": "verde",
+            "asignado_a": "JAVIER ARIAS LOA",
+            "expediente": "C327308",
+            "email": "jaarias@gruposantander.com.mx",
+            "area": "Ld III-Service Leader II_GSM (GUILLERMINA HERNANDEZ GENIS)",
+            "puesto": "Product & IT Project Management",
+            "puestoFam": "Product & IT Project Management",
+            "empresa_santander": "OFNA TECH AND OPER QRO_PMX",
+            "workday_status": null,
+            "estatus_int": "Asignado",
+            "observacion_int": null,
+            "update_file": "2023-03-28 13:55:46",
+            "update_usr_data": "2023-04-25 09:23:04",
+            "enrollment_model": "SM-A035M",
+            "enrollment_date": "2023-09-08 12:49:04",
+            "semaforo_enrollment": "Enrolado",
+            "edoUser": "perm_identity",
+            "updateWorkday": "2023-10-10 16:26:44"
+        }
+    ]
+]
