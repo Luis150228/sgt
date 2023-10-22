@@ -1,59 +1,31 @@
-const btnPags = (grup, destino, itemsPorPagina = 5) => {
-    const target = document.getElementById(destino);
-    target.innerHTML = ``;
-    
-    // Crear solo los primeros botones
-    for (let i = 0; i < Math.min(itemsPorPagina, grup.length); i++) {
-        const liBtns = document.createElement('li');
-        liBtns.classList.add('page-item');
-        const aBtns = document.createElement('a');
-        aBtns.classList.add('page-link');
-        aBtns.setAttribute('href', '#');
-        aBtns.setAttribute('data-i', i);
-        const txtBtn = i + 1;
-        aBtns.innerHTML = txtBtn;
-        liBtns.appendChild(aBtns);
-        target.appendChild(liBtns);
-    }
+const limiteBotones = 22;
+let arreglo = [1, 2, 3, 4, 5];
 
-    const btnPageItem = target.querySelectorAll('.page-link');
+// Función para crear botones
+const crearBotones = () => {
+  const contenedor = document.getElementById('contenedor-botones');
+  contenedor.innerHTML = ''; // Limpiar el contenedor
 
-    for (const liBtns of btnPageItem) {
-        liBtns.addEventListener('click', (e) => {
-            // Obtener el índice del botón clickeado
-            const idx = parseInt(e.target.dataset.i);
+  for (const elemento of arreglo) {
+    const boton = document.createElement('button');
+    boton.textContent = elemento;
 
-            // Calcular el rango de elementos a mostrar
-            const start = idx * itemsPorPagina;
-            const end = start + itemsPorPagina;
+    boton.addEventListener('click', () => {
+      if (elemento === Math.max(...arreglo)) {
+        // Incrementar cada elemento por length + 1
+        arreglo = arreglo.map((valor) => valor + arreglo.length + 1);
+        // Verificar que no se exceda el límite
+        if (arreglo.length <= limiteBotones) {
+          crearBotones(); // Volver a crear los botones actualizados
+        } else {
+          alert('Se ha alcanzado el límite de botones.');
+        }
+      }
+    });
 
-            // Crear solo los botones necesarios
-            for (let i = start; i < Math.min(end, grup.length); i++) {
-                const liBtns = document.createElement('li');
-                liBtns.classList.add('page-item');
-                const aBtns = document.createElement('a');
-                aBtns.classList.add('page-link');
-                aBtns.setAttribute('href', '#');
-                aBtns.setAttribute('data-i', i);
-                const txtBtn = i + 1;
-                aBtns.innerHTML = txtBtn;
-                liBtns.appendChild(aBtns);
-                target.appendChild(liBtns);
-            }
-
-            // Desactivar los botones no utilizados
-            for (const noClick of btnPageItem) {
-                if (noClick !== liBtns) {
-                    noClick.classList.remove('disabled');
-                }
-            }
-
-            // Activar/desactivar la clase 'disabled' en el botón clickeado
-            if (!liBtns.classList.contains('disabled')) {
-                liBtns.classList.add('disabled');
-            } else {
-                liBtns.classList.toggle('disabled');
-            }
-        });
-    }
+    contenedor.appendChild(boton);
+  }
 };
+
+// Inicializar la creación de botones
+crearBotones();
