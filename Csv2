@@ -1,39 +1,29 @@
-const registrosPorPagina = 10; // Número de registros a mostrar por página
-const registros = []; // Tu lista de registros (deberías agregar los registros aquí)
+// ...
 
-// Calcular el número total de páginas
-const totalPaginas = Math.ceil(registros.length / registrosPorPagina);
-
-// Función para mostrar los registros en una página específica
-const mostrarRegistros = (pagina) => {
-  const inicio = (pagina - 1) * registrosPorPagina;
-  const fin = inicio + registrosPorPagina;
-  const registrosMostrados = registros.slice(inicio, fin);
-
-  // Aquí deberías hacer algo con los registrosMostrados (por ejemplo, renderizarlos en tu interfaz)
-  console.log(registrosMostrados);
-};
-
-// Función para renderizar los botones de paginación
-const renderizarBotones = (paginaActual) => {
-  const contenedorBotones = document.getElementById('paginacion'); // ID del contenedor de botones
+const renderizarBotones = () => {
+  const contenedorBotones = document.getElementById('paginacion');
 
   // Limpiar los botones existentes
   contenedorBotones.innerHTML = '';
 
-  // Calcular los botones a mostrar
-  const inicio = Math.max(1, paginaActual - 1);
-  const fin = Math.min(totalPaginas, inicio + 2);
+  const paginasMostradas = 3;
+  let inicio = Math.max(1, paginaActual - 1);
+  const fin = Math.min(totalPaginas, inicio + paginasMostradas - 1);
 
-  // Crear y agregar botones al contenedor
+  if (paginaActual > totalPaginas - paginasMostradas + 1) {
+    inicio = Math.max(1, totalPaginas - paginasMostradas + 1);
+  }
+
   for (let i = inicio; i <= fin; i++) {
     const boton = document.createElement('button');
     boton.innerText = i;
-    boton.addEventListener('click', () => mostrarRegistros(i));
+    boton.addEventListener('click', () => {
+      paginaActual = i;
+      mostrarRegistros();
+      renderizarBotones();
+    });
     contenedorBotones.appendChild(boton);
   }
 };
 
-// Inicializar mostrando la primera página
-mostrarRegistros(1);
-renderizarBotones(1);
+// ...
