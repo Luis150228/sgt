@@ -1,3 +1,17 @@
+const crearArray = (numero) => {
+  // Usando el método Array.from para crear un array con 5 elementos
+  // y map para llenar cada elemento con el valor correspondiente
+  const nuevoArray = Array.from({ length: 5 }, (_, index) => numero + index + 1);
+  return nuevoArray;
+};
+
+// Ejemplo de uso
+const numeroInicial = 10;
+const resultado = crearArray(numeroInicial);
+
+console.log(resultado); // Output: [11, 12, 13, 14, 15]
+
+
 // ...
 
 const renderizarBotones = () => {
