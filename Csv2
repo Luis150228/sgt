@@ -1,43 +1,45 @@
-const crearArray = (numero) => {
-  // Usando el método Array.from para crear un array con 5 elementos
-  // y map para llenar cada elemento con el valor correspondiente
+estoy usando la siguiente funcion para crear botones de paginacion pero no esta funcionando correctamente cuando se le da click al ultimo boton no reemplaza los botones originales por el nuevo grupo de botones que falla encuentras y como la solucionarias
+
+const createPages = (numero) => {
   const nuevoArray = Array.from({ length: 5 }, (_, index) => numero + index + 1);
   return nuevoArray;
 };
 
-// Ejemplo de uso
-const numeroInicial = 10;
-const resultado = crearArray(numeroInicial);
+export const btnPags = (pag = 0) => {
+	let initPages = createPages(pag);
+	console.log(initPages);
+	const ulhtml = document.createElement('ul')
+	ulhtml.classList.add('pagination')
+	ulhtml.classList.add('justify-content-end')
+	ulhtml.setAttribute('id', 'btn-pages')
+	for (const valor of initPages) {
+		const liBtns = document.createElement('li');
+		liBtns.classList.add('page-item');
+		const aBtns = document.createElement('a');
+		aBtns.classList.add('page-link');
+		aBtns.setAttribute('href', '#');
+		aBtns.setAttribute('data-i', valor - 1);
+		aBtns.setAttribute('data-pag', valor);
+		const txtBtn = valor;
+		aBtns.innerHTML = txtBtn;
+		liBtns.appendChild(aBtns);
+		ulhtml.appendChild(liBtns)
+	}
 
-console.log(resultado); // Output: [11, 12, 13, 14, 15]
+	const btsLinks = ulhtml.querySelectorAll('.page-link')
+	for (const btsLink of btsLinks) {
+		btsLink.addEventListener('click', e=>{
+			const maxPage = Math.max(...initPages)
+			if (e.target.dataset.pag) {
+				const actPage = parseInt(e.target.dataset.pag)
+				console.log({maxPage,actPage});
+				if (actPage === maxPage) {
+					console.log(actPage);
+					btnPags(actPage)
+				}
+			}
+		})
+	}
 
-
-// ...
-
-const renderizarBotones = () => {
-  const contenedorBotones = document.getElementById('paginacion');
-
-  // Limpiar los botones existentes
-  contenedorBotones.innerHTML = '';
-
-  const paginasMostradas = 3;
-  let inicio = Math.max(1, paginaActual - 1);
-  const fin = Math.min(totalPaginas, inicio + paginasMostradas - 1);
-
-  if (paginaActual > totalPaginas - paginasMostradas + 1) {
-    inicio = Math.max(1, totalPaginas - paginasMostradas + 1);
-  }
-
-  for (let i = inicio; i <= fin; i++) {
-    const boton = document.createElement('button');
-    boton.innerText = i;
-    boton.addEventListener('click', () => {
-      paginaActual = i;
-      mostrarRegistros();
-      renderizarBotones();
-    });
-    contenedorBotones.appendChild(boton);
-  }
+	return ulhtml
 };
-
-// ...
