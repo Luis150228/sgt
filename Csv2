@@ -1,11 +1,11 @@
-estoy usando la siguiente funcion para crear botones de paginacion pero no esta funcionando correctamente cuando se le da click al ultimo boton no reemplaza los botones originales por el nuevo grupo de botones que falla encuentras y como la solucionarias
+el siguiente codigo estoy creando link de forma dinamica y al link al que se le da click se le agrega un estilo btsLinks[i].setAttribute('style', 'color: red;') como puedo agregar atributos a los elementos que no les di click
 
 const createPages = (numero) => {
-  const nuevoArray = Array.from({ length: 5 }, (_, index) => numero + index + 1);
+  const nuevoArray = Array.from({ length: 3 }, (_, index) => numero + index + 1);
   return nuevoArray;
 };
 
-export const btnPags = (pag = 0) => {
+export const btnPags = (pag = 0, maxPages = 5) => {
 	let initPages = createPages(pag);
 	console.log(initPages);
 	const ulhtml = document.createElement('ul')
@@ -26,16 +26,26 @@ export const btnPags = (pag = 0) => {
 		ulhtml.appendChild(liBtns)
 	}
 
+	const existingUl = document.getElementById('btn-pages');
+	if (existingUl) {
+		existingUl.replaceWith(ulhtml)
+	}
+
 	const btsLinks = ulhtml.querySelectorAll('.page-link')
-	for (const btsLink of btsLinks) {
+	for (const [i, btsLink] of btsLinks.entries()) {
 		btsLink.addEventListener('click', e=>{
+			console.log(btsLinks[i]);
 			const maxPage = Math.max(...initPages)
+			const minPage = Math.min(...initPages)
 			if (e.target.dataset.pag) {
 				const actPage = parseInt(e.target.dataset.pag)
-				console.log({maxPage,actPage});
-				if (actPage === maxPage) {
-					console.log(actPage);
-					btnPags(actPage)
+				btsLinks[i].setAttribute('style', 'color: red;')
+				console.log({actPage, maxPage, minPage, maxPages});
+				if (actPage === maxPage && actPage <= maxPages) {
+					btnPags(actPage, maxPages)
+				} else if (actPage === minPage && actPage >= 1) {
+					const minPageNw = actPage - (initPages.length-1)
+					btnPags(minPageNw, maxPages)
 				}
 			}
 		})
