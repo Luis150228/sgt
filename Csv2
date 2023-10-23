@@ -1,61 +1,19 @@
-estoy creando un ul y lo estoy llenando de Li dinamicos como puedo ajustar las funciones para que retorne solo los li y los pueda agregar a otro ul que esta en mi index.html
+usando tus indicacioens manda error
 
-const createPages = (numero) => {
-  const nuevoArray = Array.from({ length: 3 }, (_, index) => numero + index + 1);
-  return nuevoArray;
-};
+<ul id="ul-pag" class="pagination justify-content-end"></ul>
 
-export const btnPags = (pag = 0, maxPages = 5) => {
-	let initPages = createPages(pag);
-	const ulhtml = document.createElement('ul')
-	ulhtml.classList.add('pagination')
-	ulhtml.classList.add('justify-content-end')
-	ulhtml.setAttribute('id', 'btn-pages')
+const ulBtns = document.getElementById('ul-pag')
 
-	for (const valor of initPages) {
-		const liBtns = document.createElement('li');
-		liBtns.classList.add('page-item');
-		const aBtns = document.createElement('a');
-		aBtns.classList.add('page-link');
-		aBtns.setAttribute('href', '#');
-		aBtns.setAttribute('data-i', valor - 1);
-		aBtns.setAttribute('data-pag', valor);
-		aBtns.setAttribute('data-btn-pag', true);
-		const txtBtn = valor;
-		aBtns.innerHTML = txtBtn;
-		liBtns.appendChild(aBtns);
-		ulhtml.appendChild(liBtns)
-	}
+ulBtns.addEventListener('click', e =>{
+  console.log(e.target.dataset.i);
+  const zoneBtns = e.target
+  if (zoneBtns === this.firstElementChild) {
+      console.log('Primero');
+  }
+  if (zoneBtns === this.lastElementChild) {
+      console.log('Ultimo');
+  }
+})
 
-	const existingUl = document.getElementById('btn-pages');
-	if (existingUl) {
-		existingUl.replaceWith(ulhtml)
-	}
-
-	const btsLinks = ulhtml.querySelectorAll('.page-link')
-	for (const [i, btsLink] of btsLinks.entries()) {
-		btsLink.addEventListener('click', e=>{
-			const maxPage = Math.max(...initPages)
-			const minPage = Math.min(...initPages)
-			if (e.target.dataset.pag) {
-				const actPage = parseInt(e.target.dataset.pag)
-				const pagActual = document.querySelector('[data-pag-act="true"]')
-				pagActual.innerHTML = actPage
-				for (const link of btsLinks) {
-					link.removeAttribute('style')
-				}
-				btsLinks[i].setAttribute('style', 'color: red;')
-				if (actPage === maxPage && actPage <= maxPages) {
-					btnPags(actPage, maxPages)
-					pagActual.innerHTML = actPage
-				} else if (actPage === minPage && actPage >= 1) {
-					const minPageNw = actPage - (initPages.length-1)
-					btnPags(minPageNw, maxPages)
-					pagActual.innerHTML = actPage
-				}
-			}
-		})
-	}
-
-	return ulhtml
-};
+lines.js:46 Uncaught TypeError: Cannot read properties of undefined (reading 'firstElementChild')
+    at HTMLUListElement.<anonymous> (lines.js:46:27)
