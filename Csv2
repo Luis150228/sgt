@@ -1,3 +1,14 @@
+tengo este error cambien algunas cosas 
+
+"[{"fecha":"2023-10-25 13:06:32","usuario":"C356882","estatus":"asignado","commentario":"comentario 1"},{"fecha":"2023-10-25 13:12:34","usuario":"C356882","estatus":"disponible","commentario":"comentario 2"}]"
+VM129:1 Uncaught SyntaxError: Unexpected non-whitespace character after JSON at position 4 (line 1 column 5)
+    at JSON.parse (<anonymous>)
+    at HTMLTextAreaElement.<anonymous> (lines.js:207:31)
+
+  antes de darme una respuesta al error dime que posicion es  position 4 (line 1 column 5) en la cadena ya que hice lo sigueinte y ningun caracter parece extraño
+
 for (var i = 0; i < cadenaJSON.length; i++) {
   console.log('Carácter en posición ' + i + ':', cadenaJSON[i], 'Código ASCII:', cadenaJSON.charCodeAt(i));
 }
+
+asi que quiero saber cual es esa referencia
