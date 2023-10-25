@@ -1,19 +1,2 @@
-usando tus indicacioens manda error
-
-<ul id="ul-pag" class="pagination justify-content-end"></ul>
-
-const ulBtns = document.getElementById('ul-pag')
-
-ulBtns.addEventListener('click', e =>{
-  console.log(e.target.dataset.i);
-  const zoneBtns = e.target
-  if (zoneBtns === this.firstElementChild) {
-      console.log('Primero');
-  }
-  if (zoneBtns === this.lastElementChild) {
-      console.log('Ultimo');
-  }
-})
-
-lines.js:46 Uncaught TypeError: Cannot read properties of undefined (reading 'firstElementChild')
-    at HTMLUListElement.<anonymous> (lines.js:46:27)
+tengo la siguiente cadena [{"date":"2023-10-25 11:24:02","user":"C356882","commit":"comentario en array"}]
+quiero convertirla a un JSON y agregarle un nuevo registro usando JS
