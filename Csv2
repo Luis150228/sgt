@@ -1,7 +1,3 @@
-quiero usar JSON.parse en la siguiente cadena "[{"date":"2023-10-25 11:56:59","user":"C356882","estatus":"asignado","commit":"se asugna linea"},{"date":"2023-10-25 11:58:08","user":"C356882","estatus":"disponible","commit":"se libera linea"}]"
-VM1651:1 Uncaught SyntaxError: Unexpected non-whitespace character after JSON at position 4 (line 1 column 5)
-    at JSON.parse (<anonymous>)
-    at HTMLTextAreaElement.<anonymous> (lines.js:202:31)
-(anonymous) @ lines.js:202
-
-puedes apoyarme
+for (var i = 0; i < cadenaJSON.length; i++) {
+  console.log('Carácter en posición ' + i + ':', cadenaJSON[i], 'Código ASCII:', cadenaJSON.charCodeAt(i));
+}
