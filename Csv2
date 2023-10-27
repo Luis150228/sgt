@@ -1,14 +1,11 @@
-tengo este error cambien algunas cosas 
-
-"[{"fecha":"2023-10-25 13:06:32","usuario":"C356882","estatus":"asignado","commentario":"comentario 1"},{"fecha":"2023-10-25 13:12:34","usuario":"C356882","estatus":"disponible","commentario":"comentario 2"}]"
-VM129:1 Uncaught SyntaxError: Unexpected non-whitespace character after JSON at position 4 (line 1 column 5)
-    at JSON.parse (<anonymous>)
-    at HTMLTextAreaElement.<anonymous> (lines.js:207:31)
-
-  antes de darme una respuesta al error dime que posicion es  position 4 (line 1 column 5) en la cadena ya que hice lo sigueinte y ningun caracter parece extraño
-
-for (var i = 0; i < cadenaJSON.length; i++) {
-  console.log('Carácter en posición ' + i + ':', cadenaJSON[i], 'Código ASCII:', cadenaJSON.charCodeAt(i));
-}
-
-asi que quiero saber cual es esa referencia
+'C105828_IPhone_10/3/2022_6:44 PM'
+'Z422278_AndroidEnterprise_12/27/2022_3:43 PM'
+'S316160_AndroidForWork_5/19/2023_11:20 PM'
+'C448693_IPhone_12/27/2022_6:21 PM'
+'C431510_AndroidForWork_2/11/2023_2:17 AM'
+'Z510655_AndroidEnterprise_7/18/2023_10:58 PM'
+'Z537773_AndroidEnterprise_8/2/2023_5:11 PM'
+'C056483_AndroidForWork_1/27/2023_7:21 PM'
+'C329129_AndroidForWork_10/8/2022_6:02 AM'
+'C385193_IPhone_6/19/2023_11:53 PM'
+'Z547741_AndroidEnterprise_9/1/2023_7:46 PM'
