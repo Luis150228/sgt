@@ -1,2 +1,16 @@
-Tengo un error en esta consulta en la clausula where que solucion sugieres
-INSERT INTO `enrollment_table` (`control`, `expediente`, `iccid`, `management_name`, `model`, `enrollment_so`, `enrollment_version`, `enrollment_date`, `update_user`, `update_date`) SELECT `control`, `expediente`, `iccid`, `management_name`, `model`, `enrollment_so`, `enrollment_version`, `enrollment_date`, `update_user`, `update_date` FROM `enrollment_bridge` ON DUPLICATE KEY UPDATE `iccid` = VALUES(`iccid`), `management_name` = VALUES(`management_name`), `model` = VALUES(`model`), `enrollment_so` = VALUES(`enrollment_so`), `enrollment_version` = VALUES(`enrollment_version`), `enrollment_date` = VALUES(`enrollment_date`), `update_user` = VALUES(`update_user`), `update_date` = VALUES(`update_date`) WHERE `update_date` < VALUES(`update_date`);
+en la siguiente consulta quiero que me muestr de cada control la fecha mas alta que en este caso es 4 registro con fecha '2023-08-16 17:26:02', considera que esto es un ejemplo y hay mas registros con diferentes id de control, asi que hay que agrupar por numero de control y el mayor enrollment_date
+
+SELECT * FROM eut_toolmovil.enrollment_bridge
+
+resultado = 
+control, expediente, iccid, management_name, model, enrollment_so, enrollment_version, enrollment_date, update_user, update_date
+'Z062617_SM-T575', 'Z062617', '', 'Z062617@santander.com.mx', 'SM-T575', 'Android (Fully Managed)', '13', '2023-08-15 15:25:27', 'C356882', '2023-10-27 19:27:22'
+'Z062617_SM-T575', 'Z062617', '', 'Z062617@santander.com.mx', 'SM-T575', 'Android (Fully Managed)', '13', '2023-08-14 17:49:32', 'C356882', '2023-10-27 19:27:22'
+'Z062617_SM-T575', 'Z062617', '', 'Z062617@santander.com.mx', 'SM-T575', 'Android (Fully Managed)', '13', '2023-08-14 18:17:23', 'C356882', '2023-10-27 19:27:22'
+'Z062617_SM-T575', 'Z062617', '', 'Z062617@santander.com.mx', 'SM-T575', 'Android (Fully Managed)', '13', '2023-08-16 17:26:02', 'C356882', '2023-10-27 19:27:22'
+'Z062617_SM-T575', 'Z062617', '', 'Z062617@santander.com.mx', 'SM-T575', 'Android (Fully Managed)', '13', '2023-08-15 00:20:56', 'C356882', '2023-10-27 19:27:22'
+'Z062617_SM-T575', 'Z062617', '', 'Z062617@santander.com.mx', 'SM-T575', 'Android (Fully Managed)', '13', '2023-08-15 16:19:05', 'C356882', '2023-10-27 19:27:22'
+'Z062617_SM-T575', 'Z062617', '', 'Z062617@santander.com.mx', 'SM-T575', 'Android (Fully Managed)', '13', '2023-08-15 03:45:20', 'C356882', '2023-10-27 19:27:22'
+'Z062617_SM-T575', 'Z062617', '', 'Z062617@santander.com.mx', 'SM-T575', 'Android (Fully Managed)', '13', '2023-08-15 04:25:54', 'C356882', '2023-10-27 19:27:22'
+'Z062617_SM-T575', 'Z062617', '', 'Z062617@santander.com.mx', 'SM-T575', 'Android (Fully Managed)', '13', '2023-08-15 02:47:56', 'C356882', '2023-10-27 19:27:22'
+'Z062617_SM-T575', 'Z062617', '', 'Z062617@santander.com.mx', 'SM-T575', 'Android (Fully Managed)', '13', '2023-08-14 23:36:20', 'C356882', '2023-10-27 19:27:22'
