@@ -1,11 +1,2 @@
-'C105828_IPhone_10/3/2022_6:44 PM'
-'Z422278_AndroidEnterprise_12/27/2022_3:43 PM'
-'S316160_AndroidForWork_5/19/2023_11:20 PM'
-'C448693_IPhone_12/27/2022_6:21 PM'
-'C431510_AndroidForWork_2/11/2023_2:17 AM'
-'Z510655_AndroidEnterprise_7/18/2023_10:58 PM'
-'Z537773_AndroidEnterprise_8/2/2023_5:11 PM'
-'C056483_AndroidForWork_1/27/2023_7:21 PM'
-'C329129_AndroidForWork_10/8/2022_6:02 AM'
-'C385193_IPhone_6/19/2023_11:53 PM'
-'Z547741_AndroidEnterprise_9/1/2023_7:46 PM'
+Tengo un error en esta consulta en la clausula where que solucion sugieres
+INSERT INTO `enrollment_table` (`control`, `expediente`, `iccid`, `management_name`, `model`, `enrollment_so`, `enrollment_version`, `enrollment_date`, `update_user`, `update_date`) SELECT `control`, `expediente`, `iccid`, `management_name`, `model`, `enrollment_so`, `enrollment_version`, `enrollment_date`, `update_user`, `update_date` FROM `enrollment_bridge` ON DUPLICATE KEY UPDATE `iccid` = VALUES(`iccid`), `management_name` = VALUES(`management_name`), `model` = VALUES(`model`), `enrollment_so` = VALUES(`enrollment_so`), `enrollment_version` = VALUES(`enrollment_version`), `enrollment_date` = VALUES(`enrollment_date`), `update_user` = VALUES(`update_user`), `update_date` = VALUES(`update_date`) WHERE `update_date` < VALUES(`update_date`);
