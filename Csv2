@@ -70,6 +70,7 @@ class inv extends cnx
             foreach ($record as $value) {
                 $cellCoordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex) . $rowIndex;
                 $sheet->setCellValue($cellCoordinate, $value);
+                $sheet->setCellValueExplicit($cellCoordinate, $value, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
                 $statusCell = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex(array_search('Estatus', $columns) + 1) . $rowIndex;
                 $columnIndex++;
             }
