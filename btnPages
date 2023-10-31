@@ -1,4 +1,5 @@
-const createArrayNum = (cantidad, inicio, fin) => {
+const createArrayNum = (numbts, inicio, fin) => {
+    let cantidad = numbts;
   let numeros = Array.from({ length: cantidad }, (_, index) => inicio + index);
   
   const advanceBtns = () => {
@@ -14,9 +15,12 @@ const createArrayNum = (cantidad, inicio, fin) => {
   };
 
   const decreaceBtns = () => {
-    const primerNumero = numeros[0];
-      if (primerNumero > 1) {
-        // const nuevoArray = numeros.map(numero => numero - (numero.length + 1))
+    const regresivo = Array.from(
+      { length: cantidad },
+      (_, index) => numeros[0] + index
+    );
+    numeros = regresivo;
+      if (regresivo[0] > 1) {
         const nuevoArray = numeros.map(
           (valor, indice) => valor - (numeros.length)
         );
@@ -36,7 +40,6 @@ const createArrayNum = (cantidad, inicio, fin) => {
       boton.setAttribute("data-pag", numero);
       boton.textContent = numero;
       boton.addEventListener("click", e=>{
-        console.log(firstBtn);
         const btnClick = parseInt(e.target.dataset.pag);
         if (lastBtn === btnClick) {
             advanceBtns();
@@ -51,3 +54,5 @@ const createArrayNum = (cantidad, inicio, fin) => {
   crearBotones(numeros);
 
 };
+
+createArrayNum(5, 1, 22);
