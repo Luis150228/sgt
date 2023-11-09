@@ -1,54 +1,26 @@
-tengo el siguiente elemento html 
+for (const [clave, valor] of Object.entries(excepciones)) {
+    const aExc = document.createElement('a');
+    aExc.classList.add('list-group-item');
+    aExc.classList.add('list-group-item-action');
+    aExc.setAttribute('href', "#");
+    aExc.setAttribute('aria-current', "true");
 
-<div class="list-group" id="excepcion-data">
-	<a href="#" class="list-group-item list-group-item-action" aria-current="true">
-		<div class="d-flex w-100 justify-content-between">
-			<h5 class="mb-1">List group item heading</h5>
-		</div>
-		<p class="mb-1">Some placeholder content in a paragraph.</p>
-	</a>
-	<a href="#" class="list-group-item list-group-item-action" aria-current="true">
-		<div class="d-flex w-100 justify-content-between">
-			<h5 class="mb-1">List group item heading</h5>
-		</div>
-		<p class="mb-1">Some placeholder content in a paragraph.</p>
-	</a>
-</div>
+    const divExc = document.createElement('div');
+    divExc.classList.add('d-flex');
+    divExc.classList.add('w-100');
+    divExc.classList.add('justify-content-between');
 
-el elemento : <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-					<div class="d-flex w-100 justify-content-between">
-						<h5 class="mb-1">List group item heading</h5>
-					</div>
-					<p class="mb-1">Some placeholder content in a paragraph.</p>
-				</a>
+    const divExcH5 = document.createElement('h5');
+    divExcH5.classList.add('mb-1');
+    divExcH5.textContent = clave; // Agregar el texto correspondiente
 
-lo quiero recrear con ES6 con el siguiente contenido un "a" por cada concepto 
+    const pExc = document.createElement('p');
+    pExc.classList.add('mb-1');
+    pExc.textContent = valor; // Agregar el texto correspondiente
 
-excepciones = {
-    "INHIBIDOR_CODIGO": "h35541",
-    "CODIGO": "06",
-    "CAUSA": "Falta de material",
-    "OBSERVACIONES_RESOLUTOR": "desatre"
+    // Agregar los elementos al árbol DOM
+    divExc.appendChild(divExcH5);
+    aExc.appendChild(divExc);
+    aExc.appendChild(pExc);
+    listData.appendChild(aExc);
 }
-
-esto es lo que llevo de avance 
-
-        const listData = templateAplic.querySelector('#excepcion-data')
-
-        for (const excepcion of excepciones) {
-            const aExc = document.createElement('a')
-            aExc.classList.add('list-group-item')
-            aExc.classList.add('list-group-item-action')
-            aExc.setAttribute('href', "#")
-            aExc.setAttribute('aria-current', "true")
-
-            const divExc = document.createElement('div')
-            divExc.classList.add('d-flex')
-            divExc.classList.add('w-100')
-            divExc.classList.add('justify-content-between')
-            const divExcH5 = document.createElement('h5')
-            divExcH5.classList.add('mb-1')
-
-            const pExc = document.createElement('p')
-            pExc.classList.add('mb-1')
-        }
