@@ -1,3 +1,54 @@
-puedes apoyarme en decifrar que se esta usando para que mi numero de incidente sea convertido en el texto que ves
+tengo el siguiente elemento html 
 
-INC038123053 = D8dd6da3edbd2b990c93a22e505961985
+<div class="list-group" id="excepcion-data">
+	<a href="#" class="list-group-item list-group-item-action" aria-current="true">
+		<div class="d-flex w-100 justify-content-between">
+			<h5 class="mb-1">List group item heading</h5>
+		</div>
+		<p class="mb-1">Some placeholder content in a paragraph.</p>
+	</a>
+	<a href="#" class="list-group-item list-group-item-action" aria-current="true">
+		<div class="d-flex w-100 justify-content-between">
+			<h5 class="mb-1">List group item heading</h5>
+		</div>
+		<p class="mb-1">Some placeholder content in a paragraph.</p>
+	</a>
+</div>
+
+el elemento : <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+					<div class="d-flex w-100 justify-content-between">
+						<h5 class="mb-1">List group item heading</h5>
+					</div>
+					<p class="mb-1">Some placeholder content in a paragraph.</p>
+				</a>
+
+lo quiero recrear con ES6 con el siguiente contenido un "a" por cada concepto 
+
+excepciones = {
+    "INHIBIDOR_CODIGO": "h35541",
+    "CODIGO": "06",
+    "CAUSA": "Falta de material",
+    "OBSERVACIONES_RESOLUTOR": "desatre"
+}
+
+esto es lo que llevo de avance 
+
+        const listData = templateAplic.querySelector('#excepcion-data')
+
+        for (const excepcion of excepciones) {
+            const aExc = document.createElement('a')
+            aExc.classList.add('list-group-item')
+            aExc.classList.add('list-group-item-action')
+            aExc.setAttribute('href', "#")
+            aExc.setAttribute('aria-current', "true")
+
+            const divExc = document.createElement('div')
+            divExc.classList.add('d-flex')
+            divExc.classList.add('w-100')
+            divExc.classList.add('justify-content-between')
+            const divExcH5 = document.createElement('h5')
+            divExcH5.classList.add('mb-1')
+
+            const pExc = document.createElement('p')
+            pExc.classList.add('mb-1')
+        }
