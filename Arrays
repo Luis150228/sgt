@@ -1,26 +1,4 @@
-for (const [clave, valor] of Object.entries(excepciones)) {
-    const aExc = document.createElement('a');
-    aExc.classList.add('list-group-item');
-    aExc.classList.add('list-group-item-action');
-    aExc.setAttribute('href', "#");
-    aExc.setAttribute('aria-current', "true");
+Error Code: 1054. Unknown column 'inh_code' in 'field list'
 
-    const divExc = document.createElement('div');
-    divExc.classList.add('d-flex');
-    divExc.classList.add('w-100');
-    divExc.classList.add('justify-content-between');
-
-    const divExcH5 = document.createElement('h5');
-    divExcH5.classList.add('mb-1');
-    divExcH5.textContent = clave; // Agregar el texto correspondiente
-
-    const pExc = document.createElement('p');
-    pExc.classList.add('mb-1');
-    pExc.textContent = valor; // Agregar el texto correspondiente
-
-    // Agregar los elementos al árbol DOM
-    divExc.appendChild(divExcH5);
-    aExc.appendChild(divExc);
-    aExc.appendChild(pExc);
-    listData.appendChild(aExc);
-}
+INSERT INTO `eut_weeklyreportsinc` (`Ticket`,`Zona`,`Estatus`,`Inhibidor`,`INHIBIDOR_CODIGO`,`CodigoDescripcion`,`Descripcion_Resolutor`,`Comentarios_Resolutor`,`Procede`,`CCG`,`SEMANAL`,`REPORTE`) SELECT folio, zona, estatus, inhibidor, inh_code, code_desc, decrip_res, coment_res, procede, ccg, semana, reporte FROM `eut_weeklyreportinc_bridge`
+    ON DUPLICATE KEY UPDATE `Zona` = VALUES(`zona`),`Estatus` = VALUES(`estatus`),`Inhibidor`= VALUES(`inhibidor`),`INHIBIDOR_CODIGO`= VALUES(`inh_code`),`CodigoDescripcion`= VALUES(`code_desc`),`Descripcion_Resolutor`= VALUES(`decrip_res`),`Comentarios_Resolutor`= VALUES(`coment_res`),`Procede`= VALUES(`procede`),`CCG`= VALUES(`ccg`);
