@@ -1,3 +1,37 @@
+const data = [/* tu array de objetos */];
+
+// Creamos un objeto para almacenar los totales
+const totales = {};
+
+// Iteramos sobre cada objeto en el array
+for (const item of data) {
+    // Creamos una clave única combinando 'semana' y 'reporte'
+    const clave = `${item.semana}-${item.reporte}`;
+
+    // Inicializamos los totales si la clave no existe en el objeto
+    if (!totales[clave]) {
+        totales[clave] = {
+            atendidos: 0,
+            enTiempo: 0,
+            excepciones: 0,
+            ks: 0,
+            tiempo: 0
+        };
+    }
+
+    // Sumamos los valores a los totales
+    totales[clave].atendidos += parseInt(item.atendidos);
+    totales[clave].enTiempo += parseInt(item.enTiempo);
+    totales[clave].excepciones += parseInt(item.excepciones);
+    totales[clave].ks += item.ks ? parseInt(item.ks) : 0;
+    totales[clave].tiempo += parseInt(item.tiempo);
+}
+
+// Mostramos los totales
+console.log(totales);
+
+
+
 del siguiente objeto quiero solo mostrar los que tengan en reporte 'CAU_INC'
 
 [
