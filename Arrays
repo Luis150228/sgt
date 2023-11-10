@@ -1,4 +1,5 @@
-Error Code: 1054. Unknown column 'inh_code' in 'field list'
+TENGO LA SIGUIENTE TABLA CON VALORES EN TODOS LOS CAMPOS MENOS EN KS Y QUIERO ACTUALIZARLA CON UNA CONSULTA, LOS CAMPOS reporte, semana, resuelto FORMAN EL INDEX UNICO, POR SE DEBE ACTUALIZAR SOLO DONDE ESTOS CAMPOS SEAN IGUALES, MARIA DB COMO LO DEBO HACER
 
-INSERT INTO `eut_weeklyreportsinc` (`Ticket`,`Zona`,`Estatus`,`Inhibidor`,`INHIBIDOR_CODIGO`,`CodigoDescripcion`,`Descripcion_Resolutor`,`Comentarios_Resolutor`,`Procede`,`CCG`,`SEMANAL`,`REPORTE`) SELECT folio, zona, estatus, inhibidor, inh_code, code_desc, decrip_res, coment_res, procede, ccg, semana, reporte FROM `eut_weeklyreportinc_bridge`
-    ON DUPLICATE KEY UPDATE `Zona` = VALUES(`zona`),`Estatus` = VALUES(`estatus`),`Inhibidor`= VALUES(`inhibidor`),`INHIBIDOR_CODIGO`= VALUES(`inh_code`),`CodigoDescripcion`= VALUES(`code_desc`),`Descripcion_Resolutor`= VALUES(`decrip_res`),`Comentarios_Resolutor`= VALUES(`coment_res`),`Procede`= VALUES(`procede`),`CCG`= VALUES(`ccg`);
+SELECT reporte, semana, resuelto, atendidos, enTiempo, excepciones, ks, tiempo, limiteKs FROM eut_reportesbk.eut_weeklyreport;
+
+SELECT reporte, semana, resuelto, SUM(K) as 'k' FROM (SELECT `Ticket` as 'folios', date(`Fecha resolucion`) AS 'resuelto',  `Zona` as 'zona', `Tiempo` as 'tiempo', 1 as 'atendidos', IF(reporte like '%K', 1, 0) as 'K', `Inhibidor` as 'inhibidor', IF(`CCG`= 'En Metrica', 1, 0) as 'ccg', `SEMANAL` as 'semana', `REPORTE` as 'reporte' FROM eut_weeklyreportsinc)cauInck WHERE semana = '03 NOV - 09 NOV' AND reporte like 'CAU_INC%' group by resuelto;
