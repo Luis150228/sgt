@@ -3,3 +3,20 @@ TENGO LA SIGUIENTE TABLA CON VALORES EN TODOS LOS CAMPOS MENOS EN KS Y QUIERO AC
 SELECT reporte, semana, resuelto, atendidos, enTiempo, excepciones, ks, tiempo, limiteKs FROM eut_reportesbk.eut_weeklyreport;
 
 SELECT reporte, semana, resuelto, SUM(K) as 'k' FROM (SELECT `Ticket` as 'folios', date(`Fecha resolucion`) AS 'resuelto',  `Zona` as 'zona', `Tiempo` as 'tiempo', 1 as 'atendidos', IF(reporte like '%K', 1, 0) as 'K', `Inhibidor` as 'inhibidor', IF(`CCG`= 'En Metrica', 1, 0) as 'ccg', `SEMANAL` as 'semana', `REPORTE` as 'reporte' FROM eut_weeklyreportsinc)cauInck WHERE semana = '03 NOV - 09 NOV' AND reporte like 'CAU_INC%' group by resuelto;
+
+
+UPDATE eut_reportesbk.eut_weeklyreport AS target
+JOIN (
+    SELECT reporte, semana, resuelto, SUM(K) as 'ks'
+    FROM (
+        SELECT `Ticket` as 'folios', date(`Fecha resolucion`) AS 'resuelto',  
+        `Zona` as 'zona', `Tiempo` as 'tiempo', 1 as 'atendidos', 
+        IF(reporte like '%K', 1, 0) as 'K', `Inhibidor` as 'inhibidor', 
+        IF(`CCG`= 'En Metrica', 1, 0) as 'ccg', `SEMANAL` as 'semana', 
+        `REPORTE` as 'reporte' 
+        FROM eut_weeklyreportsinc
+    ) cauInck 
+    WHERE semana = '03 NOV - 09 NOV' AND reporte like 'CAU_INC%' 
+    GROUP BY resuelto
+) source ON target.reporte = source.reporte AND target.semana = source.semana AND target.resuelto = source.resuelto
+SET target.ks = source.ks;
