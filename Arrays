@@ -1,22 +1,1016 @@
-TENGO LA SIGUIENTE TABLA CON VALORES EN TODOS LOS CAMPOS MENOS EN KS Y QUIERO ACTUALIZARLA CON UNA CONSULTA, LOS CAMPOS reporte, semana, resuelto FORMAN EL INDEX UNICO, POR SE DEBE ACTUALIZAR SOLO DONDE ESTOS CAMPOS SEAN IGUALES, MARIA DB COMO LO DEBO HACER
+del siguiente objeto quiero solo mostrar los que tengan en reporte 'CAU_INC'
 
-SELECT reporte, semana, resuelto, atendidos, enTiempo, excepciones, ks, tiempo, limiteKs FROM eut_reportesbk.eut_weeklyreport;
-
-SELECT reporte, semana, resuelto, SUM(K) as 'k' FROM (SELECT `Ticket` as 'folios', date(`Fecha resolucion`) AS 'resuelto',  `Zona` as 'zona', `Tiempo` as 'tiempo', 1 as 'atendidos', IF(reporte like '%K', 1, 0) as 'K', `Inhibidor` as 'inhibidor', IF(`CCG`= 'En Metrica', 1, 0) as 'ccg', `SEMANAL` as 'semana', `REPORTE` as 'reporte' FROM eut_weeklyreportsinc)cauInck WHERE semana = '03 NOV - 09 NOV' AND reporte like 'CAU_INC%' group by resuelto;
-
-
-UPDATE eut_reportesbk.eut_weeklyreport AS target
-JOIN (
-    SELECT reporte, semana, resuelto, SUM(K) as 'ks'
-    FROM (
-        SELECT `Ticket` as 'folios', date(`Fecha resolucion`) AS 'resuelto',  
-        `Zona` as 'zona', `Tiempo` as 'tiempo', 1 as 'atendidos', 
-        IF(reporte like '%K', 1, 0) as 'K', `Inhibidor` as 'inhibidor', 
-        IF(`CCG`= 'En Metrica', 1, 0) as 'ccg', `SEMANAL` as 'semana', 
-        `REPORTE` as 'reporte' 
-        FROM eut_weeklyreportsinc
-    ) cauInck 
-    WHERE semana = '03 NOV - 09 NOV' AND reporte like 'CAU_INC%' 
-    GROUP BY resuelto
-) source ON target.reporte = source.reporte AND target.semana = source.semana AND target.resuelto = source.resuelto
-SET target.ks = source.ks;
+[
+    {
+        "reporte": "CAU_INC",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-03",
+        "atendidos": "102",
+        "enTiempo": "102",
+        "excepciones": "25",
+        "ks": "17",
+        "tiempo": "538",
+        "limiteKs": "11"
+    },
+    {
+        "reporte": "CAU_INC",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-04",
+        "atendidos": "9",
+        "enTiempo": "9",
+        "excepciones": "3",
+        "ks": "1",
+        "tiempo": "81",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-05",
+        "atendidos": "1",
+        "enTiempo": "1",
+        "excepciones": "0",
+        "ks": "0",
+        "tiempo": "0",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-06",
+        "atendidos": "112",
+        "enTiempo": "112",
+        "excepciones": "22",
+        "ks": "19",
+        "tiempo": "275",
+        "limiteKs": "12"
+    },
+    {
+        "reporte": "CAU_INC",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-07",
+        "atendidos": "134",
+        "enTiempo": "134",
+        "excepciones": "30",
+        "ks": "21",
+        "tiempo": "243",
+        "limiteKs": "14"
+    },
+    {
+        "reporte": "CAU_INC",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-08",
+        "atendidos": "143",
+        "enTiempo": "143",
+        "excepciones": "27",
+        "ks": "20",
+        "tiempo": "235",
+        "limiteKs": "15"
+    },
+    {
+        "reporte": "CAU_INC",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-09",
+        "atendidos": "141",
+        "enTiempo": "107",
+        "excepciones": "0",
+        "ks": "18",
+        "tiempo": "301",
+        "limiteKs": "15"
+    },
+    {
+        "reporte": "SDK_INC",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-03",
+        "atendidos": "37",
+        "enTiempo": "37",
+        "excepciones": "8",
+        "ks": "0",
+        "tiempo": "124",
+        "limiteKs": "4"
+    },
+    {
+        "reporte": "SDK_INC",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-04",
+        "atendidos": "6",
+        "enTiempo": "6",
+        "excepciones": "0",
+        "ks": "0",
+        "tiempo": "0",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "SDK_INC",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-06",
+        "atendidos": "40",
+        "enTiempo": "38",
+        "excepciones": "24",
+        "ks": "0",
+        "tiempo": "335",
+        "limiteKs": "4"
+    },
+    {
+        "reporte": "SDK_INC",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-07",
+        "atendidos": "26",
+        "enTiempo": "22",
+        "excepciones": "22",
+        "ks": "1",
+        "tiempo": "397",
+        "limiteKs": "3"
+    },
+    {
+        "reporte": "SDK_INC",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-08",
+        "atendidos": "25",
+        "enTiempo": "22",
+        "excepciones": "12",
+        "ks": "0",
+        "tiempo": "161",
+        "limiteKs": "3"
+    },
+    {
+        "reporte": "SDK_INC",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-09",
+        "atendidos": "43",
+        "enTiempo": "25",
+        "excepciones": "0",
+        "ks": "4",
+        "tiempo": "260",
+        "limiteKs": "5"
+    },
+    {
+        "reporte": "CAU_SOL",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-03",
+        "atendidos": "68",
+        "enTiempo": "68",
+        "excepciones": "3",
+        "ks": "0",
+        "tiempo": "483",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_SOL",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-04",
+        "atendidos": "7",
+        "enTiempo": "7",
+        "excepciones": "0",
+        "ks": "0",
+        "tiempo": "268",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_SOL",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-05",
+        "atendidos": "1",
+        "enTiempo": "1",
+        "excepciones": "0",
+        "ks": "0",
+        "tiempo": "551",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_SOL",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-06",
+        "atendidos": "83",
+        "enTiempo": "83",
+        "excepciones": "2",
+        "ks": "0",
+        "tiempo": "715",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_SOL",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-07",
+        "atendidos": "81",
+        "enTiempo": "80",
+        "excepciones": "2",
+        "ks": "0",
+        "tiempo": "822",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_SOL",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-08",
+        "atendidos": "86",
+        "enTiempo": "86",
+        "excepciones": "2",
+        "ks": "0",
+        "tiempo": "824",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_SOL",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-09",
+        "atendidos": "104",
+        "enTiempo": "103",
+        "excepciones": "0",
+        "ks": "0",
+        "tiempo": "635",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "SDK_SOL",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-03",
+        "atendidos": "19",
+        "enTiempo": "19",
+        "excepciones": "5",
+        "ks": "0",
+        "tiempo": "1645",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "SDK_SOL",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-04",
+        "atendidos": "1",
+        "enTiempo": "1",
+        "excepciones": "1",
+        "ks": "0",
+        "tiempo": "3237",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "SDK_SOL",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-06",
+        "atendidos": "19",
+        "enTiempo": "19",
+        "excepciones": "4",
+        "ks": "0",
+        "tiempo": "880",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "SDK_SOL",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-07",
+        "atendidos": "25",
+        "enTiempo": "25",
+        "excepciones": "4",
+        "ks": "0",
+        "tiempo": "1073",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "SDK_SOL",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-08",
+        "atendidos": "27",
+        "enTiempo": "27",
+        "excepciones": "3",
+        "ks": "0",
+        "tiempo": "615",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "SDK_SOL",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-09",
+        "atendidos": "24",
+        "enTiempo": "21",
+        "excepciones": "0",
+        "ks": "0",
+        "tiempo": "651",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-0",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-03",
+        "atendidos": "65",
+        "enTiempo": "65",
+        "excepciones": "11",
+        "ks": null,
+        "tiempo": "502",
+        "limiteKs": "7"
+    },
+    {
+        "reporte": "CAU_INC-1",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-03",
+        "atendidos": "30",
+        "enTiempo": "30",
+        "excepciones": "12",
+        "ks": null,
+        "tiempo": "548",
+        "limiteKs": "3"
+    },
+    {
+        "reporte": "CAU_INC-2",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-03",
+        "atendidos": "4",
+        "enTiempo": "4",
+        "excepciones": "2",
+        "ks": null,
+        "tiempo": "1252",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-3",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-03",
+        "atendidos": "3",
+        "enTiempo": "3",
+        "excepciones": "0",
+        "ks": null,
+        "tiempo": "252",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-0",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-04",
+        "atendidos": "7",
+        "enTiempo": "7",
+        "excepciones": "1",
+        "ks": null,
+        "tiempo": "19",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-1",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-04",
+        "atendidos": "1",
+        "enTiempo": "1",
+        "excepciones": "2",
+        "ks": null,
+        "tiempo": "459",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-3",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-04",
+        "atendidos": "1",
+        "enTiempo": "1",
+        "excepciones": "0",
+        "ks": null,
+        "tiempo": "134",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-0",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-05",
+        "atendidos": "1",
+        "enTiempo": "1",
+        "excepciones": "0",
+        "ks": null,
+        "tiempo": "0",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-0",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-06",
+        "atendidos": "67",
+        "enTiempo": "67",
+        "excepciones": "7",
+        "ks": null,
+        "tiempo": "237",
+        "limiteKs": "7"
+    },
+    {
+        "reporte": "CAU_INC-1",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-06",
+        "atendidos": "30",
+        "enTiempo": "30",
+        "excepciones": "11",
+        "ks": null,
+        "tiempo": "295",
+        "limiteKs": "3"
+    },
+    {
+        "reporte": "CAU_INC-2",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-06",
+        "atendidos": "14",
+        "enTiempo": "14",
+        "excepciones": "3",
+        "ks": null,
+        "tiempo": "343",
+        "limiteKs": "2"
+    },
+    {
+        "reporte": "CAU_INC-3",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-06",
+        "atendidos": "1",
+        "enTiempo": "1",
+        "excepciones": "1",
+        "ks": null,
+        "tiempo": "1226",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-0",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-07",
+        "atendidos": "75",
+        "enTiempo": "75",
+        "excepciones": "9",
+        "ks": null,
+        "tiempo": "145",
+        "limiteKs": "8"
+    },
+    {
+        "reporte": "CAU_INC-1",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-07",
+        "atendidos": "43",
+        "enTiempo": "43",
+        "excepciones": "18",
+        "ks": null,
+        "tiempo": "354",
+        "limiteKs": "5"
+    },
+    {
+        "reporte": "CAU_INC-2",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-07",
+        "atendidos": "12",
+        "enTiempo": "12",
+        "excepciones": "2",
+        "ks": null,
+        "tiempo": "314",
+        "limiteKs": "2"
+    },
+    {
+        "reporte": "CAU_INC-3",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-07",
+        "atendidos": "4",
+        "enTiempo": "4",
+        "excepciones": "1",
+        "ks": null,
+        "tiempo": "670",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-0",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-08",
+        "atendidos": "74",
+        "enTiempo": "74",
+        "excepciones": "19",
+        "ks": null,
+        "tiempo": "242",
+        "limiteKs": "8"
+    },
+    {
+        "reporte": "CAU_INC-1",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-08",
+        "atendidos": "48",
+        "enTiempo": "48",
+        "excepciones": "6",
+        "ks": null,
+        "tiempo": "260",
+        "limiteKs": "5"
+    },
+    {
+        "reporte": "CAU_INC-2",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-08",
+        "atendidos": "17",
+        "enTiempo": "17",
+        "excepciones": "2",
+        "ks": null,
+        "tiempo": "165",
+        "limiteKs": "2"
+    },
+    {
+        "reporte": "CAU_INC-3",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-08",
+        "atendidos": "4",
+        "enTiempo": "4",
+        "excepciones": "0",
+        "ks": null,
+        "tiempo": "125",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-0",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-09",
+        "atendidos": "75",
+        "enTiempo": "58",
+        "excepciones": "0",
+        "ks": null,
+        "tiempo": "179",
+        "limiteKs": "8"
+    },
+    {
+        "reporte": "CAU_INC-1",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-09",
+        "atendidos": "53",
+        "enTiempo": "40",
+        "excepciones": "0",
+        "ks": null,
+        "tiempo": "447",
+        "limiteKs": "6"
+    },
+    {
+        "reporte": "CAU_INC-2",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-09",
+        "atendidos": "6",
+        "enTiempo": "4",
+        "excepciones": "0",
+        "ks": null,
+        "tiempo": "343",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-3",
+        "semana": "03 NOV - 09 NOV",
+        "resuelto": "2023-11-09",
+        "atendidos": "7",
+        "enTiempo": "5",
+        "excepciones": "0",
+        "ks": null,
+        "tiempo": "471",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-27",
+        "atendidos": "97",
+        "enTiempo": "97",
+        "excepciones": "24",
+        "ks": "18",
+        "tiempo": "316",
+        "limiteKs": "10"
+    },
+    {
+        "reporte": "CAU_INC",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-28",
+        "atendidos": "6",
+        "enTiempo": "6",
+        "excepciones": "0",
+        "ks": "0",
+        "tiempo": "0",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-30",
+        "atendidos": "91",
+        "enTiempo": "90",
+        "excepciones": "25",
+        "ks": "16",
+        "tiempo": "326",
+        "limiteKs": "10"
+    },
+    {
+        "reporte": "CAU_INC",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-31",
+        "atendidos": "110",
+        "enTiempo": "110",
+        "excepciones": "16",
+        "ks": "14",
+        "tiempo": "155",
+        "limiteKs": "11"
+    },
+    {
+        "reporte": "CAU_INC",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-11-01",
+        "atendidos": "108",
+        "enTiempo": "107",
+        "excepciones": "25",
+        "ks": "18",
+        "tiempo": "296",
+        "limiteKs": "11"
+    },
+    {
+        "reporte": "CAU_INC",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-11-02",
+        "atendidos": "10",
+        "enTiempo": "10",
+        "excepciones": "0",
+        "ks": "0",
+        "tiempo": "56",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-0",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-27",
+        "atendidos": "41",
+        "enTiempo": "41",
+        "excepciones": "11",
+        "ks": null,
+        "tiempo": "254",
+        "limiteKs": "5"
+    },
+    {
+        "reporte": "CAU_INC-1",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-27",
+        "atendidos": "44",
+        "enTiempo": "44",
+        "excepciones": "13",
+        "ks": null,
+        "tiempo": "426",
+        "limiteKs": "5"
+    },
+    {
+        "reporte": "CAU_INC-2",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-27",
+        "atendidos": "8",
+        "enTiempo": "8",
+        "excepciones": "0",
+        "ks": null,
+        "tiempo": "102",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-3",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-27",
+        "atendidos": "4",
+        "enTiempo": "4",
+        "excepciones": "0",
+        "ks": null,
+        "tiempo": "161",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-0",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-28",
+        "atendidos": "3",
+        "enTiempo": "3",
+        "excepciones": "0",
+        "ks": null,
+        "tiempo": "0",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-1",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-28",
+        "atendidos": "2",
+        "enTiempo": "2",
+        "excepciones": "0",
+        "ks": null,
+        "tiempo": "0",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-2",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-28",
+        "atendidos": "1",
+        "enTiempo": "1",
+        "excepciones": "0",
+        "ks": null,
+        "tiempo": "0",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-0",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-30",
+        "atendidos": "60",
+        "enTiempo": "59",
+        "excepciones": "11",
+        "ks": null,
+        "tiempo": "161",
+        "limiteKs": "6"
+    },
+    {
+        "reporte": "CAU_INC-1",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-30",
+        "atendidos": "28",
+        "enTiempo": "28",
+        "excepciones": "11",
+        "ks": null,
+        "tiempo": "391",
+        "limiteKs": "3"
+    },
+    {
+        "reporte": "CAU_INC-2",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-30",
+        "atendidos": "3",
+        "enTiempo": "3",
+        "excepciones": "3",
+        "ks": null,
+        "tiempo": "2993",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-0",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-31",
+        "atendidos": "70",
+        "enTiempo": "70",
+        "excepciones": "5",
+        "ks": null,
+        "tiempo": "90",
+        "limiteKs": "7"
+    },
+    {
+        "reporte": "CAU_INC-1",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-31",
+        "atendidos": "33",
+        "enTiempo": "33",
+        "excepciones": "10",
+        "ks": null,
+        "tiempo": "265",
+        "limiteKs": "4"
+    },
+    {
+        "reporte": "CAU_INC-2",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-31",
+        "atendidos": "5",
+        "enTiempo": "5",
+        "excepciones": "0",
+        "ks": null,
+        "tiempo": "126",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-3",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-31",
+        "atendidos": "2",
+        "enTiempo": "2",
+        "excepciones": "1",
+        "ks": null,
+        "tiempo": "667",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-0",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-11-01",
+        "atendidos": "55",
+        "enTiempo": "54",
+        "excepciones": "12",
+        "ks": null,
+        "tiempo": "231",
+        "limiteKs": "6"
+    },
+    {
+        "reporte": "CAU_INC-1",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-11-01",
+        "atendidos": "42",
+        "enTiempo": "42",
+        "excepciones": "10",
+        "ks": null,
+        "tiempo": "256",
+        "limiteKs": "5"
+    },
+    {
+        "reporte": "CAU_INC-2",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-11-01",
+        "atendidos": "4",
+        "enTiempo": "4",
+        "excepciones": "1",
+        "ks": null,
+        "tiempo": "289",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-3",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-11-01",
+        "atendidos": "7",
+        "enTiempo": "7",
+        "excepciones": "2",
+        "ks": null,
+        "tiempo": "1059",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_INC-0",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-11-02",
+        "atendidos": "10",
+        "enTiempo": "10",
+        "excepciones": "0",
+        "ks": null,
+        "tiempo": "56",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "SDK_INC",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-27",
+        "atendidos": "20",
+        "enTiempo": "20",
+        "excepciones": "15",
+        "ks": "1",
+        "tiempo": "741",
+        "limiteKs": "2"
+    },
+    {
+        "reporte": "SDK_INC",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-28",
+        "atendidos": "3",
+        "enTiempo": "3",
+        "excepciones": "2",
+        "ks": "0",
+        "tiempo": "3431",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "SDK_INC",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-30",
+        "atendidos": "23",
+        "enTiempo": "23",
+        "excepciones": "14",
+        "ks": "4",
+        "tiempo": "539",
+        "limiteKs": "3"
+    },
+    {
+        "reporte": "SDK_INC",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-31",
+        "atendidos": "15",
+        "enTiempo": "15",
+        "excepciones": "16",
+        "ks": "6",
+        "tiempo": "1317",
+        "limiteKs": "2"
+    },
+    {
+        "reporte": "SDK_INC",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-11-01",
+        "atendidos": "23",
+        "enTiempo": "23",
+        "excepciones": "29",
+        "ks": "0",
+        "tiempo": "3191",
+        "limiteKs": "3"
+    },
+    {
+        "reporte": "SDK_INC",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-11-02",
+        "atendidos": "0",
+        "enTiempo": "0",
+        "excepciones": "3",
+        "ks": "0",
+        "tiempo": null,
+        "limiteKs": "0"
+    },
+    {
+        "reporte": "CAU_SOL",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-27",
+        "atendidos": "63",
+        "enTiempo": "63",
+        "excepciones": "5",
+        "ks": "0",
+        "tiempo": "1095",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_SOL",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-28",
+        "atendidos": "2",
+        "enTiempo": "2",
+        "excepciones": "0",
+        "ks": "0",
+        "tiempo": "834",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_SOL",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-30",
+        "atendidos": "50",
+        "enTiempo": "50",
+        "excepciones": "3",
+        "ks": "0",
+        "tiempo": "984",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_SOL",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-31",
+        "atendidos": "83",
+        "enTiempo": "83",
+        "excepciones": "3",
+        "ks": "0",
+        "tiempo": "683",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_SOL",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-11-01",
+        "atendidos": "70",
+        "enTiempo": "70",
+        "excepciones": "1",
+        "ks": "0",
+        "tiempo": "762",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "CAU_SOL",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-11-02",
+        "atendidos": "3",
+        "enTiempo": "3",
+        "excepciones": "1",
+        "ks": "0",
+        "tiempo": "1044",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "SDK_SOL",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-27",
+        "atendidos": "13",
+        "enTiempo": "13",
+        "excepciones": "5",
+        "ks": "0",
+        "tiempo": "1316",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "SDK_SOL",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-28",
+        "atendidos": "2",
+        "enTiempo": "2",
+        "excepciones": "1",
+        "ks": "0",
+        "tiempo": "2301",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "SDK_SOL",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-30",
+        "atendidos": "25",
+        "enTiempo": "25",
+        "excepciones": "3",
+        "ks": "0",
+        "tiempo": "540",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "SDK_SOL",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-10-31",
+        "atendidos": "20",
+        "enTiempo": "20",
+        "excepciones": "4",
+        "ks": "0",
+        "tiempo": "822",
+        "limiteKs": "1"
+    },
+    {
+        "reporte": "SDK_SOL",
+        "semana": "27 OCT - 02 NOV",
+        "resuelto": "2023-11-01",
+        "atendidos": "13",
+        "enTiempo": "13",
+        "excepciones": "3",
+        "ks": "0",
+        "tiempo": "834",
+        "limiteKs": "1"
+    }
+]
