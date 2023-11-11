@@ -1,3 +1,25 @@
+const data = { /* tu objeto de datos */ };
+const resultadosFiltrados = {};
+
+for (const clave in data) {
+    // Verificar si la clave contiene "-0" o "-1"
+    if (!/-[01]$/.test(clave)) {
+        // Obtener los primeros 15 caracteres de la clave para agrupar
+        const claveGrupo = clave.substring(0, 15);
+
+        // Inicializar el grupo si no existe
+        if (!resultadosFiltrados[claveGrupo]) {
+            resultadosFiltrados[claveGrupo] = {};
+        }
+
+        // Agregar el elemento a la clave del grupo
+        resultadosFiltrados[claveGrupo][clave] = data[clave];
+    }
+}
+
+console.log(resultadosFiltrados);
+
+
 en JS quiero poder quitar todos los elementos que tengan "-0" o "-1" en resumen todos los que tengan un guion y un numero por ejemplo "07 OCT - 14 NOV CAU_INC-0" y agruparlos por los primeros 15 caracteres de cada elemento raiz
 
 {
