@@ -1,218 +1,204 @@
-const data = { /* tu objeto de datos */ };
-const resultadosFiltrados = {};
-
-for (const clave in data) {
-    // Verificar si la clave contiene "-0" o "-1"
-    if (!/-[01]$/.test(clave)) {
-        // Obtener los primeros 15 caracteres de la clave para agrupar
-        const claveGrupo = clave.substring(0, 15);
-
-        // Inicializar el grupo si no existe
-        if (!resultadosFiltrados[claveGrupo]) {
-            resultadosFiltrados[claveGrupo] = {};
-        }
-
-        // Agregar el elemento a la clave del grupo
-        resultadosFiltrados[claveGrupo][clave] = data[clave];
-    }
-}
-
-console.log(resultadosFiltrados);
-
-
-en JS quiero poder quitar todos los elementos que tengan "-0" o "-1" en resumen todos los que tengan un guion y un numero por ejemplo "07 OCT - 14 NOV CAU_INC-0" y agruparlos por los primeros 15 caracteres de cada elemento raiz
+ tengo el siguiente objeto y quiero crear con forof un selecto con los valores iniciales de cada sub grupo "20 OCT - 26 OCT", "27 OCT - 02 NOV", "03 NOV - 09 NOV" ...
 
 {
-    "27 OCT - 02 NOV CAU_INC": {
-        "atendidos": 422,
-        "enTiempo": 420,
-        "excepciones": 90,
-        "ks": 66,
-        "ksAjst": 43,
-        "ksPrc": 9.66,
-        "ksExcedentes": 23,
-        "tiempo": 1149,
-        "atendidosTotal": 445,
-        "alcanceAtencion": 94.38
+    "20 OCT - 26 OCT": {
+        "20 OCT - 26 OCT CAU_INC": {
+            "atendidos": 260,
+            "enTiempo": 260,
+            "excepciones": 0,
+            "ks": 99,
+            "ksAjst": 26,
+            "ksPrc": 7.81,
+            "ksExcedentes": 73,
+            "tiempo": 171,
+            "atendidosTotal": 333,
+            "alcanceAtencion": 78.08
+        },
+        "20 OCT - 26 OCT CAU_SOL": {
+            "atendidos": 114,
+            "enTiempo": 107,
+            "excepciones": 0,
+            "ks": 0,
+            "ksAjst": 12,
+            "ksPrc": 11.76,
+            "ksExcedentes": -12,
+            "tiempo": 1816,
+            "atendidosTotal": 102,
+            "alcanceAtencion": 104.9
+        },
+        "20 OCT - 26 OCT SDK_INC": {
+            "atendidos": 70,
+            "enTiempo": 49,
+            "excepciones": 0,
+            "ks": 4,
+            "ksAjst": 7,
+            "ksPrc": 10.45,
+            "ksExcedentes": -3,
+            "tiempo": 559,
+            "atendidosTotal": 67,
+            "alcanceAtencion": 73.13
+        },
+        "20 OCT - 26 OCT SDK_SOL": {
+            "atendidos": 52,
+            "enTiempo": 44,
+            "excepciones": 0,
+            "ks": 0,
+            "ksAjst": 6,
+            "ksPrc": 13.04,
+            "ksExcedentes": -6,
+            "tiempo": 1460,
+            "atendidosTotal": 46,
+            "alcanceAtencion": 95.65
+        }
     },
-    "03 NOV - 09 NOV CAU_INC": {
-        "atendidos": 642,
-        "enTiempo": 608,
-        "excepciones": 107,
-        "ks": 96,
-        "ksAjst": 63,
-        "ksPrc": 9.33,
-        "ksExcedentes": 33,
-        "tiempo": 1673,
-        "atendidosTotal": 675,
-        "alcanceAtencion": 90.07
+    "27 OCT - 02 NOV": {
+        "27 OCT - 02 NOV CAU_INC": {
+            "atendidos": 422,
+            "enTiempo": 420,
+            "excepciones": 90,
+            "ks": 66,
+            "ksAjst": 43,
+            "ksPrc": 9.66,
+            "ksExcedentes": 23,
+            "tiempo": 1149,
+            "atendidosTotal": 445,
+            "alcanceAtencion": 94.38
+        },
+        "27 OCT - 02 NOV CAU_SOL": {
+            "atendidos": 271,
+            "enTiempo": 271,
+            "excepciones": 13,
+            "ks": 0,
+            "ksAjst": 26,
+            "ksPrc": 10.61,
+            "ksExcedentes": -26,
+            "tiempo": 5402,
+            "atendidosTotal": 245,
+            "alcanceAtencion": 110.61
+        },
+        "27 OCT - 02 NOV SDK_INC": {
+            "atendidos": 84,
+            "enTiempo": 84,
+            "excepciones": 79,
+            "ks": 11,
+            "ksAjst": 8,
+            "ksPrc": 9.2,
+            "ksExcedentes": 3,
+            "tiempo": null,
+            "atendidosTotal": 87,
+            "alcanceAtencion": 96.55
+        },
+        "27 OCT - 02 NOV SDK_SOL": {
+            "atendidos": 73,
+            "enTiempo": 73,
+            "excepciones": 16,
+            "ks": 0,
+            "ksAjst": 7,
+            "ksPrc": 10.61,
+            "ksExcedentes": -7,
+            "tiempo": 5813,
+            "atendidosTotal": 66,
+            "alcanceAtencion": 110.61
+        }
     },
-    "27 OCT - 02 NOV CAU_INC-0": {
-        "atendidos": 239,
-        "enTiempo": 237,
-        "excepciones": 39,
-        "ks": null,
-        "ksAjst": 0,
-        "ksPrc": 0,
-        "ksExcedentes": 0,
-        "tiempo": 792,
-        "atendidosTotal": 239,
-        "alcanceAtencion": 99.16
+    "03 NOV - 09 NOV": {
+        "03 NOV - 09 NOV CAU_INC": {
+            "atendidos": 608,
+            "enTiempo": 608,
+            "excepciones": 138,
+            "ks": 99,
+            "ksAjst": 60,
+            "ksPrc": 9.27,
+            "ksExcedentes": 39,
+            "tiempo": 1749,
+            "atendidosTotal": 647,
+            "alcanceAtencion": 93.97
+        },
+        "03 NOV - 09 NOV CAU_SOL": {
+            "atendidos": 429,
+            "enTiempo": 428,
+            "excepciones": 10,
+            "ks": 0,
+            "ksAjst": 43,
+            "ksPrc": 11.14,
+            "ksExcedentes": -43,
+            "tiempo": 4305,
+            "atendidosTotal": 386,
+            "alcanceAtencion": 110.88
+        },
+        "03 NOV - 09 NOV SDK_INC": {
+            "atendidos": 150,
+            "enTiempo": 150,
+            "excepciones": 84,
+            "ks": 14,
+            "ksAjst": 16,
+            "ksPrc": 10.81,
+            "ksExcedentes": -2,
+            "tiempo": 1471,
+            "atendidosTotal": 148,
+            "alcanceAtencion": 101.35
+        },
+        "03 NOV - 09 NOV SDK_SOL": {
+            "atendidos": 112,
+            "enTiempo": 112,
+            "excepciones": 20,
+            "ks": 0,
+            "ksAjst": 12,
+            "ksPrc": 12,
+            "ksExcedentes": -12,
+            "tiempo": 8194,
+            "atendidosTotal": 100,
+            "alcanceAtencion": 112
+        }
     },
-    "03 NOV - 09 NOV CAU_INC-0": {
-        "atendidos": 364,
-        "enTiempo": 347,
-        "excepciones": 47,
-        "ks": null,
-        "ksAjst": 0,
-        "ksPrc": 0,
-        "ksExcedentes": 0,
-        "tiempo": 1324,
-        "atendidosTotal": 364,
-        "alcanceAtencion": 95.33
-    },
-    "27 OCT - 02 NOV CAU_INC-1": {
-        "atendidos": 149,
-        "enTiempo": 149,
-        "excepciones": 44,
-        "ks": null,
-        "ksAjst": 0,
-        "ksPrc": 0,
-        "ksExcedentes": 0,
-        "tiempo": 1338,
-        "atendidosTotal": 149,
-        "alcanceAtencion": 100
-    },
-    "03 NOV - 09 NOV CAU_INC-1": {
-        "atendidos": 205,
-        "enTiempo": 192,
-        "excepciones": 49,
-        "ks": null,
-        "ksAjst": 0,
-        "ksPrc": 0,
-        "ksExcedentes": 0,
-        "tiempo": 2363,
-        "atendidosTotal": 205,
-        "alcanceAtencion": 93.66
-    },
-    "27 OCT - 02 NOV CAU_INC-2": {
-        "atendidos": 21,
-        "enTiempo": 21,
-        "excepciones": 4,
-        "ks": null,
-        "ksAjst": 0,
-        "ksPrc": 0,
-        "ksExcedentes": 0,
-        "tiempo": 3510,
-        "atendidosTotal": 21,
-        "alcanceAtencion": 100
-    },
-    "03 NOV - 09 NOV CAU_INC-2": {
-        "atendidos": 53,
-        "enTiempo": 51,
-        "excepciones": 9,
-        "ks": null,
-        "ksAjst": 0,
-        "ksPrc": 0,
-        "ksExcedentes": 0,
-        "tiempo": 2417,
-        "atendidosTotal": 53,
-        "alcanceAtencion": 96.23
-    },
-    "27 OCT - 02 NOV CAU_INC-3": {
-        "atendidos": 13,
-        "enTiempo": 13,
-        "excepciones": 3,
-        "ks": null,
-        "ksAjst": 0,
-        "ksPrc": 0,
-        "ksExcedentes": 0,
-        "tiempo": 1887,
-        "atendidosTotal": 13,
-        "alcanceAtencion": 100
-    },
-    "03 NOV - 09 NOV CAU_INC-3": {
-        "atendidos": 20,
-        "enTiempo": 18,
-        "excepciones": 2,
-        "ks": null,
-        "ksAjst": 0,
-        "ksPrc": 0,
-        "ksExcedentes": 0,
-        "tiempo": 2878,
-        "atendidosTotal": 20,
-        "alcanceAtencion": 90
-    },
-    "27 OCT - 02 NOV CAU_SOL": {
-        "atendidos": 271,
-        "enTiempo": 271,
-        "excepciones": 13,
-        "ks": 0,
-        "ksAjst": 26,
-        "ksPrc": 10.61,
-        "ksExcedentes": -26,
-        "tiempo": 5402,
-        "atendidosTotal": 245,
-        "alcanceAtencion": 110.61
-    },
-    "03 NOV - 09 NOV CAU_SOL": {
-        "atendidos": 430,
-        "enTiempo": 428,
-        "excepciones": 9,
-        "ks": 0,
-        "ksAjst": 43,
-        "ksPrc": 11.11,
-        "ksExcedentes": -43,
-        "tiempo": 4298,
-        "atendidosTotal": 387,
-        "alcanceAtencion": 110.59
-    },
-    "27 OCT - 02 NOV SDK_INC": {
-        "atendidos": 84,
-        "enTiempo": 84,
-        "excepciones": 79,
-        "ks": 11,
-        "ksAjst": 8,
-        "ksPrc": 9.2,
-        "ksExcedentes": 3,
-        "tiempo": null,
-        "atendidosTotal": 87,
-        "alcanceAtencion": 96.55
-    },
-    "03 NOV - 09 NOV SDK_INC": {
-        "atendidos": 168,
-        "enTiempo": 150,
-        "excepciones": 66,
-        "ks": 14,
-        "ksAjst": 17,
-        "ksPrc": 10.3,
-        "ksExcedentes": -3,
-        "tiempo": 1285,
-        "atendidosTotal": 165,
-        "alcanceAtencion": 90.91
-    },
-    "27 OCT - 02 NOV SDK_SOL": {
-        "atendidos": 73,
-        "enTiempo": 73,
-        "excepciones": 16,
-        "ks": 0,
-        "ksAjst": 7,
-        "ksPrc": 10.61,
-        "ksExcedentes": -7,
-        "tiempo": 5813,
-        "atendidosTotal": 66,
-        "alcanceAtencion": 110.61
-    },
-    "03 NOV - 09 NOV SDK_SOL": {
-        "atendidos": 115,
-        "enTiempo": 112,
-        "excepciones": 17,
-        "ks": 0,
-        "ksAjst": 12,
-        "ksPrc": 11.65,
-        "ksExcedentes": -12,
-        "tiempo": 8101,
-        "atendidosTotal": 103,
-        "alcanceAtencion": 108.74
+    "10 NOV - 16 NOV": {
+        "10 NOV - 16 NOV CAU_INC": {
+            "atendidos": 189,
+            "enTiempo": 170,
+            "excepciones": 0,
+            "ks": 15,
+            "ksAjst": 19,
+            "ksPrc": 10.27,
+            "ksExcedentes": -4,
+            "tiempo": 182,
+            "atendidosTotal": 185,
+            "alcanceAtencion": 91.89
+        },
+        "10 NOV - 16 NOV CAU_SOL": {
+            "atendidos": 101,
+            "enTiempo": 96,
+            "excepciones": 0,
+            "ks": 0,
+            "ksAjst": 11,
+            "ksPrc": 12.22,
+            "ksExcedentes": -11,
+            "tiempo": 1193,
+            "atendidosTotal": 90,
+            "alcanceAtencion": 106.67
+        },
+        "10 NOV - 16 NOV SDK_INC": {
+            "atendidos": 43,
+            "enTiempo": 28,
+            "excepciones": 0,
+            "ks": 1,
+            "ksAjst": 4,
+            "ksPrc": 10,
+            "ksExcedentes": -3,
+            "tiempo": 7014,
+            "atendidosTotal": 40,
+            "alcanceAtencion": 70
+        },
+        "10 NOV - 16 NOV SDK_SOL": {
+            "atendidos": 30,
+            "enTiempo": 25,
+            "excepciones": 0,
+            "ks": 0,
+            "ksAjst": 3,
+            "ksPrc": 11.11,
+            "ksExcedentes": -3,
+            "tiempo": 2554,
+            "atendidosTotal": 27,
+            "alcanceAtencion": 92.59
+        }
     }
 }
