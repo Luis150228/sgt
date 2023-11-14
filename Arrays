@@ -1,4 +1,42 @@
- tengo el siguiente objeto y quiero crear con forof un selecto con los valores iniciales de cada sub grupo "20 OCT - 26 OCT", "27 OCT - 02 NOV", "03 NOV - 09 NOV" ...
+// Supongamos que el objeto se llama 'datos'
+const datos = {
+    // ... tu objeto ...
+};
+
+// Obtén una referencia al elemento 'select' en tu HTML
+const selectElemento = document.getElementById('tuSelectId');
+
+// Itera sobre las claves del objeto y crea opciones para cada clave
+for (const clave in datos) {
+    if (datos.hasOwnProperty(clave)) {
+        const opcion = document.createElement('option');
+        opcion.value = clave;
+        opcion.text = clave;
+
+        // Agrega la opción al elemento 'select'
+        selectElemento.appendChild(opcion);
+    }
+}
+/*****************************************************************************************************************************************************/
+const datos = {
+    // ... tu objeto ...
+};
+
+const claveFiltrada = "27 OCT - 02 NOV";
+
+// Verifica si la clave que deseas filtrar existe en el objeto
+if (datos.hasOwnProperty(claveFiltrada)) {
+    const objetoFiltrado = datos[claveFiltrada];
+
+    // Ahora 'objetoFiltrado' contiene el objeto asociado a la clave filtrada
+    console.log(objetoFiltrado);
+} else {
+    console.log("La clave especificada no existe en el objeto.");
+}
+
+
+
+tengo el siguiente objeto y quiero crear con forof un selecto con los valores iniciales de cada sub grupo "20 OCT - 26 OCT", "27 OCT - 02 NOV", "03 NOV - 09 NOV" ...
 
 {
     "20 OCT - 26 OCT": {
