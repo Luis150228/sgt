@@ -1,50 +1,292 @@
-tengo el siguiente objeto en JS 
+Fitrar en JS el siguiente objeto por ejemeplo "27 OCT - 02 NOV CAU_INC" y que me muestre todos lo similares ejemplo '27 OCT - 02 NOV CAU_INC', '27 OCT - 02 NOV CAU_INC-0', '27 OCT - 02 NOV CAU_INC-1, etc...'
 
-const actualityCommits = [
-    {
-        "id": 1700070302127,
-        "fecha": "2023-11-15 11:45:02",
-        "usuario": "C881921",
-        "estatus": "asignado",
-        "commentario": "prueba disponible "
+{
+    "27 OCT - 02 NOV CAU_INC": {
+        "atendidos": 422,
+        "enTiempo": 420,
+        "excepciones": 90,
+        "ks": 66,
+        "ksAjst": 41,
+        "ksPrc": 9.17,
+        "ksExcedentes": 25,
+        "tiempo": 1149,
+        "atendidosTotal": 447,
+        "alcanceAtencion": 93.96
     },
-    {
-        "id": 1700070346898,
-        "fecha": "2023-11-15 11:45:46",
-        "usuario": "C881921",
-        "estatus": "disponible",
-        "commentario": "prueba disponible"
+    "03 NOV - 09 NOV CAU_INC": {
+        "atendidos": 608,
+        "enTiempo": 608,
+        "excepciones": 138,
+        "ks": 99,
+        "ksAjst": 60,
+        "ksPrc": 9.27,
+        "ksExcedentes": 39,
+        "tiempo": 1749,
+        "atendidosTotal": 647,
+        "alcanceAtencion": 93.97
     },
-    {
-        "id": 1700070514489,
-        "fecha": "2023-11-15 11:48:34",
-        "usuario": "C881921",
-        "estatus": "asignado",
-        "commentario": "Asignación "
+    "10 NOV - 16 NOV CAU_INC": {
+        "atendidos": 496,
+        "enTiempo": 459,
+        "excepciones": 54,
+        "ks": 59,
+        "ksAjst": 50,
+        "ksPrc": 9.9,
+        "ksExcedentes": 9,
+        "tiempo": 877,
+        "atendidosTotal": 505,
+        "alcanceAtencion": 90.89
     },
-    {
-        "id": 1700070544952,
-        "fecha": "2023-11-15 11:49:04",
-        "usuario": "C881921",
-        "estatus": "disponible",
-        "commentario": "prueba "
+    "27 OCT - 02 NOV CAU_INC-0": {
+        "atendidos": 239,
+        "enTiempo": 237,
+        "excepciones": 39,
+        "ks": null,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 792,
+        "atendidosTotal": 239,
+        "alcanceAtencion": 99.16
     },
-    {
-        "id": 1700070707286,
-        "fecha": "2023-11-15 11:51:47",
-        "usuario": "C881921",
-        "estatus": "asignado",
-        "commentario": "Asignación "
+    "03 NOV - 09 NOV CAU_INC-0": {
+        "atendidos": 347,
+        "enTiempo": 347,
+        "excepciones": 64,
+        "ks": null,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 1376,
+        "atendidosTotal": 347,
+        "alcanceAtencion": 100
+    },
+    "10 NOV - 16 NOV CAU_INC-0": {
+        "atendidos": 262,
+        "enTiempo": 257,
+        "excepciones": 17,
+        "ks": null,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 339,
+        "atendidosTotal": 262,
+        "alcanceAtencion": 98.09
+    },
+    "27 OCT - 02 NOV CAU_INC-1": {
+        "atendidos": 149,
+        "enTiempo": 149,
+        "excepciones": 44,
+        "ks": null,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 1338,
+        "atendidosTotal": 149,
+        "alcanceAtencion": 100
+    },
+    "03 NOV - 09 NOV CAU_INC-1": {
+        "atendidos": 192,
+        "enTiempo": 192,
+        "excepciones": 60,
+        "ks": null,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 2464,
+        "atendidosTotal": 192,
+        "alcanceAtencion": 100
+    },
+    "10 NOV - 16 NOV CAU_INC-1": {
+        "atendidos": 199,
+        "enTiempo": 173,
+        "excepciones": 34,
+        "ks": null,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 1170,
+        "atendidosTotal": 199,
+        "alcanceAtencion": 86.93
+    },
+    "27 OCT - 02 NOV CAU_INC-2": {
+        "atendidos": 21,
+        "enTiempo": 21,
+        "excepciones": 4,
+        "ks": null,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 3510,
+        "atendidosTotal": 21,
+        "alcanceAtencion": 100
+    },
+    "03 NOV - 09 NOV CAU_INC-2": {
+        "atendidos": 51,
+        "enTiempo": 51,
+        "excepciones": 10,
+        "ks": null,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 2499,
+        "atendidosTotal": 51,
+        "alcanceAtencion": 100
+    },
+    "10 NOV - 16 NOV CAU_INC-2": {
+        "atendidos": 27,
+        "enTiempo": 23,
+        "excepciones": 2,
+        "ks": null,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 3661,
+        "atendidosTotal": 27,
+        "alcanceAtencion": 85.19
+    },
+    "27 OCT - 02 NOV CAU_INC-3": {
+        "atendidos": 13,
+        "enTiempo": 13,
+        "excepciones": 3,
+        "ks": null,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 1887,
+        "atendidosTotal": 13,
+        "alcanceAtencion": 100
+    },
+    "03 NOV - 09 NOV CAU_INC-3": {
+        "atendidos": 18,
+        "enTiempo": 18,
+        "excepciones": 4,
+        "ks": null,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 3066,
+        "atendidosTotal": 18,
+        "alcanceAtencion": 100
+    },
+    "10 NOV - 16 NOV CAU_INC-3": {
+        "atendidos": 8,
+        "enTiempo": 6,
+        "excepciones": 1,
+        "ks": null,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 1741,
+        "atendidosTotal": 8,
+        "alcanceAtencion": 75
+    },
+    "27 OCT - 02 NOV CAU_SOL": {
+        "atendidos": 271,
+        "enTiempo": 271,
+        "excepciones": 13,
+        "ks": 0,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 5402,
+        "atendidosTotal": 271,
+        "alcanceAtencion": 100
+    },
+    "03 NOV - 09 NOV CAU_SOL": {
+        "atendidos": 429,
+        "enTiempo": 428,
+        "excepciones": 10,
+        "ks": 0,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 4305,
+        "atendidosTotal": 429,
+        "alcanceAtencion": 99.77
+    },
+    "10 NOV - 16 NOV CAU_SOL": {
+        "atendidos": 257,
+        "enTiempo": 242,
+        "excepciones": 7,
+        "ks": 0,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 3055,
+        "atendidosTotal": 257,
+        "alcanceAtencion": 94.16
+    },
+    "27 OCT - 02 NOV SDK_INC": {
+        "atendidos": 84,
+        "enTiempo": 84,
+        "excepciones": 79,
+        "ks": 11,
+        "ksAjst": 6,
+        "ksPrc": 6.74,
+        "ksExcedentes": 5,
+        "tiempo": null,
+        "atendidosTotal": 89,
+        "alcanceAtencion": 94.38
+    },
+    "03 NOV - 09 NOV SDK_INC": {
+        "atendidos": 150,
+        "enTiempo": 150,
+        "excepciones": 84,
+        "ks": 14,
+        "ksAjst": 11,
+        "ksPrc": 7.19,
+        "ksExcedentes": 3,
+        "tiempo": 1471,
+        "atendidosTotal": 153,
+        "alcanceAtencion": 98.04
+    },
+    "10 NOV - 16 NOV SDK_INC": {
+        "atendidos": 114,
+        "enTiempo": 98,
+        "excepciones": 27,
+        "ks": 7,
+        "ksAjst": 12,
+        "ksPrc": 11.01,
+        "ksExcedentes": -5,
+        "tiempo": null,
+        "atendidosTotal": 109,
+        "alcanceAtencion": 89.91
+    },
+    "27 OCT - 02 NOV SDK_SOL": {
+        "atendidos": 73,
+        "enTiempo": 73,
+        "excepciones": 16,
+        "ks": 0,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 5813,
+        "atendidosTotal": 73,
+        "alcanceAtencion": 100
+    },
+    "03 NOV - 09 NOV SDK_SOL": {
+        "atendidos": 112,
+        "enTiempo": 112,
+        "excepciones": 20,
+        "ks": 0,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 8194,
+        "atendidosTotal": 112,
+        "alcanceAtencion": 100
+    },
+    "10 NOV - 16 NOV SDK_SOL": {
+        "atendidos": 93,
+        "enTiempo": 87,
+        "excepciones": 10,
+        "ks": 0,
+        "ksAjst": 0,
+        "ksPrc": 0,
+        "ksExcedentes": 0,
+        "tiempo": 6325,
+        "atendidosTotal": 93,
+        "alcanceAtencion": 93.55
     }
-]
-
-
-y requiero agregar uno mas con estos datos 
-
-const commitNew = {
-    "id": 1700072172020,
-    "fecha": "2023-11-15 12:16:12",
-    "usuario": "C356882",
-    "estatus": "disponible",
-    "commentario": "dsa"
 }
