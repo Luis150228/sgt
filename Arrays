@@ -1,0 +1,133 @@
+CREATE DEFINER=`lrangel`@`%` PROCEDURE `stp_weekDashboarsDaily`(var_reporte VARCHAR(3), var_idRange VARCHAR(6))
+BEGIN
+
+DECLARE let_rango VARCHAR(150);
+DECLARE let_mes VARCHAR(150);
+DECLARE let_numsem int;
+DECLARE let_numMES int;
+
+DECLARE let_desbloqueos int;
+DECLARE let_promedio int;
+DECLARE let_cumplimiento DOUBLE;
+
+DECLARE let_solicitudes_SDK int;
+DECLARE let_solvalidas_SDK int;
+DECLARE let_promedio_SDK int;
+DECLARE let_cumplimiento_SDK DOUBLE;
+
+DECLARE let_solicitudes_CAU int;
+DECLARE let_solvalidas_CAU int;
+DECLARE let_promedio_CAU int;
+DECLARE let_cumplimiento_CAU DOUBLE;
+
+DECLARE let_incidentes_SDK int;
+DECLARE let_incvalidas_SDK int;
+DECLARE let_incpromedio_SDK int;
+DECLARE let_inccumplimiento_SDK DOUBLE;
+
+DECLARE let_inczona_CAU INT;
+DECLARE let_incincidentes_CAU INT;
+DECLARE let_incvalidas_CAU INT;
+DECLARE let_incpromedio_CAU INT;
+DECLARE let_inccumplimiento_CAU DOUBLE;
+
+DECLARE let_incK_CAU INT;
+DECLARE let_incK_SDK INT;
+
+DECLARE let_INC_SDK INT;
+DECLARE let_PRCINC_SDK DOUBLE;
+DECLARE let_INC_CAU INT;
+DECLARE let_PRCINC_CAU  DOUBLE;
+
+DECLARE let_SOL_SDK INT;
+DECLARE let_PRCSOL_SDK DOUBLE;
+DECLARE let_SOL_CAU INT;
+DECLARE let_PRCSOL_CAU  DOUBLE;
+
+DECLARE let_calls INT;
+DECLARE let_PRCCallsAbandono  DOUBLE;
+DECLARE let_callsAban10 INT;
+DECLARE let_PRCCallsAbandonoReal  DOUBLE;
+DECLARE let_ath VARCHAR(8);
+
+SET let_rango = (SELECT `range` FROM eut_weeklyrange WHERE `id` = var_idRange order by id DESC LIMIT 1);
+SET let_mes = (SELECT `month` FROM eut_weeklyrange WHERE `id` = var_idRange order by id DESC LIMIT 1);
+SET let_numsem = (SELECT `id` FROM eut_weeklyrange WHERE `id` = var_idRange order by id DESC LIMIT 1);
+SET let_numMES = (SELECT `numMonth` FROM eut_weeklyrange WHERE `id` = var_idRange order by id DESC LIMIT 1);
+
+SET let_desbloqueos = (SELECT count(call_id) FROM eut_weeklyreportunlock WHERE SEMANA = let_rango);
+SET let_promedio = (SELECT ROUND(sum(minutos)/count(call_id),0) FROM eut_weeklyreportunlock WHERE SEMANA = let_rango);
+SET let_cumplimiento = (SELECT sum(if(cumplimiento = 'En Tiempo',1,0))/count(call_id) FROM eut_weeklyreportunlock WHERE SEMANA = let_rango);
+
+SET let_solicitudes_SDK = (SELECT COUNT(*) FROM eut_weeklyreportssol WHERE SEMANAL = let_rango AND REPORTE = 'SDK_SOL' AND CCG = 'En Metrica');
+SET let_solvalidas_SDK = (SELECT sum(if(Estatus = 'EN TIEMPO', 1,0)) FROM eut_weeklyreportssol WHERE SEMANAL = let_rango AND REPORTE = 'SDK_SOL' AND CCG = 'En Metrica');
+SET let_promedio_SDK = (SELECT CEIL(sum(Tiempo)/COUNT(*)) FROM eut_weeklyreportssol WHERE SEMANAL = let_rango AND REPORTE = 'SDK_SOL' AND CCG = 'En Metrica');
+SET let_cumplimiento_SDK = (SELECT sum(if(Estatus = 'EN TIEMPO', 1,0))/COUNT(*) FROM eut_weeklyreportssol WHERE SEMANAL = let_rango AND REPORTE = 'SDK_SOL' AND CCG = 'En Metrica');
+
+SET let_solicitudes_CAU = (SELECT COUNT(*) FROM eut_weeklyreportssol WHERE SEMANAL = let_rango AND REPORTE = 'CAU_SOL' AND CCG = 'En Metrica');
+SET let_solvalidas_CAU = (SELECT sum(if(Estatus = 'EN TIEMPO', 1,0)) FROM eut_weeklyreportssol WHERE SEMANAL = let_rango AND REPORTE = 'CAU_SOL' AND CCG = 'En Metrica');
+SET let_promedio_CAU = (SELECT CEIL(sum(Tiempo)/COUNT(*)) FROM eut_weeklyreportssol WHERE SEMANAL = let_rango AND REPORTE = 'CAU_SOL' AND CCG = 'En Metrica');
+SET let_cumplimiento_CAU = (SELECT sum(if(Estatus = 'EN TIEMPO', 1,0))/COUNT(*) FROM eut_weeklyreportssol WHERE SEMANAL = let_rango AND REPORTE = 'CAU_SOL' AND CCG = 'En Metrica');
+
+SET let_incidentes_SDK = (SELECT COUNT(*) FROM eut_weeklyreportsinc WHERE SEMANAL = let_rango AND REPORTE = 'SDK_INC' AND CCG = 'En Metrica');
+SET let_incvalidas_SDK = (SELECT sum(if(Estatus = 'EN TIEMPO', 1,0)) FROM eut_weeklyreportsinc WHERE SEMANAL = let_rango AND REPORTE = 'SDK_INC' AND CCG = 'En Metrica');
+SET let_incpromedio_SDK = (SELECT CEIL(sum(Tiempo)/COUNT(*)) FROM eut_weeklyreportsinc WHERE SEMANAL = let_rango AND REPORTE = 'SDK_INC' AND CCG = 'En Metrica');
+SET let_inccumplimiento_SDK = (SELECT sum(if(Estatus = 'EN TIEMPO', 1,0))/COUNT(*) FROM eut_weeklyreportsinc WHERE SEMANAL = let_rango AND REPORTE = 'SDK_INC' AND CCG = 'En Metrica');
+
+/*
+SET let_inczona_CAU = (SELECT Zona FROM eut_weeklyreportsinc WHERE SEMANAL = let_rango AND REPORTE = 'CAU_INC' GROUP BY Zona ORDER BY Zona ASC);
+SET let_incincidentes_CAU = (SELECT COUNT(*) FROM eut_weeklyreportsinc WHERE SEMANAL = let_rango AND REPORTE = 'CAU_INC' GROUP BY Zona ORDER BY Zona ASC);
+SET let_incvalidas_CAU = (SELECT sum(if(Estatus = 'EN TIEMPO', 1,0)) FROM eut_weeklyreportsinc WHERE SEMANAL = let_rango AND REPORTE = 'CAU_INC' GROUP BY Zona ORDER BY Zona ASC);
+SET let_incpromedio_CAU = (SELECT CEIL(sum(Tiempo)/COUNT(*)) FROM eut_weeklyreportsinc WHERE SEMANAL = let_rango AND REPORTE = 'CAU_INC' GROUP BY Zona ORDER BY Zona ASC);
+SET let_inccumplimiento_CAU = (SELECT sum(if(Estatus = 'EN TIEMPO', 1,0))/COUNT(*) FROM eut_weeklyreportsinc WHERE SEMANAL = let_rango AND REPORTE = 'CAU_INC' GROUP BY Zona ORDER BY Zona ASC);
+*/
+SET let_incincidentes_CAU = (SELECT COUNT(*) FROM eut_weeklyreportsinc WHERE SEMANAL = let_rango AND REPORTE = 'CAU_INC' AND CCG = 'En Metrica');
+
+SET let_incK_CAU = (SELECT COUNT(*) FROM eut_weeklyreportsinc WHERE SEMANAL = let_rango AND REPORTE = 'CAU_INCK' AND CCG = 'En Metrica');
+SET let_incK_SDK = (SELECT COUNT(*) FROM eut_weeklyreportsinc WHERE SEMANAL = let_rango AND REPORTE = 'SDK_INCK' AND CCG = 'En Metrica');
+
+SET let_INC_SDK = (SELECT SUM(IF(`type` = 'RVVS_INC_SDK', 1,0)) FROM servicenow_rvss WHERE SEMANAL = let_rango AND `type` LIKE 'RVVS_INC_%');
+SET let_PRCINC_SDK = (SELECT (SUM(IF(`type` = 'RVVS_INC_SDK', 1,0))/COUNT(*)) FROM servicenow_rvss WHERE SEMANAL = let_rango AND `type` LIKE 'RVVS_INC_%');
+SET let_INC_CAU = (SELECT SUM(IF(`type` = 'RVVS_INC_CAU', 1,0)) FROM servicenow_rvss WHERE SEMANAL = let_rango AND `type` LIKE 'RVVS_INC_%');
+SET let_PRCINC_CAU = (SELECT (SUM(IF(`type` = 'RVVS_INC_CAU', 1,0))/COUNT(*)) FROM servicenow_rvss WHERE SEMANAL = let_rango AND `type` LIKE 'RVVS_INC_%');
+
+SET let_SOL_SDK = (SELECT SUM(IF(`type` = 'RVVS_SOL_SDK', 1,0)) FROM servicenow_rvss WHERE SEMANAL = let_rango AND `type` LIKE 'RVVS_SOL_%');
+SET let_PRCSOL_SDK = (SELECT (SUM(IF(`type` = 'RVVS_SOL_SDK', 1,0))/COUNT(*)) FROM servicenow_rvss WHERE SEMANAL = let_rango AND `type` LIKE 'RVVS_SOL_%');
+SET let_SOL_CAU = (SELECT SUM(IF(`type` = 'RVVS_SOL_CAU', 1,0)) FROM servicenow_rvss WHERE SEMANAL = let_rango AND `type` LIKE 'RVVS_SOL_%');
+SET let_PRCSOL_CAU = (SELECT (SUM(IF(`type` = 'RVVS_SOL_CAU', 1,0))/COUNT(*)) FROM servicenow_rvss WHERE SEMANAL = let_rango AND `type` LIKE 'RVVS_SOL_%');
+
+SET let_calls = (SELECT SUM(recibidas) FROM ccpulseresumen WHERE rangosem = let_rango);
+SET let_PRCCallsAbandono = (SELECT round(((sum(abandonadas) - sum(abandono_menos10))/(SUM(recibidas)-sum(abandono_menos10)))*100,1) FROM ccpulseresumen WHERE rangosem = let_rango);
+SET let_ath = (SELECT LEFT(sec_to_time(SUM(nummin)/SUM(atendidas)),8) FROM ccpulseresumen WHERE rangosem = let_rango);
+SET let_callsAban10 = (SELECT sum(abandono_menos10) FROM ccpulseresumen WHERE rangosem = let_rango);
+SET let_PRCCallsAbandonoReal = (SELECT round((sum(abandonadas)/SUM(recibidas))*100,1) FROM ccpulseresumen WHERE rangosem = let_rango);
+
+IF var_reporte = 'SDK' THEN
+
+    SELECT let_numMES AS 'NUMMES', let_mes AS 'MES', let_numsem AS 'NUMSEM', let_rango AS 'SEMANA', let_desbloqueos AS 'desbloqueos', let_promedio as 'promedio_unlocks', let_cumplimiento as 'cumplimiento_unlocks', let_solicitudes_SDK AS 'solicitudes', let_promedio_SDK as 'promedio_task', let_cumplimiento_SDK as 'cumplimiento_task', CONCAT('Total de Solicitudes cerrados: ',let_solicitudes_SDK,'
+Total de solicitudes no incluidos en la métrica : ##
+Total de SOL cerrados incluidos en metrica: ##') AS 'nota_task', let_incidentes_SDK AS 'incidentes', let_incpromedio_SDK as 'promedio_inc', let_inccumplimiento_SDK as 'cumplimiento_inc', CONCAT('Total de incidentes cerrados: ', let_incidentes_SDK + let_incK_SDK,'
+Excepciones : ##
+Inhibidores K001 y K002: ', let_incK_SDK,'
+Total de INC no incluidos en metrica : ##
+Total de INC cerrados incluidos en metrica :##') AS 'nota_inc',let_calls AS 'calls', let_PRCCallsAbandono/100 as '%Abandono', let_ath AS 'AHT', CONCAT('Valor Original de Abandono: ', let_PRCCallsAbandonoReal,'%
+No se consideran ', let_callsAban10,' llamadas abandonadas en un tiempo ≤ 10 segundos, el abandono disminuye a ', let_PRCCallsAbandono,' (abandono real).') AS 'nota_calls', let_INC_SDK AS 'INC_SDK', let_PRCINC_SDK AS '%INC_SDK', let_INC_CAU AS 'INC_CAU', let_PRCINC_CAU AS '%INC_CAU', let_SOL_SDK AS 'SOL_SDK', let_PRCSOL_SDK AS '%SOL_SDK', let_SOL_CAU AS 'SOL_CAU', let_PRCSOL_CAU AS '%SOL_CAU', let_INC_SDK AS 'INC_SDKB', 0 AS 'DENEGADOS', let_incK_SDK AS 'SDK K';
+
+ELSE
+    SELECT * FROM (SELECT 'INC_CAU' AS 'TIPO', Zona, sum(if(Estatus = 'EN TIEMPO', 1,0))/COUNT(*) as 'cumplimiento', COUNT(*) AS 'incidentes', sum(if(Estatus = 'EN TIEMPO', 1,0)) AS 'validas' FROM eut_weeklyreportsinc WHERE SEMANAL = let_rango AND REPORTE = 'CAU_INC' AND CCG = 'En Metrica' GROUP BY Zona ORDER BY Zona ASC)icau
+    UNION ALL
+    SELECT 'INC_CAU_TOTAL' AS 'TIPO', '-' as Zona, sum(if(Estatus = 'EN TIEMPO', 1,0))/COUNT(*) as 'cumplimiento', COUNT(*) AS 'incidentes', sum(if(Estatus = 'EN TIEMPO', 1,0)) AS 'validas' FROM eut_weeklyreportsinc WHERE SEMANAL = let_rango AND REPORTE = 'CAU_INC' AND CCG = 'En Metrica'
+    UNION ALL
+    SELECT 'INC_SDK', '', let_inccumplimiento_SDK, let_incidentes_SDK, let_incvalidas_SDK
+    UNION ALL
+    SELECT 'SOL_CAU', '', let_cumplimiento_CAU, let_solicitudes_CAU, let_solvalidas_CAU
+    UNION ALL
+    SELECT 'SOL_SDK', '', let_cumplimiento_SDK, let_solicitudes_SDK, let_solvalidas_SDK
+	UNION ALL
+    SELECT 'CAU_K', '', let_incK_CAU/let_incincidentes_CAU, let_incK_CAU, ''
+    UNION ALL
+    SELECT 'SDK_K', '', let_incK_SDK/let_incidentes_SDK, let_incK_SDK, ''
+    ;
+END IF;
+
+END
