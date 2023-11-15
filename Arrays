@@ -1,3 +1,16 @@
+const objetoFiltrado = {};
+
+const patronFiltro = "27 OCT - 02 NOV CAU_INC";
+
+Object.keys(tuObjeto).forEach(clave => {
+    if (clave.startsWith(patronFiltro)) {
+        objetoFiltrado[clave] = tuObjeto[clave];
+    }
+});
+
+console.log(objetoFiltrado);
+
+
 Fitrar en JS el siguiente objeto por ejemeplo "27 OCT - 02 NOV CAU_INC" y que me muestre todos lo similares ejemplo '27 OCT - 02 NOV CAU_INC', '27 OCT - 02 NOV CAU_INC-0', '27 OCT - 02 NOV CAU_INC-1, etc...'
 
 {
