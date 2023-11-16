@@ -1,52 +1,45 @@
-como crear un grafico de barras usando googelCharts y el siguiente objeto 
+// Cargar la biblioteca de Google Charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 
-{
-    "27 OCT - 02 NOV CAU_INC": {
-        "atendidos": 422,
-        "enTiempo": 420,
-        "excepciones": 90,
-        "ks": 66,
-        "ksAjst": 41,
-        "ksPrc": 9.17,
-        "ksExcedentes": 25,
-        "tiempo": 1149,
-        "atendidosTotal": 447,
-        "alcanceAtencion": 93.96
-    },
-    "27 OCT - 02 NOV CAU_SOL": {
-        "atendidos": 271,
-        "enTiempo": 271,
-        "excepciones": 13,
-        "ks": 0,
-        "ksAjst": 0,
-        "ksPrc": 0,
-        "ksExcedentes": 0,
-        "tiempo": 5402,
-        "atendidosTotal": 271,
-        "alcanceAtencion": 100
-    },
-    "27 OCT - 02 NOV SDK_INC": {
-        "atendidos": 84,
-        "enTiempo": 84,
-        "excepciones": 79,
-        "ks": 11,
-        "ksAjst": 6,
-        "ksPrc": 6.74,
-        "ksExcedentes": 5,
-        "tiempo": null,
-        "atendidosTotal": 89,
-        "alcanceAtencion": 94.38
-    },
-    "27 OCT - 02 NOV SDK_SOL": {
-        "atendidos": 73,
-        "enTiempo": 73,
-        "excepciones": 16,
-        "ks": 0,
-        "ksAjst": 0,
-        "ksPrc": 0,
-        "ksExcedentes": 0,
-        "tiempo": 5813,
-        "atendidosTotal": 73,
-        "alcanceAtencion": 100
-    }
+// Función para dibujar el gráfico de barras
+function drawChart() {
+    // Tu conjunto de datos
+    const dataObject = {
+        "27 OCT - 02 NOV CAU_INC": {
+            "atendidos": 422,
+            // ... (otros datos)
+        },
+        // ... (otros conjuntos de datos)
+    };
+
+    // Convertir el objeto en un array de arrays
+    const dataArray = Object.entries(dataObject).map(([key, value]) => [key, value.atendidos, value.enTiempo, value.excepciones]);
+
+    // Agregar los encabezados al principio del array
+    dataArray.unshift(['Semana', 'Atendidos', 'En Tiempo', 'Excepciones']);
+
+    // Crear un objeto de datos de Google Charts
+    const data = google.visualization.arrayToDataTable(dataArray);
+
+    // Opciones del gráfico
+    const options = {
+        title: 'Ejemplo de Gráfico de Barras',
+        chartArea: {width: '50%'},
+        hAxis: {
+            title: 'Cantidad',
+            minValue: 0
+        },
+        vAxis: {
+            title: 'Semana'
+        }
+    };
+
+    // Crear el gráfico de barras
+    const chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+    // Dibujar el gráfico
+    chart.draw(data, options);
 }
+
+<div id="chart_div" style="width: 800px; height: 400px;"></div>
