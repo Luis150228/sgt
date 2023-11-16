@@ -1,3 +1,5 @@
+"<?php echo date('Y-m-d', strtotime('-1 day')); ?>"
+
 // Cargar la biblioteca de Google Charts
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
