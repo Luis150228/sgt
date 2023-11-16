@@ -1,3 +1,18 @@
+  function cambiarFormatoFecha(fechaOriginal) {
+            // Dividir la fecha original en día, mes y año
+            var partesFecha = fechaOriginal.split('-');
+            
+            // Crear la fecha en el nuevo formato (año-mes-día)
+            var nuevaFecha = partesFecha[2] + '-' + partesFecha[1] + '-' + partesFecha[0];
+
+            return nuevaFecha;
+        }
+
+        // Ejemplo de uso
+        var fechaOriginal = "14-11-203";
+        var nuevaFecha = cambiarFormatoFecha(fechaOriginal);
+        console.log(nuevaFecha);
+
 "<?php echo date('Y-m-d', strtotime('-1 day')); ?>"
 
 // Cargar la biblioteca de Google Charts
