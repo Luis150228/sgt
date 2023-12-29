@@ -1,91 +1,27 @@
-[
+const datos = [
     {
         "etiqueta": "221620078108",
         "serie": " MJ0L9N6P",
         "adf": "1234567890",
         "usuario": "C346446"
     },
-    {
-        "etiqueta": "221620078109",
-        "serie": " MJ0L9N6L",
-        "adf": "1234567890",
-        "usuario": "C346446"
-    },
-    {
-        "etiqueta": "221620078110",
-        "serie": " MJ0L9N6M",
-        "adf": "1234567890",
-        "usuario": "C346446"
-    },
-    {
-        "etiqueta": "221620078111",
-        "serie": " MJ0L9N6K",
-        "adf": "1234567890",
-        "usuario": "C346446"
-    },
-    {
-        "etiqueta": "221620078112",
-        "serie": " MJ0L9N6Q",
-        "adf": "1234567890",
-        "usuario": "C346446"
-    },
-    {
-        "etiqueta": "221620078113",
-        "serie": " MJ0L9N6N",
-        "adf": "1234567890",
-        "usuario": "C346446"
-    },
-    {
-        "etiqueta": "221620070335",
-        "serie": " 8CC2481595",
-        "adf": "1234567890",
-        "usuario": "C346446"
-    },
-    {
-        "etiqueta": "221620070336",
-        "serie": " 8CC2481596",
-        "adf": "1234567890",
-        "usuario": "C346446"
-    },
-    {
-        "etiqueta": "221620070337",
-        "serie": " 8CC248159C",
-        "adf": "1234567890",
-        "usuario": "C346446"
-    },
-    {
-        "etiqueta": "221620070338",
-        "serie": " 8CC2481597",
-        "adf": "1234567890",
-        "usuario": "C346446"
-    },
-    {
-        "etiqueta": "221620070339",
-        "serie": " 8CC248159J",
-        "adf": "1234567890",
-        "usuario": "C346446"
-    },
-    {
-        "etiqueta": "221620070340",
-        "serie": " 8CC248159X",
-        "adf": "1234567890",
-        "usuario": "C346446"
-    },
-    {
-        "etiqueta": "221620070341",
-        "serie": " 8CC248159F",
-        "adf": "1234567890",
-        "usuario": "C346446"
-    },
-    {
-        "etiqueta": "221620070342",
-        "serie": " 8CC248159M",
-        "adf": "1234567890",
-        "usuario": "C346446"
-    },
+    // ... (otros objetos)
     {
         "etiqueta": "",
         "adf": "1234567890",
         "usuario": "C346446"
     }
-]
+];
+
+// Recorrer cada objeto en el array usando for...of
+for (const objeto of datos) {
+    // Iterar sobre las propiedades del objeto
+    for (let propiedad in objeto) {
+        if (typeof objeto[propiedad] === 'string') {
+            // Eliminar espacios al principio y al final de la cadena
+            objeto[propiedad] = objeto[propiedad].trim();
+        }
+    }
+}
+
+console.log(datos);
