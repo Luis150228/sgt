@@ -1,62 +1,91 @@
-  function cambiarFormatoFecha(fechaOriginal) {
-            // Dividir la fecha original en día, mes y año
-            var partesFecha = fechaOriginal.split('-');
-            
-            // Crear la fecha en el nuevo formato (año-mes-día)
-            var nuevaFecha = partesFecha[2] + '-' + partesFecha[1] + '-' + partesFecha[0];
-
-            return nuevaFecha;
-        }
-
-        // Ejemplo de uso
-        var fechaOriginal = "14-11-203";
-        var nuevaFecha = cambiarFormatoFecha(fechaOriginal);
-        console.log(nuevaFecha);
-
-"<?php echo date('Y-m-d', strtotime('-1 day')); ?>"
-
-// Cargar la biblioteca de Google Charts
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
-
-// Función para dibujar el gráfico de barras
-function drawChart() {
-    // Tu conjunto de datos
-    const dataObject = {
-        "27 OCT - 02 NOV CAU_INC": {
-            "atendidos": 422,
-            // ... (otros datos)
-        },
-        // ... (otros conjuntos de datos)
-    };
-
-    // Convertir el objeto en un array de arrays
-    const dataArray = Object.entries(dataObject).map(([key, value]) => [key, value.atendidos, value.enTiempo, value.excepciones]);
-
-    // Agregar los encabezados al principio del array
-    dataArray.unshift(['Semana', 'Atendidos', 'En Tiempo', 'Excepciones']);
-
-    // Crear un objeto de datos de Google Charts
-    const data = google.visualization.arrayToDataTable(dataArray);
-
-    // Opciones del gráfico
-    const options = {
-        title: 'Ejemplo de Gráfico de Barras',
-        chartArea: {width: '50%'},
-        hAxis: {
-            title: 'Cantidad',
-            minValue: 0
-        },
-        vAxis: {
-            title: 'Semana'
-        }
-    };
-
-    // Crear el gráfico de barras
-    const chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-
-    // Dibujar el gráfico
-    chart.draw(data, options);
-}
-
-<div id="chart_div" style="width: 800px; height: 400px;"></div>
+[
+    {
+        "etiqueta": "221620078108",
+        "serie": " MJ0L9N6P",
+        "adf": "1234567890",
+        "usuario": "C346446"
+    },
+    {
+        "etiqueta": "221620078109",
+        "serie": " MJ0L9N6L",
+        "adf": "1234567890",
+        "usuario": "C346446"
+    },
+    {
+        "etiqueta": "221620078110",
+        "serie": " MJ0L9N6M",
+        "adf": "1234567890",
+        "usuario": "C346446"
+    },
+    {
+        "etiqueta": "221620078111",
+        "serie": " MJ0L9N6K",
+        "adf": "1234567890",
+        "usuario": "C346446"
+    },
+    {
+        "etiqueta": "221620078112",
+        "serie": " MJ0L9N6Q",
+        "adf": "1234567890",
+        "usuario": "C346446"
+    },
+    {
+        "etiqueta": "221620078113",
+        "serie": " MJ0L9N6N",
+        "adf": "1234567890",
+        "usuario": "C346446"
+    },
+    {
+        "etiqueta": "221620070335",
+        "serie": " 8CC2481595",
+        "adf": "1234567890",
+        "usuario": "C346446"
+    },
+    {
+        "etiqueta": "221620070336",
+        "serie": " 8CC2481596",
+        "adf": "1234567890",
+        "usuario": "C346446"
+    },
+    {
+        "etiqueta": "221620070337",
+        "serie": " 8CC248159C",
+        "adf": "1234567890",
+        "usuario": "C346446"
+    },
+    {
+        "etiqueta": "221620070338",
+        "serie": " 8CC2481597",
+        "adf": "1234567890",
+        "usuario": "C346446"
+    },
+    {
+        "etiqueta": "221620070339",
+        "serie": " 8CC248159J",
+        "adf": "1234567890",
+        "usuario": "C346446"
+    },
+    {
+        "etiqueta": "221620070340",
+        "serie": " 8CC248159X",
+        "adf": "1234567890",
+        "usuario": "C346446"
+    },
+    {
+        "etiqueta": "221620070341",
+        "serie": " 8CC248159F",
+        "adf": "1234567890",
+        "usuario": "C346446"
+    },
+    {
+        "etiqueta": "221620070342",
+        "serie": " 8CC248159M",
+        "adf": "1234567890",
+        "usuario": "C346446"
+    },
+    {
+        "etiqueta": "",
+        "adf": "1234567890",
+        "usuario": "C346446"
+    }
+]
