@@ -1,27 +1,12 @@
-const datos = [
-    {
-        "etiqueta": "221620078108",
-        "serie": " MJ0L9N6P",
-        "adf": "1234567890",
-        "usuario": "C346446"
-    },
-    // ... (otros objetos)
-    {
-        "etiqueta": "",
-        "adf": "1234567890",
-        "usuario": "C346446"
-    }
-];
+tengo varios input de tipo check como el ejemplo siguiente quiero saber con cuales estan con check true y que valor tienen usando JS al dar click en el siguiente boton
 
-// Recorrer cada objeto en el array usando for...of
-for (const objeto of datos) {
-    // Iterar sobre las propiedades del objeto
-    for (let propiedad in objeto) {
-        if (typeof objeto[propiedad] === 'string') {
-            // Eliminar espacios al principio y al final de la cadena
-            objeto[propiedad] = objeto[propiedad].trim();
-        }
-    }
-}
+<button type="button" class="btn btn-success" id="btn-select-all">Aceptar todos</button>
 
-console.log(datos);
+<input class="form-check-input" type="checkbox" role="switch" data-check="true" id="check-901" value="901">
+<input class="form-check-input" type="checkbox" role="switch" data-check="true" id="check-902" value="902">
+<input class="form-check-input" type="checkbox" role="switch" data-check="true" id="check-903" value="903">
+<input class="form-check-input" type="checkbox" role="switch" data-check="true" id="check-904" value="904">
+<input class="form-check-input" type="checkbox" role="switch" data-check="true" id="check-905" value="905">
+<input class="form-check-input" type="checkbox" role="switch" data-check="true" id="check-906" value="906">
+<input class="form-check-input" type="checkbox" role="switch" data-check="true" id="check-907" value="907">
+<input class="form-check-input" type="checkbox" role="switch" data-check="true" id="check-908" value="908">
