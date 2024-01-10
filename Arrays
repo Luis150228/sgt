@@ -3,10 +3,7 @@ document.getElementById("btn-select-all").addEventListener("click", () => {
     const checkboxes = Array.from(document.querySelectorAll('.form-check-input[data-check="true"]'));
 
     // Filtra las casillas de verificación marcadas y obtén sus valores
-    const valoresMarcados = checkboxes.filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
-
-    // Imprime en la consola los valores de las casillas marcadas
-    console.log("Casillas marcadas:", valoresMarcados);
+    vc
 });
 
 
