@@ -1,34 +1,9 @@
-C:\Users\T000O00>php -m
-PHP Warning:  PHP Startup: Unable to load dynamic library 'mysqli' (tried: C:\php\ext\mysqli (The specified module could not be found), C:\php\ext\php_mysqli.dll (The specified module could not be found)) in Unknown on line 0
-PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_mysql' (tried: C:\php\ext\pdo_mysql (The specified module could not be found), C:\php\ext\php_pdo_mysql.dll (The specified module could not be found)) in Unknown on line 0
-PHP Warning:  PHP Startup: Unable to load dynamic library 'sockets' (tried: C:\php\ext\sockets (The specified module could not be found), C:\php\ext\php_sockets.dll (The specified module could not be found)) in Unknown on line 0
-[PHP Modules]
-bcmath
-calendar
-Core
-ctype
-date
-dom
-filter
-hash
-iconv
-json
-libxml
-mysqlnd
-pcre
-PDO
-Phar
-random
-readline
-Reflection
-session
-SimpleXML
-SPL
-standard
-tokenizer
-xml
-xmlreader
-xmlwriter
-zlib
-
-[Zend Modules]
+C:\Apache24\bin>httpd.exe -k install
+Installing the 'Apache2.4' service
+The 'Apache2.4' service is successfully installed.
+Testing httpd.conf....
+Errors reported here must be corrected before the service can be started.
+(OS 10013)An attempt was made to access a socket in a way forbidden by its access permissions.  : AH00072: make_sock: could not bind to address [::]:80
+(OS 10013)An attempt was made to access a socket in a way forbidden by its access permissions.  : AH00072: make_sock: could not bind to address 0.0.0.0:80
+AH00451: no listening sockets available, shutting down
+AH00015: Unable to open logs
