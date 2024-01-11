@@ -6,3 +6,50 @@ AddType application/x-httpd-php-source .phps
 
 
 PHPIniDir "C:/PHP"
+
+
+<IfModule alias_module>
+    #
+    # 2023-04-07. Carpeta de raiz de proyectos web.
+    Alias /dev "D:\dev"
+    <Directory "D:\dev">
+      Options Indexes FollowSymLinks Includes ExecCGI
+      AllowOverride All
+      Require all granted
+    </Directory>
+    # 2023-04-07.proyecto de oficina virtual.
+    Alias /mpioOffice "D:\dev\catovatech_office\public_html"
+    <Directory "D:\dev\catovatech_office\public_html">
+      Options Indexes FollowSymLinks Includes ExecCGI
+      AllowOverride All
+      Require all granted
+    </Directory>
+    # 2023-04-09.Conexion a la API.
+    Alias /apiMpioOld "D:\dev\smartMpioApi"
+    <Directory "D:\dev\smartMpioApi">
+      Options Indexes FollowSymLinks Includes ExecCGI
+      AllowOverride All
+      Require all granted
+    </Directory>
+    # 2023-04-09.Conexion a la API.
+    Alias /apiMpio "D:\dev\apiSmartMpio"
+    <Directory "D:\dev\apiSmartMpio">
+      Options Indexes FollowSymLinks Includes ExecCGI
+      AllowOverride All
+      Require all granted
+    </Directory>
+    # 2023-05-19.PruebasStripe.
+    Alias /stripe "D:\dev\stripe"
+    <Directory "D:\dev\stripe">
+      Options Indexes FollowSymLinks Includes ExecCGI
+      AllowOverride All
+      Require all granted
+    </Directory>
+    # 2023-05-25.PruebasFacturas.
+    Alias /factura "D:\dev\facturacionEjemplos"
+    <Directory "D:\dev\facturacionEjemplos">
+      Options Indexes FollowSymLinks Includes ExecCGI
+      AllowOverride All
+      Require all granted
+    </Directory>
+
