@@ -1,9 +1,8 @@
-C:\Apache24\bin>httpd.exe -k install
-Installing the 'Apache2.4' service
-The 'Apache2.4' service is successfully installed.
-Testing httpd.conf....
-Errors reported here must be corrected before the service can be started.
-(OS 10013)An attempt was made to access a socket in a way forbidden by its access permissions.  : AH00072: make_sock: could not bind to address [::]:80
-(OS 10013)An attempt was made to access a socket in a way forbidden by its access permissions.  : AH00072: make_sock: could not bind to address 0.0.0.0:80
-AH00451: no listening sockets available, shutting down
-AH00015: Unable to open logs
+LoadModule php_module "C:/PHP/php[versión]/php[versión]-[arquitectura].dll"
+
+AddType application/x-httpd-php .php
+AddType application/x-httpd-php-source .phps
+
+
+
+PHPIniDir "C:/PHP"
