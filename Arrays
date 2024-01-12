@@ -1,26 +1,9 @@
-Esto es lo que arroja el log y ya he confirmado que la ruta es correcta, tengo otros alias con solo html que funcionan correctamente 
-
-[Thu Jan 11 14:25:27.024712 2024] [core:alert] [pid 2132:tid 1272] [client 180.51.124.1:60651] D:/dev/santec_hardware_api/.htaccess: Invalid command 'RewriteEngine', perhaps misspelled or defined by a module not included in the server configuration
-
-Alias /santec_activos_api "D:\dev\santec_hardware_api"
-    <Directory "D:\dev\santec_hardware_api">
-      Options Indexes FollowSymLinks
-      AllowOverride All
-      Require all granted
-    </Directory>
-
-en la raiz de D:\dev\santec_hardware_api esta el archivo .htaccess y este es su contenido
-RewriteEngine On
-
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^(.*)$ $1.php
-
-
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.*)$ $1.html
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.+?)/?$ index.php?url=$1 [L,QSA]
+var_reporte = 'D_R04' THEN
+	/**/
+    truncate eut_rep_backlogeut_res;
+    INSERT INTO eut_rep_backlogeut_res SELECT 'BacklogEUT'AS 'reporte', concat(grup_global, "_", LEFT(tipo,1),LEFT(area, 1)) as 'atencion', concat(grup_tipo, "_", LEFT(tipo,3), LEFT(area,3)) AS 'grup_tipo', CONCAT(tipo, '_', LEFT(area,4)) AS 'tipo', area, sum(if(edo_eut = 'Nuevo', 1,0)) as 'nuevo', sum(if(edo_eut = 'Abierto', 1,0)) as 'abierto', sum(if(edo_eut = 'En Curso', 1,0)) as 'en_Curso', sum(if(edo_eut = 'En Espera', 1,0)) as 'en_Espera' FROM(SELECT grup_global, grup_tipo, tipo, edo_eut, grup_tareas, num_relacionado, resuelto, area FROM (SELECT folio, abierto, e.edo_eut, categoria, subcategoria, tipoproblema, nombreproyecto, grup_asig, grup_global, grup_tipo, 'EUT' as 'medido', ubicacion, ifnull(suc_corp, 'Corporativo') as 'area', grup_tareas, IF(LEFT(folio,3)='INC', 'Incidentes', 'Tareas') as 'tipo', s.ceco, r.region as 'region_cau', r.zona_cau as 'zona_num', IFNULL(sla_tsucursales, 1500) AS 'SLA', fn_eut_min(abierto, resuelto, s.grup_asig) AS 'tiempo', incidencia_principal as 'num_relacionado', resuelto FROM servicenow_reportes s 
+LEFT JOIN eut_estatus e ON s.estatus = e.estatus
+LEFT JOIN eut_grupos g ON s.grup_asig = g.grup_asignado
+LEFT JOIN eut_redsuc r ON s.ceco = r.ceco
+)r WHERE resuelto = 0 AND (grup_tareas IS NOT NULL) AND num_relacionado NOT LIKE 'INC%')R4 GROUP BY grup_global, grup_tipo, tipo, area ORDER BY area ASC, tipo ASC, grup_global ASC;
+-- 16:34:37	CALL stp_createReportsCharts('D_R04')	Error Code: 1140. In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'eut_reportesbk.eut_rep_backlogeut_res.reporte'; this is incompatible with sql_mode=only_full_group_by	0.000 sec
