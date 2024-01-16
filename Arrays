@@ -1,3 +1,7 @@
+[mysqld]
+sql_mode = "ALLOW_INVALID_DATES"
+
+
 instale de forma directa el servidor de mysql al hacer esta consulta SELECT * FROM servicenow_reportes WHERE abierto = '0000-00-00 00:00:00' ORDER BY abierto asc ; y me regresa esta respuesta Error Code: 1525. Incorrect DATETIME value: '0000-00-00 00:00:00', este es formato de la tabla 
 
 CREATE TABLE `servicenow_reportes` (
