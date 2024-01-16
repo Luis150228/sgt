@@ -1,9 +1,15 @@
-var_reporte = 'D_R04' THEN
-	/**/
-    truncate eut_rep_backlogeut_res;
-    INSERT INTO eut_rep_backlogeut_res SELECT 'BacklogEUT'AS 'reporte', concat(grup_global, "_", LEFT(tipo,1),LEFT(area, 1)) as 'atencion', concat(grup_tipo, "_", LEFT(tipo,3), LEFT(area,3)) AS 'grup_tipo', CONCAT(tipo, '_', LEFT(area,4)) AS 'tipo', area, sum(if(edo_eut = 'Nuevo', 1,0)) as 'nuevo', sum(if(edo_eut = 'Abierto', 1,0)) as 'abierto', sum(if(edo_eut = 'En Curso', 1,0)) as 'en_Curso', sum(if(edo_eut = 'En Espera', 1,0)) as 'en_Espera' FROM(SELECT grup_global, grup_tipo, tipo, edo_eut, grup_tareas, num_relacionado, resuelto, area FROM (SELECT folio, abierto, e.edo_eut, categoria, subcategoria, tipoproblema, nombreproyecto, grup_asig, grup_global, grup_tipo, 'EUT' as 'medido', ubicacion, ifnull(suc_corp, 'Corporativo') as 'area', grup_tareas, IF(LEFT(folio,3)='INC', 'Incidentes', 'Tareas') as 'tipo', s.ceco, r.region as 'region_cau', r.zona_cau as 'zona_num', IFNULL(sla_tsucursales, 1500) AS 'SLA', fn_eut_min(abierto, resuelto, s.grup_asig) AS 'tiempo', incidencia_principal as 'num_relacionado', resuelto FROM servicenow_reportes s 
-LEFT JOIN eut_estatus e ON s.estatus = e.estatus
-LEFT JOIN eut_grupos g ON s.grup_asig = g.grup_asignado
-LEFT JOIN eut_redsuc r ON s.ceco = r.ceco
-)r WHERE resuelto = 0 AND (grup_tareas IS NOT NULL) AND num_relacionado NOT LIKE 'INC%')R4 GROUP BY grup_global, grup_tipo, tipo, area ORDER BY area ASC, tipo ASC, grup_global ASC;
--- 16:34:37	CALL stp_createReportsCharts('D_R04')	Error Code: 1140. In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'eut_reportesbk.eut_rep_backlogeut_res.reporte'; this is incompatible with sql_mode=only_full_group_by	0.000 sec
+instale de forma directa el servidor de mysql al hacer esta consulta SELECT * FROM servicenow_reportes WHERE abierto = '0000-00-00 00:00:00' ORDER BY abierto asc ; y me regresa esta respuesta Error Code: 1525. Incorrect DATETIME value: '0000-00-00 00:00:00', este es formato de la tabla 
+
+CREATE TABLE `servicenow_reportes` (
+  `folio` varchar(20) NOT NULL,
+  `abierto` datetime DEFAULT NULL,
+  `resuelto` datetime DEFAULT NULL,
+  `cerrado` datetime DEFAULT NULL,
+  `creado_por` varchar(250) DEFAULT NULL,
+  `grup_asig` varchar(150) DEFAULT NULL,
+  `asig_a` varchar(150) DEFAULT NULL,
+  `tipos` varchar(45) DEFAULT NULL,
+  `origen` varchar(25) DEFAULT NULL,
+  `f_alta` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`folio`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
