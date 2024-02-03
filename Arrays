@@ -1,27 +1,7 @@
-DELIMITER //
+puedes ajustar eso a esta consulta este es el campo de tipo de equipo 'tipo_equipo', 
 
-CREATE PROCEDURE obtener_resumen_inventario()
-BEGIN
-  SET SESSION group_concat_max_len = 1000000;
-
-  -- Construir la consulta dinámica para obtener los tipos únicos
-  SET @sql = NULL;
-  SELECT GROUP_CONCAT(DISTINCT
-             'SUM(CASE WHEN tipo = "', tipo, '" THEN stock ELSE 0 END) AS "', tipo, '"'
-             ) INTO @sql
-  FROM nombre_de_tu_tabla;
-
-  -- Construir la consulta final
-  SET @sql = CONCAT(
-      'SELECT almacen, ', @sql, '
-       FROM nombre_de_tu_tabla
-       GROUP BY almacen'
-  );
-
-  -- Ejecutar la consulta dinámica
-  PREPARE final_query FROM @sql;
-  EXECUTE final_query;
-  DEALLOCATE PREPARE final_query;
-END //
-
-DELIMITER ;
+SELECT * FROM (SELECT i.noe, oe.num_pedido, oe.stock_adquirido, i.entrada_Type 'grupo_equipo', e.marca, e.tipo_equipo, e.modelo, i.almacen, i.stock, i.usr_resguardo, em.empresa, i.num_etiqueta, i.serie, i.adf, i.observacion, i.f_modifica, i.f_registro FROM almacen_inventario i 
+		LEFT JOIN almacen_catalogoequipos e on i.idequipo = e.idequipo
+		LEFT JOIN almacen_empresas em on i.empresa = em.id
+		LEFT JOIN almacen_almacenes a on i.almacen = a.nombre
+		LEFT JOIN `almacen_ordenentrada` oe on i.noe = oe.noe)almacenes GROUP BY almacen;
