@@ -1,30 +1,27 @@
-<?php
-require 'vendor/autoload.php'; // Asegúrate de tener instalada la librería PhpSpreadsheet
+DELIMITER //
 
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+CREATE PROCEDURE obtener_resumen_inventario()
+BEGIN
+  SET SESSION group_concat_max_len = 1000000;
 
-// Tu array de datos
-$data = array(
-    // ... tus datos aquí
-);
+  -- Construir la consulta dinámica para obtener los tipos únicos
+  SET @sql = NULL;
+  SELECT GROUP_CONCAT(DISTINCT
+             'SUM(CASE WHEN tipo = "', tipo, '" THEN stock ELSE 0 END) AS "', tipo, '"'
+             ) INTO @sql
+  FROM nombre_de_tu_tabla;
 
-// Carga el libro de Excel existente
-$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load('ruta/del/tu/libro/excel.xlsx');
+  -- Construir la consulta final
+  SET @sql = CONCAT(
+      'SELECT almacen, ', @sql, '
+       FROM nombre_de_tu_tabla
+       GROUP BY almacen'
+  );
 
-// Obtiene la hoja 'stock'
-$sheet = $spreadsheet->getSheetByName('stock');
+  -- Ejecutar la consulta dinámica
+  PREPARE final_query FROM @sql;
+  EXECUTE final_query;
+  DEALLOCATE PREPARE final_query;
+END //
 
-// Borra el contenido de la tabla 'stock_data'
-$sheet->setCellValue('A2', ''); // Asegúrate de especificar la celda que coincide con el inicio de tus datos
-
-// Inserta los nuevos datos desde el array
-foreach ($data as $row => $rowData) {
-    foreach ($rowData as $col => $value) {
-        $sheet->setCellValueByColumnAndRow($col + 1, $row + 2, $value); // Suma 1 para ajustar el índice a la base 1 de Excel
-    }
-}
-
-// Guarda el libro de Excel con los nuevos datos
-$writer = new Xlsx($spreadsheet);
-$writer->save('ruta/del/tu/libro/excel.xlsx');
+DELIMITER ;
