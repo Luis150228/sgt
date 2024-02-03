@@ -1,19 +1,30 @@
-[mysqld]
-sql_mode = "ALLOW_INVALID_DATES"
+<?php
+require 'vendor/autoload.php'; // Asegúrate de tener instalada la librería PhpSpreadsheet
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-instale de forma directa el servidor de mysql al hacer esta consulta SELECT * FROM servicenow_reportes WHERE abierto = '0000-00-00 00:00:00' ORDER BY abierto asc ; y me regresa esta respuesta Error Code: 1525. Incorrect DATETIME value: '0000-00-00 00:00:00', este es formato de la tabla 
+// Tu array de datos
+$data = array(
+    // ... tus datos aquí
+);
 
-CREATE TABLE `servicenow_reportes` (
-  `folio` varchar(20) NOT NULL,
-  `abierto` datetime DEFAULT NULL,
-  `resuelto` datetime DEFAULT NULL,
-  `cerrado` datetime DEFAULT NULL,
-  `creado_por` varchar(250) DEFAULT NULL,
-  `grup_asig` varchar(150) DEFAULT NULL,
-  `asig_a` varchar(150) DEFAULT NULL,
-  `tipos` varchar(45) DEFAULT NULL,
-  `origen` varchar(25) DEFAULT NULL,
-  `f_alta` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`folio`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+// Carga el libro de Excel existente
+$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load('ruta/del/tu/libro/excel.xlsx');
+
+// Obtiene la hoja 'stock'
+$sheet = $spreadsheet->getSheetByName('stock');
+
+// Borra el contenido de la tabla 'stock_data'
+$sheet->setCellValue('A2', ''); // Asegúrate de especificar la celda que coincide con el inicio de tus datos
+
+// Inserta los nuevos datos desde el array
+foreach ($data as $row => $rowData) {
+    foreach ($rowData as $col => $value) {
+        $sheet->setCellValueByColumnAndRow($col + 1, $row + 2, $value); // Suma 1 para ajustar el índice a la base 1 de Excel
+    }
+}
+
+// Guarda el libro de Excel con los nuevos datos
+$writer = new Xlsx($spreadsheet);
+$writer->save('ruta/del/tu/libro/excel.xlsx');
