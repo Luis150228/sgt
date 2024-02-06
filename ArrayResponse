@@ -1,0 +1,34 @@
+const data = /* Tu objeto JSON aquí */;
+const almacenResumen = {};
+
+// Agrupar por almacén y tipo de equipo
+for (const item of data) {
+  if (!almacenResumen[item.almacen]) {
+    almacenResumen[item.almacen] = {};
+  }
+  
+  if (!almacenResumen[item.almacen][item.tipo_equipo]) {
+    almacenResumen[item.almacen][item.tipo_equipo] = 0;
+  }
+  
+  almacenResumen[item.almacen][item.tipo_equipo] += parseInt(item.stock);
+}
+
+// Crear la tabla HTML
+let tablaHTML = '<table><thead><tr><th>Almacén</th><th>Laptop</th><th>Nettop</th><th>Workstation</th><th>Macbook</th></tr></thead><tbody>';
+
+for (const almacen in almacenResumen) {
+  tablaHTML += `<tr><td>${almacen}</td>`;
+  
+  // Verificar y agregar la suma de stock por tipo de equipo
+  tablaHTML += `<td>${almacenResumen[almacen]['LAPTOP'] || 0}</td>`;
+  tablaHTML += `<td>${almacenResumen[almacen]['NETTOP'] || 0}</td>`;
+  tablaHTML += `<td>${almacenResumen[almacen]['WORKSTATION'] || 0}</td>`;
+  tablaHTML += `<td>${almacenResumen[almacen]['MACBOOK'] || 0}</td>`;
+  
+  tablaHTML += '</tr>';
+}
+
+tablaHTML += '</tbody></table>';
+
+console.log(tablaHTML); // Puedes usar console.log o agregar esta cadena al HTML de tu página
