@@ -1,50 +1,30 @@
-const data = /* Tu objeto JSON aquí */;
-const almacenResumen = {};
+econst data = /* Tu objeto JSON aquí */;
+const resumen = {};
 
-// Agrupar por almacén y tipo de equipo
+// Agrupar por tipo de equipo, marca y modelo
 for (const item of data) {
-      if (!almacenResumen[item.almacen]) {
-            almacenResumen[item.almacen] = {};
-      }
-        
-          if (!almacenResumen[item.almacen][item.tipo_equipo]) {
-                almacenResumen[item.almacen][item.tipo_equipo] = 0;
-          }
-            
-              almacenResumen[item.almacen][item.tipo_equipo] += parseInt(item.stock);
-                
-                  // Agregar stock de accesorios si el grupo de equipo es ACCESORIOS
-                    if (item.grupo_equipo === "ACCESORIOS") {
-                            if (!almacenResumen[item.almacen]['ACCESORIOS']) {
-                                      almacenResumen[item.almacen]['ACCESORIOS'] = 0;
-                            }
-                                almacenResumen[item.almacen]['ACCESORIOS'] += parseInt(item.stock);
-                    }
+  const clave = `${item.tipo_equipo}-${item.marca}-${item.modelo}`;
+  
+  if (!resumen[clave]) {
+    resumen[clave] = {
+      tipo_equipo: item.tipo_equipo,
+      marca: item.marca,
+      modelo: item.modelo,
+      stock: 0
+    };
+  }
+  
+  resumen[clave].stock += parseInt(item.stock);
 }
 
 // Crear la tabla HTML
-let tablaHTML = '<table><thead><tr><th>Almacén</th><th>Laptop</th><th>Nettop</th><th>Workstation</th><th>Macbook</th><th>Accesorios</th></tr></thead><tbody>';
+let tablaHTML = '<table><thead><tr><th>Tipo de Equipo</th><th>Marca</th><th>Modelo</th><th>Stock</th></tr></thead><tbody>';
 
-for (const almacen in almacenResumen) {
-      tablaHTML += `<tr><td>${almacen}</td>`;
-        
-          // Verificar y agregar la suma de stock por tipo de equipo
-            tablaHTML += `<td>${almacenResumen[almacen]['LAPTOP'] || 0}</td>`;
-              tablaHTML += `<td>${almacenResumen[almacen]['NETTOP'] || 0}</td>`;
-                tablaHTML += `<td>${almacenResumen[almacen]['WORKSTATION'] || 0}</td>`;
-                  tablaHTML += `<td>${almacenResumen[almacen]['MACBOOK'] || 0}</td>`;
-                    tablaHTML += `<td>${almacenResumen[almacen]['ACCESORIOS'] || 0}</td>`;
-                      
-                        tablaHTML += '</tr>';
+for (const clave in resumen) {
+  const item = resumen[clave];
+  tablaHTML += `<tr><td>${item.tipo_equipo}</td><td>${item.marca}</td><td>${item.modelo}</td><td>${item.stock}</td></tr>`;
 }
 
 tablaHTML += '</tbody></table>';
 
 console.log(tablaHTML); // Puedes usar console.log o agregar esta cadena al HTML de tu página
-
-}
-                            }
-                    }
-          }
-      }
-}
