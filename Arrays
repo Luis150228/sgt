@@ -45,32 +45,6 @@ tengo el siguiente objeto y quiero crear unas tablas en html con el contenido de
             "usr_resguardo": "BRIDGE"
         },
         {
-            "id": "7313",
-            "noe": "2",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "HP",
-            "idequipo": "211",
-            "modelo": "ELITEBOOK 640 G9",
-            "almacen": "CTOS",
-            "empresa": "SDO",
-            "stock": "9",
-            "usr_resguardo": "BRIDGE"
-        },
-        {
-            "id": "7296",
-            "noe": "3",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "HP",
-            "idequipo": "211",
-            "modelo": "ELITEBOOK 640 G9",
-            "almacen": "SANTA FE",
-            "empresa": "SDO",
-            "stock": "2",
-            "usr_resguardo": "C368605"
-        },
-        {
             "id": "7324",
             "noe": "4",
             "grupo_equipo": "EAF",
@@ -82,32 +56,6 @@ tengo el siguiente objeto y quiero crear unas tablas en html con el contenido de
             "empresa": "SDS",
             "stock": "2",
             "usr_resguardo": "C385208"
-        },
-        {
-            "id": "7322",
-            "noe": "4",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "HP",
-            "idequipo": "213",
-            "modelo": "ZBOOK FIREFLY 14 INCH G9",
-            "almacen": "CTOS",
-            "empresa": "SDS",
-            "stock": "7",
-            "usr_resguardo": "Z539869"
-        },
-        {
-            "id": "7323",
-            "noe": "4",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "HP",
-            "idequipo": "213",
-            "modelo": "ZBOOK FIREFLY 14 INCH G9",
-            "almacen": "SANTA FE",
-            "empresa": "SDS",
-            "stock": "1",
-            "usr_resguardo": "C368605"
         },
         {
             "id": "7317",
@@ -162,19 +110,6 @@ tengo el siguiente objeto y quiero crear unas tablas en html con el contenido de
             "usr_resguardo": "C385208"
         },
         {
-            "id": "7298",
-            "noe": "7",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "WORKSTATION",
-            "marca": "DELL",
-            "idequipo": "219",
-            "modelo": "PRECISION 3450",
-            "almacen": "SANTA FE",
-            "empresa": "Banco",
-            "stock": "10",
-            "usr_resguardo": "C368605"
-        },
-        {
             "id": "7299",
             "noe": "8",
             "grupo_equipo": "EAF",
@@ -199,45 +134,6 @@ tengo el siguiente objeto y quiero crear unas tablas en html con el contenido de
             "empresa": "Banco",
             "stock": "11",
             "usr_resguardo": "C385208"
-        },
-        {
-            "id": "7352",
-            "noe": "9",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "NETTOP",
-            "marca": "HP",
-            "idequipo": "218",
-            "modelo": "PRODESK 400 G6",
-            "almacen": "CAU QRO",
-            "empresa": "Banco",
-            "stock": "8",
-            "usr_resguardo": "C346432"
-        },
-        {
-            "id": "7315",
-            "noe": "9",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "NETTOP",
-            "marca": "HP",
-            "idequipo": "218",
-            "modelo": "PRODESK 400 G6",
-            "almacen": "CTOS",
-            "empresa": "Banco",
-            "stock": "9",
-            "usr_resguardo": "BRIDGE"
-        },
-        {
-            "id": "7357",
-            "noe": "31",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "NETTOP",
-            "marca": "HP",
-            "idequipo": "218",
-            "modelo": "PRODESK 400 G6",
-            "almacen": "CAU METRO SUC",
-            "empresa": "Banco",
-            "stock": "11",
-            "usr_resguardo": "C028570"
         },
         {
             "id": "7358",
@@ -303,19 +199,6 @@ tengo el siguiente objeto y quiero crear unas tablas en html con el contenido de
             "empresa": "Banco",
             "stock": "7",
             "usr_resguardo": "C368605"
-        },
-        {
-            "id": "7302",
-            "noe": "17",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "WORKSTATION",
-            "marca": "LENOVO",
-            "idequipo": "220",
-            "modelo": "THINKCENTRE TC M90T GEN 3",
-            "almacen": "CAU METRO EDF",
-            "empresa": "Banco",
-            "stock": "5",
-            "usr_resguardo": "C385208"
         }
     ]
 }
