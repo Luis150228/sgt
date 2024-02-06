@@ -1,204 +1,41 @@
-ahora quiero crear una tabla que haga un resumen que agrupe tipo_equipo, marca, modelo y tenga la suma del stock usando ES6 y forof o forin
+q
+const data = /* Tu objeto JSON aquí */;
+const resumen = {};
 
-{
-    "code": "200",
-    "mnj": "Informacion general de activos",
-    "type": "success",
-    "data": [
-        {
-            "id": "7330",
-            "noe": "1",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "DELL",
-            "idequipo": "216",
-            "modelo": "LATITUDE 9330",
-            "almacen": "CAU ONBOARDING",
-            "empresa": "SDS",
-            "stock": "1",
-            "usr_resguardo": "C368604"
-        },
-        {
-            "id": "7291",
-            "noe": "1",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "DELL",
-            "idequipo": "216",
-            "modelo": "LATITUDE 9330",
-            "almacen": "CAU VIP",
-            "empresa": "SDO",
-            "stock": "1",
-            "usr_resguardo": "C270873"
-        },
-        {
-            "id": "7292",
-            "noe": "1",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "DELL",
-            "idequipo": "216",
-            "modelo": "LATITUDE 9330",
-            "almacen": "SANTA FE",
-            "empresa": "SDO",
-            "stock": "2",
-            "usr_resguardo": "BRIDGE"
-        },
-        {
-            "id": "7324",
-            "noe": "4",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "HP",
-            "idequipo": "213",
-            "modelo": "ZBOOK FIREFLY 14 INCH G9",
-            "almacen": "CAU METRO EDF",
-            "empresa": "SDS",
-            "stock": "2",
-            "usr_resguardo": "C385208"
-        },
-        {
-            "id": "7317",
-            "noe": "5",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "HP",
-            "idequipo": "211",
-            "modelo": "ELITEBOOK 640 G9",
-            "almacen": "CTOS",
-            "empresa": "SDO",
-            "stock": "50",
-            "usr_resguardo": "Z539869"
-        },
-        {
-            "id": "7329",
-            "noe": "6",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "HP",
-            "idequipo": "211",
-            "modelo": "ELITEBOOK 640 G9",
-            "almacen": "CAU ONBOARDING",
-            "empresa": "SDO",
-            "stock": "25",
-            "usr_resguardo": "C368604"
-        },
-        {
-            "id": "7297",
-            "noe": "6",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "HP",
-            "idequipo": "211",
-            "modelo": "ELITEBOOK 640 G9",
-            "almacen": "CTOS",
-            "empresa": "SDO",
-            "stock": "10",
-            "usr_resguardo": "Z539869"
-        },
-        {
-            "id": "7370",
-            "noe": "7",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "WORKSTATION",
-            "marca": "DELL",
-            "idequipo": "219",
-            "modelo": "PRECISION 3450",
-            "almacen": "CAU METRO EDF",
-            "empresa": "Banco",
-            "stock": "3",
-            "usr_resguardo": "C385208"
-        },
-        {
-            "id": "7299",
-            "noe": "8",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "MACBOOK",
-            "marca": "APPLE",
-            "idequipo": "222",
-            "modelo": "A2485",
-            "almacen": "SANTA FE",
-            "empresa": "Banco",
-            "stock": "1",
-            "usr_resguardo": "C368605"
-        },
-        {
-            "id": "7355",
-            "noe": "9",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "NETTOP",
-            "marca": "HP",
-            "idequipo": "218",
-            "modelo": "PRODESK 400 G6",
-            "almacen": "CAU METRO EDF",
-            "empresa": "Banco",
-            "stock": "11",
-            "usr_resguardo": "C385208"
-        },
-        {
-            "id": "7358",
-            "noe": "31",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "NETTOP",
-            "marca": "HP",
-            "idequipo": "218",
-            "modelo": "PRODESK 400 G6",
-            "almacen": "CAU NORTE",
-            "empresa": "Banco",
-            "stock": "7",
-            "usr_resguardo": "C537232"
-        },
-        {
-            "id": "7291",
-            "noe": "7",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "WORKSTATION",
-            "marca": "DELL",
-            "idequipo": "219",
-            "modelo": "PRECISION 3450",
-            "almacen": "SANTA FE",
-            "empresa": "Banco",
-            "stock": "10",
-            "usr_resguardo": "C368605"
-        },
-        {
-            "id": "7292",
-            "noe": "8",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "MACBOOK",
-            "marca": "APPLE",
-            "idequipo": "222",
-            "modelo": "A2485",
-            "almacen": "SANTA FE",
-            "empresa": "Banco",
-            "stock": "1",
-            "usr_resguardo": "C368605"
-        },
-        {
-            "id": "7335",
-            "noe": "9",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "NETTOP",
-            "marca": "HP",
-            "idequipo": "218",
-            "modelo": "PRODESK 400 G6",
-            "almacen": "CAU METRO EDF",
-            "empresa": "Banco",
-            "stock": "11",
-            "usr_resguardo": "C385208"
-        },
-        {
-            "id": "7301",
-            "noe": "16",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "MACBOOK",
-            "marca": "APPLE",
-            "idequipo": "221",
-            "modelo": "A2779",
-            "almacen": "SANTA FE",
-            "empresa": "Banco",
-            "stock": "7",
-            "usr_resguardo": "C368605"
-        }
-    ]
+// Agrupar por tipo de equipo, marca y modelo
+for (const item of data) {
+  const clave = `${item.tipo_equipo}-${item.marca}-${item.modelo}`;
+  
+  if (!resumen[clave]) {
+    resumen[clave] = {
+      tipo_equipo: item.tipo_equipo,
+      marca: item.marca,
+      modelo: item.modelo,
+      stock: 0
+    };
+  }
+  
+  resumen[clave].stock += parseInt(item.stock);
 }
+
+// Convertir el objeto en un array y ordenarlo alfabéticamente por tipo_equipo, marca y modelo
+const resumenOrdenado = Object.values(resumen).sort((a, b) => {
+  if (a.tipo_equipo !== b.tipo_equipo) {
+    return a.tipo_equipo.localeCompare(b.tipo_equipo);
+  } else if (a.marca !== b.marca) {
+    return a.marca.localeCompare(b.marca);
+  } else {
+    return a.modelo.localeCompare(b.modelo);
+  }
+});
+
+// Crear la tabla HTML
+let tablaHTML = '<table><thead><tr><th>Tipo de Equipo</th><th>Marca</th><th>Modelo</th><th>Stock</th></tr></thead><tbody>';
+
+for (const item of resumenOrdenado) {
+  tablaHTML += `<tr><td>${item.tipo_equipo}</td><td>${item.marca}</td><td>${item.modelo}</td><td>${item.stock}</td></tr>`;
+}
+
+tablaHTML += '</tbody></table>';
+
+console.log(tablaHTML); // Puedes usar console.log o agregar esta cadena al HTML de tu página
