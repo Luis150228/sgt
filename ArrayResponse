@@ -1,4 +1,5 @@
-econst data = /* Tu objeto JSON aquí */;
+q
+const data = /* Tu objeto JSON aquí */;
 const resumen = {};
 
 // Agrupar por tipo de equipo, marca y modelo
@@ -17,11 +18,21 @@ for (const item of data) {
   resumen[clave].stock += parseInt(item.stock);
 }
 
+// Convertir el objeto en un array y ordenarlo alfabéticamente por tipo_equipo, marca y modelo
+const resumenOrdenado = Object.values(resumen).sort((a, b) => {
+  if (a.tipo_equipo !== b.tipo_equipo) {
+    return a.tipo_equipo.localeCompare(b.tipo_equipo);
+  } else if (a.marca !== b.marca) {
+    return a.marca.localeCompare(b.marca);
+  } else {
+    return a.modelo.localeCompare(b.modelo);
+  }
+});
+
 // Crear la tabla HTML
 let tablaHTML = '<table><thead><tr><th>Tipo de Equipo</th><th>Marca</th><th>Modelo</th><th>Stock</th></tr></thead><tbody>';
 
-for (const clave in resumen) {
-  const item = resumen[clave];
+for (const item of resumenOrdenado) {
   tablaHTML += `<tr><td>${item.tipo_equipo}</td><td>${item.marca}</td><td>${item.modelo}</td><td>${item.stock}</td></tr>`;
 }
 
