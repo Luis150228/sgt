@@ -1,204 +1,43 @@
-tengo el siguiente objeto y quiero crear unas tablas en html con el contenido de data, requiero un resumen agrupado por filas que lleven el nombre de cada almacen y columnas que lleven la suma del stock dido por tipo de equipo usando JS en ES6, te doy un ejemplo de la fila 1 que sea del almacen "CAU ONBOARDING" en la colunma 1 que sume todos los qeuipos  "LAPTOP" y en su encabezado sea laptop, en la columna 2 los equipos "NETTOP", en la 3 "WORKSTATION", en la columna 4 "MACBOOK", las columnas se deben basar en "tipo_equipo" y suma de "stock"
+const data = /* Tu objeto JSON aquí */;
+const almacenResumen = {};
 
-{
-    "code": "200",
-    "mnj": "Informacion general de activos",
-    "type": "success",
-    "data": [
-        {
-            "id": "7330",
-            "noe": "1",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "DELL",
-            "idequipo": "216",
-            "modelo": "LATITUDE 9330",
-            "almacen": "CAU ONBOARDING",
-            "empresa": "SDS",
-            "stock": "1",
-            "usr_resguardo": "C368604"
-        },
-        {
-            "id": "7291",
-            "noe": "1",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "DELL",
-            "idequipo": "216",
-            "modelo": "LATITUDE 9330",
-            "almacen": "CAU VIP",
-            "empresa": "SDO",
-            "stock": "1",
-            "usr_resguardo": "C270873"
-        },
-        {
-            "id": "7292",
-            "noe": "1",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "DELL",
-            "idequipo": "216",
-            "modelo": "LATITUDE 9330",
-            "almacen": "SANTA FE",
-            "empresa": "SDO",
-            "stock": "2",
-            "usr_resguardo": "BRIDGE"
-        },
-        {
-            "id": "7324",
-            "noe": "4",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "HP",
-            "idequipo": "213",
-            "modelo": "ZBOOK FIREFLY 14 INCH G9",
-            "almacen": "CAU METRO EDF",
-            "empresa": "SDS",
-            "stock": "2",
-            "usr_resguardo": "C385208"
-        },
-        {
-            "id": "7317",
-            "noe": "5",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "HP",
-            "idequipo": "211",
-            "modelo": "ELITEBOOK 640 G9",
-            "almacen": "CTOS",
-            "empresa": "SDO",
-            "stock": "50",
-            "usr_resguardo": "Z539869"
-        },
-        {
-            "id": "7329",
-            "noe": "6",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "HP",
-            "idequipo": "211",
-            "modelo": "ELITEBOOK 640 G9",
-            "almacen": "CAU ONBOARDING",
-            "empresa": "SDO",
-            "stock": "25",
-            "usr_resguardo": "C368604"
-        },
-        {
-            "id": "7297",
-            "noe": "6",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "LAPTOP",
-            "marca": "HP",
-            "idequipo": "211",
-            "modelo": "ELITEBOOK 640 G9",
-            "almacen": "CTOS",
-            "empresa": "SDO",
-            "stock": "10",
-            "usr_resguardo": "Z539869"
-        },
-        {
-            "id": "7370",
-            "noe": "7",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "WORKSTATION",
-            "marca": "DELL",
-            "idequipo": "219",
-            "modelo": "PRECISION 3450",
-            "almacen": "CAU METRO EDF",
-            "empresa": "Banco",
-            "stock": "3",
-            "usr_resguardo": "C385208"
-        },
-        {
-            "id": "7299",
-            "noe": "8",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "MACBOOK",
-            "marca": "APPLE",
-            "idequipo": "222",
-            "modelo": "A2485",
-            "almacen": "SANTA FE",
-            "empresa": "Banco",
-            "stock": "1",
-            "usr_resguardo": "C368605"
-        },
-        {
-            "id": "7355",
-            "noe": "9",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "NETTOP",
-            "marca": "HP",
-            "idequipo": "218",
-            "modelo": "PRODESK 400 G6",
-            "almacen": "CAU METRO EDF",
-            "empresa": "Banco",
-            "stock": "11",
-            "usr_resguardo": "C385208"
-        },
-        {
-            "id": "7358",
-            "noe": "31",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "NETTOP",
-            "marca": "HP",
-            "idequipo": "218",
-            "modelo": "PRODESK 400 G6",
-            "almacen": "CAU NORTE",
-            "empresa": "Banco",
-            "stock": "7",
-            "usr_resguardo": "C537232"
-        },
-        {
-            "id": "7291",
-            "noe": "7",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "WORKSTATION",
-            "marca": "DELL",
-            "idequipo": "219",
-            "modelo": "PRECISION 3450",
-            "almacen": "SANTA FE",
-            "empresa": "Banco",
-            "stock": "10",
-            "usr_resguardo": "C368605"
-        },
-        {
-            "id": "7292",
-            "noe": "8",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "MACBOOK",
-            "marca": "APPLE",
-            "idequipo": "222",
-            "modelo": "A2485",
-            "almacen": "SANTA FE",
-            "empresa": "Banco",
-            "stock": "1",
-            "usr_resguardo": "C368605"
-        },
-        {
-            "id": "7335",
-            "noe": "9",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "NETTOP",
-            "marca": "HP",
-            "idequipo": "218",
-            "modelo": "PRODESK 400 G6",
-            "almacen": "CAU METRO EDF",
-            "empresa": "Banco",
-            "stock": "11",
-            "usr_resguardo": "C385208"
-        },
-        {
-            "id": "7301",
-            "noe": "16",
-            "grupo_equipo": "EAF",
-            "tipo_equipo": "MACBOOK",
-            "marca": "APPLE",
-            "idequipo": "221",
-            "modelo": "A2779",
-            "almacen": "SANTA FE",
-            "empresa": "Banco",
-            "stock": "7",
-            "usr_resguardo": "C368605"
-        }
-    ]
+// Agrupar por almacén y tipo de equipo
+for (const item of data) {
+  if (!almacenResumen[item.almacen]) {
+    almacenResumen[item.almacen] = {};
+  }
+  
+  if (!almacenResumen[item.almacen][item.tipo_equipo]) {
+    almacenResumen[item.almacen][item.tipo_equipo] = 0;
+  }
+  
+  almacenResumen[item.almacen][item.tipo_equipo] += parseInt(item.stock);
+  
+  // Agregar stock de accesorios si el grupo de equipo es ACCESORIOS
+  if (item.grupo_equipo === "ACCESORIOS") {
+    if (!almacenResumen[item.almacen]['ACCESORIOS']) {
+      almacenResumen[item.almacen]['ACCESORIOS'] = 0;
+    }
+    almacenResumen[item.almacen]['ACCESORIOS'] += parseInt(item.stock);
+  }
 }
+
+// Crear la tabla HTML
+let tablaHTML = '<table><thead><tr><th>Almacén</th><th>Laptop</th><th>Nettop</th><th>Workstation</th><th>Macbook</th><th>Accesorios</th></tr></thead><tbody>';
+
+for (const almacen in almacenResumen) {
+  tablaHTML += `<tr><td>${almacen}</td>`;
+  
+  // Verificar y agregar la suma de stock por tipo de equipo
+  tablaHTML += `<td>${almacenResumen[almacen]['LAPTOP'] || 0}</td>`;
+  tablaHTML += `<td>${almacenResumen[almacen]['NETTOP'] || 0}</td>`;
+  tablaHTML += `<td>${almacenResumen[almacen]['WORKSTATION'] || 0}</td>`;
+  tablaHTML += `<td>${almacenResumen[almacen]['MACBOOK'] || 0}</td>`;
+  tablaHTML += `<td>${almacenResumen[almacen]['ACCESORIOS'] || 0}</td>`;
+  
+  tablaHTML += '</tr>';
+}
+
+tablaHTML += '</tbody></table>';
+
+console.log(tablaHTML); // Puedes usar console.log o agregar esta cadena al HTML de tu página
