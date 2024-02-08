@@ -1,13 +1,13 @@
 q
 const data = /* Tu objeto JSON aquí */;
-const resumen = {};
+const marcaResumen = {};
 
 // Agrupar por tipo de equipo, marca y modelo
-for (const item of data) {
+for (const item of infoTables) {
   const clave = `${item.tipo_equipo}-${item.marca}-${item.modelo}`;
   
-  if (!resumen[clave]) {
-    resumen[clave] = {
+  if (!marcaResumen[clave]) {
+    marcaResumen[clave] = {
       tipo_equipo: item.tipo_equipo,
       marca: item.marca,
       modelo: item.modelo,
@@ -15,11 +15,11 @@ for (const item of data) {
     };
   }
   
-  resumen[clave].stock += parseInt(item.stock);
+  marcaResumen[clave].stock += parseInt(item.stock);
 }
 
 // Convertir el objeto en un array y ordenarlo alfabéticamente por tipo_equipo, marca y modelo
-const resumenOrdenado = Object.values(resumen).sort((a, b) => {
+const marcaResumenOrdenado = Object.values(marcaResumen).sort((a, b) => {
   if (a.tipo_equipo !== b.tipo_equipo) {
     return a.tipo_equipo.localeCompare(b.tipo_equipo);
   } else if (a.marca !== b.marca) {
@@ -30,7 +30,7 @@ const resumenOrdenado = Object.values(resumen).sort((a, b) => {
 });
 
 // Crear la tabla HTML
-let tablaHTML = '<table><thead><tr><th>Tipo de Equipo</th><th>Marca</th><th>Modelo</th><th>Stock</th></tr></thead><tbody>';
+let tablaHTML = '<table class="table table-striped"><thead><tr><th>Tipo de Equipo</th><th>Marca</th><th>Modelo</th><th>Stock</th></tr></thead><tbody>';
 
 for (const item of resumenOrdenado) {
   tablaHTML += `<tr><td>${item.tipo_equipo}</td><td>${item.marca}</td><td>${item.modelo}</td><td>${item.stock}</td></tr>`;
