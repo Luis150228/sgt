@@ -16,3 +16,57 @@ tengo el siguinte objeto y quiero crear dentro de un tbody un tr por cada elemen
 ]
 
 usando JS y for of poniendo 3 columnas una con el indice, otra con el ID y una mas con la descripcion
+
+// Suponiendo que tienes el objeto 'data' que contiene los elementos
+const data = [
+        {
+                    "id": "238",
+                            "descripcion": "K60604WW #238"
+        },
+            {
+                        "id": "246",
+                                "descripcion": "EVOLVE 30 ll #246"
+            },
+                {
+                            "id": "244",
+                                    "descripcion": "PC-083320 AZUL #244"
+                }
+];
+
+// Obtener la referencia al tbody
+const tbody = document.querySelector("tbody");
+
+// Limpiar el contenido actual del tbody
+tbody.innerHTML = "";
+
+// Usar un bucle for...of junto con entries() para obtener el índice y el elemento directamente
+for (const [index, elemento] of data.entries()) {
+        // Crear una nueva fila
+            const fila = document.createElement("tr");
+
+                // Crear una nueva celda para el índice
+                    const indiceCelda = document.createElement("td");
+                        indiceCelda.textContent = index;
+
+                            // Crear una nueva celda para el ID
+                                const idCelda = document.createElement("td");
+                                    idCelda.textContent = elemento.id;
+
+                                        // Crear una nueva celda para la descripción
+                                            const descripcionCelda = document.createElement("td");
+                                                descripcionCelda.textContent = elemento.descripcion;
+
+                                                    // Agregar las celdas a la fila
+                                                        fila.appendChild(indiceCelda);
+                                                            fila.appendChild(idCelda);
+                                                                fila.appendChild(descripcionCelda);
+
+                                                                    // Agregar la fila al tbody
+                                                                        tbody.appendChild(fila);
+}
+
+}
+                }
+            }
+        }
+]
