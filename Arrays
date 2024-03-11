@@ -1,3 +1,18 @@
-la siguiente consulta de mysql me manda un error 
+tengo el siguinte objeto y quiero crear dentro de un tbody un tr por cada elemento 
 
-SELECT c.grupo, c.tipo_equipo, c.marca, c.modelo, c.id FROM (SELECT idequipo, COUNT(entrada_Type) FROM almacen_inventario WHERE usr_resguardo = 'C368605' GROUP BY idequipo)e LEFT JOIN SELECT * FROM (SELECT grupo, tipo_equipo, marca, modelo, idequipo as 'id' FROM almacen_catalogoequipos group by grupo, grupo, tipo_equipo, marca, modelo, idequipo order by tipo_equipo, marca, modelo asc)c ON e.idequipo = c.id;
+[
+    {
+        "id": "238",
+        "descripcion": "K60604WW #238"
+    },
+    {
+        "id": "246",
+        "descripcion": "EVOLVE 30 ll #246"
+    },
+    {
+        "id": "244",
+        "descripcion": "PC-083320 AZUL #244"
+    }
+]
+
+usando JS y for of poniendo 3 columnas una con el indice, otra con el ID y una mas con la descripcion
