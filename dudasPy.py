@@ -1,11 +1,12 @@
 [Running] python -u "c:\Users\c356882\Desktop\reportsAuto\reportsAuto001.py"
 Traceback (most recent call last):
-  File "c:\Users\c356882\Desktop\reportsAuto\reportsAuto001.py", line 86, in <module>
+  File "c:\Users\c356882\Desktop\reportsAuto\reportsAuto001.py", line 90, in <module>
     report013()
-  File "c:\Users\c356882\Desktop\reportsAuto\reportsAuto001.py", line 74, in report013
-    inbox = outlook.Folders.Item('Bandeja de entrada')
-  File "<COMObject <unknown>>", line 2, in Item
-pywintypes.com_error: (-2147352567, 'Ocurri� una excepci�n.', (4096, 'Microsoft Outlook', 'Error en esta operaci�n. No se encontr� un objeto.', None, 0, -2147221233), None)
+  File "c:\Users\c356882\Desktop\reportsAuto\reportsAuto001.py", line 80, in report013
+    messages = suc_fuera.Items()
+  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\win32com\client\dynamic.py", line 226, in __call__
+    self._oleobj_.Invoke(*allArgs), self._olerepr_.defaultDispatchName, None
+pywintypes.com_error: (-2147024809, 'El par�metro no es correcto.', None, None)
 
 
 import os
