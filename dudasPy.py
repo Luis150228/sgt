@@ -1,3 +1,32 @@
+
+import asyncio
+
+async def cleanPath_async(folder_path):
+    cleanPath(folder_path)  # Llamada sincrónica a cleanPath
+
+async def get_mail13_async(pathSave):
+    get_mail13(pathSave)  # Llamada sincrónica a get_mail13
+
+async def activate_eutChrome_async(typeData, typeDownload, chromeTab, btndwc):
+    activate_eutChrome(typeData, typeDownload, chromeTab, btndwc)  # Llamada sincrónica a activate_eutChrome
+
+async def open_excel_file_async(file_path):
+    open_excel_file(file_path)  # Llamada sincrónica a open_excel_file
+
+async def excRep13():
+    await cleanPath_async(saveSF)
+    await get_mail13_async(saveSF)
+    await activate_eutChrome_async(inc, btndwInc, chromeTabInc, btndwInc2)
+    await open_excel_file_async(rep13)
+
+def run_excRep13():
+    asyncio.run(excRep13())
+
+# Utiliza run_excRep13() para ejecutar excRep13
+
+
+
+
 from PIL import ImageGrab
 
 # Captura de pantalla
