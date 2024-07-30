@@ -1,13 +1,5 @@
 requiero que excRep13() cada funcion se vaya ejecutando solo si termina la anterior por ejemplo activate_eutChrome se puede tardar 1 min o 10 min en ejecutarse o puede ser variado, pero quiero que hasta que termine ejecute la siguiente linea open_excel_file() y no antes 
 
-
-
-def excRep13():
-    cleanPath(saveSF)
-    get_mail13(saveSF)
-    activate_eutChrome(inc, btndwInc, chromeTabInc, btndwInc2)
-    open_excel_file(rep13)
-
 import os
 import pyautogui
 import pygetwindow as gw
