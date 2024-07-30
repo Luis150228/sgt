@@ -1,0 +1,15 @@
+import time
+from selenium import webdriver
+
+# Ruta al archivo chromedriver.exe
+chromedriver_path = 'C:/Temp/chromedriver.exe'  # Asegúrate de que esta ruta sea correcta
+
+# Inicializar el WebDriver
+driver = webdriver.Chrome(executable_path=chromedriver_path)
+driver.get('http://www.google.com/')
+time.sleep(5)  # Permitir que el usuario vea algo
+search_box = driver.find_element_by_name('q')
+search_box.send_keys('ChromeDriver')
+search_box.submit()
+time.sleep(5)  # Permitir que el usuario vea algo
+driver.quit()
