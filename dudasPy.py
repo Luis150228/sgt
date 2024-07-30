@@ -1,3 +1,34 @@
+from PIL import ImageGrab
+
+# Captura de pantalla
+screenshot = ImageGrab.grab()
+screenshot.save('captura.png')  # Guarda la captura como imagen
+
+from PIL import Image
+
+# Cargar la imagen objetivo
+target_image = Image.open('ruta/a/la/imagen_objetivo.png')
+
+import numpy as np
+
+# Convertir imágenes a matrices numpy
+screenshot_np = np.array(screenshot)
+target_image_np = np.array(target_image)
+
+# Comparar imágenes
+difference = np.sum(np.abs(screenshot_np - target_image_np))
+
+# Umbral de diferencia (ajusta según sea necesario)
+threshold = 100000
+
+if difference < threshold:
+    print("¡La imagen objetivo apareció en la pantalla!")
+else:
+    print("La imagen objetivo no está presente en la pantalla.")
+
+
+
+
 import os
 
 # Ruta de la carpeta
