@@ -3,7 +3,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-browser = webdriver.Chrome()
+chrome_Driver_path = "C:/Temp/chromedriver/chromedriver.exe"
+browser = webdriver.Chrome(executable_path=chrome_Driver_path)
 
 browser.get('http://www.google.com')
 assert 'Google' in browser.title
@@ -18,29 +19,6 @@ browser.quit()
 
 [Running] python -u "c:\Users\c356882\Desktop\eutAutoRep\test.py"
 Traceback (most recent call last):
-  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\common\driver_finder.py", line 67, in _binary_paths
-    output = SeleniumManager().binary_paths(self._to_args())
-  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\common\selenium_manager.py", line 46, in binary_paths
-    args = [str(self._get_binary())] + args
-  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\common\selenium_manager.py", line 96, in _get_binary
-    raise WebDriverException(f"Unable to obtain working Selenium Manager binary; {path}")
-selenium.common.exceptions.WebDriverException: Message: Unable to obtain working Selenium Manager binary; C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
-
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "c:\Users\c356882\Desktop\eutAutoRep\test.py", line 6, in <module>
-    browser = webdriver.Chrome()
-  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
-    super().__init__(
-  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 50, in __init__
-    if finder.get_browser_path():
-  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\common\driver_finder.py", line 47, in get_browser_path
-    return self._binary_paths()["browser_path"]
-  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\common\driver_finder.py", line 78, in _binary_paths
-    raise NoSuchDriverException(msg) from err
-selenium.common.exceptions.NoSuchDriverException: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
-
-
-[Done] exited with code=1 in 1.179 seconds
+  File "c:\Users\c356882\Desktop\eutAutoRep\test.py", line 7, in <module>
+    browser = webdriver.Chrome(executable_path=chrome_Driver_path)
+TypeError: WebDriver.__init__() got an unexpected keyword argument 'executable_path'
