@@ -17,11 +17,52 @@ elem.send_keys('seleniumhq' + Keys.RETURN)
 time.sleep(60)
 
 browser.quit()
-()
 
+import time
+import os
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 
-[Running] python -u "c:\Users\c356882\Desktop\eutAutoRep\test.py"
-Traceback (most recent call last):
-  File "c:\Users\c356882\Desktop\eutAutoRep\test.py", line 7, in <module>
-    browser = webdriver.Chrome(executable_path=chrome_Driver_path)
-TypeError: WebDriver.__init__() got an unexpected keyword argument 'executable_path'
+# Ruta al chromedriver
+chrome_driver_path = "C:/Temp/chromedriver/chromedriver.exe"
+
+# Configura las opciones de Chrome para descargar archivos automáticamente
+download_dir = "C:/ruta/a/tu/carpeta/de/descargas"  # Cambia esta ruta a la carpeta donde quieres guardar el archivo
+chrome_options = Options()
+chrome_options.add_experimental_option('prefs', {
+    "download.default_directory": download_dir,
+    "download.prompt_for_download": False,
+    "download.directory_upgrade": True,
+    "safebrowsing.enabled": True
+})
+
+service = Service(chrome_driver_path)
+browser = webdriver.Chrome(service=service, options=chrome_options)
+
+# Abre la página web
+browser.get('http://www.example.com')
+
+# Espera a que la página cargue completamente
+time.sleep(3)  # Ajusta esto según sea necesario
+
+# Encuentra el enlace de descarga por su texto y haz clic en él
+download_link = browser.find_element(By.LINK_TEXT, 'Numero')
+download_link.click()
+
+# Espera a que el archivo se descargue completamente
+time.sleep(10)  # Ajusta esto según sea necesario
+
+browser.quit()
+
+# Verifica si el archivo se descargó y renómbralo/muévelo si es necesario
+downloaded_file = os.path.join(download_dir, 'nombre_del_archivo_descargado.ext')  # Cambia el nombre del archivo según sea necesario
+new_location = "C:/nueva/ruta/del/archivo/nuevo_nombre.ext"  # Cambia esta ruta y nombre según sea necesario
+
+# Asegúrate de que el archivo se descargó antes de moverlo
+if os.path.exists(downloaded_file):
+    os.rename(downloaded_file, new_location)
+    print(f"Archivo movido a {new_location}")
+else:
+    print("El archivo no se descargó correctamente")
