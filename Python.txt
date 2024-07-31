@@ -1,121 +1,3 @@
-tengo el siguiente elemento en html y con python quiero dar click derecho en th name="number" pero me manda un error 
-
-<tr id="hdr_interaction" class="" style="">
-        <th align="center" class=" col-control" scope="col" style=";"><span class="input-group-checkbox"><input
-                    type="checkbox" title="Seleccionar todo" id="allcheck_interaction"
-                    class="list_checkbox list_allcheckbox checkbox "
-                    onfocus="window.NOW.accessibility.onFocusAddMSHCOutline('allcheck_container_interaction')"
-                    onblur="window.NOW.accessibility.onBlurRemoveMSHCOutline('allcheck_container_interaction')"
-                    data-type="list2_all_checkbox" data-list_id="interaction" data-original-title="Seleccionar todo"><label
-                    for="allcheck_interaction" class="checkbox-label"><span class="sr-only">Select All</span></label></span>
-        </th>
-        <th name="search" align="center" class=" col-control list-decoration-table" scope="col"
-            style="; vertical-align:middle;">
-            <div><button aria-expanded="false" title=""
-                    class="list_header_search_toggle icon-search btn btn-icon table-btn-lg"
-                    aria-controls="interaction_table_header_search_control" style="margin-left:0px"
-                    data-original-title="Mostrar fila de búsqueda en columnas"><span class="sr-only">Mostrar fila de
-                        búsqueda en columnas</span></button></div>
-        </th>
-        <th name="number" class="text-align-left list_header_cell list_hdr " glide_label="Número"
-            glide_field="interaction.number" composite_edit_field="" glide_type="string" filterable="true" groupable="true"
-            sortable="true" sort_dir="DESC" align="left" scope="col" style=";" data-type="list2_hdrcell"
-            data-list_id="interaction" role="columnheader" aria-sort="descending"><span
-                class="list_header_cell_container"><a class="column_head list_hdrcell table-col-header" role="button"
-                    title="" tabindex="0" data-type="list2_hdrcell" data-list_id="interaction"
-                    data-original-title="Ordenado de forma descendente">Número</a><span aria-hidden="true"
-                    class="sort-icon column_header_icon"><a href="#" class="col-change-sort sort_column_header"
-                        tabindex="-1" data-type="list2_hdrcell"><i class="sort-icon-padding list-column-icon icon-vcr-down"
-                            style="visibility: visible;"></i></a></span><i
-                    class="icon-ellipsis-vertical col-menu list_header_context list-column-icon" aria-haspopup="true"
-                    data-type="list2_hdricon" role="button" tabindex="0" title="" aria-label="Número opciones de columna"
-                    data-original-title="Opciones de columna"></i></span></th>
-        <th name="u_category" class="text-align-left list_header_cell list_hdr " glide_label="Category"
-            glide_field="interaction.u_category" composite_edit_field="" glide_type="choice" filterable="true"
-            groupable="true" sortable="true" sort_dir="none" align="left" scope="col" style=";" data-type="list2_hdrcell"
-            data-list_id="interaction" role="columnheader"><span class="list_header_cell_container"><a
-                    class="column_head list_hdrcell table-col-header" role="button"
-                    data-context-menu-label="Número opciones de columna" title="" tabindex="0" data-type="list2_hdrcell"
-                    data-list_id="interaction" data-original-title="">Category</a><span aria-hidden="true"
-                    class="sort-icon column_header_icon"><a href="#" class="col-change-sort sort_column_header"
-                        tabindex="-1" data-type="list2_hdrcell"><i
-                            class="sort-icon-padding list-column-icon"></i></a></span><i
-                    class="icon-ellipsis-vertical col-menu list_header_context list-column-icon" aria-haspopup="true"
-                    data-type="list2_hdricon" role="button" tabindex="0" title="" aria-label="Category opciones de columna"
-                    data-original-title="Opciones de columna"></i></span></th>
-    </tr>
-
-import time
-import os
-import pandas as pd
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.edge.service import Service
-from selenium.webdriver.edge.options import Options
-
-driver_path = "C:/Temp/edgedriver/msedgedriver.exe"
-agent_browser = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0'
-service = Service(driver_path)
-browser = webdriver.Edge(service=service)
-actions = ActionChains(browser)
-
-browser.get('https://santander.service-now.com/now/nav/ui/classic/params/target/interaction_list.do%3Fsysparm_nostack%3Dtrue%26sysparm_query%3Dassignment_group%253D486e1e33db58a850cc7c6def4b9619d7%255Eopened_atONToday%40javascript%3Ags.beginningOfToday()%40javascript%3Ags.endOfToday()%26sysparm_first_row%3D1%26sysparm_view%3D')
-
-time.sleep(15)
-linkActData = browser.find_element(By.XPATH, '//*[contains(text(),"Llamar al +XX XXXXXXXX")]')
-linkActData.click()
-time.sleep(38)
-print('Buscar Numero')
-time.sleep(2)
-btnNumber = browser.find_element(By.XPATH, '//*[@id="hdr_interaction"]/th[3]')
-print(btnNumber.text)
-print('Click Derecho en Numero A')
-actions.context_click(btnNumber).perform()
-print('Click Derecho en Numero B')
-time.sleep(10)
-print('Exportar')
-time.sleep(150)
-browser.quit()
-
-Buscar Numero
-Traceback (most recent call last):
-  File "c:\Users\c356882\Desktop\eutAutoRep\testEdgeUnlok.py", line 26, in <module>
-    btnNumber = browser.find_element(By.XPATH, '//*[@id="hdr_interaction"]/th[3]')
-  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 748, in find_element
-    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
-  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 354, in execute
-    self.error_handler.check_response(response)
-  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="hdr_interaction"]/th[3]"}
-  (Session info: MicrosoftEdge=127.0.2651.74); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Stacktrace:
-	GetHandleVerifier [0x00007FF6A9950602+11762]
-	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98F0949+271417]
-	(No symbol) [0x00007FF6A970FE6E]
-	(No symbol) [0x00007FF6A9756964]
-	(No symbol) [0x00007FF6A97569EB]
-	(No symbol) [0x00007FF6A9792107]
-	(No symbol) [0x00007FF6A9775F7F]
-	(No symbol) [0x00007FF6A974C2FD]
-	(No symbol) [0x00007FF6A978FA97]
-	(No symbol) [0x00007FF6A9775BA3]
-	(No symbol) [0x00007FF6A974B80C]
-	(No symbol) [0x00007FF6A974ACED]
-	(No symbol) [0x00007FF6A974B3D1]
-	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A9ACB584+879700]
-	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6A9885D4F+56159]
-	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6A98786E3+1267]
-	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A9ACA2DD+874925]
-	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98F8541+303153]
-	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98F4904+287732]
-	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98F4A3B+288043]
-	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98EC990+255104]
-	BaseThreadInitThunk [0x00007FFCB33C7374+20]
-	RtlUserThreadStart [0x00007FFCB351CC91+33]
-################################################################################################################################################################################################
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -137,10 +19,15 @@ browser.get('https://santander.service-now.com/now/nav/ui/classic/params/target/
 # Espera a que se cargue la página
 time.sleep(15)
 
-# Localiza y haz clic en el enlace (ajusta esto según tus necesidades)
-linkActData = browser.find_element(By.XPATH, '//*[contains(text(),"Llamar al +XX XXXXXXXX")]')
-linkActData.click()
-time.sleep(38)
+# Cambia al iframe con id 'gsft_main'
+try:
+    iframe = WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.ID, "gsft_main"))
+    )
+    browser.switch_to.frame(iframe)
+    print("Cambio al iframe 'gsft_main' exitoso.")
+except Exception as e:
+    print(f"Error al cambiar al iframe 'gsft_main'. Error: {e}")
 
 # Espera a que el elemento <th> con name="number" esté presente
 try:
@@ -157,29 +44,3 @@ except Exception as e:
 # Espera antes de cerrar el navegador
 time.sleep(10)
 browser.quit()
-
-Elemento no encontrado o error al hacer clic derecho. Error: Message: 
-Stacktrace:
-	GetHandleVerifier [0x00007FF6A9950602+11762]
-	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98F0949+271417]
-	(No symbol) [0x00007FF6A970FE6E]
-	(No symbol) [0x00007FF6A9756964]
-	(No symbol) [0x00007FF6A97569EB]
-	(No symbol) [0x00007FF6A9792107]
-	(No symbol) [0x00007FF6A9775F7F]
-	(No symbol) [0x00007FF6A974C2FD]
-	(No symbol) [0x00007FF6A978FA97]
-	(No symbol) [0x00007FF6A9775BA3]
-	(No symbol) [0x00007FF6A974B80C]
-	(No symbol) [0x00007FF6A974ACED]
-	(No symbol) [0x00007FF6A974B3D1]
-	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A9ACB584+879700]
-	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6A9885D4F+56159]
-	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6A98786E3+1267]
-	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A9ACA2DD+874925]
-	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98F8541+303153]
-	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98F4904+287732]
-	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98F4A3B+288043]
-	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98EC990+255104]
-	BaseThreadInitThunk [0x00007FFCB33C7374+20]
-	RtlUserThreadStart [0x00007FFCB351CC91+33]
