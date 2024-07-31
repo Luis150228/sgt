@@ -2,19 +2,22 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.service import Service
 
-chrome_Driver_path = "C:/Temp/chromedriver/chromedriver.exe"
-browser = webdriver.Chrome(executable_path=chrome_Driver_path)
+chrome_driver_path = "C:/Temp/chromedriver/chromedriver.exe"
+service = Service(chrome_driver_path)
+browser = webdriver.Chrome(service=service)
 
 browser.get('http://www.google.com')
 assert 'Google' in browser.title
 
-elem = browser.find_element(By.NAME, 'q')  # Find the search box
+elem = browser.find_element(By.NAME, 'q')  # Encuentra la caja de búsqueda
 elem.send_keys('seleniumhq' + Keys.RETURN)
 
 time.sleep(60)
 
 browser.quit()
+()
 
 
 [Running] python -u "c:\Users\c356882\Desktop\eutAutoRep\test.py"
