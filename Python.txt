@@ -17,6 +17,8 @@ elem.send_keys('seleniumhq' + Keys.RETURN)
 time.sleep(60)
 
 browser.quit()
+<<<<<<< HEAD
+=======
 #############################################################################################################################
 import time
 import os
@@ -24,7 +26,15 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+>>>>>>> ca78edaeae9bd3de25a5f4081566d8e279898f4b
 
+<<<<<<< HEAD
+[Running] python -u "c:\Users\c356882\Desktop\eutAutoRep\test.py"
+Traceback (most recent call last):
+  File "c:\Users\c356882\Desktop\eutAutoRep\test.py", line 7, in <module>
+    browser = webdriver.Chrome(executable_path=chrome_Driver_path)
+TypeError: WebDriver.__init__() got an unexpected keyword argument 'executable_path'
+=======
 # Ruta al chromedriver
 chrome_driver_path = "C:/Temp/chromedriver/chromedriver.exe"
 
@@ -37,6 +47,7 @@ chrome_options.add_experimental_option('prefs', {
     "download.directory_upgrade": True,
     "safebrowsing.enabled": True
 })
+>>>>>>> ca78edaeae9bd3de25a5f4081566d8e279898f4b
 
 service = Service(chrome_driver_path)
 browser = webdriver.Chrome(service=service, options=chrome_options)
@@ -101,3 +112,11 @@ actions.context_click(element).perform()
 time.sleep(5)  # Ajusta esto según sea necesario
 
 browser.quit()
+
+
+si quisiera usar estos encabezados 
+
+cookie:
+glide_sso_id=d31bc6a91b96ca508cf064a1604bcb08; BIGipServerpool_santander=fcfbece140f8044eaacaf29ae904a009; glide_user_route=glide.9d86166914b36b95ec0833aa0d96771c; glide_node_id_for_js=141260be45bd6141d5a234e91ea591fafc87535da4130266b7ce67dd226e3d16; JSESSIONID=8A687348B3FB5FD5660E1E6C7B8A04B7; glide_language=es; glide_session_store=99C967A0EB3F0214E09AF66CCAD0CD57; glide_user_activity=U0N2M18xOmx2c1dFUUgzNW9oOWlGWnF1QmRQQ0FZZU1hWXhoRDkyK0ltVFpSZlhPV0k9OksrNjlBT0VpM1dpVENOZGxoVGd5MFRGUk9neWZxV0pvNklCT284SU1NZ1E9; __CJ_g_startTime=%221722458504793%22
+host:
+santander.service-now.com
