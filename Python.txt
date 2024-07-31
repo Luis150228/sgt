@@ -17,7 +17,7 @@ elem.send_keys('seleniumhq' + Keys.RETURN)
 time.sleep(60)
 
 browser.quit()
-
+#############################################################################################################################
 import time
 import os
 from selenium import webdriver
@@ -66,3 +66,38 @@ if os.path.exists(downloaded_file):
     print(f"Archivo movido a {new_location}")
 else:
     print("El archivo no se descargó correctamente")
+
+###########################################################################
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.action_chains import ActionChains
+
+# Ruta al chromedriver
+chrome_driver_path = "C:/Temp/chromedriver/chromedriver.exe"
+
+# Configura las opciones de Chrome
+chrome_options = Options()
+
+service = Service(chrome_driver_path)
+browser = webdriver.Chrome(service=service, options=chrome_options)
+
+# Abre la página web
+browser.get('http://www.example.com')
+
+# Espera a que la página cargue completamente
+time.sleep(3)  # Ajusta esto según sea necesario
+
+# Encuentra el elemento por su atributo glide_label
+element = browser.find_element(By.XPATH, '//*[@glide_label="Category"]')
+
+# Realiza un clic derecho en el elemento
+actions = ActionChains(browser)
+actions.context_click(element).perform()
+
+# Espera para ver el efecto del clic derecho
+time.sleep(5)  # Ajusta esto según sea necesario
+
+browser.quit()
