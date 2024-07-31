@@ -115,3 +115,45 @@ Stacktrace:
 	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98EC990+255104]
 	BaseThreadInitThunk [0x00007FFCB33C7374+20]
 	RtlUserThreadStart [0x00007FFCB351CC91+33]
+################################################################################################################################################################################################
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.edge.service import Service
+from selenium.webdriver.edge.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+# Configuración del WebDriver
+driver_path = "C:/Temp/edgedriver/msedgedriver.exe"
+service = Service(driver_path)
+browser = webdriver.Edge(service=service)
+actions = ActionChains(browser)
+
+# Abre la página
+browser.get('https://santander.service-now.com/now/nav/ui/classic/params/target/interaction_list.do%3Fsysparm_nostack%3Dtrue%26sysparm_query%3Dassignment_group%253D486e1e33db58a850cc7c6def4b9619d7%255Eopened_atONToday%40javascript%3Ags.beginningOfToday()%40javascript%3Ags.endOfToday()%26sysparm_first_row%3D1%26sysparm_view%3D')
+
+# Espera a que se cargue la página
+time.sleep(15)
+
+# Localiza y haz clic en el enlace (ajusta esto según tus necesidades)
+linkActData = browser.find_element(By.XPATH, '//*[contains(text(),"Llamar al +XX XXXXXXXX")]')
+linkActData.click()
+time.sleep(38)
+
+# Espera a que el elemento <th> con name="number" esté presente
+try:
+    btnNumber = WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.XPATH, '//th[@name="number"]'))
+    )
+    print("Elemento encontrado:", btnNumber.text)
+    # Realiza el clic derecho
+    actions.context_click(btnNumber).perform()
+    print("Clic derecho realizado en el elemento.")
+except Exception as e:
+    print(f"Elemento no encontrado o error al hacer clic derecho. Error: {e}")
+
+# Espera antes de cerrar el navegador
+time.sleep(10)
+browser.quit()
