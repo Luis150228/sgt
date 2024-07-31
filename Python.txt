@@ -157,3 +157,29 @@ except Exception as e:
 # Espera antes de cerrar el navegador
 time.sleep(10)
 browser.quit()
+
+Elemento no encontrado o error al hacer clic derecho. Error: Message: 
+Stacktrace:
+	GetHandleVerifier [0x00007FF6A9950602+11762]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98F0949+271417]
+	(No symbol) [0x00007FF6A970FE6E]
+	(No symbol) [0x00007FF6A9756964]
+	(No symbol) [0x00007FF6A97569EB]
+	(No symbol) [0x00007FF6A9792107]
+	(No symbol) [0x00007FF6A9775F7F]
+	(No symbol) [0x00007FF6A974C2FD]
+	(No symbol) [0x00007FF6A978FA97]
+	(No symbol) [0x00007FF6A9775BA3]
+	(No symbol) [0x00007FF6A974B80C]
+	(No symbol) [0x00007FF6A974ACED]
+	(No symbol) [0x00007FF6A974B3D1]
+	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A9ACB584+879700]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6A9885D4F+56159]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6A98786E3+1267]
+	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A9ACA2DD+874925]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98F8541+303153]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98F4904+287732]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98F4A3B+288043]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A98EC990+255104]
+	BaseThreadInitThunk [0x00007FFCB33C7374+20]
+	RtlUserThreadStart [0x00007FFCB351CC91+33]
