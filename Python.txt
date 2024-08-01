@@ -1,116 +1,19 @@
-import time
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.edge.service import Service
-from selenium.webdriver.edge.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+IIS
+Process
+Process unavailable
+Monitoring connection to process IIS on host maxmonitor2.altecmexico.mx.bsch has been lost
 
-# Configuración de la ubicación de descarga
-download_dir = "C:/ruta/de/descarga"
+Apache-riesgooperacional
+Process
+Process unavailable
+Monitoring connection to process Apache-riesgooperacional on host maxmonitor2.altecmexico.mx.bsch has been lost
 
-# Asegúrate de que la carpeta de descarga exista
-import os
-if not os.path.exists(download_dir):
-    os.makedirs(download_dir)
+maxmonitor2.altecmexico.mx.bsch
+Host
+Host or monitoring unavailable
+Host or monitoring unavailable due to connectivity issues or server outage
 
-# Configuración del WebDriver
-driver_path = "C:/Temp/edgedriver/msedgedriver.exe"
-options = Options()
-options.use_chromium = True
-options.add_argument("disable-popup-blocking")
-
-# Añadir opciones para las descargas
-prefs = {
-    "download.default_directory": download_dir,
-    "download.prompt_for_download": False,
-    "download.directory_upgrade": True,
-    "safebrowsing.enabled": True
-}
-options.add_experimental_option("prefs", prefs)
-
-service = Service(driver_path)
-browser = webdriver.Edge(service=service, options=options)
-actions = ActionChains(browser)
-
-# Abre la página
-browser.get('https://santander.service-now.com/now/nav/ui/classic/params/target/interaction_list.do%3Fsysparm_nostack%3Dtrue%26sysparm_query%3Dassignment_group%253D486e1e33db58a850cc7c6def4b9619d7%255Eopened_atONToday%40javascript%3Ags.beginningOfToday()%40javascript%3Ags.endOfToday()%26sysparm_first_row%3D1%26sysparm_view%3D')
-
-# Espera a que se cargue la página
-time.sleep(15)
-linkActData = browser.find_element(By.XPATH, '//*[contains(text(),"Llamar al +XX XXXXXXXX")]')
-linkActData.click()
-time.sleep(30)
-print('Buscar Numero')
-
-# Función para acceder al shadow root
-def expand_shadow_element(element):
-    shadow_root = browser.execute_script('return arguments[0].shadowRoot', element)
-    return shadow_root
-
-try:
-    # Encuentra el macroponent que contiene el shadow root
-    macroponent = WebDriverWait(browser, 10).until(
-        EC.presence_of_element_located((By.CSS_SELECTOR, 'macroponent-f51912f4c700201072b211d4d8c26010'))
-    )
-    shadow_root = expand_shadow_element(macroponent)
-    print("Acceso al shadow root exitoso.")
-
-    # Encuentra el iframe dentro del shadow root
-    iframe = WebDriverWait(shadow_root, 10).until(
-        EC.presence_of_element_located((By.CSS_SELECTOR, '#gsft_main'))
-    )
-    browser.switch_to.frame(iframe)
-    print("Cambio al iframe 'gsft_main' exitoso.")
-except Exception as e:
-    print(f"Error al acceder al shadow root o al iframe. Error: {e}")
-
-# Espera a que el elemento <th> con name="number" esté presente
-try:
-    btnNumber = WebDriverWait(browser, 10).until(
-        EC.presence_of_element_located((By.XPATH, '//th[@name="number"]'))
-    )
-    print("Elemento encontrado:", btnNumber.text)
-    # Realiza el clic derecho
-    actions.context_click(btnNumber).perform()
-    print("Clic derecho realizado en el elemento.")
-except Exception as e:
-    print(f"Elemento no encontrado o error al hacer clic derecho. Error: {e}")
-
-try:
-    btnExportar = WebDriverWait(browser, 5).until(
-        EC.presence_of_element_located((By.XPATH, '//div[@data-context-menu-label="Exportar"]'))
-    )
-    print("Elemento encontrado:", btnExportar.text)
-    # Realiza el clic
-    actions.click(btnExportar).perform()
-    print("Clic En Exportar.")
-except Exception as e:
-    print(f"Elemento no encontrado o error al hacer clic en Exportar. Error: {e}")
-
-try:
-    btnCSV = WebDriverWait(browser, 5).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="d1ad2f010a0a0b3e005c8b7fbd7c4e28_interaction"]/div[3]'))
-    )
-    print("Elemento encontrado:", btnCSV.text)
-    # Realiza el clic
-    actions.click(btnCSV).perform()
-    print("Clic En CSV.")
-except Exception as e:
-    print(f"Elemento no encontrado o error al hacer clic en CSV. Error: {e}")
-
-try:
-    btnDescargar = WebDriverWait(browser, 10).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="download_button"]'))
-    )
-    print("Elemento encontrado:", btnDescargar.text)
-    time.sleep(2)
-    actions.click(btnDescargar).perform()
-    print("Clic En BtnDescargar.")
-except Exception as e:
-    print(f"Elemento no encontrado o error al hacer clic en BtnDescargar. Error: {e}")
-
-# Espera antes de cerrar el navegador
-time.sleep(110)
-browser.quit()
+MySQL
+Process
+Process unavailable
+Monitoring connection to process MySQL on host maxmonitor2.altecmexico.mx.bsch has been lost
