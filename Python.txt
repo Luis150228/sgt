@@ -10,11 +10,18 @@ from selenium.webdriver.support import expected_conditions as EC
 # Configuración de la ubicación de descarga
 download_dir = "C:/ruta/de/descarga"
 
+# Asegúrate de que la carpeta de descarga exista
+import os
+if not os.path.exists(download_dir):
+    os.makedirs(download_dir)
+
 # Configuración del WebDriver
 driver_path = "C:/Temp/edgedriver/msedgedriver.exe"
 options = Options()
 options.use_chromium = True
 options.add_argument("disable-popup-blocking")
+
+# Añadir opciones para las descargas
 prefs = {
     "download.default_directory": download_dir,
     "download.prompt_for_download": False,
