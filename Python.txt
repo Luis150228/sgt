@@ -1,3 +1,5 @@
+como gurdar en archivo a descargar en una ubicacion usando python 
+
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -18,6 +20,11 @@ browser.get('https://santander.service-now.com/now/nav/ui/classic/params/target/
 
 # Espera a que se cargue la página
 time.sleep(15)
+linkActData = browser.find_element(By.XPATH, '//*[contains(text(),"Llamar al +XX XXXXXXXX")]')
+# linkActData = browser.find_element(By.XPATH, '//*[@pngsrc="https://aadcdn.msftauth.net/shared/1.0/content/images/picker_verify_call_"]')
+linkActData.click()
+time.sleep(30)
+print('Buscar Numero')
 
 # Función para acceder al shadow root
 def expand_shadow_element(element):
@@ -53,6 +60,41 @@ try:
 except Exception as e:
     print(f"Elemento no encontrado o error al hacer clic derecho. Error: {e}")
 
+try:
+    btnExportar = WebDriverWait(browser, 5).until(
+        EC.presence_of_element_located((By.XPATH, '//div[@data-context-menu-label="Exportar"]'))
+    )
+    print("Elemento encontrado:", btnExportar.text)
+    # Realiza el clic
+    actions.click(btnExportar).perform()
+    print("Clic En Exportar.")
+except Exception as e:
+    print(f"Elemento no encontrado o error al hacer clic en Exportar. Error: {e}")
+
+try:
+    btnCSV = WebDriverWait(browser, 5).until(
+        EC.presence_of_element_located((By.XPATH, '//*[@id="d1ad2f010a0a0b3e005c8b7fbd7c4e28_interaction"]/div[3]'))
+    )
+    print("Elemento encontrado:", btnCSV.text)
+    # Realiza el clic
+    actions.click(btnCSV).perform()
+    print("Clic En CSV.")
+except Exception as e:
+    print(f"Elemento no encontrado o error al hacer clic en CSV. Error: {e}")
+
+try:
+    btnDescargar = WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.XPATH, '//*[@id="download_button"]'))
+    )
+    print("Elemento encontrado:", btnDescargar.text)
+    time.sleep(2)
+    actions.click(btnDescargar).perform()
+    ## como gurdar en archivo a descargar en una ubicacion
+    print("Clic En BtnDescargar.")
+except Exception as e:
+    print(f"Elemento no encontrado o error al hacer clic en BtnDescargar. Error: {e}")
+
 # Espera antes de cerrar el navegador
-time.sleep(10)
+time.sleep(110)
 browser.quit()
+
