@@ -1,44 +1,58 @@
-<macroponent-f51912f4c700201072b211d4d8c26010 component-id="ilhquym" macroponent-namespace="ilhquym" app-id="a84adaf4c700201072b211d4d8c260b7" global-navigation-config="{
-  &quot;features&quot;: {
-    &quot;record&quot;: {
-      &quot;_default&quot;: {
-        &quot;experiencePriorityList&quot;: [
-        ]
-      }
-    },
-    &quot;list&quot;: {
-      &quot;_default&quot;: {
-        &quot;experiencePriorityList&quot;: [
-          {
-            &quot;name&quot;: &quot;Polaris App&quot;,
-            &quot;sysId&quot;: &quot;a84adaf4c700201072b211d4d8c260b7&quot;
-          }
-        ]
-      }
-    },
-    &quot;search&quot;: {
-      &quot;_default&quot;: {
-        &quot;experiencePriorityList&quot;: [
-          {
-            &quot;name&quot;: &quot;Polaris App&quot;,
-            &quot;sysId&quot;: &quot;a84adaf4c700201072b211d4d8c260b7&quot;
-          }
-        ]
-      }
-    },
-    &quot;inbox&quot;:{
-      &quot;_default&quot;: {
-        &quot;experiencePriorityList&quot;: [
-          {
-            &quot;name&quot;: &quot;Service Operations Workspace&quot;,
-            &quot;sysId&quot;: &quot;aa881cad73c4301045216238edf6a716&quot;
-          },
-          {
-            &quot;name&quot;: &quot;CSM/FSM Configurable Workspace&quot;,
-            &quot;sysId&quot;: &quot;c4e321a3530210102c30ddeeff7b12f6&quot;
-          }
-        ]
-      }
-    }
-  }
-}" evaluated-data-brokers="{&quot;polaris_app_shell_header_company_logo&quot;:[{&quot;errors&quot;:[],&quot;executionResult&quot;:{&quot;output&quot;:{&quot;result&quot;:{&quot;imgSrc&quot;:&quot;77b4b8811b310490e07eec25bd4bcb27.iix&quot;}}},&quot;executionTime&quot;:10,&quot;parentResourceId&quot;:null,&quot;status&quot;:200,&quot;sysId&quot;:&quot;a4367e327782a1108c7921e9ff5a9934&quot;}],&quot;polaris_app_shell_menu_headers&quot;:[{&quot;errors&quot;:[],&quot;executionResult&quot;:{&quot;output&quot;:{&quot;result&quot;:[{&quot;label&quot;:&quot;Todos&quot;,&quot;order&quot;:1,&quot;id&quot;:&quot;d6e462a5c3533010cbd77096e940dd8c&quot;,&quot;template&quot;:&quot;tree&quot;},{&quot;label&quot;:&quot;Favoritos&quot;,&quot;order&quot;:2,&quot;id&quot;:&quot;1b682fe1c3133010cbd77096e940dd18&quot;,&quot;template&quot;:&quot;favoriteList&quot;},{&quot;label&quot;:&quot;Historial&quot;,&quot;order&quot;:3,&quot;id&quot;:&quot;c51543a5c3133010cbd77096e940dd43&quot;,&quot;template&quot;:&quot;historyList&quot;},{&quot;label&quot;:&quot;Espacios de trabajo&quot;,&quot;order&quot;:4,&quot;id&quot;:&quot;63242b61c3133010cbd77096e940dd23&quot;,&quot;subItems&quot;:[{&quot;label&quot;:&quot;CMDB Workspace&quot;,&quot;id&quot;:&quot;90866eec5332301071b9ddeeff7b1204&quot;,&quot;route&quot;:{&quot;route&quot;:&quot;home&quot;,&quot;url&quot;:&quot;now/cmdb/home&quot;,&quot;title&quot;:&quot;home&quot;,&quot;context&quot;:{&quot;path&quot;:&quot;now/cmdb&quot;,&quot;experienceName&quot;:&quot;CMDB Workspace&quot;}},&quot;icon&quot;:&quot;&quot;},{&quot;label&quot;:&quot;Discovery Admin Workspace&quot;,&quot;id&quot;:&quot;7ad3439053817110a1c6ddeeff7b1241&quot;,&quot;route&quot;:{&quot;route&quot;:&quot;application-fingerprints&quot;,&quot;url&quot;:&quot;now/discovery-admin-workspace/application-fingerprints&quot;,&quot;title&quot;:&quot;application-fingerprints&quot;,&quot;context&quot;:{&quot;path&quot;:&quot;now/discovery-admin-workspace&quot;,&quot;experienceName&quot;:&quot;Discovery Admin Workspace&quot;}},&quot;icon&quot;:&quot;&quot;},{&quot;label&quot;:&quot;Platform Analytics Workspace&quot;,&quot;id&quot;:&quot;bb5d8e17c72201102fb5309e95c2604b&quot;,&quot;route&quot;:{&quot;route&quot;:&quot;analytics-center&quot;,&quot;url&quot;:&quot;now/platform-analytics-workspace/analytics-center&quot;,&quot;title&quot;:&quot;analytics-center&quot;,&quot;context&quot;:{&quot;path&quot;:&quot;now/platform-analytics-workspace&quot;,&quot;experienceName&quot;:&quot;Platform Analytics Workspace&quot;}},&quot;icon&quot;:&quot;&quot;},{&quot;label&quot;:&quot;RPA Hub&quot;,&quot;id&quot;:&quot;dc25b75787fc3110ad6efc46cebb3523&quot;,&quot;route&quot;:{&quot;route&quot;:&quot;home&quot;,&quot;url&quot;:&quot;now/rpahub/home&quot;,&quot;title&quot;:&quot;home&quot;,&quot;context&quot;:{&quot;path&quot;:&quot;now/rpahub&quot;,&quot;experienceName&quot;:&quot;RPA Hub&quot;}},&quot;icon&quot;:&quot;&quot;},{&quot;label&quot;:&quot;Service Operations Workspace&quot;,&quot;id&quot;:&quot;433802f053213010ad3cddeeff7b12c0&quot;,&quot;route&quot;:{&quot;route&quot;:&quot;home&quot;,&quot;url&quot;:&quot;now/sow/home&quot;,&quot;title&quot;:&quot;home&quot;,&quot;context&quot;:{&quot;path&quot;:&quot;now/sow&quot;,&quot;experienceName&quot;:&quot;Service Operations Workspace&quot;}},&quot;icon&quot;:&quot;&quot;}],&quot;template&quot;:&quot;tree&quot;,&quot;collapseOnSingleItem&quot;:true}]}},&quot;executionTime&quot;:23,&quot;parentResourceId&quot;:null,&quot;status&quot;:200,&quot;sysId&quot;:&quot;820111939742e510c59bfdd3a253afbc&quot;}],&quot;polaris_user_settings_access_query&quot;:[{&quot;errors&quot;:[],&quot;executionResult&quot;:{&quot;output&quot;:{&quot;data&quot;:{&quot;GlideUserSettingsAccess_Query&quot;:{&quot;userSettingsAccess&quot;:{&quot;showApplicationPicker&quot;:false,&quot;showUpdateSetPicker&quot;:false,&quot;showDomainPicker&quot;:false,&quot;showEncryptionPicker&quot;:false,&quot;showCryptoModulePicker&quot;:false}}}}},&quot;executionTime&quot;:1,&quot;parentResourceId&quot;:null,&quot;status&quot;:200,&quot;sysId&quot;:&quot;79c9fd62c7113010099a308dc7c260f1&quot;}],&quot;polaris_app_shell_header_logo_target&quot;:[{&quot;errors&quot;:[],&quot;executionResult&quot;:{&quot;output&quot;:{&quot;data&quot;:{&quot;GlideHeaderLogo_Query&quot;:{&quot;getLogoURL&quot;:{&quot;external&quot;:false,&quot;target&quot;:&quot;gsft_main&quot;,&quot;url&quot;:&quot;home.do&quot;,&quot;type&quot;:&quot;classic&quot;}}}}},&quot;executionTime&quot;:1,&quot;parentResourceId&quot;:null,&quot;status&quot;:200,&quot;sysId&quot;:&quot;b67e4b90c7003010099a308dc7c26094&quot;}]}" now-id="ilhquym"></macroponent-f51912f4c700201072b211d4d8c26010>
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.edge.service import Service
+from selenium.webdriver.edge.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+# Configuración del WebDriver
+driver_path = "C:/Temp/edgedriver/msedgedriver.exe"
+service = Service(driver_path)
+browser = webdriver.Edge(service=service)
+actions = ActionChains(browser)
+
+# Abre la página
+browser.get('https://santander.service-now.com/now/nav/ui/classic/params/target/interaction_list.do%3Fsysparm_nostack%3Dtrue%26sysparm_query%3Dassignment_group%253D486e1e33db58a850cc7c6def4b9619d7%255Eopened_atONToday%40javascript%3Ags.beginningOfToday()%40javascript%3Ags.endOfToday()%26sysparm_first_row%3D1%26sysparm_view%3D')
+
+# Espera a que se cargue la página
+time.sleep(15)
+
+# Función para acceder al shadow root
+def expand_shadow_element(element):
+    shadow_root = browser.execute_script('return arguments[0].shadowRoot', element)
+    return shadow_root
+
+try:
+    # Encuentra el macroponent que contiene el shadow root
+    macroponent = WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.CSS_SELECTOR, 'macroponent-f51912f4c700201072b211d4d8c26010'))
+    )
+    shadow_root = expand_shadow_element(macroponent)
+    print("Acceso al shadow root exitoso.")
+
+    # Encuentra el iframe dentro del shadow root
+    iframe = WebDriverWait(shadow_root, 10).until(
+        EC.presence_of_element_located((By.CSS_SELECTOR, '#gsft_main'))
+    )
+    browser.switch_to.frame(iframe)
+    print("Cambio al iframe 'gsft_main' exitoso.")
+except Exception as e:
+    print(f"Error al acceder al shadow root o al iframe. Error: {e}")
+
+# Espera a que el elemento <th> con name="number" esté presente
+try:
+    btnNumber = WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.XPATH, '//th[@name="number"]'))
+    )
+    print("Elemento encontrado:", btnNumber.text)
+    # Realiza el clic derecho
+    actions.context_click(btnNumber).perform()
+    print("Clic derecho realizado en el elemento.")
+except Exception as e:
+    print(f"Elemento no encontrado o error al hacer clic derecho. Error: {e}")
+
+# Espera antes de cerrar el navegador
+time.sleep(10)
+browser.quit()
