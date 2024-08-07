@@ -1,3 +1,4 @@
+import time
 from playwright.sync_api import sync_playwright
 
 def run(playwright):
@@ -6,12 +7,17 @@ def run(playwright):
     # Crear una nueva página
     page = browser.new_page()
     # Navegar a Google
-    page.goto('https://www.google.com')
+    page.goto('http://180.176.105.244/eut_reportes/')
     # Encontrar el campo de búsqueda y escribir una consulta
-    page.fill('input[name="q"]', 'Python Playwright')
+    time.sleep(2)
+    page.fill('input[id="usr"]', 'C356882')
+    time.sleep(2)
     # Presionar Enter para buscar
-    page.press('input[name="q"]', 'Enter')
+    page.fill('input[name="pass"]', 'derekNatalie72')
+    time.sleep(2)
+    page.press('input[name="pass"]', 'Enter')
     # Esperar a que los resultados se carguen
+    time.sleep(200)
     page.wait_for_selector('h3')
     # Cerrar el navegador
     browser.close()
@@ -19,3 +25,30 @@ def run(playwright):
 # Ejecutar el script con Playwright
 with sync_playwright() as playwright:
     run(playwright)
+
+
+[Running] python -u "c:\Users\c356882\Desktop\autoEUT\testAuto001.py"
+Traceback (most recent call last):
+  File "c:\Users\c356882\Desktop\autoEUT\testAuto001.py", line 27, in <module>
+    run(playwright)
+  File "c:\Users\c356882\Desktop\autoEUT\testAuto001.py", line 6, in run
+    browser = playwright.chromium.launch(headless=False)  # headless=False para ver el navegador en acci�n
+  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\playwright\sync_api\_generated.py", line 14155, in launch
+    self._sync(
+  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\playwright\_impl\_browser_type.py", line 94, in launch
+    Browser, from_channel(await self._channel.send("launch", params))
+  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\playwright\_impl\_connection.py", line 59, in send
+    return await self._connection.wrap_api_call(
+  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\playwright\_impl\_connection.py", line 514, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at C:\Users\c356882\AppData\Local\ms-playwright\chromium-1124\chrome-win\chrome.exe
+\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557
+\u2551 Looks like Playwright was just installed or updated.       \u2551
+\u2551 Please run the following command to download new browsers: \u2551
+\u2551                                                            \u2551
+\u2551     playwright install                                     \u2551
+\u2551                                                            \u2551
+\u2551 <3 Playwright Team                                         \u2551
+\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d
