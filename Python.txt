@@ -1,173 +1,21 @@
-import mouse, time
-import os
-import pyautogui
-import win32com.client
-from datetime import datetime
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.edge.service import Service
-from selenium.webdriver.edge.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from playwright.sync_api import sync_playwright
 
-# Variables de descarga
-saveTxtT = 'C:\\Temp\\filesAuto\\'
-segundos = 10
-intnameFile = 'interaction'
-incNameFile = 'incident'
-sctNameFile = 'sc_task'
-Txtmacroponent = 'macroponent-f51912f4c700201072b211d4d8c26010'
-txTFrame = '#gsft_main'
+def run(playwright):
+    # Lanzar el navegador
+    browser = playwright.chromium.launch(headless=False)  # headless=False para ver el navegador en acción
+    # Crear una nueva página
+    page = browser.new_page()
+    # Navegar a Google
+    page.goto('https://www.google.com')
+    # Encontrar el campo de búsqueda y escribir una consulta
+    page.fill('input[name="q"]', 'Python Playwright')
+    # Presionar Enter para buscar
+    page.press('input[name="q"]', 'Enter')
+    # Esperar a que los resultados se carguen
+    page.wait_for_selector('h3')
+    # Cerrar el navegador
+    browser.close()
 
-# Función para acceder al shadow root
-def cleanPath(folder_path, filename):
-    fullFile = filename+'.csv'
-    if os.path.exists(folder_path):
-        file_path = os.path.join(folder_path, fullFile)
-        try:
-            # Verificar si es un archivo (no un directorio)
-            if os.path.isfile(file_path):
-                os.remove(file_path)  # Eliminar el archivo
-                print(f'Archivo eliminado: {file_path}')
-        except Exception as e:
-            print(f'Error al eliminar {file_path}: {e}')
-    else:
-        print(f'La carpeta {folder_path} no existe.')
-
-def get_new_file(fileName):
-    base, extension = os.path.splitext(fileName)
-    tiemstamp = datetime.now().strftime('%Y%m%d%H%M%S')
-    textName = f"{base}_{tiemstamp}{extension}"
-    return 'Comunicaciones.xlsx'
-
-def get_mail13(pathSave):
-    if not os.path.exists(pathSave):
-        os.makedirs(pathSave)
-    outlook = win32com.client.Dispatch('outlook.Application').GetNamespace('MAPI')
-    try:
-      inbox = outlook.Folders.Item('Bandeja de entrada')
-    except:
-      inbox = outlook.GetDefaultFolder(6)
-
-    suc_fuera = inbox.Folders.Item('Suc Fuera')
-    messages = suc_fuera.items
-
-    for message in messages:
-     if message.Unread:
-         for attachment in message.Attachments:
-             if attachment.FileName.endswith('.XLSX'):
-                new_file = get_new_file(attachment.FileName)
-                attachment.SaveAsFile(os.path.join(pathSave, new_file))
-                print(f"Se guardo el archivo con el nombre {new_file}")
-
-def updateDataBaseSN(baseCsv, webMacro, frameHtml):
-    # Función para acceder al shadow root
-    def expand_shadow_element(element):
-        shadow_root = browser.execute_script('return arguments[0].shadowRoot', element)
-        return shadow_root
-
-    # Configuración del WebDriver
-    driver_path = "C:/Temp/edgedriver/msedgedriver.exe"
-    service = Service(driver_path)
-    browser = webdriver.Edge(service=service)
-    actions = ActionChains(browser)
-
-    # Abre la página
-    browser.get('https://santander.service-now.com/now/nav/ui/classic/params/target/interaction_list.do%3Fsysparm_nostack%3Dtrue%26sysparm_query%3Dassignment_group%253D486e1e33db58a850cc7c6def4b9619d7%255Eopened_atONToday%40javascript%3Ags.beginningOfToday()%40javascript%3Ags.endOfToday()%26sysparm_first_row%3D1%26sysparm_view%3D')
-
-    # Espera a que se cargue la página
-    time.sleep(15)
-    linkActData = browser.find_element(By.XPATH, '//*[contains(text(),"Llamar al +XX XXXXXXXX")]')
-    # linkActData = browser.find_element(By.XPATH, '//*[@pngsrc="https://aadcdn.msftauth.net/shared/1.0/content/images/picker_verify_call_"]')
-    linkActData.click()
-    time.sleep(40)
-    print('Buscar Numero')
-
-    try:
-        # Encuentra el macroponent que contiene el shadow root
-        macroponent = WebDriverWait(browser, 5).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, webMacro))
-        )
-        shadow_root = expand_shadow_element(macroponent)
-        print("Acceso al shadow root exitoso.")
-
-        # Encuentra el iframe dentro del shadow root
-        iframe = WebDriverWait(shadow_root, 5).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, frameHtml))
-        )
-        browser.switch_to.frame(iframe)
-        print(f"Cambio al iframe {frameHtml} exitoso.")
-    except Exception as e:
-        print(f"Error al acceder al shadow root o al iframe. Error: {e}")
-
-    # Espera a que el elemento <th> con name="number" esté presente
-    try:
-        btnNumber = WebDriverWait(browser, 5).until(
-            EC.presence_of_element_located((By.XPATH, '//th[@name="number"]'))
-        )
-        print("Elemento encontrado:", btnNumber.text)
-        # Realiza el clic derecho
-        actions.context_click(btnNumber).perform()
-        print("Clic derecho realizado en el elemento.")
-    except Exception as e:
-        print(f"Elemento no encontrado o error al hacer clic derecho. Error: {e}")
-
-    try:
-        btnExportar = WebDriverWait(browser, 5).until(
-            EC.presence_of_element_located((By.XPATH, '//div[@data-context-menu-label="Exportar"]'))
-        )
-        print("Elemento encontrado:", btnExportar.text)
-        # Realiza el clic
-        actions.click(btnExportar).perform()
-        print("Clic En Exportar.")
-    except Exception as e:
-        print(f"Elemento no encontrado o error al hacer clic en Exportar. Error: {e}")
-
-    try:
-        btnCSV = WebDriverWait(browser, 5).until(
-            EC.presence_of_element_located((By.XPATH, f'//*[@id="d1ad2f010a0a0b3e005c8b7fbd7c4e28_{baseCsv}"]/div[3]'))
-        )
-        print("Elemento encontrado:", btnCSV.text)
-        # Realiza el clic
-        actions.click(btnCSV).perform()
-        print("Clic En CSV.")
-    except Exception as e:
-        print(f"Elemento no encontrado o error al hacer clic en CSV. Error: {e}")
-
-    try:
-        btnDescargar = WebDriverWait(browser, 10).until(
-            EC.presence_of_element_located((By.XPATH, '//*[@id="download_button"]'))
-        )
-        print("Elemento encontrado:", btnDescargar.text)
-        time.sleep(segundos)
-        actions.click(btnDescargar).perform()
-        print("Clic En BtnDescargar.")
-    except Exception as e:
-        print(f"Elemento no encontrado o error al hacer clic en BtnDescargar. Error: {e}")
-
-    time.sleep(5)
-    imgSaveAs = "C:/Temp/imgAuto/btnSaveAs.PNG"
-    btnSaveAs = pyautogui.locateOnScreen(imgSaveAs)
-
-    if btnSaveAs:
-        pyautogui.click(btnSaveAs)
-        print('Click En Guardar Como')
-    else:
-        print('de que hablas lo que buscas no esta aqui')
-
-    time.sleep(2)
-
-    pyautogui.write(saveTxtT+baseCsv)
-    time.sleep(3)
-    pyautogui.press('enter')
-    print(f"Guardando Archivo: {baseCsv}.csv")
-
-
-    # Espera antes de cerrar el navegador
-    time.sleep(60)
-    browser.quit()
-
-cleanPath(saveTxtT, incNameFile)
-get_mail13(saveTxtT)
-updateDataBaseSN(incNameFile, Txtmacroponent, txTFrame)
+# Ejecutar el script con Playwright
+with sync_playwright() as playwright:
+    run(playwright)
