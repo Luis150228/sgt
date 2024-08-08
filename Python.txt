@@ -1,54 +1,45 @@
-import time
-from playwright.sync_api import sync_playwright
+import mysql.connector
+from mysql.connector import Error
 
-def run(playwright):
-    # Lanzar el navegador
-    browser = playwright.chromium.launch(headless=False)  # headless=False para ver el navegador en acción
-    # Crear una nueva página
-    page = browser.new_page()
-    # Navegar a Google
-    page.goto('http://180.176.105.244/eut_reportes/')
-    # Encontrar el campo de búsqueda y escribir una consulta
-    time.sleep(2)
-    page.fill('input[id="usr"]', 'C356882')
-    time.sleep(2)
-    # Presionar Enter para buscar
-    page.fill('input[name="pass"]', 'derekNatalie72')
-    time.sleep(2)
-    page.press('input[name="pass"]', 'Enter')
-    # Esperar a que los resultados se carguen
-    time.sleep(200)
-    page.wait_for_selector('h3')
-    # Cerrar el navegador
-    browser.close()
+def ejecutar_procedimiento_almacenado(nombre_procedimiento, parametros):
+    try:
+        # Paso 1: Conectar a la base de datos
+        conexion = mysql.connector.connect(
+            host='tu_host',  # Ejemplo: 'localhost'
+            user='tu_usuario',  # Ejemplo: 'root'
+            password='tu_contraseña',  # Tu contraseña de MySQL
+            database='tu_base_de_datos'  # Nombre de la base de datos
+        )
 
-# Ejecutar el script con Playwright
-with sync_playwright() as playwright:
-    run(playwright)
+        if conexion.is_connected():
+            print("Conexión exitosa a la base de datos")
 
+            # Paso 2: Crear un cursor para ejecutar el procedimiento almacenado
+            cursor = conexion.cursor()
 
-[Running] python -u "c:\Users\c356882\Desktop\autoEUT\testAuto001.py"
-Traceback (most recent call last):
-  File "c:\Users\c356882\Desktop\autoEUT\testAuto001.py", line 27, in <module>
-    run(playwright)
-  File "c:\Users\c356882\Desktop\autoEUT\testAuto001.py", line 6, in run
-    browser = playwright.chromium.launch(headless=False)  # headless=False para ver el navegador en acci�n
-  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\playwright\sync_api\_generated.py", line 14155, in launch
-    self._sync(
-  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
-    return task.result()
-  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\playwright\_impl\_browser_type.py", line 94, in launch
-    Browser, from_channel(await self._channel.send("launch", params))
-  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\playwright\_impl\_connection.py", line 59, in send
-    return await self._connection.wrap_api_call(
-  File "C:\Users\c356882\AppData\Local\Programs\Python\Python310\lib\site-packages\playwright\_impl\_connection.py", line 514, in wrap_api_call
-    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
-playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at C:\Users\c356882\AppData\Local\ms-playwright\chromium-1124\chrome-win\chrome.exe
-\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557
-\u2551 Looks like Playwright was just installed or updated.       \u2551
-\u2551 Please run the following command to download new browsers: \u2551
-\u2551                                                            \u2551
-\u2551     playwright install                                     \u2551
-\u2551                                                            \u2551
-\u2551 <3 Playwright Team                                         \u2551
-\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d
+            # Paso 3: Ejecutar el procedimiento almacenado
+            cursor.callproc(nombre_procedimiento, parametros)
+
+            # Paso 4: Manejar los resultados (si el procedimiento devuelve resultados)
+            for resultado in cursor.stored_results():
+                print(f"Resultado del procedimiento almacenado: {resultado.fetchall()}")
+
+    except Error as e:
+        print(f"Error al conectar a MySQL: {e}")
+    
+    finally:
+        # Paso 5: Cerrar la conexión
+        if conexion.is_connected():
+            cursor.close()
+            conexion.close()
+            print("Conexión a MySQL cerrada")
+
+if __name__ == "__main__":
+    # Nombre del procedimiento almacenado
+    nombre_procedimiento = 'nombre_del_procedimiento'
+
+    # Parámetros que requiere el procedimiento almacenado (puede ser una lista vacía si no necesita parámetros)
+    parametros = (param1, param2)  # Reemplaza con los valores reales
+
+    # Ejecutar la función para ejecutar el procedimiento almacenado
+    ejecutar_procedimiento_almacenado(nombre_procedimiento, parametros)
