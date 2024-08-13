@@ -1,45 +1,18 @@
-import mysql.connector
-from mysql.connector import Error
+el siguiente codigo si abre la aplicacion y posterior le pido que busque una imagen en patalla de esa aplicacion que se que si abrio pero no la localiza como imagen de que forma puedo ver que ventanas estan abiertas y seleccionar la ventana de la aplicacion de start_ccpulse
 
-def ejecutar_procedimiento_almacenado(nombre_procedimiento, parametros):
-    try:
-        # Paso 1: Conectar a la base de datos
-        conexion = mysql.connector.connect(
-            host='tu_host',  # Ejemplo: 'localhost'
-            user='tu_usuario',  # Ejemplo: 'root'
-            password='tu_contraseña',  # Tu contraseña de MySQL
-            database='tu_base_de_datos'  # Nombre de la base de datos
-        )
+import pyautogui, os, mouse, time
 
-        if conexion.is_connected():
-            print("Conexión exitosa a la base de datos")
-
-            # Paso 2: Crear un cursor para ejecutar el procedimiento almacenado
-            cursor = conexion.cursor()
-
-            # Paso 3: Ejecutar el procedimiento almacenado
-            cursor.callproc(nombre_procedimiento, parametros)
-
-            # Paso 4: Manejar los resultados (si el procedimiento devuelve resultados)
-            for resultado in cursor.stored_results():
-                print(f"Resultado del procedimiento almacenado: {resultado.fetchall()}")
-
-    except Error as e:
-        print(f"Error al conectar a MySQL: {e}")
-    
-    finally:
-        # Paso 5: Cerrar la conexión
-        if conexion.is_connected():
-            cursor.close()
-            conexion.close()
-            print("Conexión a MySQL cerrada")
-
-if __name__ == "__main__":
-    # Nombre del procedimiento almacenado
-    nombre_procedimiento = 'nombre_del_procedimiento'
-
-    # Parámetros que requiere el procedimiento almacenado (puede ser una lista vacía si no necesita parámetros)
-    parametros = (param1, param2)  # Reemplaza con los valores reales
-
-    # Ejecutar la función para ejecutar el procedimiento almacenado
-    ejecutar_procedimiento_almacenado(nombre_procedimiento, parametros)
+start_ccpulse = r'"C:\Program Files\GCTI\CCPulse+\CallCenter.exe"'
+os.system(start_ccpulse)
+time.sleep(1)
+imgPass = "C:/Temp/imgAuto/ccpulsePass.PNG"
+clickPass = pyautogui.locateOnScreen(imgPass)
+if clickPass is not None:
+    print('input de password')
+    pyautogui.click(clickPass)
+    time.sleep(5)
+    pyautogui.write('1234', interval=0.1)
+    time.sleep(1)
+    pyautogui.press('enter')
+else:
+  print('No se localiza el input de password')
