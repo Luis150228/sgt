@@ -1,69 +1,69 @@
 Pregunta 1 de 10.
-Son las tipologías consideradas en el Lavado de dinero, excepto:
-        "01" Colocación.
-        "02" Estratificación/ diversificación
-        "03" Emplazamiento
-        "04" Integración.
+Entre sus funciones se encuentra enviar los reportes de operaciones a la autoridad:
+01 Consejo de Administración.
+02 Comunicación y Control.
+03 Oficial de Cumplimiento.
+04 Auditoría.
 
 Pregunta 2 de 10.
-El reporte de operaciones en ________ con dólares, se deberá realizar __________, las cuales podrán ser efectuadas por persona física o moral, cuando sea igual o supere los _______.
-        "01" Efectivo, mensualmente, 500 USD.
-        "02" Efectivo, trimestralmente, 250 USD.
-        "03" Efectivo, trimestralmente, 500 USD.
-        "04" Cheque de viajero, trimestralmente, 500 USD.
+El Gobierno Corporativo está conformado por un Oficial de Cumplimiento, un Comité de Auditoría y por:
+01 Un Sindicato Único de Trabajadores.
+02 Un Comité de Procedimientos y Pagos.
+03 Un Comité de Comunicación y Control.
+04 Un Sindicato Externo de Control.
 
 Pregunta 3 de 10.
-Son conductas en la tipología de estratificación que dan indicios de actividades ilícitas, a excepción de:
-        "01" Alto volumen de transferencias nacionales a múltiples plazas.
-        "02" Cambios frecuentes de domicilios por parte del clientes, cotitulares o terceros autorizados.
-        "03" Congruencia entre el volumen de la transaccionalidad realizada con la actividad económica declarada por el cliente.
-        "04" Alto volumen de solicitudes de cheques de caja certificados sin justificar su actividad declarada.
+El Comité de Auditoría es el responsable de:
+01 Conocer e informar a los usuarios de la entidad los resultados de las auditorías internas o externas.
+02 Aprobar los criterios, medidas y procedimientos de la política general para la identificación del cliente.
+03 Votar, dictaminar y reportar las operaciones "fast track " a la Secretaría de Hacienda y Crédito Público.
+04 Aprobar los criterios, medidas y procedimientos para realizar Lavado de Dinero en la institución y con los clientes.
 
 Pregunta 4 de 10.
-Son operaciones individuales, ejecutadas por clientes o usuarios en efectivo, con cheque de viajero; monedas acuñadas en oro, por montos iguales o mayores a 7,500 USD o su equivalente en moneda nacional:
-        "01" Operaciones inusuales.
-        "02" Operaciones internas preocupantes.
-        "03" Operaciones relevantes.
-        "04" Operaciones con cheques de caja.
+¿Cuántas veces al año está obligada la Entidad a capacitar a su personal en materia de Prevención de Lavado de Dinero?"
+01 Tres veces al año.
+02 Una vez al año.
+03 Cada 2 años.
+04 Dos veces al año.
 
 Pregunta 5 de 10.
-Son operaciones que se realizan o pretendan realizar, y en la que por cualquier causa se sospeche o haya indicios de los recursos se pueden relacionar con lavado de dinero o financiamiento al terrorismo
-        "01" Operaciones financieras.
-        "02" Operaciones internas preocupantes.
-        "03" Operaciones inusuales.
-        "04" Operaciones relevantes.
+Es el encargado de Someter a aprobación del Comité de Auditoría de la Entidad el Manual de Cumplimiento.
+01 Oficial de Cumplimiento.
+02 Comité de Comunicación y Control.
+03 Director General.
+04 Comité de Auditoría.
 
 Pregunta 6 de 10.
-Son conductas en la tipología de colocación que indica actividades ilícitas, a excepción de:
-        "01" Clientes que se niega a suscribir una declarativa de procedencia de recursos.
-        "02" Clientes que en ventanillas reduce importes de bonos o entrega de efectivo para evadir parámetros de reportes.
-        "03" Clientes que su domicilio, teléfonos y RFC no se vinculan o relacionan con otros clientes.
-        "04" Clientes que se niegan expresamente a proporcionar datos para su proceso de identificación.
+Una de sus funciones consiste en informar al Comité de Comunicación Control respecto de conductas, actividades o comportamientos realizados por los directivos, funcionarios, empleados o apoderados de la Entidad, que provoquen que ésta incurra en infracción a lo dispuesto en la Ley.
+01 Comité de Comunicación y Control.
+02 Oficial de Cumplimiento.
+03 Consejo de Administración.
+04 Comité de Auditoría.
 
 Pregunta 7 de 10.
-Se refiere a las operaciones que no concuerdan con las declaraciones y antecedentes del cliente con respecto al origen de sus recursos, monto o movimiento.
-        "01" Internas preocupantes.
-        "02" Relevantes.
-        "03" Inusuales.
-        "04" En efectivo con dólares.
+Es una de las responsabilidades del Oficial de Cumplimiento:
+01 Capacitar a los colaboradores de la Entidad para realizar operaciones inusuales.
+02 Enviar a la autoridad y dar seguimiento a los reportes de operaciones inusuales.
+03 Dar a conocer a los usuarios el reporte de las operaciones inusuales.
+04 Auditar y sancionar a las personas que realicen operaciones inusuales.
 
 Pregunta 8 de 10.
-Incongruencia entre el volumen de la transaccionalidad realizada con la actividad económica declarada por el cliente, es una conducta que da indicios de Lavado de dinero y se observa en la etapa:
-        "01" Operación inusual.
-        "02" Ejecución.
-        "03" Estratificación.
-        "04" Colocación.
+El Comité de Comunicación y Control, entre otras cosas, es responsable de:
+01 Investigar los casos de fraude dentro de la Entidad.
+02 Verificar que el sistema contenga la lista de personas bloqueadas.
+03 Verificar que el Comité de Auditoría sesionó regularmente.
+04 Contratar al personal relacionado con el área de auditoría.
 
 Pregunta 9 de 10.
-Se han detectado diversas formas en las que se ha buscado usar a la Banca para "legitimar recursos", estas son: colocación, estratificación, integración, a esto se le conoce como...
-        "01" Cursos de Lavado de Dinero.
-        "02" Lavado de Dinero con dólares americanos.
-        "03" Tipologías de Lavado de Dinero.
-        "04" Escalonamiento de Lavado de Dinero.
+Con la finalidad de prevenir el Lavado de Dinero y Financiamiento al Terrorismo se cuenta con cuatro elementos de gestión. Menciona cual de ellos no se considera dentro de estos elementos:
+01 Metodología de Evaluación del Riesgo
+02 Manual Externo de Cumplimiento emitido por las autoridades judiciales
+03 Capacitación en materia de prevención y detección e Lavado de dienero y Financiamiento al Terrorismo
+04 Órgano de Control
 
 Pregunta 10 de 10.
-Las operaciones con cheque de caja se reportan de manera trimestral cuando sea un monto igual o mayor a:
-        "01" 1,000 USD
-        "02" 2,500 USD
-        "03" 10,000 USD
-        "04" 5,000 USD
+Es el órgano encargado de ejecutar la evaluación y dictaminación del cumplimiento que da la Entidad a la normatividad aplicable en materia de PLD:
+01 Dirección general de la Entidad.
+02 Comité de Auditoría.
+03 Oficial de Contraloría.
+04 Comité de Comunicación y Calidad.
