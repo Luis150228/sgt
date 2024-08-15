@@ -1,69 +1,62 @@
+Bloque 6
+
 Pregunta 1 de 10.
-Entre sus funciones se encuentra enviar los reportes de operaciones a la autoridad:
-01 Consejo de Administración.
-02 Comunicación y Control.
-03 Oficial de Cumplimiento.
-04 Auditoría.
-
+Incluye la revisión de la eficiencia y eficacia de la metodología, dando la posibilidad de realizar actualizaciones o modificaciones.
+    01 Diseño.
+    02 Implementación.
+    03 Prospección de clientes.
+    04 Valoración de resultados.
 Pregunta 2 de 10.
-El Gobierno Corporativo está conformado por un Oficial de Cumplimiento, un Comité de Auditoría y por:
-01 Un Sindicato Único de Trabajadores.
-02 Un Comité de Procedimientos y Pagos.
-03 Un Comité de Comunicación y Control.
-04 Un Sindicato Externo de Control.
-
+Es el documento donde se puede conocer el resultado de la evaluación de los principales riesgos asociados a los clientes, productos, servicios, áreas geográficas y demás elementos vinculados con las operaciones realizadas por tu entidad.
+    01 Estados de situación financiera
+    02 Resultados de entrevistas y visitas a clientes.
+    03 Ley Federal Anti Lavado
+    04 Matriz de riesgo de productos
 Pregunta 3 de 10.
-El Comité de Auditoría es el responsable de:
-01 Conocer e informar a los usuarios de la entidad los resultados de las auditorías internas o externas.
-02 Aprobar los criterios, medidas y procedimientos de la política general para la identificación del cliente.
-03 Votar, dictaminar y reportar las operaciones "fast track " a la Secretaría de Hacienda y Crédito Público.
-04 Aprobar los criterios, medidas y procedimientos para realizar Lavado de Dinero en la institución y con los clientes.
-
+Se refiere a poner en funcionamiento la metodología, lo cual permite conocer el riesgo residual en la materia después de aplicados los mitigadores de riesgo.
+    01 Diseño.
+    02 Planeación.
+    03 Valoración.
+    04 Implementación.
 Pregunta 4 de 10.
-¿Cuántas veces al año está obligada la Entidad a capacitar a su personal en materia de Prevención de Lavado de Dinero?"
-01 Tres veces al año.
-02 Una vez al año.
-03 Cada 2 años.
-04 Dos veces al año.
-
+¿Con qué siglas se registra en la matriz de riesgo cuando un producto o servicio está dirigido a personas físicas?
+    01 PM
+    02 PEFI
+    03 PFAE
+    04 PF
 Pregunta 5 de 10.
-Es el encargado de Someter a aprobación del Comité de Auditoría de la Entidad el Manual de Cumplimiento.
-01 Oficial de Cumplimiento.
-02 Comité de Comunicación y Control.
-03 Director General.
-04 Comité de Auditoría.
-
+¿Cuáles son las fases que debe tener la metodología que usan las entidades para evaluar el riesgo para PLD y financiamiento al terrorismo?
+    01 Análisis, planeación y evaluación de la metodología.
+    02 Diseño y generación, planeación y análisis de la metodología.
+    03 Análisis, planeación e implementación de la metodología.
+    04 Diseño, implementación y valoración de resultados
 Pregunta 6 de 10.
-Una de sus funciones consiste en informar al Comité de Comunicación Control respecto de conductas, actividades o comportamientos realizados por los directivos, funcionarios, empleados o apoderados de la Entidad, que provoquen que ésta incurra en infracción a lo dispuesto en la Ley.
-01 Comité de Comunicación y Control.
-02 Oficial de Cumplimiento.
-03 Consejo de Administración.
-04 Comité de Auditoría.
-
+Esta palabra significa contingencia o proximidad de un daño:
+    01 Auditoría.
+    02 Lavado de Dinero.
+    03 Prevención.
+    04 Riesgo.
 Pregunta 7 de 10.
-Es una de las responsabilidades del Oficial de Cumplimiento:
-01 Capacitar a los colaboradores de la Entidad para realizar operaciones inusuales.
-02 Enviar a la autoridad y dar seguimiento a los reportes de operaciones inusuales.
-03 Dar a conocer a los usuarios el reporte de las operaciones inusuales.
-04 Auditar y sancionar a las personas que realicen operaciones inusuales.
-
+¿Cómo aparece registrado en la matriz de riesgo un producto o servicio que solo admite clientes?
+    01 En "Admite usuarios" aparecerá SI
+    02 En "Cliente" aparecerá NO
+    03 En "Admite extranjeros" aparecerá NO
+    04 En "Admite usuarios" aparecerá NO
 Pregunta 8 de 10.
-El Comité de Comunicación y Control, entre otras cosas, es responsable de:
-01 Investigar los casos de fraude dentro de la Entidad.
-02 Verificar que el sistema contenga la lista de personas bloqueadas.
-03 Verificar que el Comité de Auditoría sesionó regularmente.
-04 Contratar al personal relacionado con el área de auditoría.
-
+El "Diseño y generación de la metodología de evaluación de riesgo" comprende los siguientes procesos; excepto:
+    01 Identificación de los elementos de riesgo.
+    02 Medidas de nulificación para cada riesgo.
+    03 Uso de un método para la medición de los riesgos.
+    04 Determinación del riesgo residual, para la entidad financiera.
 Pregunta 9 de 10.
-Con la finalidad de prevenir el Lavado de Dinero y Financiamiento al Terrorismo se cuenta con cuatro elementos de gestión. Menciona cual de ellos no se considera dentro de estos elementos:
-01 Metodología de Evaluación del Riesgo
-02 Manual Externo de Cumplimiento emitido por las autoridades judiciales
-03 Capacitación en materia de prevención y detección e Lavado de dienero y Financiamiento al Terrorismo
-04 Órgano de Control
-
+Son las calificaciones de riesgo que indica la Matriz de riesgos de productos, excepto:
+    01 Insignificante
+    02 Riesgo nulo
+    03 Menor
+    04 Muy Alto
 Pregunta 10 de 10.
-Es el órgano encargado de ejecutar la evaluación y dictaminación del cumplimiento que da la Entidad a la normatividad aplicable en materia de PLD:
-01 Dirección general de la Entidad.
-02 Comité de Auditoría.
-03 Oficial de Contraloría.
-04 Comité de Comunicación y Calidad.
+Según la información de la matriz de riesgos de tu entidad, las siguientes son algunas medidas para la mitigación del riesgo, que se aplican en ciertos productos y servicios que se ofrecen, excepto:
+    01 Aplicar el Know Your Customer (KYC)
+    02 Permitir la contratación de productos o servicios aun cuando el expediente esté incompleto.
+    03 Monitorear las operaciones por medio de sistemas automatizados.
+    04 Clasificar a los clientes por su nivel de riesgo.
