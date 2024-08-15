@@ -1,76 +1,69 @@
-
 Pregunta 1 de 10.
-En el caso que la apertura de la cuenta se realice vía remota a través de dispositivos electrónicos, ¿cómo se deberá completar?
-id="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl01_rt">Como parte del expediente de identificación deberá recabarse la geolocalización del dispositivo a través del cual se abrió la cuenta.
-id="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl02_rt">Será necesario enviar los documentos (identificación, comprobante de domicilio, etc) para que se puedan cotejar los documentos.
-id="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl03_rt">No es necesario que se complemente nada, ya que toda la información ya fue capturada en el dispositivo utilizado.
-id="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl04_rt">Como parte del expediente de identificación deberá recabarse la geolocalización del cliente que aperturó la cuenta.
-        
+Son las tipologías consideradas en el Lavado de dinero, excepto:
+        "01" Colocación.
+        "02" Estratificación/ diversificación
+        "03" Emplazamiento
+        "04" Integración.
+
 Pregunta 2 de 10.
-¿Cuál es la regla para el conocimiento del cliente?
-id="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl01_rt">A mayor riesgo representado por el cliente, mayor información se debe recabar.
-id="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl02_rt">El riesgo del cliente no influye en la cantidad de información a recabar.
-id="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl03_rt">A mayor riesgo representado por el cliente, menor información se debe recabar.
-id="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl04_rt">A menor riesgo representado por el cliente, mayor información se debe recabar.
-        
+El reporte de operaciones en ________ con dólares, se deberá realizar __________, las cuales podrán ser efectuadas por persona física o moral, cuando sea igual o supere los _______.
+        "01" Efectivo, mensualmente, 500 USD.
+        "02" Efectivo, trimestralmente, 250 USD.
+        "03" Efectivo, trimestralmente, 500 USD.
+        "04" Cheque de viajero, trimestralmente, 500 USD.
+
 Pregunta 3 de 10.
-¿Cuál es la finalidad del conocimiento de un cliente?
-id="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl01_rt">Identificar, medir y mitigar el riesgo de que la Entidad, sea utilizada para Lavado de Dinero y/o Financiamiento al Terrorismo, mediante los productos, servicios, prácticas y tecnologías, con que se opera.
-id="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl02_rt">Satisfacer las necesidades del cliente aunque se ignoren las políticas y procedimientos establecidos.
-id="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl03_rt">Identificar el registro incorrecto de los datos de los usuarios.
-id="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl04_rt">El conocimiento del cliente que permite determinar la transaccionalidad de clientes y usuarios.
-        
+Son conductas en la tipología de estratificación que dan indicios de actividades ilícitas, a excepción de:
+        "01" Alto volumen de transferencias nacionales a múltiples plazas.
+        "02" Cambios frecuentes de domicilios por parte del clientes, cotitulares o terceros autorizados.
+        "03" Congruencia entre el volumen de la transaccionalidad realizada con la actividad económica declarada por el cliente.
+        "04" Alto volumen de solicitudes de cheques de caja certificados sin justificar su actividad declarada.
+
 Pregunta 4 de 10.
-Es quien tiene la capacidad para disponer de los recursos con cargo a la cuenta abierta, por el cliente o contratante:
-id="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl01_rt">Cónyuge.
-id="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl02_rt">Cotitular.
-id="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl03_rt">Ejecutivo de cuenta.
-id="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl04_rt">Proveedor de recursos.
-</span><>
-        
+Son operaciones individuales, ejecutadas por clientes o usuarios en efectivo, con cheque de viajero; monedas acuñadas en oro, por montos iguales o mayores a 7,500 USD o su equivalente en moneda nacional:
+        "01" Operaciones inusuales.
+        "02" Operaciones internas preocupantes.
+        "03" Operaciones relevantes.
+        "04" Operaciones con cheques de caja.
+
 Pregunta 5 de 10.
-¿Quién actualiza y publica la lista de personas bloqueadas por relacionarse con el delito de Lavado de Dinero?
-id="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl01_rt">CONDUSEF.
-id="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl02_rt">SHCP.
-id="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl03_rt">GAFI.
-id="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl04_rt">ONU.
-</span><>
-        
+Son operaciones que se realizan o pretendan realizar, y en la que por cualquier causa se sospeche o haya indicios de los recursos se pueden relacionar con lavado de dinero o financiamiento al terrorismo
+        "01" Operaciones financieras.
+        "02" Operaciones internas preocupantes.
+        "03" Operaciones inusuales.
+        "04" Operaciones relevantes.
+
 Pregunta 6 de 10.
-¿Cuáles son dos obligaciones que tiene la Entidad respecto del grado de riesgo de sus clientes?
-id="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl01_rt">Clasificar al cliente por la cantidad a invertir y verificar el monto cuando menos una vez al año.
-id="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl02_rt">Clasificar al cliente por grado de riesgo y reevaluar dicho grado cuando menos dos veces al año.
-id="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl03_rt">Clasificar al cotitular por grado de riesgo y reevaluar dicho grado cuando menos una vez al año.
-id="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl04_rt">Clasificar solo al beneficiario por grado de riesgo y verificarlo cuando menos una vez al año.
-</span><>
-        
+Son conductas en la tipología de colocación que indica actividades ilícitas, a excepción de:
+        "01" Clientes que se niega a suscribir una declarativa de procedencia de recursos.
+        "02" Clientes que en ventanillas reduce importes de bonos o entrega de efectivo para evadir parámetros de reportes.
+        "03" Clientes que su domicilio, teléfonos y RFC no se vinculan o relacionan con otros clientes.
+        "04" Clientes que se niegan expresamente a proporcionar datos para su proceso de identificación.
+
 Pregunta 7 de 10.
-Son factores que deben considerarse como generadores de riesgo ya en la operativa excepto:
-id="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl01_rt">Uso de múltiples pasaportes<
-id="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl02_rt">Carta de confidencialidad.
-id="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl03_rt">Operaciones sin justificación, en o desde plazas y países generadores de riesgo y que pueden facilitar la ejecución de actividades ilícitas.
-id="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl04_rt">Domicilio múltiples de un cliente o cuando el mismo domicilio lo tengan múltiples clientes.
-</span><>
-        
+Se refiere a las operaciones que no concuerdan con las declaraciones y antecedentes del cliente con respecto al origen de sus recursos, monto o movimiento.
+        "01" Internas preocupantes.
+        "02" Relevantes.
+        "03" Inusuales.
+        "04" En efectivo con dólares.
+
 Pregunta 8 de 10.
-¿Cual es la finalidad de identificar a un cliente?
-id="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl01_rt">En facilitarle a la persona física o moral los beneficios de todos los productos que ofrece la Entidad.
-id="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl02_rt">Individualizar a las personas físicas o morales. Actuar en la prevención, al poder correlacionar la operativa de un cliente o usuario determinado.
-id="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl03_rt">En permitirle a la persona física o moral el libre acceso a la Entidad cada vez que asiste a ella.
-id="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl04_rt">En saber los datos personales, así como también llamar por su nombre a la persona física o moral.
-</span><>
-        
+Incongruencia entre el volumen de la transaccionalidad realizada con la actividad económica declarada por el cliente, es una conducta que da indicios de Lavado de dinero y se observa en la etapa:
+        "01" Operación inusual.
+        "02" Ejecución.
+        "03" Estratificación.
+        "04" Colocación.
+
 Pregunta 9 de 10.
-Consiste en recabar datos y documentos que permiten conocer a la persona física o moral con la cual la Entidad interactúa.
-id="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl01_rt">Interacción del cliente.
-id="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl02_rt">Identificación del cliente.
-id="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl03_rt">Desconocimiento del cliente.
-id="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl04_rt">Actividades del cliente.
-</span><>
-        
+Se han detectado diversas formas en las que se ha buscado usar a la Banca para "legitimar recursos", estas son: colocación, estratificación, integración, a esto se le conoce como...
+        "01" Cursos de Lavado de Dinero.
+        "02" Lavado de Dinero con dólares americanos.
+        "03" Tipologías de Lavado de Dinero.
+        "04" Escalonamiento de Lavado de Dinero.
+
 Pregunta 10 de 10.
-Las Entidades deberán clasificar cuando menos como clientes de alto riesgo a las personas.
-id="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl01_rt">que no son políticamente expuestas y a los clientes residentes del segmento equivalente a Banca privada.
-id="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl02_rt">nacionales políticamente expuestas y a los clientes residentes del país.
-id="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl03_rt">extranjeras políticamente expuestas, clientes no residentes del segmento equivalente a Banca Privada y personas morales de las que puedan recibir dólares ilimitadamente.
-id="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl04_rt">nacionales y extranjeras políticamente expuestas y a los clientes residentes nacionales.
+Las operaciones con cheque de caja se reportan de manera trimestral cuando sea un monto igual o mayor a:
+        "01" 1,000 USD
+        "02" 2,500 USD
+        "03" 10,000 USD
+        "04" 5,000 USD
