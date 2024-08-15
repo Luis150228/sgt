@@ -1,18 +1,821 @@
-el siguiente codigo si abre la aplicacion y posterior le pido que busque una imagen en patalla de esa aplicacion que se que si abrio pero no la localiza como imagen de que forma puedo ver que ventanas estan abiertas y seleccionar la ventana de la aplicacion de start_ccpulse
+<span id="ac_sl_ctl00_sc_ql"><span>
+        
+            <h3 style="color: #000"><span id="ac_sl_ctl00_sc_ql_ctl00_QuestionNumLabel" class="catlinknormal" style="FONT-WEIGHT:bold;TEXT-DECORATION:none;">Pregunta 1 de 10.</span><a id="ac_sl_ctl00_sc_ql_ctl00_positionLink" role="presentation" name="1"></a></h3>
+        
+	<fieldset class="testEngine-question">
+	
 
-import pyautogui, os, mouse, time
+		
+			<legend class=""><span id="ac_sl_ctl00_sc_ql_ctl00_qc_QuestionLegend" class="testEngine-questionTitle">En el caso que la apertura de la cuenta se realice vía remota a través de dispositivos electrónicos, ¿cómo se deberá completar?</span></legend>
+		
+		<!-- Write Stuff -->
+	
+	
 
-start_ccpulse = r'"C:\Program Files\GCTI\CCPulse+\CallCenter.exe"'
-os.system(start_ccpulse)
-time.sleep(1)
-imgPass = "C:/Temp/imgAuto/ccpulsePass.PNG"
-clickPass = pyautogui.locateOnScreen(imgPass)
-if clickPass is not None:
-    print('input de password')
-    pyautogui.click(clickPass)
-    time.sleep(5)
-    pyautogui.write('1234', interval=0.1)
-    time.sleep(1)
-    pyautogui.press('enter')
-else:
-  print('No se localiza el input de password')
+
+<span id="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_cvTb" class="error" style="color:Red;display:none;">*</span>
+<span id="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl"><span>
+        <div>
+            
+        </div>
+    </span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl01_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl00$qc$sbvc$rvl$ctl01$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl00$qc$sbvc$rvl', this.name); clientSave('9549095','598812','0','434249','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl01_rv" id="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl01_rt">Como parte del expediente de identificación deberá recabarse la geolocalización del dispositivo a través del cual se abrió la cuenta.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl02_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl00$qc$sbvc$rvl$ctl02$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl00$qc$sbvc$rvl', this.name); clientSave('9549095','598812','0','434252','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl02_rv" id="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl02_rt">Será necesario enviar los documentos (identificación, comprobante de domicilio, etc) para que se puedan cotejar los documentos.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl03_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl00$qc$sbvc$rvl$ctl03$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl00$qc$sbvc$rvl', this.name); clientSave('9549095','598812','0','434250','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl03_rv" id="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl03_rt">No es necesario que se complemente nada, ya que toda la información ya fue capturada en el dispositivo utilizado.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl04_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl00$qc$sbvc$rvl$ctl04$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl00$qc$sbvc$rvl', this.name); clientSave('9549095','598812','0','434251','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl04_rv" id="ac_sl_ctl00_sc_ql_ctl00_qc_sbvc_rvl_ctl04_rt">Como parte del expediente de identificación deberá recabarse la geolocalización del cliente que aperturó la cuenta.</label>
+			
+
+			
+        </div>
+	</span></span>
+	
+	
+	
+	
+
+	
+	</fieldset>
+
+
+
+
+<div style="COLOR: #808080; FONT-STYLE: italic">
+	
+</div>
+
+
+        
+        
+        
+
+        
+        <div class="markForFollowUp">
+            <span class="FieldValue"><input id="ac_sl_ctl00_sc_ql_ctl00_FollowUpChk" type="checkbox" name="ac$sl$ctl00$sc$ql$ctl00$FollowUpChk"><label for="ac_sl_ctl00_sc_ql_ctl00_FollowUpChk">Marcar para seguimiento</label></span>
+        </div>
+        <hr>
+        </span><span>
+        
+            <h3 style="color: #000"><span id="ac_sl_ctl00_sc_ql_ctl01_QuestionNumLabel" class="catlinknormal" style="FONT-WEIGHT:bold;TEXT-DECORATION:none;">Pregunta 2 de 10.</span><a id="ac_sl_ctl00_sc_ql_ctl01_positionLink" role="presentation" name="2"></a></h3>
+        
+	<fieldset class="testEngine-question">
+	
+
+		
+			<legend class=""><span id="ac_sl_ctl00_sc_ql_ctl01_qc_QuestionLegend" class="testEngine-questionTitle">¿Cuál es la regla para el conocimiento del cliente?</span></legend>
+		
+		<!-- Write Stuff -->
+	
+	
+
+
+<span id="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_cvTb" class="error" style="color:Red;display:none;">*</span>
+<span id="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl"><span>
+        <div>
+            
+        </div>
+    </span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl01_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl01$qc$sbvc$rvl$ctl01$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl01$qc$sbvc$rvl', this.name); clientSave('9549095','598814','0','434239','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl01_rv" id="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl01_rt">A mayor riesgo representado por el cliente, mayor información se debe recabar.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl02_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl01$qc$sbvc$rvl$ctl02$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl01$qc$sbvc$rvl', this.name); clientSave('9549095','598814','0','434242','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl02_rv" id="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl02_rt">El riesgo del cliente no influye en la cantidad de información a recabar.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl03_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl01$qc$sbvc$rvl$ctl03$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl01$qc$sbvc$rvl', this.name); clientSave('9549095','598814','0','434240','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl03_rv" id="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl03_rt">A mayor riesgo representado por el cliente, menor información se debe recabar.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl04_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl01$qc$sbvc$rvl$ctl04$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl01$qc$sbvc$rvl', this.name); clientSave('9549095','598814','0','434241','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl04_rv" id="ac_sl_ctl00_sc_ql_ctl01_qc_sbvc_rvl_ctl04_rt">A menor riesgo representado por el cliente, mayor información se debe recabar.</label>
+			
+
+			
+        </div>
+	</span></span>
+	
+	
+	
+	
+
+	
+	</fieldset>
+
+
+
+
+<div style="COLOR: #808080; FONT-STYLE: italic">
+	
+</div>
+
+
+        
+        
+        
+
+        
+        <div class="markForFollowUp">
+            <span class="FieldValue"><input id="ac_sl_ctl00_sc_ql_ctl01_FollowUpChk" type="checkbox" name="ac$sl$ctl00$sc$ql$ctl01$FollowUpChk"><label for="ac_sl_ctl00_sc_ql_ctl01_FollowUpChk">Marcar para seguimiento</label></span>
+        </div>
+        <hr>
+        </span><span>
+        
+            <h3 style="color: #000"><span id="ac_sl_ctl00_sc_ql_ctl02_QuestionNumLabel" class="catlinknormal" style="FONT-WEIGHT:bold;TEXT-DECORATION:none;">Pregunta 3 de 10.</span><a id="ac_sl_ctl00_sc_ql_ctl02_positionLink" role="presentation" name="3"></a></h3>
+        
+	<fieldset class="testEngine-question">
+	
+
+		
+			<legend class=""><span id="ac_sl_ctl00_sc_ql_ctl02_qc_QuestionLegend" class="testEngine-questionTitle">¿Cuál es la finalidad del conocimiento de un cliente?</span></legend>
+		
+		<!-- Write Stuff -->
+	
+	
+
+
+<span id="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_cvTb" class="error" style="color:Red;display:none;">*</span>
+<span id="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl"><span>
+        <div>
+            
+        </div>
+    </span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl01_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl02$qc$sbvc$rvl$ctl01$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl02$qc$sbvc$rvl', this.name); clientSave('9549095','598821','0','434204','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl01_rv" id="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl01_rt">Identificar, medir y mitigar el riesgo de que la Entidad, sea utilizada para Lavado de Dinero y/o Financiamiento al Terrorismo, mediante los productos, servicios, prácticas y tecnologías, con que se opera.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl02_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl02$qc$sbvc$rvl$ctl02$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl02$qc$sbvc$rvl', this.name); clientSave('9549095','598821','0','434207','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl02_rv" id="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl02_rt">Satisfacer las necesidades del cliente aunque se ignoren las políticas y procedimientos establecidos.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl03_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl02$qc$sbvc$rvl$ctl03$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl02$qc$sbvc$rvl', this.name); clientSave('9549095','598821','0','434205','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl03_rv" id="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl03_rt">Identificar el registro incorrecto de los datos de los usuarios.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl04_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl02$qc$sbvc$rvl$ctl04$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl02$qc$sbvc$rvl', this.name); clientSave('9549095','598821','0','434206','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl04_rv" id="ac_sl_ctl00_sc_ql_ctl02_qc_sbvc_rvl_ctl04_rt">El conocimiento del cliente que permite determinar la transaccionalidad de clientes y usuarios.</label>
+			
+
+			
+        </div>
+	</span></span>
+	
+	
+	
+	
+
+	
+	</fieldset>
+
+
+
+
+<div style="COLOR: #808080; FONT-STYLE: italic">
+	
+</div>
+
+
+        
+        
+        
+
+        
+        <div class="markForFollowUp">
+            <span class="FieldValue"><input id="ac_sl_ctl00_sc_ql_ctl02_FollowUpChk" type="checkbox" name="ac$sl$ctl00$sc$ql$ctl02$FollowUpChk"><label for="ac_sl_ctl00_sc_ql_ctl02_FollowUpChk">Marcar para seguimiento</label></span>
+        </div>
+        <hr>
+        </span><span>
+        
+            <h3 style="color: #000"><span id="ac_sl_ctl00_sc_ql_ctl03_QuestionNumLabel" class="catlinknormal" style="FONT-WEIGHT:bold;TEXT-DECORATION:none;">Pregunta 4 de 10.</span><a id="ac_sl_ctl00_sc_ql_ctl03_positionLink" role="presentation" name="4"></a></h3>
+        
+	<fieldset class="testEngine-question">
+	
+
+		
+			<legend class=""><span id="ac_sl_ctl00_sc_ql_ctl03_qc_QuestionLegend" class="testEngine-questionTitle">Es quien tiene la capacidad para disponer de los recursos con cargo a la cuenta abierta, por el cliente o contratante:</span></legend>
+		
+		<!-- Write Stuff -->
+	
+	
+
+
+<span id="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_cvTb" class="error" style="color:Red;display:none;">*</span>
+<span id="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl"><span>
+        <div>
+            
+        </div>
+    </span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl01_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl03$qc$sbvc$rvl$ctl01$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl03$qc$sbvc$rvl', this.name); clientSave('9549095','598824','0','434190','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl01_rv" id="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl01_rt">Cónyuge.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl02_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl03$qc$sbvc$rvl$ctl02$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl03$qc$sbvc$rvl', this.name); clientSave('9549095','598824','0','434189','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl02_rv" id="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl02_rt">Cotitular.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl03_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl03$qc$sbvc$rvl$ctl03$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl03$qc$sbvc$rvl', this.name); clientSave('9549095','598824','0','434191','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl03_rv" id="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl03_rt">Ejecutivo de cuenta.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl04_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl03$qc$sbvc$rvl$ctl04$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl03$qc$sbvc$rvl', this.name); clientSave('9549095','598824','0','434192','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl04_rv" id="ac_sl_ctl00_sc_ql_ctl03_qc_sbvc_rvl_ctl04_rt">Proveedor de recursos.</label>
+			
+
+			
+        </div>
+	</span></span>
+	
+	
+	
+	
+
+	
+	</fieldset>
+
+
+
+
+<div style="COLOR: #808080; FONT-STYLE: italic">
+	
+</div>
+
+
+        
+        
+        
+
+        
+        <div class="markForFollowUp">
+            <span class="FieldValue"><input id="ac_sl_ctl00_sc_ql_ctl03_FollowUpChk" type="checkbox" name="ac$sl$ctl00$sc$ql$ctl03$FollowUpChk"><label for="ac_sl_ctl00_sc_ql_ctl03_FollowUpChk">Marcar para seguimiento</label></span>
+        </div>
+        <hr>
+        </span><span>
+        
+            <h3 style="color: #000"><span id="ac_sl_ctl00_sc_ql_ctl04_QuestionNumLabel" class="catlinknormal" style="FONT-WEIGHT:bold;TEXT-DECORATION:none;">Pregunta 5 de 10.</span><a id="ac_sl_ctl00_sc_ql_ctl04_positionLink" role="presentation" name="5"></a></h3>
+        
+	<fieldset class="testEngine-question">
+	
+
+		
+			<legend class=""><span id="ac_sl_ctl00_sc_ql_ctl04_qc_QuestionLegend" class="testEngine-questionTitle">¿Quién actualiza y publica la lista de personas bloqueadas por relacionarse con el delito de Lavado de Dinero?</span></legend>
+		
+		<!-- Write Stuff -->
+	
+	
+
+
+<span id="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_cvTb" class="error" style="color:Red;display:none;">*</span>
+<span id="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl"><span>
+        <div>
+            
+        </div>
+    </span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl01_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl04$qc$sbvc$rvl$ctl01$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl04$qc$sbvc$rvl', this.name); clientSave('9549095','598815','0','434235','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl01_rv" id="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl01_rt">CONDUSEF.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl02_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl04$qc$sbvc$rvl$ctl02$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl04$qc$sbvc$rvl', this.name); clientSave('9549095','598815','0','434234','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl02_rv" id="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl02_rt">SHCP.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl03_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl04$qc$sbvc$rvl$ctl03$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl04$qc$sbvc$rvl', this.name); clientSave('9549095','598815','0','434236','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl03_rv" id="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl03_rt">GAFI.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl04_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl04$qc$sbvc$rvl$ctl04$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl04$qc$sbvc$rvl', this.name); clientSave('9549095','598815','0','434237','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl04_rv" id="ac_sl_ctl00_sc_ql_ctl04_qc_sbvc_rvl_ctl04_rt">ONU.</label>
+			
+
+			
+        </div>
+	</span></span>
+	
+	
+	
+	
+
+	
+	</fieldset>
+
+
+
+
+<div style="COLOR: #808080; FONT-STYLE: italic">
+	
+</div>
+
+
+        
+        
+        
+
+        
+        <div class="markForFollowUp">
+            <span class="FieldValue"><input id="ac_sl_ctl00_sc_ql_ctl04_FollowUpChk" type="checkbox" name="ac$sl$ctl00$sc$ql$ctl04$FollowUpChk"><label for="ac_sl_ctl00_sc_ql_ctl04_FollowUpChk">Marcar para seguimiento</label></span>
+        </div>
+        <hr>
+        </span><span>
+        
+            <h3 style="color: #000"><span id="ac_sl_ctl00_sc_ql_ctl05_QuestionNumLabel" class="catlinknormal" style="FONT-WEIGHT:bold;TEXT-DECORATION:none;">Pregunta 6 de 10.</span><a id="ac_sl_ctl00_sc_ql_ctl05_positionLink" role="presentation" name="6"></a></h3>
+        
+	<fieldset class="testEngine-question">
+	
+
+		
+			<legend class=""><span id="ac_sl_ctl00_sc_ql_ctl05_qc_QuestionLegend" class="testEngine-questionTitle">¿Cuáles&nbsp;son dos obligaciones que tiene la Entidad respecto del grado de riesgo de sus clientes?</span></legend>
+		
+		<!-- Write Stuff -->
+	
+	
+
+
+<span id="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_cvTb" class="error" style="color:Red;display:none;">*</span>
+<span id="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl"><span>
+        <div>
+            
+        </div>
+    </span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl01_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl05$qc$sbvc$rvl$ctl01$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl05$qc$sbvc$rvl', this.name); clientSave('9549095','598816','0','434230','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl01_rv" id="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl01_rt">Clasificar al cliente por la cantidad a invertir y verificar el monto cuando menos una vez al año.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl02_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl05$qc$sbvc$rvl$ctl02$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl05$qc$sbvc$rvl', this.name); clientSave('9549095','598816','0','434229','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl02_rv" id="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl02_rt">Clasificar al cliente por grado de riesgo y reevaluar dicho grado cuando menos dos veces al año.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl03_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl05$qc$sbvc$rvl$ctl03$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl05$qc$sbvc$rvl', this.name); clientSave('9549095','598816','0','434231','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl03_rv" id="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl03_rt">Clasificar al cotitular por grado de riesgo y reevaluar dicho grado cuando menos una vez al año.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl04_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl05$qc$sbvc$rvl$ctl04$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl05$qc$sbvc$rvl', this.name); clientSave('9549095','598816','0','434232','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl04_rv" id="ac_sl_ctl00_sc_ql_ctl05_qc_sbvc_rvl_ctl04_rt">Clasificar solo al beneficiario por grado de riesgo y verificarlo cuando menos una vez al año.</label>
+			
+
+			
+        </div>
+	</span></span>
+	
+	
+	
+	
+
+	
+	</fieldset>
+
+
+
+
+<div style="COLOR: #808080; FONT-STYLE: italic">
+	
+</div>
+
+
+        
+        
+        
+
+        
+        <div class="markForFollowUp">
+            <span class="FieldValue"><input id="ac_sl_ctl00_sc_ql_ctl05_FollowUpChk" type="checkbox" name="ac$sl$ctl00$sc$ql$ctl05$FollowUpChk"><label for="ac_sl_ctl00_sc_ql_ctl05_FollowUpChk">Marcar para seguimiento</label></span>
+        </div>
+        <hr>
+        </span><span>
+        
+            <h3 style="color: #000"><span id="ac_sl_ctl00_sc_ql_ctl06_QuestionNumLabel" class="catlinknormal" style="FONT-WEIGHT:bold;TEXT-DECORATION:none;">Pregunta 7 de 10.</span><a id="ac_sl_ctl00_sc_ql_ctl06_positionLink" role="presentation" name="7"></a></h3>
+        
+	<fieldset class="testEngine-question">
+	
+
+		
+			<legend class=""><span id="ac_sl_ctl00_sc_ql_ctl06_qc_QuestionLegend" class="testEngine-questionTitle">Son factores que deben considerarse como generadores de riesgo ya en la operativa excepto:</span></legend>
+		
+		<!-- Write Stuff -->
+	
+	
+
+
+<span id="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_cvTb" class="error" style="color:Red;display:none;">*</span>
+<span id="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl"><span>
+        <div>
+            
+        </div>
+    </span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl01_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl06$qc$sbvc$rvl$ctl01$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl06$qc$sbvc$rvl', this.name); clientSave('9549095','598819','0','434215','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl01_rv" id="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl01_rt">Uso de múltiples pasaportes</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl02_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl06$qc$sbvc$rvl$ctl02$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl06$qc$sbvc$rvl', this.name); clientSave('9549095','598819','0','434214','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl02_rv" id="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl02_rt">Carta de confidencialidad.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl03_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl06$qc$sbvc$rvl$ctl03$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl06$qc$sbvc$rvl', this.name); clientSave('9549095','598819','0','434216','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl03_rv" id="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl03_rt">Operaciones sin justificación, en o desde plazas y países generadores de riesgo y que pueden facilitar la ejecución de actividades ilícitas.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl04_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl06$qc$sbvc$rvl$ctl04$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl06$qc$sbvc$rvl', this.name); clientSave('9549095','598819','0','434217','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl04_rv" id="ac_sl_ctl00_sc_ql_ctl06_qc_sbvc_rvl_ctl04_rt">Domicilio múltiples de un cliente o cuando el mismo domicilio lo tengan múltiples clientes.</label>
+			
+
+			
+        </div>
+	</span></span>
+	
+	
+	
+	
+
+	
+	</fieldset>
+
+
+
+
+<div style="COLOR: #808080; FONT-STYLE: italic">
+	
+</div>
+
+
+        
+        
+        
+
+        
+        <div class="markForFollowUp">
+            <span class="FieldValue"><input id="ac_sl_ctl00_sc_ql_ctl06_FollowUpChk" type="checkbox" name="ac$sl$ctl00$sc$ql$ctl06$FollowUpChk"><label for="ac_sl_ctl00_sc_ql_ctl06_FollowUpChk">Marcar para seguimiento</label></span>
+        </div>
+        <hr>
+        </span><span>
+        
+            <h3 style="color: #000"><span id="ac_sl_ctl00_sc_ql_ctl07_QuestionNumLabel" class="catlinknormal" style="FONT-WEIGHT:bold;TEXT-DECORATION:none;">Pregunta 8 de 10.</span><a id="ac_sl_ctl00_sc_ql_ctl07_positionLink" role="presentation" name="8"></a></h3>
+        
+	<fieldset class="testEngine-question">
+	
+
+		
+			<legend class=""><span id="ac_sl_ctl00_sc_ql_ctl07_qc_QuestionLegend" class="testEngine-questionTitle">¿Cual es la finalidad de identificar a un cliente?</span></legend>
+		
+		<!-- Write Stuff -->
+	
+	
+
+
+<span id="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_cvTb" class="error" style="color:Red;display:none;">*</span>
+<span id="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl"><span>
+        <div>
+            
+        </div>
+    </span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl01_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl07$qc$sbvc$rvl$ctl01$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl07$qc$sbvc$rvl', this.name); clientSave('9549095','598820','0','434210','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl01_rv" id="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl01_rt">En facilitarle a la persona física o moral los beneficios de todos los productos que ofrece la Entidad.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl02_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl07$qc$sbvc$rvl$ctl02$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl07$qc$sbvc$rvl', this.name); clientSave('9549095','598820','0','434209','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl02_rv" id="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl02_rt">Individualizar a las personas físicas o morales. Actuar en la prevención, al poder correlacionar la operativa de un cliente o usuario determinado.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl03_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl07$qc$sbvc$rvl$ctl03$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl07$qc$sbvc$rvl', this.name); clientSave('9549095','598820','0','434211','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl03_rv" id="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl03_rt">En permitirle a la persona física o moral el libre acceso a la Entidad cada vez que asiste a ella.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl04_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl07$qc$sbvc$rvl$ctl04$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl07$qc$sbvc$rvl', this.name); clientSave('9549095','598820','0','434212','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl04_rv" id="ac_sl_ctl00_sc_ql_ctl07_qc_sbvc_rvl_ctl04_rt">En saber los datos personales, así como también llamar por su nombre a la persona física o moral.</label>
+			
+
+			
+        </div>
+	</span></span>
+	
+	
+	
+	
+
+	
+	</fieldset>
+
+
+
+
+<div style="COLOR: #808080; FONT-STYLE: italic">
+	
+</div>
+
+
+        
+        
+        
+
+        
+        <div class="markForFollowUp">
+            <span class="FieldValue"><input id="ac_sl_ctl00_sc_ql_ctl07_FollowUpChk" type="checkbox" name="ac$sl$ctl00$sc$ql$ctl07$FollowUpChk"><label for="ac_sl_ctl00_sc_ql_ctl07_FollowUpChk">Marcar para seguimiento</label></span>
+        </div>
+        <hr>
+        </span><span>
+        
+            <h3 style="color: #000"><span id="ac_sl_ctl00_sc_ql_ctl08_QuestionNumLabel" class="catlinknormal" style="FONT-WEIGHT:bold;TEXT-DECORATION:none;">Pregunta 9 de 10.</span><a id="ac_sl_ctl00_sc_ql_ctl08_positionLink" role="presentation" name="9"></a></h3>
+        
+	<fieldset class="testEngine-question">
+	
+
+		
+			<legend class=""><span id="ac_sl_ctl00_sc_ql_ctl08_qc_QuestionLegend" class="testEngine-questionTitle">Consiste en recabar datos y documentos que permiten conocer a la persona física o moral con la cual la Entidad interactúa.</span></legend>
+		
+		<!-- Write Stuff -->
+	
+	
+
+
+<span id="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_cvTb" class="error" style="color:Red;display:none;">*</span>
+<span id="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl"><span>
+        <div>
+            
+        </div>
+    </span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl01_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl08$qc$sbvc$rvl$ctl01$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl08$qc$sbvc$rvl', this.name); clientSave('9549095','598811','0','434255','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl01_rv" id="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl01_rt">Interacción del cliente.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl02_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl08$qc$sbvc$rvl$ctl02$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl08$qc$sbvc$rvl', this.name); clientSave('9549095','598811','0','434254','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl02_rv" id="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl02_rt">Identificación del cliente.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl03_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl08$qc$sbvc$rvl$ctl03$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl08$qc$sbvc$rvl', this.name); clientSave('9549095','598811','0','434256','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl03_rv" id="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl03_rt">Desconocimiento del cliente.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl04_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl08$qc$sbvc$rvl$ctl04$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl08$qc$sbvc$rvl', this.name); clientSave('9549095','598811','0','434257','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl04_rv" id="ac_sl_ctl00_sc_ql_ctl08_qc_sbvc_rvl_ctl04_rt">Actividades del cliente.</label>
+			
+
+			
+        </div>
+	</span></span>
+	
+	
+	
+	
+
+	
+	</fieldset>
+
+
+
+
+<div style="COLOR: #808080; FONT-STYLE: italic">
+	
+</div>
+
+
+        
+        
+        
+
+        
+        <div class="markForFollowUp">
+            <span class="FieldValue"><input id="ac_sl_ctl00_sc_ql_ctl08_FollowUpChk" type="checkbox" name="ac$sl$ctl00$sc$ql$ctl08$FollowUpChk"><label for="ac_sl_ctl00_sc_ql_ctl08_FollowUpChk">Marcar para seguimiento</label></span>
+        </div>
+        <hr>
+        </span><span>
+        
+            <h3 style="color: #000"><span id="ac_sl_ctl00_sc_ql_ctl09_QuestionNumLabel" class="catlinknormal" style="FONT-WEIGHT:bold;TEXT-DECORATION:none;">Pregunta 10 de 10.</span><a id="ac_sl_ctl00_sc_ql_ctl09_positionLink" role="presentation" name="10"></a></h3>
+        
+	<fieldset class="testEngine-question">
+	
+
+		
+			<legend class=""><span id="ac_sl_ctl00_sc_ql_ctl09_qc_QuestionLegend" class="testEngine-questionTitle">Las Entidades deberán clasificar cuando menos como clientes de alto riesgo a las personas...</span></legend>
+		
+		<!-- Write Stuff -->
+	
+	
+
+
+<span id="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_cvTb" class="error" style="color:Red;display:none;">*</span>
+<span id="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl"><span>
+        <div>
+            
+        </div>
+    </span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl01_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl09$qc$sbvc$rvl$ctl01$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl09$qc$sbvc$rvl', this.name); clientSave('9549095','598823','0','434197','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl01_rv" id="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl01_rt">que no son políticamente expuestas y a los clientes residentes del segmento equivalente a Banca privada.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl02_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl09$qc$sbvc$rvl$ctl02$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl09$qc$sbvc$rvl', this.name); clientSave('9549095','598823','0','434196','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl02_rv" id="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl02_rt">nacionales políticamente expuestas y a los clientes residentes del país.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl03_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl09$qc$sbvc$rvl$ctl03$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl09$qc$sbvc$rvl', this.name); clientSave('9549095','598823','0','434194','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl03_rv" id="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl03_rt">extranjeras políticamente expuestas, clientes no residentes del segmento equivalente a Banca Privada y personas morales de las que puedan recibir dólares ilimitadamente.</label>
+			
+
+			
+        </div>
+	</span><span>
+        <div>
+			<input id="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl04_rv" type="radio" name="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_Answers" value="ac$sl$ctl00$sc$ql$ctl09$qc$sbvc$rvl$ctl04$rv" onclick="javascript:unCheckAll('ac$sl$ctl00$sc$ql$ctl09$qc$sbvc$rvl', this.name); clientSave('9549095','598823','0','434195','id','update');">
+
+			<label for="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl04_rv" id="ac_sl_ctl00_sc_ql_ctl09_qc_sbvc_rvl_ctl04_rt">nacionales y extranjeras políticamente expuestas y a los clientes residentes nacionales.</label>
+			
+
+			
+        </div>
+	</span></span>
+	
+	
+	
+	
+
+	
+	</fieldset>
+
+
+
+
+<div style="COLOR: #808080; FONT-STYLE: italic">
+	
+</div>
+
+
+        
+        
+        
+
+        
+        <div class="markForFollowUp">
+            <span class="FieldValue"><input id="ac_sl_ctl00_sc_ql_ctl09_FollowUpChk" type="checkbox" name="ac$sl$ctl00$sc$ql$ctl09$FollowUpChk"><label for="ac_sl_ctl00_sc_ql_ctl09_FollowUpChk">Marcar para seguimiento</label></span>
+        </div>
+        <hr>
+        </span></span>
