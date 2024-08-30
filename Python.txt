@@ -1,62 +1,51 @@
-Bloque 6
-
-Pregunta 1 de 10.
-Incluye la revisión de la eficiencia y eficacia de la metodología, dando la posibilidad de realizar actualizaciones o modificaciones.
-    01 Diseño.
-    02 Implementación.
-    03 Prospección de clientes.
-    04 Valoración de resultados.
-Pregunta 2 de 10.
-Es el documento donde se puede conocer el resultado de la evaluación de los principales riesgos asociados a los clientes, productos, servicios, áreas geográficas y demás elementos vinculados con las operaciones realizadas por tu entidad.
-    01 Estados de situación financiera
-    02 Resultados de entrevistas y visitas a clientes.
-    03 Ley Federal Anti Lavado
-    04 Matriz de riesgo de productos
-Pregunta 3 de 10.
-Se refiere a poner en funcionamiento la metodología, lo cual permite conocer el riesgo residual en la materia después de aplicados los mitigadores de riesgo.
-    01 Diseño.
-    02 Planeación.
-    03 Valoración.
-    04 Implementación.
-Pregunta 4 de 10.
-¿Con qué siglas se registra en la matriz de riesgo cuando un producto o servicio está dirigido a personas físicas?
-    01 PM
-    02 PEFI
-    03 PFAE
-    04 PF
-Pregunta 5 de 10.
-¿Cuáles son las fases que debe tener la metodología que usan las entidades para evaluar el riesgo para PLD y financiamiento al terrorismo?
-    01 Análisis, planeación y evaluación de la metodología.
-    02 Diseño y generación, planeación y análisis de la metodología.
-    03 Análisis, planeación e implementación de la metodología.
-    04 Diseño, implementación y valoración de resultados
-Pregunta 6 de 10.
-Esta palabra significa contingencia o proximidad de un daño:
-    01 Auditoría.
-    02 Lavado de Dinero.
-    03 Prevención.
-    04 Riesgo.
-Pregunta 7 de 10.
-¿Cómo aparece registrado en la matriz de riesgo un producto o servicio que solo admite clientes?
-    01 En "Admite usuarios" aparecerá SI
-    02 En "Cliente" aparecerá NO
-    03 En "Admite extranjeros" aparecerá NO
-    04 En "Admite usuarios" aparecerá NO
-Pregunta 8 de 10.
-El "Diseño y generación de la metodología de evaluación de riesgo" comprende los siguientes procesos; excepto:
-    01 Identificación de los elementos de riesgo.
-    02 Medidas de nulificación para cada riesgo.
-    03 Uso de un método para la medición de los riesgos.
-    04 Determinación del riesgo residual, para la entidad financiera.
-Pregunta 9 de 10.
-Son las calificaciones de riesgo que indica la Matriz de riesgos de productos, excepto:
-    01 Insignificante
-    02 Riesgo nulo
-    03 Menor
-    04 Muy Alto
-Pregunta 10 de 10.
-Según la información de la matriz de riesgos de tu entidad, las siguientes son algunas medidas para la mitigación del riesgo, que se aplican en ciertos productos y servicios que se ofrecen, excepto:
-    01 Aplicar el Know Your Customer (KYC)
-    02 Permitir la contratación de productos o servicios aun cuando el expediente esté incompleto.
-    03 Monitorear las operaciones por medio de sistemas automatizados.
-    04 Clasificar a los clientes por su nivel de riesgo.
+Pregunta 1 de 10
+Las siguientes prácticas son consideradas fraudes internos: Falsificación de firmas de clientes, contratación de productos sin la autorización de clientes, robo de información de clientes y alteración de información original.
+01 - Falso
+02 - Verdadero
+Pregunta 2 de 10
+Te llega un correo con este remitente grupo.santander@serfin.com.mx mencionando que notaron movimientos extraños en tu cuenta, que descargues el documento y verifiques si están correctos, ¿qué haces?
+01 - Verificas el correo remitente, notas que se parece, pero no es el correo oficial corporativo y decides reportarlo como Phishing.
+02 - Verificas y ves que dice Santander, así que descargas el documento para revisar tus movimientos y verificar que no te hayan hecho un fraude.
+03 - Respondes el correo para preguntar cuál cuenta es y después lo verificas por la App.
+Pregunta 3 de 10
+Un día escuchas que tu compañero de trabajo esta proporcionando información de clientes a terceras personas, últimamente lo notas muy extraño y empiezas a notar acciones que rompen con el cuidado de los datos personales de los clientes, ¿qué haces?
+01 - Le cuento a otro compañero para que juntos lo espiemos y después le digamos a nuestro jefe.
+02 - Me quedo callado porque no tengo información suficiente para corroborar lo que está haciendo y si no tengo pruebas no puedo hacer nada.
+03 - Llamo de inmediato a la línea ética del Banco y/o reporto al correo reporte_fraude@santander.com.mx
+Pregunta 4 de 10
+Se acerca el día de la madre y aún no tienes regalo, de pronto te aparece en Facebook una publicación donde se menciona que una tienda departamental  tiene unos descuentos en tenis de hasta el 70%, te pide hacer clic para que te dirija a la página donde se
+    </span><span>
+01 - Corroboras que sea la página oficial de la tienda departamental  verificando que su nombre sea idéntico, que el logo corresponda y que su págin
+	</span><span>
+02 - Corres a comprar los tenis antes de que te ganen esa súper oferta.
+03 - Verificas que la página departamental , tiene un logo diferente pero no es lo principal porque los descuentos valen la pena.
+Pregunta 5 de 10
+Un día te llega un mensaje a tu celular donde te piden hacer clic en una liga para corroborar los datos de unos clientes, ¿qué haces ante esta situación?
+01 - Verificas el número y si es un número conocido abres la liga y preparas los datos de tu cliente.
+02 - Ingresas a la liga para verificar los datos de tus clientes.
+03 - No haces clic en la liga porque el Banco nunca manda mensajes para corroborar datos de clientes.
+Pregunta 6 de 10
+En tu correo corporativo te llega un mensaje donde se te felicita por haber llegado a la meta del mes y mencionan que te has ganado un bono, para poder hacerte dicha bonificación te piden hacer clic en una imagen, ¿qué haces ante esta situación?
+01 - Verificas que el correo diga Santander y haces clic para reclamar tu bono.
+02 - Verificas el remitente del correo y lo reportas como Phishing porque Santander no manda ligas para reclamar bonos.
+03 - Le comentas a tu mánager para verificar que realmente hayas alcanzado la meta del mes y así reclamar tu bono.
+Pregunta 7 de 10
+Recibes un mensaje en tu celular donde mencionan que has ganado un premio gracias a las últimas compras que realizaste, te piden reclames tu premio haciendo clic en una liga, ¿qué haces?
+01 - No quieres perder tu premio y haces clic de inmediato en la liga.
+02 - Primero revisas el número, detectas que es una oferta muy llamativa, pero no haces clic.
+03 - Primero revisas el número, no es conocido, pero sí tiene una foto de perfil, haces clic para reclamar tu premio.
+Pregunta 8 de 10
+Una clienta de la tercera edad se acerca a ti y te comenta que la otra vez le llamaron del Banco para pedirle sus datos de su cuenta interbancaria, pero que se cortó la llamada y ya no pudo responder, ¿qué le dirías a la clienta?
+01 - Que seguramente hubo un error en sistema y que por eso le llamaron para corroborarlos.
+02 - Que el Banco nunca solicita datos personales y nunca debe proporcionarlos.
+03 - Que tenga precaución que únicamente dé los datos si se identifican con su nombre completo y número de empleado del Banco.
+Pregunta 9 de 10
+Llevas esperando un paquete porque pediste ropa deportiva y de pronto te llega un mensaje a tu bandeja de entrada de tu correo personal. Se te menciona que tu paquete ha sido entregado y que hagas clic para ver quién recogió tu paquete, ¿qué haces?
+01 - Reviso que el correo venga de la paquetería que seleccioné, corroboró que sea el correo oficial y si es así, reviso quién recogió mi paquete.
+02 - Es el paquete que has estado esperando, sin pensar haces clic para revisar quién recogió tu paquete.
+03 - No doy clic porque puede que sea un fraude.
+Pregunta 10 de 10
+Un día saliendo de la oficina te entra una llamada y mencionan que son del Banco Santander, que hubo un problema con los datos que ingresaste de un cliente, te piden que proporciones más datos de ese cliente para que puedan pasar su crédito, ¿qué haces?
+01 - Verificas que la llamada venga del Banco pero aún así no proporcionas datos personales de ningún cliente.
+02 - Buscas los datos del cliente y los proporcionas para que tu crédito no se retrase.
+03 - Verificas que la llamada venga de un número que reconoces y proporcionas los datos.
