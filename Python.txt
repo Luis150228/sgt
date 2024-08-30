@@ -1,51 +1,47 @@
 Pregunta 1 de 10
-Las siguientes prácticas son consideradas fraudes internos: Falsificación de firmas de clientes, contratación de productos sin la autorización de clientes, robo de información de clientes y alteración de información original.
-01 - Falso
-02 - Verdadero
+Si un cliente llega a la sucursal pidiendo que le des todos sus datos personales, ¿qué harías?
+01- Borro los datos de inmediato para no ser acreedor(a) a alguna multa o sanción.
+02- Le pido que mande un correo a unidad_pd@santander.com.mx para ejercer su derecho de acceso.
+03- Le digo que no es posible porque ya están cargados en sistema.
 Pregunta 2 de 10
-Te llega un correo con este remitente grupo.santander@serfin.com.mx mencionando que notaron movimientos extraños en tu cuenta, que descargues el documento y verifiques si están correctos, ¿qué haces?
-01 - Verificas el correo remitente, notas que se parece, pero no es el correo oficial corporativo y decides reportarlo como Phishing.
-02 - Verificas y ves que dice Santander, así que descargas el documento para revisar tus movimientos y verificar que no te hayan hecho un fraude.
-03 - Respondes el correo para preguntar cuál cuenta es y después lo verificas por la App.
+Recabar los datos de los clientes de manera exacta, actualizada y correcta, ¿es una forma de cuidar la información de los clientes?
+01- Falso
+02- Verdadero
 Pregunta 3 de 10
-Un día escuchas que tu compañero de trabajo esta proporcionando información de clientes a terceras personas, últimamente lo notas muy extraño y empiezas a notar acciones que rompen con el cuidado de los datos personales de los clientes, ¿qué haces?
-01 - Le cuento a otro compañero para que juntos lo espiemos y después le digamos a nuestro jefe.
-02 - Me quedo callado porque no tengo información suficiente para corroborar lo que está haciendo y si no tengo pruebas no puedo hacer nada.
-03 - Llamo de inmediato a la línea ética del Banco y/o reporto al correo reporte_fraude@santander.com.mx
+Si un cliente que llega a tu sucursal y te solicita actualizar sus datos porque ha cambiado de dirección, ¿qué derecho ARCO es el que está ejerciendo?
+01- Cancelar
+02- Rectificar
+03- Acceder
 Pregunta 4 de 10
-Se acerca el día de la madre y aún no tienes regalo, de pronto te aparece en Facebook una publicación donde se menciona que una tienda departamental  tiene unos descuentos en tenis de hasta el 70%, te pide hacer clic para que te dirija a la página donde se
-    </span><span>
-01 - Corroboras que sea la página oficial de la tienda departamental  verificando que su nombre sea idéntico, que el logo corresponda y que su págin
-	</span><span>
-02 - Corres a comprar los tenis antes de que te ganen esa súper oferta.
-03 - Verificas que la página departamental , tiene un logo diferente pero no es lo principal porque los descuentos valen la pena.
+Si un excliente te pide borrar todos los datos que tienes registrados en sistema, ¿qué harías?
+01- Me niego a dárselos porque no puedo proporcionar datos personales, aunque sean de la persona que los solicita, a menos que tenga una justificación para requerirlos.
+02- Le pido que mande un correo a unidad_pd@santander.com.mx para ejercer su derecho de cancelación.
+03- Consulto sus datos en sistema, los imprimo y se los doy porque es su derecho.
 Pregunta 5 de 10
-Un día te llega un mensaje a tu celular donde te piden hacer clic en una liga para corroborar los datos de unos clientes, ¿qué haces ante esta situación?
-01 - Verificas el número y si es un número conocido abres la liga y preparas los datos de tu cliente.
-02 - Ingresas a la liga para verificar los datos de tus clientes.
-03 - No haces clic en la liga porque el Banco nunca manda mensajes para corroborar datos de clientes.
+¿Qué es lo que debes hacer al momento de recabar los datos personales de los clientes?:
+01- Pedirle todos sus datos para subirlos de inmediato a sistema y crear otra base donde tenga más información para no buscar al cliente dos veces por si me falta algún otro dato.
+02- Presentarme y explicarle a grandes rasgos para qué serán utilizados los datos y recabar más datos por si después los necesito.
+03- Solicitar siempre su consentimiento para recabar sus datos, informarle sobre el Aviso de Privacidad y tratar los datos conforme a la normativa.
 Pregunta 6 de 10
-En tu correo corporativo te llega un mensaje donde se te felicita por haber llegado a la meta del mes y mencionan que te has ganado un bono, para poder hacerte dicha bonificación te piden hacer clic en una imagen, ¿qué haces ante esta situación?
-01 - Verificas que el correo diga Santander y haces clic para reclamar tu bono.
-02 - Verificas el remitente del correo y lo reportas como Phishing porque Santander no manda ligas para reclamar bonos.
-03 - Le comentas a tu mánager para verificar que realmente hayas alcanzado la meta del mes y así reclamar tu bono.
+Imagina que estás buscando trabajo y al llenar tu CV viene un apartado donde te pide colocar tu correo electrónico, ese dato ¿Es considerado un dato personal?
+01- No, porque en mi correo no viene mi nombre.
+02- Si, porque puede identificarme.
 Pregunta 7 de 10
-Recibes un mensaje en tu celular donde mencionan que has ganado un premio gracias a las últimas compras que realizaste, te piden reclames tu premio haciendo clic en una liga, ¿qué haces?
-01 - No quieres perder tu premio y haces clic de inmediato en la liga.
-02 - Primero revisas el número, detectas que es una oferta muy llamativa, pero no haces clic.
-03 - Primero revisas el número, no es conocido, pero sí tiene una foto de perfil, haces clic para reclamar tu premio.
+Mantener los documentos de clientes a la vista del público es una acción que ayuda a cuidar sus datos personales:
+01- Falso
+02- Verdadero
 Pregunta 8 de 10
-Una clienta de la tercera edad se acerca a ti y te comenta que la otra vez le llamaron del Banco para pedirle sus datos de su cuenta interbancaria, pero que se cortó la llamada y ya no pudo responder, ¿qué le dirías a la clienta?
-01 - Que seguramente hubo un error en sistema y que por eso le llamaron para corroborarlos.
-02 - Que el Banco nunca solicita datos personales y nunca debe proporcionarlos.
-03 - Que tenga precaución que únicamente dé los datos si se identifican con su nombre completo y número de empleado del Banco.
+Si un cliente llega a tu sucursal y te solicita que lo elimines de la base para campañas de publicidad, ¿qué derecho ARCO es el que está ejerciendo?
+01- Acceso
+02- Cancelación
+03- Oposición
 Pregunta 9 de 10
-Llevas esperando un paquete porque pediste ropa deportiva y de pronto te llega un mensaje a tu bandeja de entrada de tu correo personal. Se te menciona que tu paquete ha sido entregado y que hagas clic para ver quién recogió tu paquete, ¿qué haces?
-01 - Reviso que el correo venga de la paquetería que seleccioné, corroboró que sea el correo oficial y si es así, reviso quién recogió mi paquete.
-02 - Es el paquete que has estado esperando, sin pensar haces clic para revisar quién recogió tu paquete.
-03 - No doy clic porque puede que sea un fraude.
+¿Cuál es la única área encargada de dar respuesta a los clientes y empleados para el ejercicio de sus derechos ARCO?
+01- Área de riesgos
+02- Atención a clientes
+03- Contraloría
 Pregunta 10 de 10
-Un día saliendo de la oficina te entra una llamada y mencionan que son del Banco Santander, que hubo un problema con los datos que ingresaste de un cliente, te piden que proporciones más datos de ese cliente para que puedan pasar su crédito, ¿qué haces?
-01 - Verificas que la llamada venga del Banco pero aún así no proporcionas datos personales de ningún cliente.
-02 - Buscas los datos del cliente y los proporcionas para que tu crédito no se retrase.
-03 - Verificas que la llamada venga de un número que reconoces y proporcionas los datos.
+Un lunes por la mañana, Adolfo Ruiz, cliente frecuente, acudió a su sucursal titular, el motivo de su visita era solicitar un crédito. Su Ejecutiva Paloma, lo atendió y le solicitó información personal para llevar a cabo la solicitud del crédito, sin embargo, solicitó información de más que no necesariamente se requería para poder realizar ese trámite. ¿A qué sanciones puede ser acreedora Paloma por solicitar más información del cliente?
+01- Puede recibir una amonestación por escrito y reporte de su jefe directo.
+02- Puede ser acreedora a multas y años en prisión.
+03- Le puede llegar un citatorio para avisarle que está solicitando información de más.
