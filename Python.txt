@@ -1,47 +1,59 @@
-Pregunta 1 de 10
-Si un cliente llega a la sucursal pidiendo que le des todos sus datos personales, ¿qué harías?
-01- Borro los datos de inmediato para no ser acreedor(a) a alguna multa o sanción.
-02- Le pido que mande un correo a unidad_pd@santander.com.mx para ejercer su derecho de acceso.
-03- Le digo que no es posible porque ya están cargados en sistema.
-Pregunta 2 de 10
-Recabar los datos de los clientes de manera exacta, actualizada y correcta, ¿es una forma de cuidar la información de los clientes?
-01- Falso
-02- Verdadero
-Pregunta 3 de 10
-Si un cliente que llega a tu sucursal y te solicita actualizar sus datos porque ha cambiado de dirección, ¿qué derecho ARCO es el que está ejerciendo?
-01- Cancelar
-02- Rectificar
-03- Acceder
-Pregunta 4 de 10
-Si un excliente te pide borrar todos los datos que tienes registrados en sistema, ¿qué harías?
-01- Me niego a dárselos porque no puedo proporcionar datos personales, aunque sean de la persona que los solicita, a menos que tenga una justificación para requerirlos.
-02- Le pido que mande un correo a unidad_pd@santander.com.mx para ejercer su derecho de cancelación.
-03- Consulto sus datos en sistema, los imprimo y se los doy porque es su derecho.
-Pregunta 5 de 10
-¿Qué es lo que debes hacer al momento de recabar los datos personales de los clientes?:
-01- Pedirle todos sus datos para subirlos de inmediato a sistema y crear otra base donde tenga más información para no buscar al cliente dos veces por si me falta algún otro dato.
-02- Presentarme y explicarle a grandes rasgos para qué serán utilizados los datos y recabar más datos por si después los necesito.
-03- Solicitar siempre su consentimiento para recabar sus datos, informarle sobre el Aviso de Privacidad y tratar los datos conforme a la normativa.
-Pregunta 6 de 10
-Imagina que estás buscando trabajo y al llenar tu CV viene un apartado donde te pide colocar tu correo electrónico, ese dato ¿Es considerado un dato personal?
-01- No, porque en mi correo no viene mi nombre.
-02- Si, porque puede identificarme.
-Pregunta 7 de 10
-Mantener los documentos de clientes a la vista del público es una acción que ayuda a cuidar sus datos personales:
-01- Falso
-02- Verdadero
-Pregunta 8 de 10
-Si un cliente llega a tu sucursal y te solicita que lo elimines de la base para campañas de publicidad, ¿qué derecho ARCO es el que está ejerciendo?
-01- Acceso
-02- Cancelación
-03- Oposición
-Pregunta 9 de 10
-¿Cuál es la única área encargada de dar respuesta a los clientes y empleados para el ejercicio de sus derechos ARCO?
-01- Área de riesgos
-02- Atención a clientes
-03- Contraloría
-Pregunta 10 de 10
-Un lunes por la mañana, Adolfo Ruiz, cliente frecuente, acudió a su sucursal titular, el motivo de su visita era solicitar un crédito. Su Ejecutiva Paloma, lo atendió y le solicitó información personal para llevar a cabo la solicitud del crédito, sin embargo, solicitó información de más que no necesariamente se requería para poder realizar ese trámite. ¿A qué sanciones puede ser acreedora Paloma por solicitar más información del cliente?
-01- Puede recibir una amonestación por escrito y reporte de su jefe directo.
-02- Puede ser acreedora a multas y años en prisión.
-03- Le puede llegar un citatorio para avisarle que está solicitando información de más.
+Pregunta 1 de 10.
+¿En qué consiste el modelo EMTA?
+01 - Escuchar, Monitorear, Tipificar, Activar.
+02 - Evitar, Mitigar, Transferir, Aceptar.
+03 - Entender, Medir, Transformar, Adecuar.
+
+Pregunta 2 de 10.
+¿Cuál es la herramienta donde se lleva a cabo el registro y seguimiento de los eventos de riesgo operacional?
+01 - Zeus
+02 - Júpiter
+03 - Heracles
+
+Pregunta 3 de 10.
+¿Con quien puedes reportar una situación de riesgo operacional?
+01 - Con la SuperLínea, llamando al 55 5169 4300.
+02 - Con la Línea Ética.
+03 - Con el coordinador de riesgos de tu área o directamente al área de Riesgo Operacional.
+
+Pregunta 4 de 10.
+¿Qué es el riesgo inherente?
+01 - El o los controles que se tienen para que no se vaya a materializar el riesgo.
+02 - Es el riesgo propio de la actividad que realizamos.
+03 - Es el riesgo que queda aún después de haber considerado los controles.
+
+Pregunta 5 de 10.
+¿Qué es un Indicador de Riesgo Operacional?
+01 - Es toda acción y/o tarea que minimiza la exposición al riesgo. Pueden ser detectivos, preventivos o correctivos.
+02 - Es una métrica, índice o medida que puede revelar la evolución del nivel de exposición al riesgo de una entidad.
+03 - Es un parámetro de daños en activos físicos.
+
+Pregunta 6 de 10.
+¿Qué es un evento de Riesgo Operacional?
+01 - Es todo aquello que representa una amenaza para la seguridad del Banco.
+02 - Es todo aquel suceso que constituye la materialización de un riesgo de carácter operacional.
+03 - Es toda acción y/o tarea que minimiza la exposición al riesgo. Pueden ser detectivos, preventivos o correctivos.
+
+Pregunta 7 de 10.
+¿Qué es Action Driver?
+01 - Es una descripción de cómo se va a solucionar esa área de oportunidad que se presentó.
+02 - Es una descripción del motivo por el que una exposición al riesgo desencadena la necesidad de mitigación.
+03 - Es una reunión con las áreas y las personas involucradas en el evento de riesgo operacional para buscar en conjunto la solución.
+
+Pregunta 8 de 10.
+Cuando hablamos de pérdidas potenciales derivadas de deficiencias o fallos de los procesos internos, errores humanos o en sistemas a causa de acontecimientos externos, nos referimos a:
+01 - Riesgo Operacional
+02 - Riesgo de Pérdida
+03 - Riesgo de Seguridad
+
+Pregunta 9 de 10.
+¿Qué tipos de impacto puede tener el Riesgo Operacional en el Banco?
+01 - Cibernético, económico, de gestión
+02 - Financiero, regulatorio, clientes, compañía, tecnológico
+03 - Administrativo, ambiental, social
+
+Pregunta 10 de 10.
+¿Qué es un plan de mitigación?
+01 - Un plan donde se describe cómo se va a solucionar esa área de oportunidad que se presentó.
+02 - Es una descripción del motivo por el que una exposición al riesgo desencadena la necesidad de mitigación.
+03 - Una estrategia de gestión del riesgo operacional que consiste en Evitar, Mitigar, Transferir y Aceptar.
