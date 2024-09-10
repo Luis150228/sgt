@@ -1,5 +1,5 @@
 const data = [
-    // Los datos que proporcionaste
+    // Tus datos aquí...
 ];
 
 const groupedByAdf = {};
@@ -8,13 +8,10 @@ const groupedByAdf = {};
 for (const item of data) {
     const adf = item.adf;
 
-    // Si el ADF no existe como clave, lo inicializamos como un array vacío
+    // Si no existe un objeto asociado al ADF, lo inicializamos con el item actual
     if (!groupedByAdf[adf]) {
-        groupedByAdf[adf] = [];
+        groupedByAdf[adf] = item;
     }
-
-    // Añadimos el item al array correspondiente al ADF
-    groupedByAdf[adf].push(item);
 }
 
 console.log(groupedByAdf);
