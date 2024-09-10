@@ -8,10 +8,26 @@ const groupedByAdf = {};
 for (const item of data) {
     const adf = item.adf;
 
-    // Si no existe un objeto asociado al ADF, lo inicializamos con el item actual
+    // Si el ADF no existe como clave, lo inicializamos como un array vacío
     if (!groupedByAdf[adf]) {
-        groupedByAdf[adf] = item;
+        groupedByAdf[adf] = [];
+    }
+
+    // Añadimos el item al array correspondiente al ADF
+    groupedByAdf[adf].push(item);
+}
+
+// Función para filtrar por un ADF específico
+function filterByAdf(adf) {
+    if (groupedByAdf[adf]) {
+        return groupedByAdf[adf]; // Devuelve los elementos agrupados por el ADF
+    } else {
+        return []; // Si no se encuentra el ADF, devuelve un array vacío
     }
 }
 
-console.log(groupedByAdf);
+// Ejemplo de uso: Filtrar por un ADF específico
+const adfToFilter = "1234567890";
+const filteredItems = filterByAdf(adfToFilter);
+
+console.log(filteredItems);
