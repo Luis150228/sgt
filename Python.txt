@@ -1,45 +1,20 @@
-Pregunta 1 de 8.
-¿Quiénes son los encargados de identificar y mitigar los riesgos que puedan afectar las operaciones críticas, asegurando que se defina un plan de continuidad?
-1 - Primera línea de defensa: Todas las áreas de negocio – Propietarios pilares.
-2 - Tercera línea de defensa: Auditoría interna.
-3 - Segunda línea de defensa: Función local de control de continuidad de negocio.
+const data = [
+    // Los datos que proporcionaste
+];
 
-Pregunta 3 de 8.
-Dentro de un plan de continuidad es importante considerar los canales de comunicación a utilizar durante la contingencia, así como los roles y mensajes que se transmitirán para coordinar las acciones de recuperación, es decir, es necesario un protocolo de:
-1 - Comunicación.
-2 - Vuelta a la normalidad.
-3 - Respuesta y recuperación.
+const groupedByAdf = {};
 
-Pregunta 4 de 8.
-¿Cada cuanto tiempo deben realizarse las actividades de la gestión de continuidad del negocio?
-1 - Cada 3 años.
-2 - Por lo menos una vez al año.
-3 - Cada 5 años<
+// Recorremos cada objeto del arreglo
+for (const item of data) {
+    const adf = item.adf;
 
-Pregunta 5 de 8.
-¿En cuál de las siguientes situaciones entraría en acción la gestión de continuidad del negocio?
-1 - Quejas por parte de los clientes debido a fallas constantes en cajeros autimáticos.
-2 - Un error en la aplicación Supermóvil que impide realizar transferencias de más de $11,000.
-3 - Fuertes inundaciones en la ciudad que impiden el acceso a las sucursales de la zona.
+    // Si el ADF no existe como clave, lo inicializamos como un array vacío
+    if (!groupedByAdf[adf]) {
+        groupedByAdf[adf] = [];
+    }
 
-Pregunta 6 de 8.
-¿Cuál es el principal objetivo de la gestión de Continuidad del negocio?
-1 - Impulsar la colaboración de las áreas para lograr los objetivos estratégicos del Banco.
-2 - Recuperar, lo antes posible, las operaciones normales del Banco en caso de una afectación o interrupción en los procesos críticos.
-3 - Prevenir los riesgos derivados de errores humanos, procesos deficientes, fallos en los sistemas y desastres naturales.
+    // Añadimos el item al array correspondiente al ADF
+    groupedByAdf[adf].push(item);
+}
 
-Pregunta 7 de 8.
-En Santander, realizamos pruebas y simulacros con el fin de poner a prueba nuestros planes de continuidad, identificar áreas de mejora y estar preparados ante cualquier contingencia.
-1 - Falso.
-2 - Verdadero.
-
-Pregunta 8 de 8.
-En la evaluación de criticidad de procesos, se determinaron los siguientes valores para un evento de ciberataque:
-•	Periodo de interrupción: 6 horas
-•	Nivel de severidad: Alto
-•	Tipo de impacto: Operacional
-•	Nivel de prioridad: Alta
-¿Cómo se llama al proceso donde se hace el análisis de cada proceso para determinar estos niveles?
-1 - Análisis de niveles de impacto (LIA)
-2 - Análisis de impacto al negocio (BIA)
-3 - Análisis de continuidad del negocio (BCA)
+console.log(groupedByAdf);
