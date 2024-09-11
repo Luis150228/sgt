@@ -1,3 +1,36 @@
+/* Define the animation */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    height: 100%;
+  }
+  to {
+    opacity: 0;
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+.fade-out {
+  animation: fadeOut 0.5s ease forwards;
+  transition: height 0.5s ease, opacity 0.5s ease;
+}
+
+document.getElementById('removeRow').addEventListener('click', () => {
+  const row = document.getElementById('row2');
+
+  // Añadimos la clase que dispara la animación
+  row.classList.add('fade-out');
+
+  // Una vez que la animación termina, removemos el elemento del DOM
+  row.addEventListener('animationend', () => {
+    row.remove();
+  });
+});
+
+
+
+
 const data = [
     // Tus datos aquí...
 ];
