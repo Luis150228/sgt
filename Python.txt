@@ -13,3 +13,68 @@ for (const item of data) {
 }
 
 console.log(uniqueBrands);
+
+
+
+const items = [
+    { "id": 7291, "marca": "CHERRY" },
+    { "id": 7292, "marca": "Chexspress" },
+    { "id": 7293, "marca": "DELL" },
+    { "id": 7294, "marca": "DELL" },
+    { "id": 7295, "marca": "GEMALTO" },
+    { "id": 7296, "marca": "GENERICO" },
+    { "id": 7297, "marca": "HP" },
+    { "id": 7298, "marca": "HP" },
+    { "id": 7299, "marca": "HP" },
+    { "id": 7300, "marca": "HP" },
+    { "id": 7301, "marca": "HP" },
+    { "id": 7302, "marca": "HP" },
+    { "id": 7303, "marca": "HP" },
+    { "id": 7304, "marca": "HP" },
+    { "id": 7305, "marca": "JABRA" },
+    { "id": 7306, "marca": "JABRA" },
+    { "id": 7307, "marca": "JABRA" },
+    { "id": 7308, "marca": "KENSINGTON" },
+    { "id": 7309, "marca": "KENSINGTON" },
+    { "id": 7310, "marca": "KOJAK" },
+    { "id": 7311, "marca": "LOGITECH" },
+    { "id": 7312, "marca": "Perfect Choice" },
+    { "id": 7313, "marca": "STARTECH" },
+    { "id": 7314, "marca": "SYMETRY" },
+    { "id": 7315, "marca": "TRIPIE CAMARA" },
+    { "id": 7316, "marca": "U.ARE.U" },
+    { "id": 7317, "marca": "APPLE" },
+    { "id": 7318, "marca": "APPLE" },
+    { "id": 7319, "marca": "APPLE" },
+    { "id": 7320, "marca": "APPLE" },
+    { "id": 7321, "marca": "APPLE" },
+    { "id": 7322, "marca": "DELL" },
+    { "id": 7323, "marca": "DELL" },
+    { "id": 7324, "marca": "DELL" },
+    { "id": 7325, "marca": "DELL" },
+    { "id": 7326, "marca": "DELL" },
+    { "id": 7327, "marca": "EPSON" },
+    { "id": 7328, "marca": "HP" },
+    { "id": 7329, "marca": "HP" },
+    { "id": 7330, "marca": "HP" },
+    { "id": 7331, "marca": "HP" },
+    { "id": 7332, "marca": "HP" },
+    { "id": 7333, "marca": "HP" },
+    { "id": 7334, "marca": "HP" },
+    { "id": 7335, "marca": "HP" },
+    { "id": 7336, "marca": "HP" },
+    { "id": 7337, "marca": "HP" },
+    { "id": 7338, "marca": "HP" },
+    { "id": 7339, "marca": "HP" },
+    { "id": 7340, "marca": "LENOVO" },
+    { "id": 7341, "marca": "LENOVO" },
+    { "id": 7342, "marca": "LENOVO" },
+    { "id": 7343, "marca": "OKIPOS" },
+    { "id": 7344, "marca": "Poly" },
+    { "id": 7345, "marca": "Poly" },
+    { "id": 7346, "marca": "SYMETRY" }
+];
+
+const uniqueSortedBrands = [...new Set(items.map(item => item.marca))].sort();
+
+console.log(uniqueSortedBrands);
