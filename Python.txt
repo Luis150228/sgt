@@ -1,1 +1,454 @@
-SELECT iccid as 'CIID', cmdb_asset_tag, 'Phone' as 'Type', imei as 'serial_number', cmdb_serial_number, num_movil as 'phone_number', estatus_tel as 'status', status_reason(estatus_int) as 'status_reason', cmdb_u_status, cmdb_status_reason, expediente as 'id_user', asignado_a as 'assigned_to', email, marca as 'manufacturer', modelo as 'model_id', cmdb_model_id, empresa_santander as 'location', Enrollment_version as 'os_model_id', cmdb_u_os_model_id, 'Telephony' as 'category', ctasMobile(cta_padre) as 'company', 'México' as 'delivery', 'EUT Mobile MX' as 'project', 'Production' as 'environment', 'TMX_EU_Telefonia_Movil' as 'assignment_group', 'TELCEL' as 'third_party_company', enrollment_model FROM (SELECT region, cta_padre, cta, ciclo, razon_social, num_movil, estatus_tel, motivo_tel, l.iccid, imei, estatus_cta, nombre_plan, monto_plan, marca, modelo, modelo_Mobile(modelo) as 'modelo_img', meses_plan, date_ini, date_fin, estatus_adeudum, ifnull(TIMESTAMPDIFF( month , curdate(), date_fin), meses_plan) as 'mes_restante', ifnull(TIMESTAMPDIFF(day, curdate(), date_fin), 0) as 'dias_restantes', IF(estatus_adeudum = 'SIN ADENDUM', 'verde', semaforoRenovacion(ifnull(TIMESTAMPDIFF(day, curdate(), date_fin), 0))) as 'semaforo', asignado_a, l.expediente, email, area, puesto, empresa_santander, estatus_int, observacion_int, update_file, update_usr_data, l.Enrollment_model as 'enrollment_model', Enrollment_version, if(l.Enrollment_model LIKE '%IPh%', 'IOS', if(l.Enrollment_model IS NULL , 'Sin Datos', 'Android')) as 'enrollment_os', semaforoEnroll(l.update_file_Enrollment) as 'semaforo_enrollment', l.Enrollment_date as 'enrollment_date', IF(l.expediente = '' OR l.expediente IS NULL OR l.workday_date IS NULL, 'no_accounts', IF((timestampdiff(DAY, l.workday_date, NOW()))>40, 'no_accounts', 'perm_identity')) as 'edoUser', l.workday_date AS 'updateWorkday', c.u_status as 'cmdb_u_status', c.u_status_reason as 'cmdb_status_reason', c.model_id as 'cmdb_model_id', c.u_os_model_id as 'cmdb_u_os_model_id', c.serial_number as 'cmdb_serial_number', c.asset_tag as 'cmdb_asset_tag' FROM inventario_lineas l left join SELECT * FROM (SELECT * FROM cmdb_ci_comm where u_status != 'Retired')cmdb c ON l.num_movil = c.phone_number)datas WHERE 1;
+como pued hacer un array u objeto nuevo a partir de siguiene 
+
+el objeto nuevo quede con todas las marcas sin duplicados usando for of y ES6
+
+[
+    {
+        "id": 7291,
+        "numequipo": 237,
+        "tipo": "Accesorio",
+        "descripcion": "Kit Teclado-Mouse Wireless",
+        "marca": "CHERRY",
+        "modelo": "B. UNLIMITED 3.0"
+    },
+    {
+        "id": 7292,
+        "numequipo": 251,
+        "tipo": "Accesorio",
+        "descripcion": "Escaner de cheques",
+        "marca": "Chexspress",
+        "modelo": "Chexspress 30"
+    },
+    {
+        "id": 7293,
+        "numequipo": 2,
+        "tipo": "Accesorio",
+        "descripcion": "Bateria Laptop",
+        "marca": "DELL",
+        "modelo": "B-57001"
+    },
+    {
+        "id": 7294,
+        "numequipo": 23,
+        "tipo": "Accesorio",
+        "descripcion": "Cargador Laptop",
+        "marca": "DELL",
+        "modelo": "CRG-807"
+    },
+    {
+        "id": 7295,
+        "numequipo": 230,
+        "tipo": "Accesorio",
+        "descripcion": "ESCANER DE DOCUMENTOS",
+        "marca": "GEMALTO",
+        "modelo": "AT9000 MK2"
+    },
+    {
+        "id": 7296,
+        "numequipo": 225,
+        "tipo": "Accesorio",
+        "descripcion": "MONOPOD",
+        "marca": "GENERICO",
+        "modelo": "MONOPOD"
+    },
+    {
+        "id": 7297,
+        "numequipo": 248,
+        "tipo": "Accesorio",
+        "descripcion": "Docking",
+        "marca": "HP",
+        "modelo": "HP USB CDock G5"
+    },
+    {
+        "id": 7298,
+        "numequipo": 239,
+        "tipo": "Accesorio",
+        "descripcion": "Mochila",
+        "marca": "HP",
+        "modelo": "PRELUDE 15.6 BACK PACK"
+    },
+    {
+        "id": 7299,
+        "numequipo": 236,
+        "tipo": "Accesorio",
+        "descripcion": "Monitor",
+        "marca": "HP",
+        "modelo": "P22VAG4"
+    },
+    {
+        "id": 7300,
+        "numequipo": 234,
+        "tipo": "Accesorio",
+        "descripcion": "Monitor",
+        "marca": "HP",
+        "modelo": "E27mG4"
+    },
+    {
+        "id": 7301,
+        "numequipo": 233,
+        "tipo": "Accesorio",
+        "descripcion": "Monitor",
+        "marca": "HP",
+        "modelo": "E24mG4"
+    },
+    {
+        "id": 7302,
+        "numequipo": 235,
+        "tipo": "Accesorio",
+        "descripcion": "Monitor",
+        "marca": "HP",
+        "modelo": "E22G5"
+    },
+    {
+        "id": 7303,
+        "numequipo": 243,
+        "tipo": "Accesorio",
+        "descripcion": "Mouse USB",
+        "marca": "HP",
+        "modelo": "HSA-D005M"
+    },
+    {
+        "id": 7304,
+        "numequipo": 242,
+        "tipo": "Accesorio",
+        "descripcion": "Teclado USB",
+        "marca": "HP",
+        "modelo": "HSA-P010K"
+    },
+    {
+        "id": 7305,
+        "numequipo": 240,
+        "tipo": "Accesorio",
+        "descripcion": "Amplificador",
+        "marca": "JABRA",
+        "modelo": "LINK 860"
+    },
+    {
+        "id": 7306,
+        "numequipo": 246,
+        "tipo": "Accesorio",
+        "descripcion": "Diadema",
+        "marca": "JABRA",
+        "modelo": "EVOLVE 30 ll"
+    },
+    {
+        "id": 7307,
+        "numequipo": 241,
+        "tipo": "Accesorio",
+        "descripcion": "Diadema",
+        "marca": "JABRA",
+        "modelo": "BIZ 1500 DUO QD"
+    },
+    {
+        "id": 7308,
+        "numequipo": 247,
+        "tipo": "Accesorio",
+        "descripcion": "Brazos",
+        "marca": "KENSINGTON",
+        "modelo": "K60903USA"
+    },
+    {
+        "id": 7309,
+        "numequipo": 238,
+        "tipo": "Accesorio",
+        "descripcion": "Candado",
+        "marca": "KENSINGTON",
+        "modelo": "K60604WW"
+    },
+    {
+        "id": 7310,
+        "numequipo": 228,
+        "tipo": "Accesorio",
+        "descripcion": "DECADACTILAR",
+        "marca": "KOJAK",
+        "modelo": "IBNK110"
+    },
+    {
+        "id": 7311,
+        "numequipo": 227,
+        "tipo": "Accesorio",
+        "descripcion": "WEBCAM",
+        "marca": "LOGITECH",
+        "modelo": "C930E"
+    },
+    {
+        "id": 7312,
+        "numequipo": 244,
+        "tipo": "Accesorio",
+        "descripcion": "Mochila",
+        "marca": "Perfect Choice",
+        "modelo": "PC-083320 AZUL"
+    },
+    {
+        "id": 7313,
+        "numequipo": 226,
+        "tipo": "Accesorio",
+        "descripcion": "HUB",
+        "marca": "STARTECH",
+        "modelo": "ST4300MINU3B"
+    },
+    {
+        "id": 7314,
+        "numequipo": 252,
+        "tipo": "Accesorio",
+        "descripcion": "Escaner de cheques",
+        "marca": "SYMETRY",
+        "modelo": "8310"
+    },
+    {
+        "id": 7315,
+        "numequipo": 229,
+        "tipo": "Accesorio",
+        "descripcion": "MINI TRIPOIDE",
+        "marca": "TRIPIE CAMARA",
+        "modelo": "BIO-TRIPIE"
+    },
+    {
+        "id": 7316,
+        "numequipo": 224,
+        "tipo": "Accesorio",
+        "descripcion": "UNIDACTILAR",
+        "marca": "U.ARE.U",
+        "modelo": "5300 FINGERPRINT READER"
+    },
+    {
+        "id": 7317,
+        "numequipo": 265,
+        "tipo": "EAF",
+        "descripcion": "iPad",
+        "marca": "APPLE",
+        "modelo": "A2837"
+    },
+    {
+        "id": 7318,
+        "numequipo": 253,
+        "tipo": "EAF",
+        "descripcion": "MACBOOK",
+        "marca": "APPLE",
+        "modelo": "A2992"
+    },
+    {
+        "id": 7319,
+        "numequipo": 254,
+        "tipo": "EAF",
+        "descripcion": "MACBOOK",
+        "marca": "APPLE",
+        "modelo": "A2991"
+    },
+    {
+        "id": 7320,
+        "numequipo": 221,
+        "tipo": "EAF",
+        "descripcion": "MACBOOK",
+        "marca": "APPLE",
+        "modelo": "A2779"
+    },
+    {
+        "id": 7321,
+        "numequipo": 222,
+        "tipo": "EAF",
+        "descripcion": "MACBOOK",
+        "marca": "APPLE",
+        "modelo": "A2485"
+    },
+    {
+        "id": 7322,
+        "numequipo": 216,
+        "tipo": "EAF",
+        "descripcion": "LAPTOP",
+        "marca": "DELL",
+        "modelo": "LATITUDE 9330"
+    },
+    {
+        "id": 7323,
+        "numequipo": 258,
+        "tipo": "EAF",
+        "descripcion": "NETTOP",
+        "marca": "DELL",
+        "modelo": "OPTIPLEX MICRO PLUS 7020"
+    },
+    {
+        "id": 7324,
+        "numequipo": 259,
+        "tipo": "EAF",
+        "descripcion": "WORKSTATION",
+        "marca": "DELL",
+        "modelo": "PRECISION 7960"
+    },
+    {
+        "id": 7325,
+        "numequipo": 219,
+        "tipo": "EAF",
+        "descripcion": "WORKSTATION",
+        "marca": "DELL",
+        "modelo": "PRECISION 3450"
+    },
+    {
+        "id": 7326,
+        "numequipo": 260,
+        "tipo": "EAF",
+        "descripcion": "WORKSTATION",
+        "marca": "DELL",
+        "modelo": "PRECISION 3280\r"
+    },
+    {
+        "id": 7327,
+        "numequipo": 262,
+        "tipo": "EAF",
+        "descripcion": "Certificadora",
+        "marca": "EPSON",
+        "modelo": "H6000V"
+    },
+    {
+        "id": 7328,
+        "numequipo": 232,
+        "tipo": "EAF",
+        "descripcion": "LAPTOP",
+        "marca": "HP",
+        "modelo": "ZBOOK STUDIO G7"
+    },
+    {
+        "id": 7329,
+        "numequipo": 257,
+        "tipo": "EAF",
+        "descripcion": "LAPTOP",
+        "marca": "HP",
+        "modelo": "ZBOOK FIREFLY G10"
+    },
+    {
+        "id": 7330,
+        "numequipo": 213,
+        "tipo": "EAF",
+        "descripcion": "LAPTOP",
+        "marca": "HP",
+        "modelo": "ZBOOK FIREFLY 14 INCH G9"
+    },
+    {
+        "id": 7331,
+        "numequipo": 212,
+        "tipo": "EAF",
+        "descripcion": "LAPTOP",
+        "marca": "HP",
+        "modelo": "PROBOOK 640 G9"
+    },
+    {
+        "id": 7332,
+        "numequipo": 210,
+        "tipo": "EAF",
+        "descripcion": "LAPTOP",
+        "marca": "HP",
+        "modelo": "PROBOOK 440 G8"
+    },
+    {
+        "id": 7333,
+        "numequipo": 211,
+        "tipo": "EAF",
+        "descripcion": "LAPTOP",
+        "marca": "HP",
+        "modelo": "ELITEBOOK 640 G9"
+    },
+    {
+        "id": 7334,
+        "numequipo": 263,
+        "tipo": "EAF",
+        "descripcion": "LAPTOP",
+        "marca": "HP",
+        "modelo": "ELITEBOOK 640 G10"
+    },
+    {
+        "id": 7335,
+        "numequipo": 223,
+        "tipo": "EAF",
+        "descripcion": "LAPTOP",
+        "marca": "HP",
+        "modelo": "ELITE X360 1040 G9"
+    },
+    {
+        "id": 7336,
+        "numequipo": 264,
+        "tipo": "EAF",
+        "descripcion": "LAPTOP",
+        "marca": "HP",
+        "modelo": "ELITE DRAGONFLY G4"
+    },
+    {
+        "id": 7337,
+        "numequipo": 231,
+        "tipo": "EAF",
+        "descripcion": "LAPTOP",
+        "marca": "HP",
+        "modelo": "ELITE DRAGONFLY G3"
+    },
+    {
+        "id": 7338,
+        "numequipo": 217,
+        "tipo": "EAF",
+        "descripcion": "NETTOP",
+        "marca": "HP",
+        "modelo": "PRODESK 400 G9"
+    },
+    {
+        "id": 7339,
+        "numequipo": 218,
+        "tipo": "EAF",
+        "descripcion": "NETTOP",
+        "marca": "HP",
+        "modelo": "PRODESK 400 G6"
+    },
+    {
+        "id": 7340,
+        "numequipo": 214,
+        "tipo": "EAF",
+        "descripcion": "LAPTOP",
+        "marca": "LENOVO",
+        "modelo": "YOGA X13"
+    },
+    {
+        "id": 7341,
+        "numequipo": 215,
+        "tipo": "EAF",
+        "descripcion": "LAPTOP",
+        "marca": "LENOVO",
+        "modelo": "ThinkPad X1 Yoga Gen 6"
+    },
+    {
+        "id": 7342,
+        "numequipo": 220,
+        "tipo": "EAF",
+        "descripcion": "WORKSTATION",
+        "marca": "LENOVO",
+        "modelo": "THINKCENTRE TC M90T GEN 3"
+    },
+    {
+        "id": 7343,
+        "numequipo": 249,
+        "tipo": "EAF",
+        "descripcion": "Certificadora",
+        "marca": "OKIPOS",
+        "modelo": "OKIPOS-426S"
+    },
+    {
+        "id": 7344,
+        "numequipo": 256,
+        "tipo": "EAF",
+        "descripcion": "Video Conferencia",
+        "marca": "Poly",
+        "modelo": "Poly TC8"
+    },
+    {
+        "id": 7345,
+        "numequipo": 255,
+        "tipo": "EAF",
+        "descripcion": "Video Conferencia",
+        "marca": "Poly",
+        "modelo": "Poly Studio X30"
+    },
+    {
+        "id": 7346,
+        "numequipo": 250,
+        "tipo": "EAF",
+        "descripcion": "Digitalizadora",
+        "marca": "SYMETRY",
+        "modelo": "LS150"
+    }
+]
