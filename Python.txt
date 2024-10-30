@@ -1,80 +1,100 @@
-const data = [
-    // El array proporcionado va aquí
-];
-
-const uniqueBrands = [];
-const brandsSet = new Set();
-
-for (const item of data) {
-    if (!brandsSet.has(item.marca)) {
-        brandsSet.add(item.marca);
-        uniqueBrands.push(item.marca);
-    }
-}
-
-console.log(uniqueBrands);
-
-
-
-const items = [
-    { "id": 7291, "marca": "CHERRY" },
-    { "id": 7292, "marca": "Chexspress" },
-    { "id": 7293, "marca": "DELL" },
-    { "id": 7294, "marca": "DELL" },
-    { "id": 7295, "marca": "GEMALTO" },
-    { "id": 7296, "marca": "GENERICO" },
-    { "id": 7297, "marca": "HP" },
-    { "id": 7298, "marca": "HP" },
-    { "id": 7299, "marca": "HP" },
-    { "id": 7300, "marca": "HP" },
-    { "id": 7301, "marca": "HP" },
-    { "id": 7302, "marca": "HP" },
-    { "id": 7303, "marca": "HP" },
-    { "id": 7304, "marca": "HP" },
-    { "id": 7305, "marca": "JABRA" },
-    { "id": 7306, "marca": "JABRA" },
-    { "id": 7307, "marca": "JABRA" },
-    { "id": 7308, "marca": "KENSINGTON" },
-    { "id": 7309, "marca": "KENSINGTON" },
-    { "id": 7310, "marca": "KOJAK" },
-    { "id": 7311, "marca": "LOGITECH" },
-    { "id": 7312, "marca": "Perfect Choice" },
-    { "id": 7313, "marca": "STARTECH" },
-    { "id": 7314, "marca": "SYMETRY" },
-    { "id": 7315, "marca": "TRIPIE CAMARA" },
-    { "id": 7316, "marca": "U.ARE.U" },
-    { "id": 7317, "marca": "APPLE" },
-    { "id": 7318, "marca": "APPLE" },
-    { "id": 7319, "marca": "APPLE" },
-    { "id": 7320, "marca": "APPLE" },
-    { "id": 7321, "marca": "APPLE" },
-    { "id": 7322, "marca": "DELL" },
-    { "id": 7323, "marca": "DELL" },
-    { "id": 7324, "marca": "DELL" },
-    { "id": 7325, "marca": "DELL" },
-    { "id": 7326, "marca": "DELL" },
-    { "id": 7327, "marca": "EPSON" },
-    { "id": 7328, "marca": "HP" },
-    { "id": 7329, "marca": "HP" },
-    { "id": 7330, "marca": "HP" },
-    { "id": 7331, "marca": "HP" },
-    { "id": 7332, "marca": "HP" },
-    { "id": 7333, "marca": "HP" },
-    { "id": 7334, "marca": "HP" },
-    { "id": 7335, "marca": "HP" },
-    { "id": 7336, "marca": "HP" },
-    { "id": 7337, "marca": "HP" },
-    { "id": 7338, "marca": "HP" },
-    { "id": 7339, "marca": "HP" },
-    { "id": 7340, "marca": "LENOVO" },
-    { "id": 7341, "marca": "LENOVO" },
-    { "id": 7342, "marca": "LENOVO" },
-    { "id": 7343, "marca": "OKIPOS" },
-    { "id": 7344, "marca": "Poly" },
-    { "id": 7345, "marca": "Poly" },
-    { "id": 7346, "marca": "SYMETRY" }
-];
-
-const uniqueSortedBrands = [...new Set(items.map(item => item.marca))].sort();
-
-console.log(uniqueSortedBrands);
+¿Cuál de las siguientes NO es una defensa contra el Phishing?
+1 Ejecutar los archivos adjuntos de los correos electrónicos provenientes de direcciones desconocidas
+2 No hacer "clic" en enlaces contenidos en mensajes sospechosos, descargar archivos de mensajes sospechosos
+3 Nunca descargar archivos de mensajes sospechosos, estos pueden contener un programa malicioso
+4 Evitar ingresar a sitios web de dudosa reputación o con contenido censurado.
+¿Cuál de las siguientes NO es una recomendación para proteger el PIN?
+1 Esconder en un compartimento secreto un papel con el PIN
+2 Evitar compartirla con terceros
+3 Utilizar un código secreto difícil de adivinar
+4 Cambiarlo periódicamente
+Se conoce como el principio de "Mínimo privilegio" a:
+1 La asignación de los derechos humanos mínimos a un usuario
+2 Clasificación de la información privilegiada
+3 Estado en el cual queda un usuario al ser sancionado
+4 La asignación de los permisos mínimos necesarios a un usuario para desempeñar sus actividades
+¿Qué es una vulnerabilidad en Seguridad de la Información?
+1 Todas las anteriores
+2 La capacidad de un individuo de ser víctima de un ataque
+3 Una debilidad en un software, hardware o proceso que puede ser aprovechado por un atacante
+4 El estado de un activo después de ser atacado
+Se dice que una autenticación es fuerte cuando:
+1 Ninguna de las anteriores
+2 Hace uso de dos o más factores
+3 Hace uso de contraseñas seguras
+4 Hace uso de un factor
+¿Qué es un riesgo?
+1 El costo de aplicar un control
+2 Probabilidad de que una vulnerabilidad se aproveche de un usuario
+3 Es el impacto que tiene un ciberataque en el negocio
+4 Probabilidad de que una amenaza explote una vulnerabilidad
+¿Cuál de las siguientes NO es una recomendación al conectase a redes WiFi Públicas?
+1 Verificar si se trata de una conexión inalámbrica legítima
+2 Utilizar redes públicas sólo en aeropuertos o cafés
+3 Evitar acceder sitios web que administren información sensitiva
+4 Utilizar una VPN
+¿Cuál de las siguientes NO es una recomendación para proteger tu dispositivo móvil?
+1 Realiza el jailbreak o rooting del dispositivo
+2 Utiliza la aplicación oficial del Banco
+3 Mantener el software actualizado
+4 Evita dejar el dispositivo desbloqueado
+¿Qué es una amenaza en Seguridad de la Información?
+1 Alguien o algo que pudiese hacer uso de una vulnerabilidad
+2 Manifestación de un Incidente de seguridad
+3 Comunicación emitida por un atacante antes de un ciberataque
+4 Probabilidad de ocurrencia de un ataque
+¿Qué es la autenticación, en el proceso de Control de Acceso?
+1 Todas las anteriores
+2 El proceso para dar privilegios y derechos a los usuarios
+3 El proceso para verificar que un usuario es quien dice ser
+4 El proceso para identificar a un usuario
+¿Cuál de los siguientes datos personales se puede compartir en redes sociales?
+1 Ninguna de las anteriores.
+2 Número de móvil o correo electrónico.
+3 Ubicación actual.
+4 Número de identificación (IFE, Pasaporte, etc.)
+¿Cuál de las siguientes es un riesgo para la seguridad en la nube?
+1 Todas las anteriores
+2 Revelación de información:
+3 Extracción no autorizada e información
+4 Corrupción de la información
+¿Cuál es la principal característica del Ransomware?
+1 Es un malware que propaga en archivos de Excel.
+2 Cifra la información y pide un rescate (dinero) para poder descifrarla
+3 No es un malware
+4 No requiere la intervención del usuario para infectar un equipo de cómputo.
+¿Cuáles son las estrategias para tratar los riesgos?
+1 Mitigación, Eliminación, Transferencia y Cancelación
+2 Mitigación, Eliminación, Transferencia y Aceptación
+3 Cancelación, Eliminación, Transferencia y Aceptación
+4 Mitigación, Eliminación, Cancelación y Aceptación
+¿Cuáles son los principios de la Seguridad de Información?
+1 Integridad, Auditabilidad, Autorización
+2 Confidencialidad, Autorización, Disponibilidad
+3 Confidencialidad, Integridad, Disponibilidad
+4 Identificación, Autenticación, Autorización
+¿Cuál de los siguientes es un consejo para cuidar tus contraseñas de Banca en línea?
+1 Guardar la contraseña escrita en un lugar seguro
+2 Compartir tu contraseña sólo a agentes del Banco
+3 Activar un segundo factor de autenticación
+4 Utilizar la misma contraseña para la Banca online en otros sitios
+¿Cuál de las siguientes técnicas poder utilizar un cibercriminal para el robo de credenciales de Banca en línea?
+1 Todas las anteriores
+2 Ingeniería Social
+3 Malware
+4 Phishing
+¿Qué acción es una recomendación en el caso de recibir un correo sospechoso?
+1 Responderle al remitente del correo
+2 Reenviarlo a todos tus contactos
+3 Descargar y ejecutar los archivos adjuntos
+4 No ejecutar ningún archivo adjunto, no reenviarlo y reportarlo al área de Seguridad de la Información
+¿Cuál es el objetivo de un ataque phishing?
+1 Borrar la información de un equipo de computo
+2 Obtener las credenciales de autenticación de un usuario
+3 Capturar los datos que se intercambian dos dispositivos de telecomunicación
+4 Inhabilitar el uso de un sistema, una aplicación o una máquina
+¿Cómo se llama el conjunto de reglas, normas y protocolos de actuación que se encargan de velar por la seguridad informática de la empresa?
+1 Reglamento interno
+2 Acuerdo de Nivel de Servicios
+3 Políticas de seguridad
+4 Acuerdo de confidencialidad
