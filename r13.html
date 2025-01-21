@@ -5,122 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Excel Table Preview</title>
-    <style>
-        .titleImagen {
-            font-size: 14px;
-            padding-top: 1rem;
-        }
-
-        .generado {
-            font-size: 10px;
-        }
-
-        .sgtMexRed {
-            color: red;
-            font-size: 12px;
-        }
-
-        .table-rep13-headers {
-            width: 100%;
-            max-width: 800px;
-            margin: 20px auto;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-bottom: 1rem;
-        }
-
-        .table-rep13 {
-            border-collapse: collapse;
-            border: 8px solid #515151;
-            width: 100%;
-            max-width: 800px;
-            margin: 20px auto;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-
-        .table-rep13-into {
-            font-size: 12px;
-            border: 1px solid #fff8f8;
-            background-color: #b4aeae;
-
-        }
-
-        .tituloSeccion {
-            border: 1px solid #fff8f8;
-            background-color: #515151;
-            color: white;
-            font-size: 16px;
-            font-weight: bolder;
-            padding: 0.5rem;
-        }
-
-        .table-rep13-into-sbTitle {
-            border: 1px solid #fff8f8;
-            background-color: #515151;
-            color: white;
-            font-size: 16px;
-            padding: 0.2rem;
-        }
-
-        .table-rep13-into-sbTitle-sm {
-            border: 1px solid #fff8f8;
-            background-color: #515151;
-            color: white;
-            font-size: 14px;
-            padding: 0.1rem;
-        }
-
-        .one-line {
-            display: flex;
-        }
-
-        .table-rep13-border td {
-            background-color: #878787;
-
-        }
-
-        tr .tr-data:nth-child(odd) {
-            background-color: #b4aeae;
-            border: 1px solid #515151;
-        }
-
-        tr .tr-data:nth-child(even) {
-            background-color: #ebebeb;
-            border: 1px solid #515151;
-        }
-
-        .onTime {
-            display: inline-block;
-            height: 12px;
-            width: 12px;
-            border-radius: 50%;
-            background-color: greenyellow;
-        }
-
-        .outTime {
-            display: inline-block;
-            height: 12px;
-            width: 12px;
-            border-radius: 50%;
-            background-color: red;
-        }
-
-        .timer-line {
-            height: 30px;
-        }
-
-        .img-pais {
-            height: 50px;
-            width: 60px;
-            border-radius: 50%;
-        }
-
-        .img-empresa {
-            height: 50px;
-            width: 60px;
-        }
-    </style>
 </head>
 
 <body>
@@ -131,7 +15,7 @@
         <button id="generateImage" style="display: none;">Generar Imagen</button>
     </div>
     <div id="tableContainer">
-        <table id="styledTable" class="table-rep13-headers">
+        <table id="styledTable-title" class="table-rep13-headers">
             <tbody>
                 <tr>
                     <td rowspan="3"><img class="img-pais" src="../assets/img/Flag_of_Mexico.svg.png" alt="pais"></td>
@@ -150,7 +34,8 @@
                 </tr>
             </tbody>
         </table>
-        <table id="styledTable" class="table-rep13">
+
+        <table id="styledTable-content" class="table-rep13">
             <tbody>
                 <tr class="table-rep13-into" id="data-comunicaciones">
                     <td colspan="5" class="tituloSeccion">COMUNICACIONES</td>
@@ -184,7 +69,7 @@
                 <tr class="table-rep13-into" id="data-carriers">
                     <td class="table-rep13-into-sbTitle" colspan="5">Carriers con problemas</td>
                 </tr>
-                <tr class="tr-data">
+                <tr class="table-rep13-into">
                     <td data-v="Telmex">Telmex</td>
                     <td data-v="Iusacell">Iusacell</td>
                     <td data-v="Telcel">Telcel</td>
@@ -425,6 +310,3 @@
         </table>
     </div>
     <div id="imageContainer" style="text-align: center;"></div>
-</body>
-
-</html>
