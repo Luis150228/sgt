@@ -1,0 +1,34 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+    document.getElementById('excelFile').addEventListener('change', async (event) => {
+        const file = event.target.files[0];
+        if (!file) return alert('Selecciona un archivo Excel.');
+
+        const data = await file.arrayBuffer();
+        const workbook = XLSX.read(data);
+
+        // Extrae datos de los rangos específicos
+        const sheetName = workbook.SheetNames[0];
+        const sheet = workbook.Sheets[sheetName];
+
+        // Función para convertir rango en celdas HTML
+        const rangeToHTML = (range) => {
+            const rangeData = XLSX.utils.sheet_to_json(sheet, { header: 1, range });
+            return rangeData.map(row => `
+                <tr>${row.map(cell => `<td>${cell ?? ''}</td>`).join('')}</tr>
+            `).join('');
+        };
+
+        // Extraer datos para los rangos
+        const commitsHTML = rangeToHTML('B48:F48');
+        const carriersHTML = rangeToHTML('B13:F18');
+
+        // Insertar en los tbody correspondientes
+        document.getElementById('data-commits').innerHTML = commitsHTML;
+        document.getElementById('data-carriers').innerHTML = carriersHTML;
+    });
+
+    document.getElementById('previewTable').addEventListener('click', () => {
+        alert('Archivo procesado y tablas actualizadas.');
+    });
+</script>
