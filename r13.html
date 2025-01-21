@@ -44,80 +44,77 @@
                     <td class="table-rep13-into-sbTitle" rowspan="2">Total de oficinas:</td>
                     <td colspan="2">Total Off:</td>
                     <td>Servidor</td>
-                    <td>0</td>
+                    <td id="servidor">0</td>
                 </tr>
                 <tr class="table-rep13-into">
                     <td colspan="2" rowspan="2">0</td>
                     <td>Comunicaciones</td>
-                    <td>0</td>
+                    <td id="comunicaciones">0</td>
                 </tr>
                 <tr class="table-rep13-into">
-                    <td class="table-rep13-into-sbTitle" rowspan="3">1,323</td>
+                    <td id="suc-total" class="table-rep13-into-sbTitle" rowspan="3">1,323</td>
                     <td>Energía E.</td>
-                    <td>0</td>
+                    <td id="energia">0</td>
                 </tr>
                 <tr class="table-rep13-into">
                     <td colspan="2">Contingencia:</td>
                     <td>Backup</td>
-                    <td>3</td>
+                    <td id="backup">3</td>
                 </tr>
                 <tr class="table-rep13-into">
                     <td colspan="2">3</td>
                     <td>Lentitud</td>
-                    <td>0</td>
+                    <td id="lentitud">0</td>
                 </tr>
                 <tr class="table-rep13-into" id="data-carriers">
                     <td class="table-rep13-into-sbTitle" colspan="5">Carriers con problemas</td>
                 </tr>
-                <tr class="table-rep13-into">
+                <tr id="carriers-titles-a" class="table-rep13-into">
                     <td data-v="Telmex">Telmex</td>
                     <td data-v="Iusacell">Iusacell</td>
                     <td data-v="Telcel">Telcel</td>
                     <td data-v="Izzi">Izzi</td>
                     <td data-v="Metrocarrier">Metrocarrier</td>
                 </tr>
-                <tr class="table-rep13-into">
+                <tr id="carriers-data-a" class="table-rep13-into">
                     <td>0</td>
                     <td>0</td>
                     <td>0</td>
                     <td>0</td>
                     <td>0</td>
                 </tr>
-                <tr class="table-rep13-into">
+                <tr id="carriers-titles-b" class="table-rep13-into">
                     <td data-v="Telefónica">Telefónica</td>
                     <td data-v="Axtel">Axtel</td>
                     <td data-v="Totalplay">Totalplay</td>
                     <td data-v="SDWAN">SDWAN</td>
                     <td data-v="FUNO">FUNO</td>
                 </tr>
-                <tr class="table-rep13-into">
+                <tr id="carriers-data-b" class="table-rep13-into">
                     <td>0</td>
                     <td>1</td>
                     <td>0</td>
                     <td>3</td>
                     <td>0</td>
                 </tr>
-                <tr class="table-rep13-into">
+                <tr id="carriers-titles-c" class="table-rep13-into">
                     <td data-v="Cliente">Cliente</td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                 </tr>
-                <tr class="table-rep13-into">
+                <tr id="carriers-data-c" class="table-rep13-into">
                     <td>0</td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                 </tr>
-                <tr class="table-rep13-into">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            </tbody>
+        </table>
+        <table id="incidentes-sh-content" class="table-rep13">
+            <thead>
                 <tr class="table-rep13-into" id="data-incidentes">
                     <td colspan="5" class="tituloSeccion">INCIDENTES SERVICENOW Service Desk y WhatsApp</td>
                 </tr>
@@ -132,6 +129,8 @@
                     <td>En Tiempo <span class="onTime"></span></td>
                     <td>Vencidos <span class="outTime"></span></td>
                 </tr>
+            </thead>
+            <tbody>
                 <tr class="table-rep13-into">
                     <td data-v="Centro">Centro</td>
                     <td>0</td>
@@ -203,12 +202,12 @@
                     <td>0</td>
                 </tr>
                 <tr class="table-rep13-into">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="5"></td>
                 </tr>
+            </tbody>
+        </table>
+        <table id="incidentes-cm-content" class="table-rep13">
+            <thead>
                 <tr class="table-rep13-into-sbTitle">
                     <td rowspan="2">Región</td>
                     <td colspan="2">Comunicaciones</td>
@@ -220,6 +219,8 @@
                     <td>En Tiempo <span class="onTime"></span></td>
                     <td>Vencidos <span class="outTime"></span></td>
                 </tr>
+            </thead>
+            <tbody>
                 <tr class="table-rep13-into">
                     <td data-v="Centro">Centro</td>
                     <td>0</td>
@@ -291,17 +292,19 @@
                     <td>0</td>
                 </tr>
                 <tr class="table-rep13-into">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="5"></td>
                 </tr>
+            </tbody>
+        </table>
+        <table id="detail-sf" class="table-rep13">
+            <tbody>
                 <tr class="table-rep13-into-sbTitle" id="data-commits">
                     <td colspan="5" data-v="Comentarios">Comentarios</td>
                 </tr>
-                <tr class="table-rep13-into">
-                    <td colspan="5" data-v="sucFuera"></td>
+                <tr class="table-rep13-into-commit">
+                    <td colspan="5" data-v="sucFuera">1124-KIOSCO TUIIO ACAYUCAN
+                        0418-ROSARITO
+                        0168-TAMPICO</td>
                 </tr>
                 <tr class="table-rep13-into">
                     <td colspan="5"></td>
@@ -310,3 +313,6 @@
         </table>
     </div>
     <div id="imageContainer" style="text-align: center;"></div>
+</body>
+
+</html>
