@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel to Styled JPG</title>
+  <style>
+    /* Estilos para mejorar la tabla */
+    #styledTable {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+      font-family: Arial, sans-serif;
+    }
+
+    #styledTable th, #styledTable td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    #styledTable th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    #styledTable tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <input type="file" id="excelFile" accept=".xlsx, .xls" />
+  <button id="generateImage">Generar Imagen</button>
+  <div id="tableContainer" style="display: none;"></div>
+  <div id="imageContainer" style="text-align: center;">
+    <!-- Aquí se mostrará la imagen generada -->
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas"></script>
+  <script>
+    document.getElementById('generateImage').addEventListener('click', () => {
+      const input = document.getElementById('excelFile');
+      if (!input.files.length) {
+        alert('Selecciona un archivo Excel.');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const data = new Uint8Array(event.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+
+        // Lee la primera hoja del archivo Excel
+        const sheetName = workbook.SheetNames[0];
+        const sheet = workbook.Sheets[sheetName];
+        const htmlTable = XLSX.utils.sheet_to_html(sheet);
+
+        // Inserta la tabla en un contenedor con estilos
+        const container = document.getElementById('tableContainer');
+        container.innerHTML = htmlTable;
+
+        // Añade el ID y los estilos personalizados
+        const table = container.querySelector('table');
+        table.id = 'styledTable';
+
+        // Agrega una imagen personalizada
+        const img = document.createElement('img');
+        img.src = 'https://via.placeholder.com/150'; // URL de la imagen o base64
+        img.style.margin = '20px auto';
+        img.style.display = 'block';
+        container.prepend(img);
+
+        container.style.display = 'block';
+
+        // Convierte la tabla con imagen a JPG
+        html2canvas(container).then((canvas) => {
+          const link = document.createElement('a');
+          link.href = canvas.toDataURL('image/jpeg', 1.0);
+          link.download = `${sheetName}_styled.jpg`;
+          link.click();
+
+          // Muestra la imagen generada en pantalla
+          document.getElementById('imageContainer').innerHTML = '';
+          document.getElementById('imageContainer').appendChild(canvas);
+
+          // Limpia el contenedor
+          container.style.display = 'none';
+        });
+      };
+
+      reader.readAsArrayBuffer(input.files[0]);
+    });
+  </script>
+</body>
+</html>
