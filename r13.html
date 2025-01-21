@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Excel to Styled JPG</title>
+  <title>Excel Table Preview</title>
   <style>
-    /* Estilos para mejorar la tabla */
+    /* Estilos básicos para la tabla */
     #styledTable {
       border-collapse: collapse;
       width: 100%;
@@ -28,23 +28,31 @@
     #styledTable tr:nth-child(even) {
       background-color: #f2f2f2;
     }
+
+    #controls {
+      margin: 20px auto;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-  <input type="file" id="excelFile" accept=".xlsx, .xls" />
-  <button id="generateImage">Generar Imagen</button>
-  <div id="tableContainer" style="display: none;"></div>
-  <div id="imageContainer" style="text-align: center;">
-    <!-- Aquí se mostrará la imagen generada -->
+  <div id="controls">
+    <input type="file" id="excelFile" accept=".xlsx, .xls" />
+    <input type="text" id="rangeInput" placeholder="Ejemplo: A1:D10" />
+    <button id="previewTable">Previsualizar Tabla</button>
+    <button id="generateImage" style="display: none;">Generar Imagen</button>
   </div>
+  <div id="tableContainer"></div>
+  <div id="imageContainer" style="text-align: center;"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas"></script>
   <script>
-    document.getElementById('generateImage').addEventListener('click', () => {
+    document.getElementById('previewTable').addEventListener('click', () => {
       const input = document.getElementById('excelFile');
-      if (!input.files.length) {
-        alert('Selecciona un archivo Excel.');
+      const rangeInput = document.getElementById('rangeInput').value.trim();
+      if (!input.files.length || !rangeInput) {
+        alert('Selecciona un archivo Excel y especifica un rango.');
         return;
       }
 
@@ -56,43 +64,60 @@
         // Lee la primera hoja del archivo Excel
         const sheetName = workbook.SheetNames[0];
         const sheet = workbook.Sheets[sheetName];
-        const htmlTable = XLSX.utils.sheet_to_html(sheet);
 
-        // Inserta la tabla en un contenedor con estilos
+        // Convierte el rango seleccionado a HTML
+        const range = XLSX.utils.decode_range(rangeInput);
+        const filteredSheet = filterEmptyCells(sheet, range);
+        const htmlTable = XLSX.utils.sheet_to_html(filteredSheet);
+
+        // Inserta la tabla con estilos
         const container = document.getElementById('tableContainer');
         container.innerHTML = htmlTable;
 
-        // Añade el ID y los estilos personalizados
         const table = container.querySelector('table');
         table.id = 'styledTable';
 
-        // Agrega una imagen personalizada
-        const img = document.createElement('img');
-        img.src = 'https://via.placeholder.com/150'; // URL de la imagen o base64
-        img.style.margin = '20px auto';
-        img.style.display = 'block';
-        container.prepend(img);
-
-        container.style.display = 'block';
-
-        // Convierte la tabla con imagen a JPG
-        html2canvas(container).then((canvas) => {
-          const link = document.createElement('a');
-          link.href = canvas.toDataURL('image/jpeg', 1.0);
-          link.download = `${sheetName}_styled.jpg`;
-          link.click();
-
-          // Muestra la imagen generada en pantalla
-          document.getElementById('imageContainer').innerHTML = '';
-          document.getElementById('imageContainer').appendChild(canvas);
-
-          // Limpia el contenedor
-          container.style.display = 'none';
-        });
+        // Muestra el botón para generar imagen
+        document.getElementById('generateImage').style.display = 'inline-block';
       };
 
       reader.readAsArrayBuffer(input.files[0]);
     });
+
+    document.getElementById('generateImage').addEventListener('click', () => {
+      const container = document.getElementById('tableContainer');
+      if (!container.innerHTML) {
+        alert('No hay tabla para convertir a imagen.');
+        return;
+      }
+
+      // Convierte la tabla en imagen
+      html2canvas(container).then((canvas) => {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/jpeg', 1.0);
+        link.download = `table_preview.jpg`;
+        link.click();
+
+        // Muestra la imagen generada
+        document.getElementById('imageContainer').innerHTML = '';
+        document.getElementById('imageContainer').appendChild(canvas);
+      });
+    });
+
+    // Función para filtrar filas/columnas vacías
+    function filterEmptyCells(sheet, range) {
+      const newSheet = {};
+      for (let R = range.s.r; R <= range.e.r; ++R) {
+        for (let C = range.s.c; C <= range.e.c; ++C) {
+          const cellAddress = XLSX.utils.encode_cell({ r: R, c: C });
+          if (sheet[cellAddress] && sheet[cellAddress].v !== undefined) {
+            newSheet[cellAddress] = sheet[cellAddress];
+          }
+        }
+      }
+      newSheet['!ref'] = XLSX.utils.encode_range(range);
+      return newSheet;
+    }
   </script>
 </body>
 </html>
