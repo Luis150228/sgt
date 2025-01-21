@@ -1,123 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Excel Table Preview</title>
-  <style>
-    /* Estilos básicos para la tabla */
-    #styledTable {
-      border-collapse: collapse;
-      width: 100%;
-      max-width: 800px;
-      margin: 20px auto;
-      font-family: Arial, sans-serif;
-    }
-
-    #styledTable th, #styledTable td {
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: center;
-    }
-
-    #styledTable th {
-      background-color: #007bff;
-      color: white;
-    }
-
-    #styledTable tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-
-    #controls {
-      margin: 20px auto;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  <div id="controls">
-    <input type="file" id="excelFile" accept=".xlsx, .xls" />
-    <input type="text" id="rangeInput" placeholder="Ejemplo: A1:D10" />
-    <button id="previewTable">Previsualizar Tabla</button>
-    <button id="generateImage" style="display: none;">Generar Imagen</button>
-  </div>
-  <div id="tableContainer"></div>
-  <div id="imageContainer" style="text-align: center;"></div>
-
-  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas"></script>
-  <script>
-    document.getElementById('previewTable').addEventListener('click', () => {
-      const input = document.getElementById('excelFile');
-      const rangeInput = document.getElementById('rangeInput').value.trim();
-      if (!input.files.length || !rangeInput) {
-        alert('Selecciona un archivo Excel y especifica un rango.');
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const data = new Uint8Array(event.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
-
-        // Lee la primera hoja del archivo Excel
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
-
-        // Convierte el rango seleccionado a HTML
-        const range = XLSX.utils.decode_range(rangeInput);
-        const filteredSheet = filterEmptyCells(sheet, range);
-        const htmlTable = XLSX.utils.sheet_to_html(filteredSheet);
-
-        // Inserta la tabla con estilos
-        const container = document.getElementById('tableContainer');
-        container.innerHTML = htmlTable;
-
-        const table = container.querySelector('table');
-        table.id = 'styledTable';
-
-        // Muestra el botón para generar imagen
-        document.getElementById('generateImage').style.display = 'inline-block';
-      };
-
-      reader.readAsArrayBuffer(input.files[0]);
-    });
-
-    document.getElementById('generateImage').addEventListener('click', () => {
-      const container = document.getElementById('tableContainer');
-      if (!container.innerHTML) {
-        alert('No hay tabla para convertir a imagen.');
-        return;
-      }
-
-      // Convierte la tabla en imagen
-      html2canvas(container).then((canvas) => {
-        const link = document.createElement('a');
-        link.href = canvas.toDataURL('image/jpeg', 1.0);
-        link.download = `table_preview.jpg`;
-        link.click();
-
-        // Muestra la imagen generada
-        document.getElementById('imageContainer').innerHTML = '';
-        document.getElementById('imageContainer').appendChild(canvas);
-      });
-    });
-
-    // Función para filtrar filas/columnas vacías
-    function filterEmptyCells(sheet, range) {
-      const newSheet = {};
-      for (let R = range.s.r; R <= range.e.r; ++R) {
-        for (let C = range.s.c; C <= range.e.c; ++C) {
-          const cellAddress = XLSX.utils.encode_cell({ r: R, c: C });
-          if (sheet[cellAddress] && sheet[cellAddress].v !== undefined) {
-            newSheet[cellAddress] = sheet[cellAddress];
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Table Preview</title>
+    <style>
+        .titleImagen {
+            font-size: 14px;
+            padding-top: 1rem;
         }
-      }
-      newSheet['!ref'] = XLSX.utils.encode_range(range);
-      return newSheet;
-    }
-  </script>
+
+        .generado {
+            font-size: 10px;
+        }
+
+        .sgtMexRed {
+            color: red;
+            font-size: 12px;
+        }
+
+        .table-rep13-headers {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-bottom: 1rem;
+        }
+
+        .table-rep13 {
+            border-collapse: collapse;
+            border: 8px solid #515151;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .table-rep13-into {
+            font-size: 12px;
+            border: 1px solid #fff8f8;
+            background-color: #b4aeae;
+
+        }
+
+        .tituloSeccion {
+            border: 1px solid #fff8f8;
+            background-color: #515151;
+            color: white;
+            font-size: 16px;
+            font-weight: bolder;
+            padding: 0.5rem;
+        }
+
+        .table-rep13-into-sbTitle {
+            border: 1px solid #fff8f8;
+            background-color: #515151;
+            color: white;
+            font-size: 16px;
+            padding: 0.2rem;
+        }
+
+        .table-rep13-into-sbTitle-sm {
+            border: 1px solid #fff8f8;
+            background-color: #515151;
+            color: white;
+            font-size: 14px;
+            padding: 0.1rem;
+        }
+
+        .one-line {
+            display: flex;
+        }
+
+        .table-rep13-border td {
+            background-color: #878787;
+
+        }
+
+        tr .tr-data:nth-child(odd) {
+            background-color: #b4aeae;
+            border: 1px solid #515151;
+        }
+
+        tr .tr-data:nth-child(even) {
+            background-color: #ebebeb;
+            border: 1px solid #515151;
+        }
+
+        .onTime {
+            display: inline-block;
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            background-color: greenyellow;
+        }
+
+        .outTime {
+            display: inline-block;
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            background-color: red;
+        }
+
+        .timer-line {
+            height: 30px;
+        }
+
+        .img-pais {
+            height: 50px;
+            width: 60px;
+            border-radius: 50%;
+        }
+
+        .img-empresa {
+            height: 50px;
+            width: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="controls">
+        <input type="file" id="excelFile" accept=".xlsx, .xls" />
+        <!-- <input type="text" id="rangeInput" placeholder="Ejemplo: A1:D10" /> -->
+        <button id="previewTable">Previsualizar Tabla</button>
+        <button id="generateImage" style="display: none;">Generar Imagen</button>
+    </div>
+    <div id="tableContainer">
+        <table id="styledTable" class="table-rep13-headers">
+            <tbody>
+                <tr>
+                    <td rowspan="3"><img class="img-pais" src="../assets/img/Flag_of_Mexico.svg.png" alt="pais"></td>
+                    <td class="titleImagen" colspan="3">SEGUIMIENTO A SUCURSALES</td>
+                    <td rowspan="3"><img class="img-empresa" src="../assets/img/Banco_Santander_LogotipoSmall.svg"
+                            alt="santander"></td>
+                </tr>
+                <tr>
+                    <td class="generado" colspan="3">08:00 HRS - Tuesday 21 de January</td>
+                </tr>
+                <tr>
+                    <td class="sgtMexRed" colspan="3">SGT México</td>
+                </tr>
+                <tr>
+                    <td colspan="5"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="styledTable" class="table-rep13">
+            <tbody>
+                <tr class="table-rep13-into" id="data-comunicaciones">
+                    <td colspan="5" class="tituloSeccion">COMUNICACIONES</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td class="table-rep13-into-sbTitle" rowspan="2">Total de oficinas:</td>
+                    <td colspan="2">Total Off:</td>
+                    <td>Servidor</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td colspan="2" rowspan="2">0</td>
+                    <td>Comunicaciones</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td class="table-rep13-into-sbTitle" rowspan="3">1,323</td>
+                    <td>Energía E.</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td colspan="2">Contingencia:</td>
+                    <td>Backup</td>
+                    <td>3</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td colspan="2">3</td>
+                    <td>Lentitud</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into" id="data-carriers">
+                    <td class="table-rep13-into-sbTitle" colspan="5">Carriers con problemas</td>
+                </tr>
+                <tr class="tr-data">
+                    <td data-v="Telmex">Telmex</td>
+                    <td data-v="Iusacell">Iusacell</td>
+                    <td data-v="Telcel">Telcel</td>
+                    <td data-v="Izzi">Izzi</td>
+                    <td data-v="Metrocarrier">Metrocarrier</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Telefónica">Telefónica</td>
+                    <td data-v="Axtel">Axtel</td>
+                    <td data-v="Totalplay">Totalplay</td>
+                    <td data-v="SDWAN">SDWAN</td>
+                    <td data-v="FUNO">FUNO</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>3</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Cliente">Cliente</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td>0</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-rep13-into" id="data-incidentes">
+                    <td colspan="5" class="tituloSeccion">INCIDENTES SERVICENOW Service Desk y WhatsApp</td>
+                </tr>
+                <tr class="table-rep13-into-sbTitle">
+                    <td rowspan="2">Región</td>
+                    <td colspan="2">Software</td>
+                    <td colspan="2">Hardware</td>
+                </tr>
+                <tr class="table-rep13-into-sbTitle-sm timer-line">
+                    <td>En Tiempo <span class="onTime"></span></td>
+                    <td>Vencidos <span class="outTime"></span></td>
+                    <td>En Tiempo <span class="onTime"></span></td>
+                    <td>Vencidos <span class="outTime"></span></td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Centro">Centro</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Metro Norte">Metro Norte</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Metro Sur">Metro Sur</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Norte">Norte</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Noreste">Noreste</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Noroeste">Noroeste</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Occidente">Occidente</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Sur">Sur</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Sureste">Sureste</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into-sbTitle">
+                    <td data-v="Total">Total</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-rep13-into-sbTitle">
+                    <td rowspan="2">Región</td>
+                    <td colspan="2">Comunicaciones</td>
+                    <td colspan="2">Multifuncionales</td>
+                </tr>
+                <tr class="table-rep13-into-sbTitle-sm">
+                    <td>En Tiempo <span class="onTime"></span></td>
+                    <td>Vencidos <span class="outTime"></span></td>
+                    <td>En Tiempo <span class="onTime"></span></td>
+                    <td>Vencidos <span class="outTime"></span></td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Centro">Centro</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Metro Norte">Metro Norte</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Metro Sur">Metro Sur</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Norte">Norte</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Noreste">Noreste</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Noroeste">Noroeste</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Occidente">Occidente</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Sur">Sur</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td data-v="Sureste">Sureste</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into-sbTitle">
+                    <td data-v="Total">Total</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-rep13-into-sbTitle" id="data-commits">
+                    <td colspan="5" data-v="Comentarios">Comentarios</td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td colspan="5" data-v="sucFuera"></td>
+                </tr>
+                <tr class="table-rep13-into">
+                    <td colspan="5"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="imageContainer" style="text-align: center;"></div>
 </body>
+
 </html>
