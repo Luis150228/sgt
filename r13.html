@@ -555,17 +555,53 @@
             }
 
             // Convierte la tabla en imagen
-            html2canvas(container).then((canvas) => {
+            // html2canvas(container).then((canvas) => {
+            //     const link = document.createElement('a');
+            //     link.href = canvas.toDataURL('image/png', 1.0);
+            //     link.download = `table_preview.png`;
+            //     link.click();
+
+            //     // Muestra la imagen generada
+            //     document.getElementById('imageContainer').innerHTML = '';
+            //     container.style.display = 'none';
+            //     document.getElementById('imageContainer').appendChild(canvas);
+            // });
+
+                        // Convierte la tabla en imagen
+            html2canvas64(container).then((canvas) => {
+                // Genera el enlace de descarga
                 const link = document.createElement('a');
-                link.href = canvas.toDataURL('image/png', 1.0);
+                link.href = canvas.toDataURL('image/png', 1.0); // Genera imagen en formato base64
                 link.download = `table_preview.png`;
                 link.click();
-
+            
+                // Obtén la imagen en base64
+                const base64Image = canvas.toDataURL('image/png', 1.0);
+                console.log('Imagen en Base64:', base64Image);
+            
                 // Muestra la imagen generada
                 document.getElementById('imageContainer').innerHTML = '';
                 container.style.display = 'none';
                 document.getElementById('imageContainer').appendChild(canvas);
+            
+                // Si necesitas usar la imagen en base64, puedes almacenarla o enviarla a un servidor
+                // sendImageToServer(base64Image);
             });
+            
+            // Ejemplo de una función para enviar la imagen en base64 al servidor
+            function sendImageToServer(base64Image) {
+                fetch('/upload', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ image: base64Image }),
+                })
+                .then(response => response.json())
+                .then(data => console.log('Imagen enviada con éxito:', data))
+                .catch(error => console.error('Error al enviar la imagen:', error));
+            }
+
         });
 
         // Función para filtrar filas/columnas vacías
