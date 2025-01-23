@@ -1,0 +1,11 @@
+Dashboard Web Diarios:
+o	Análisis y validación técnica de la viabilidad de mostrar información como se está presentando actualmente para que los usuarios se adapten de manera ágil al nuevo formato.
+o	Se busca tener los tableros y data en el formado “bajo demanda” con lo que se podrá consultar en cualquier momento apenas se haya actualizado la información.
+o	Escalar el “on-demand” de los reportes a los semanales y mensuales.
+Acciones:
+o	Creando la arquitectura de las bases de datos en motores sql para optimizar la consulta de información.
+o	Generando Diagramas de Flujo de los procedimientos actuales para optimizarlos y automatizarlos.
+o	Inicio del diseño UI de la interfaz de los usuarios para agilizar la consulta en un formato normalizado a lo que actualmente se envía por correo electrónico.
+Consideraciones:
+o	Perfiles de usuario para dar seguridad a la información.
+o	Validación en paralelo con el procedimiento actual.
