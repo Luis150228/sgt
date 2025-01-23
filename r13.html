@@ -1,239 +1,45 @@
-quiero llenar la siguiente tabla html con los datos del objeto D_R13T y D_R13V
-por ejemplo
+const D_R13T = [
+  { "Region": "Sureste", "HARDWARE": "5", "SOFTWARE": "3" },
+  { "Region": "Sur", "HARDWARE": "0", "SOFTWARE": "0" },
+  { "Region": "Centro", "HARDWARE": "6", "SOFTWARE": "3" },
+  { "Region": "Norte", "HARDWARE": "0", "SOFTWARE": "1" },
+  { "Region": "Noreste", "HARDWARE": "1", "SOFTWARE": "1" },
+  { "Region": "Occidente", "HARDWARE": "2", "SOFTWARE": "0" },
+  { "Region": "Noroeste", "HARDWARE": "0", "SOFTWARE": "2" },
+  { "Region": "Metro Sur", "HARDWARE": "2", "SOFTWARE": "3" },
+  { "Region": "Metro Norte", "HARDWARE": "0", "SOFTWARE": "1" }
+];
 
-<tr data-region="Centro">
-    <td data-v="Centro">Centro</td>
-    <td data-id="software-in">3</td>
-    <td data-id="software-out">0</td>
-    <td data-id="hardware-in">6</td>
-    <td data-id="hardware-out">-2</td>
-</tr>
+const D_R13V = [
+  { "Region": "Sureste", "HARDWARE": "-2", "SOFTWARE": "0" },
+  { "Region": "Sur", "HARDWARE": "-4", "SOFTWARE": "0" },
+  { "Region": "Centro", "HARDWARE": "-2", "SOFTWARE": "0" },
+  { "Region": "Norte", "HARDWARE": "-3", "SOFTWARE": "-2" },
+  { "Region": "Noreste", "HARDWARE": "0", "SOFTWARE": "0" },
+  { "Region": "Occidente", "HARDWARE": "-1", "SOFTWARE": "0" },
+  { "Region": "Noroeste", "HARDWARE": "-2", "SOFTWARE": "-1" },
+  { "Region": "Metro Sur", "HARDWARE": "0", "SOFTWARE": "0" },
+  { "Region": "Metro Norte", "HARDWARE": "0", "SOFTWARE": "0" }
+];
 
-lo "in" se saca de D_R13T lo "out" de D_R13V y dependiendo la region se ajusta el valor esto usando JS vainilla ES
+// Seleccionar las filas de la tabla
+const tableRows = document.querySelectorAll("#incidentes-sh-content tr[data-region]");
 
-D_R13T = [
-    {
-        "Region": "Sureste",
-        "HARDWARE": "5",
-        "SOFTWARE": "3",
-        "COMUNICACIONES": "0",
-        "MULTIFUNCIONALES": "0"
-    },
-    {
-        "Region": "Sur",
-        "HARDWARE": "0",
-        "SOFTWARE": "0",
-        "COMUNICACIONES": "0",
-        "MULTIFUNCIONALES": "0"
-    },
-    {
-        "Region": "Centro",
-        "HARDWARE": "6",
-        "SOFTWARE": "3",
-        "COMUNICACIONES": "1",
-        "MULTIFUNCIONALES": "1"
-    },
-    {
-        "Region": "Norte",
-        "HARDWARE": "0",
-        "SOFTWARE": "1",
-        "COMUNICACIONES": "0",
-        "MULTIFUNCIONALES": "1"
-    },
-    {
-        "Region": "Noreste",
-        "HARDWARE": "1",
-        "SOFTWARE": "1",
-        "COMUNICACIONES": "1",
-        "MULTIFUNCIONALES": "2"
-    },
-    {
-        "Region": "Occidente",
-        "HARDWARE": "2",
-        "SOFTWARE": "0",
-        "COMUNICACIONES": "0",
-        "MULTIFUNCIONALES": "0"
-    },
-    {
-        "Region": "Noroeste",
-        "HARDWARE": "0",
-        "SOFTWARE": "2",
-        "COMUNICACIONES": "0",
-        "MULTIFUNCIONALES": "1"
-    },
-    {
-        "Region": "Metro Sur",
-        "HARDWARE": "2",
-        "SOFTWARE": "3",
-        "COMUNICACIONES": "0",
-        "MULTIFUNCIONALES": "0"
-    },
-    {
-        "Region": "Metro Norte",
-        "HARDWARE": "0",
-        "SOFTWARE": "1",
-        "COMUNICACIONES": "0",
-        "MULTIFUNCIONALES": "0"
-    }
-]
+// Crear un mapa para acceder rápidamente a los datos
+const mapR13T = new Map(D_R13T.map(item => [item.Region, item]));
+const mapR13V = new Map(D_R13V.map(item => [item.Region, item]));
 
+// Actualizar la tabla
+for (const row of tableRows) {
+  const region = row.getAttribute("data-region");
+  
+  const dataIn = mapR13T.get(region);
+  const dataOut = mapR13V.get(region);
 
-D_R13V = [
-    {
-        "Region": "Sureste",
-        "HARDWARE": "-2",
-        "SOFTWARE": "0",
-        "COMUNICACIONES": "0",
-        "MULTIFUNCIONALES": "0"
-    },
-    {
-        "Region": "Sur",
-        "HARDWARE": "-4",
-        "SOFTWARE": "0",
-        "COMUNICACIONES": "0",
-        "MULTIFUNCIONALES": "0"
-    },
-    {
-        "Region": "Centro",
-        "HARDWARE": "-2",
-        "SOFTWARE": "0",
-        "COMUNICACIONES": "0",
-        "MULTIFUNCIONALES": "0"
-    },
-    {
-        "Region": "Norte",
-        "HARDWARE": "-3",
-        "SOFTWARE": "-2",
-        "COMUNICACIONES": "0",
-        "MULTIFUNCIONALES": "0"
-    },
-    {
-        "Region": "Noreste",
-        "HARDWARE": "0",
-        "SOFTWARE": "0",
-        "COMUNICACIONES": "0",
-        "MULTIFUNCIONALES": "0"
-    },
-    {
-        "Region": "Occidente",
-        "HARDWARE": "-1",
-        "SOFTWARE": "0",
-        "COMUNICACIONES": "0",
-        "MULTIFUNCIONALES": "0"
-    },
-    {
-        "Region": "Noroeste",
-        "HARDWARE": "-2",
-        "SOFTWARE": "-1",
-        "COMUNICACIONES": "-1",
-        "MULTIFUNCIONALES": "0"
-    },
-    {
-        "Region": "Metro Sur",
-        "HARDWARE": "0",
-        "SOFTWARE": "0",
-        "COMUNICACIONES": "0",
-        "MULTIFUNCIONALES": "0"
-    },
-    {
-        "Region": "Metro Norte",
-        "HARDWARE": "0",
-        "SOFTWARE": "0",
-        "COMUNICACIONES": "-1",
-        "MULTIFUNCIONALES": "0"
-    }
-]
-
-<table class="table-gral">
-    <thead>
-      <tr class="table-rep13-into">
-        <td colspan="5" class="tituloSeccion">INCIDENTES SERVICENOW Service Desk y WhatsApp</td>
-      </tr>
-      <tr class="table-rep13-into-sbTitle">
-        <td rowspan="2">Región</td>
-        <td colspan="2">Software</td>
-        <td colspan="2">Hardware</td>
-      </tr>
-      <tr class="table-rep13-into-sbTitle-sm timer-line">
-        <td>En Tiempo <span class="onTime"></span></td>
-        <td>Vencidos <span class="outTime"></span></td>
-        <td>En Tiempo <span class="onTime"></span></td>
-        <td>Vencidos <span class="outTime"></span></td>
-      </tr>
-    </thead>
-    <tbody id="incidentes-sh-content" class="table-rep13 table-rep13-into">
-      <tr data-region="Centro">
-        <td data-v="Centro">Centro</td>
-        <td data-id="software-in">0</td>
-        <td data-id="software-out">0</td>
-        <td data-id="hardware-in">0</td>
-        <td data-id="hardware-out">0</td>
-      </tr>
-      <tr data-region="MetroNorte">
-        <td data-v="MetroNorte">Metro Norte</td>
-        <td data-id="software-in">0</td>
-        <td data-id="software-out">0</td>
-        <td data-id="hardware-in">0</td>
-        <td data-id="hardware-out">0</td>
-      </tr>
-      <tr data-region="MetroSur">
-        <td data-v="Metro Sur">Metro Sur</td>
-        <td data-id="software-in">0</td>
-        <td data-id="software-out">0</td>
-        <td data-id="hardware-in">0</td>
-        <td data-id="hardware-out">0</td>
-      </tr>
-      <tr data-region="Norte">
-        <td data-v="Norte">Norte</td>
-        <td data-id="software-in">0</td>
-        <td data-id="software-out">0</td>
-        <td data-id="hardware-in">0</td>
-        <td data-id="hardware-out">0</td>
-      </tr>
-      <tr data-region="Noreste">
-        <td data-v="Noreste">Noreste</td>
-        <td data-id="software-in">0</td>
-        <td data-id="software-out">0</td>
-        <td data-id="hardware-in">0</td>
-        <td data-id="hardware-out">0</td>
-      </tr>
-      <tr data-region="Noroeste">
-        <td data-v="Noroeste">Noroeste</td>
-        <td data-id="software-in">0</td>
-        <td data-id="software-out">0</td>
-        <td data-id="hardware-in">0</td>
-        <td data-id="hardware-out">0</td>
-      </tr>
-      <tr data-region="Occidente">
-        <td data-v="Occidente">Occidente</td>
-        <td data-id="software-in">0</td>
-        <td data-id="software-out">0</td>
-        <td data-id="hardware-in">0</td>
-        <td data-id="hardware-out">0</td>
-      </tr>
-      <tr data-region="Sur">
-        <td data-v="Sur">Sur</td>
-        <td data-id="software-in">0</td>
-        <td data-id="software-out">0</td>
-        <td data-id="hardware-in">0</td>
-        <td data-id="hardware-out">0</td>
-      </tr>
-      <tr data-region="Sureste">
-        <td data-v="Sureste">Sureste</td>
-        <td data-id="software-in">0</td>
-        <td data-id="software-out">0</td>
-        <td data-id="hardware-in">0</td>
-        <td data-id="hardware-out">0</td>
-      </tr>
-      <tr class="table-rep13-into-sbTitle">
-        <td data-v="Total">Total</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td colspan="5"></td>
-      </tr>
-    </tbody>
-  </table>
+  if (dataIn && dataOut) {
+    row.querySelector('[data-id="software-in"]').textContent = dataIn.SOFTWARE;
+    row.querySelector('[data-id="software-out"]').textContent = dataOut.SOFTWARE;
+    row.querySelector('[data-id="hardware-in"]').textContent = dataIn.HARDWARE;
+    row.querySelector('[data-id="hardware-out"]').textContent = dataOut.HARDWARE;
+  }
+}
