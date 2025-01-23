@@ -1,96 +1,82 @@
-
-dbupdate.js
-let data;
-if (base !== 'tablero') {
-    data = await openFile(base, archivo, tiempo, BarProgressz[i], mnsAlert[i], mnsLoad[i], btnsAlt[i]);
-} else if (base === 'tablero') {
-    data = processMailFileCom('frm-tablero');
-}
-console.log(data);
-
-
-tableroSSuc.js
 export const processMailFileCom = (frmTablero) => {
-	const frm = document.getElementById(`${frmTablero}`);
-	const input = frm.querySelector('input');
-	const rangeInput = 'A1:G49';
-	const rangeCarrierOut = 'B13:F18';
-	// const rangeInput = document.getElementById('rangeInput').value.trim();
-	if (!input.files.length || !rangeInput) {
-		alert('Selecciona un archivo Excel y especifica un rango.');
-		return;
-	}
+    return new Promise((resolve, reject) => {
+        const frm = document.getElementById(`${frmTablero}`);
+        const input = frm.querySelector('input');
+        const rangeInput = 'A1:G49';
+        const rangeCarrierOut = 'B13:F18';
 
-	const reader = new FileReader();
-	reader.onload = (event) => {
-		const data = new Uint8Array(event.target.result);
-		const workbook = XLSX.read(data, { type: 'array' });
+        if (!input.files.length || !rangeInput) {
+            alert('Selecciona un archivo Excel y especifica un rango.');
+            reject('No se seleccionó archivo o rango.');
+            return;
+        }
 
-		// Lee la primera hoja del archivo Excel
-		const sheetName = workbook.SheetNames[0];
-		const sheet = workbook.Sheets[sheetName];
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            try {
+                const data = new Uint8Array(event.target.result);
+                const workbook = XLSX.read(data, { type: 'array' });
 
-		// Convierte el rango seleccionado a HTML
-		const range = XLSX.utils.decode_range(rangeCarrierOut);
-		const filteredSheet = filterEmptyCells(sheet, range);
-		const htmlTable = XLSX.utils.sheet_to_html(filteredSheet);
-		const divCarrier = document.createElement('div');
-		divCarrier.innerHTML = htmlTable;
-		const tbodyCarrierNew = divCarrier.querySelector('tbody');
-		const tbodyCarrier = document.getElementById('data-carriers');
-		tbodyCarrier.innerHTML = '';
-		tbodyCarrier.innerHTML = tbodyCarrierNew.innerHTML;
+                const sheetName = workbook.SheetNames[0];
+                const sheet = workbook.Sheets[sheetName];
 
-		const jsonDataTypeInc = XLSX.utils.sheet_to_json(sheet, {
-			range: 'E7:F11',
-			header: ['type', 'valor'],
-		});
-		const cellsIncType = document.querySelectorAll('.data-typeInc');
-		for (const [i, cellIncType] of cellsIncType.entries()) {
-			cellsIncType[i].innerHTML = '';
-			cellsIncType[i].innerHTML = jsonDataTypeInc[i].valor;
-		}
+                const range = XLSX.utils.decode_range(rangeCarrierOut);
+                const filteredSheet = filterEmptyCells(sheet, range);
+                const htmlTable = XLSX.utils.sheet_to_html(filteredSheet);
+                const divCarrier = document.createElement('div');
+                divCarrier.innerHTML = htmlTable;
 
-		const cellContingencia = document.getElementById('contingencia');
-		cellContingencia.innerHTML = '';
-		const totalLentitud = jsonDataTypeInc[jsonDataTypeInc.length - 1].valor;
-		const totalBackup = jsonDataTypeInc[jsonDataTypeInc.length - 2].valor;
-		cellContingencia.innerHTML = totalLentitud + totalBackup;
+                const tbodyCarrierNew = divCarrier.querySelector('tbody');
+                const tbodyCarrier = document.getElementById('data-carriers');
+                tbodyCarrier.innerHTML = tbodyCarrierNew.innerHTML;
 
-		const jsonDataCommits = XLSX.utils.sheet_to_json(sheet, {
-			range: 'B48:F48',
-			header: ['valor'],
-		});
+                const jsonDataTypeInc = XLSX.utils.sheet_to_json(sheet, {
+                    range: 'E7:F11',
+                    header: ['type', 'valor'],
+                });
+                const cellsIncType = document.querySelectorAll('.data-typeInc');
+                for (const [i, cellIncType] of cellsIncType.entries()) {
+                    cellsIncType[i].innerHTML = jsonDataTypeInc[i].valor;
+                }
 
-		const jsonSucFuera = jsonDataCommits[0].valor.trim().split('\r\n');
-		const sucOff = document.getElementById('suc-off');
-		const sucOffCommit = document.getElementById('sucFuera');
-		sucOff.innerHTML = jsonSucFuera.length;
-		sucOffCommit.innerHTML = `${jsonSucFuera.join('; ')}`;
+                const cellContingencia = document.getElementById('contingencia');
+                const totalLentitud = jsonDataTypeInc[jsonDataTypeInc.length - 1].valor;
+                const totalBackup = jsonDataTypeInc[jsonDataTypeInc.length - 2].valor;
+                cellContingencia.innerHTML = totalLentitud + totalBackup;
 
-		const container = document.getElementById('tableContainer');
-		// container.style.display = 'block';
-		const tablaSaves = container.innerHTML;
+                const jsonDataCommits = XLSX.utils.sheet_to_json(sheet, {
+                    range: 'B48:F48',
+                    header: ['valor'],
+                });
 
-		const tablaSave = {
-			code: '200',
-			mnj: 'Datos Procesados',
-			data: [
-				{
-					total: 1,
-					actualizado: '2025-01-22 15:45:19',
-					type: 'tablero',
-				},
-			],
-			tabla: tablaSaves,
-		};
+                const jsonSucFuera = jsonDataCommits[0].valor.trim().split('\r\n');
+                const sucOff = document.getElementById('suc-off');
+                const sucOffCommit = document.getElementById('sucFuera');
+                sucOff.innerHTML = jsonSucFuera.length;
+                sucOffCommit.innerHTML = `${jsonSucFuera.join('; ')}`;
 
-		return tablaSave;
-		// container.style.display = 'none';
+                const container = document.getElementById('tableContainer');
+                const tablaSaves = container.innerHTML;
 
-		// Muestra el botón para generar imagen
-		// createImagenTablero();
-	};
+                const tablaSave = {
+                    code: '200',
+                    mnj: 'Datos Procesados',
+                    data: [
+                        {
+                            total: 1,
+                            actualizado: new Date().toISOString(),
+                            type: 'tablero',
+                        },
+                    ],
+                    tabla: tablaSaves,
+                };
 
-	reader.readAsArrayBuffer(input.files[0]);
+                resolve(tablaSave); // Resuelve la promesa con los datos procesados
+            } catch (error) {
+                reject(error); // Rechaza la promesa en caso de error
+            }
+        };
+
+        reader.readAsArrayBuffer(input.files[0]);
+    });
 };
