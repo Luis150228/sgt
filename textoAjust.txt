@@ -1,11 +1,13 @@
-Dashboard Web Diarios:
-o	Análisis y validación técnica de la viabilidad de mostrar información como se está presentando actualmente para que los usuarios se adapten de manera ágil al nuevo formato.
-o	Se busca tener los tableros y data en el formado “bajo demanda” con lo que se podrá consultar en cualquier momento apenas se haya actualizado la información.
-o	Escalar el “on-demand” de los reportes a los semanales y mensuales.
-Acciones:
-o	Creando la arquitectura de las bases de datos en motores sql para optimizar la consulta de información.
-o	Generando Diagramas de Flujo de los procedimientos actuales para optimizarlos y automatizarlos.
-o	Inicio del diseño UI de la interfaz de los usuarios para agilizar la consulta en un formato normalizado a lo que actualmente se envía por correo electrónico.
-Consideraciones:
-o	Perfiles de usuario para dar seguridad a la información.
-o	Validación en paralelo con el procedimiento actual.
+Dashboard Web Diarios
+Objetivo: Optimizar la presentación y disponibilidad de información para facilitar la adopción por parte de los usuarios y habilitar consultas en tiempo real.
+
+Viabilidad técnica: Validación de que la información pueda mostrarse en el nuevo formato para asegurar una transición ágil.
+Formato bajo demanda: Implementación de tableros y datos actualizados en tiempo real, disponibles para consulta en cualquier momento.
+Escalabilidad: Extensión del modelo "on-demand" a reportes semanales y mensuales.
+Acciones Clave
+Optimización de bases de datos: Diseño de una arquitectura eficiente en motores SQL para acelerar las consultas.
+Mapeo y automatización: Creación de diagramas de flujo de procesos actuales para identificar áreas de mejora y automatizarlas.
+Diseño UI: Desarrollo de una interfaz de usuario amigable y estandarizada, alineada con el formato utilizado en reportes enviados por correo electrónico.
+Consideraciones
+Seguridad de datos: Implementación de perfiles de usuario para proteger la información sensible.
+Validación dual: Ejecución en paralelo con los procesos actuales para garantizar confiabilidad durante la transición.
