@@ -1,35 +1,18 @@
-const D_R13T = [
-  { "Region": "Sureste", "HARDWARE": "5", "SOFTWARE": "3" },
-  { "Region": "Sur", "HARDWARE": "0", "SOFTWARE": "0" },
-  { "Region": "Centro", "HARDWARE": "6", "SOFTWARE": "3" },
-  { "Region": "Norte", "HARDWARE": "0", "SOFTWARE": "1" },
-  { "Region": "Noreste", "HARDWARE": "1", "SOFTWARE": "1" },
-  { "Region": "Occidente", "HARDWARE": "2", "SOFTWARE": "0" },
-  { "Region": "Noroeste", "HARDWARE": "0", "SOFTWARE": "2" },
-  { "Region": "Metro Sur", "HARDWARE": "2", "SOFTWARE": "3" },
-  { "Region": "Metro Norte", "HARDWARE": "0", "SOFTWARE": "1" }
-];
-
-const D_R13V = [
-  { "Region": "Sureste", "HARDWARE": "-2", "SOFTWARE": "0" },
-  { "Region": "Sur", "HARDWARE": "-4", "SOFTWARE": "0" },
-  { "Region": "Centro", "HARDWARE": "-2", "SOFTWARE": "0" },
-  { "Region": "Norte", "HARDWARE": "-3", "SOFTWARE": "-2" },
-  { "Region": "Noreste", "HARDWARE": "0", "SOFTWARE": "0" },
-  { "Region": "Occidente", "HARDWARE": "-1", "SOFTWARE": "0" },
-  { "Region": "Noroeste", "HARDWARE": "-2", "SOFTWARE": "-1" },
-  { "Region": "Metro Sur", "HARDWARE": "0", "SOFTWARE": "0" },
-  { "Region": "Metro Norte", "HARDWARE": "0", "SOFTWARE": "0" }
-];
-
 // Seleccionar las filas de la tabla
 const tableRows = document.querySelectorAll("#incidentes-sh-content tr[data-region]");
+const totalRow = document.querySelector('tr[data-regionsh="total"]');
 
 // Crear un mapa para acceder rápidamente a los datos
 const mapR13T = new Map(D_R13T.map(item => [item.Region, item]));
 const mapR13V = new Map(D_R13V.map(item => [item.Region, item]));
 
-// Actualizar la tabla
+// Variables para almacenar los totales
+let totalSoftwareIn = 0;
+let totalSoftwareOut = 0;
+let totalHardwareIn = 0;
+let totalHardwareOut = 0;
+
+// Actualizar las filas de las regiones y calcular los totales
 for (const row of tableRows) {
   const region = row.getAttribute("data-region");
   
@@ -37,9 +20,29 @@ for (const row of tableRows) {
   const dataOut = mapR13V.get(region);
 
   if (dataIn && dataOut) {
-    row.querySelector('[data-id="software-in"]').textContent = dataIn.SOFTWARE;
-    row.querySelector('[data-id="software-out"]').textContent = dataOut.SOFTWARE;
-    row.querySelector('[data-id="hardware-in"]').textContent = dataIn.HARDWARE;
-    row.querySelector('[data-id="hardware-out"]').textContent = dataOut.HARDWARE;
+    const softwareIn = parseInt(dataIn.SOFTWARE, 10);
+    const softwareOut = Math.abs(parseInt(dataOut.SOFTWARE, 10));
+    const hardwareIn = parseInt(dataIn.HARDWARE, 10);
+    const hardwareOut = Math.abs(parseInt(dataOut.HARDWARE, 10));
+
+    // Actualizar los valores en la tabla
+    row.querySelector('[data-id="software-in"]').textContent = softwareIn;
+    row.querySelector('[data-id="software-out"]').textContent = softwareOut;
+    row.querySelector('[data-id="hardware-in"]').textContent = hardwareIn;
+    row.querySelector('[data-id="hardware-out"]').textContent = hardwareOut;
+
+    // Acumular los totales
+    totalSoftwareIn += softwareIn;
+    totalSoftwareOut += softwareOut;
+    totalHardwareIn += hardwareIn;
+    totalHardwareOut += hardwareOut;
   }
+}
+
+// Actualizar la fila de totales
+if (totalRow) {
+  totalRow.querySelector('[data-id="software-total-in"]').textContent = totalSoftwareIn;
+  totalRow.querySelector('[data-id="software-total-out"]').textContent = totalSoftwareOut;
+  totalRow.querySelector('[data-id="hardware-total-in"]').textContent = totalHardwareIn;
+  totalRow.querySelector('[data-id="hardware-total-out"]').textContent = totalHardwareOut;
 }
