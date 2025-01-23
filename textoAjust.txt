@@ -11,3 +11,15 @@ Diseño UI: Desarrollo de una interfaz de usuario amigable y estandarizada, alin
 Consideraciones
 Seguridad de datos: Implementación de perfiles de usuario para proteger la información sensible.
 Validación dual: Ejecución en paralelo con los procesos actuales para garantizar confiabilidad durante la transición.
+
+
+Dashboard Web Diarios
+Objetivo: Facilitar la adopción del nuevo formato y habilitar consultas en tiempo real con tableros bajo demanda, escalables a reportes semanales y mensuales.
+
+Acciones Clave
+Diseño de bases de datos en SQL para optimizar consultas.
+Automatización y mejora de procesos mediante diagramas de flujo.
+Desarrollo de una interfaz estándar y amigable para los usuarios.
+Consideraciones
+Perfiles de usuario para proteger la información.
+Validación en paralelo con los procesos actuales.
