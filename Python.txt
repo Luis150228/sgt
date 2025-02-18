@@ -1,50 +1,69 @@
 <?php
-require 'vendor/autoload.php';
+ini_set('max_execution_time', 300);
+require_once "../conexion/cnx.php";
+require '../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx as XlsxReader;
 
-class ExportarExcel {
-    public function generarExcel($namefile = 'reporte.xlsx') {
-        // Datos de ejemplo
-        $datos = [
-            ['ID', 'Nombre', 'Edad'],
-            [1, 'Juan', 25],
-            [2, 'Ana', 30],
-            [3, 'Carlos', 28]
-        ];
+class valores extends cnx
+{
 
-        // Crear documento Excel
+    public function downloadReports($reporte)
+    {
+        // print_r($reporte);
+        $data = $this->stp_r04DetailDownload($reporte);
+        return $data;
+    }
+
+
+    private function stp_r04DetailDownload($r)
+    {
+        $sql = "CALL stp_r04DetailDownload('$r')";
+        // print_r($sql);
+        // /*
+        $query = parent::getData($sql);
+        if (empty($query)) {
+            $result = array(
+                "code" => "204",
+                "mnj" => "Reporte sin data",
+                "data" => "",
+            );
+
+            return $result;
+        } else {
+            $data = $this->downLoadReportExcel($query, $r);
+            return $data;
+        }
+        // */
+    }
+
+
+    private function downLoadReportExcel($datos, $namefile)
+    {
+       // Crear un nuevo documento de Excel
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-        // Llenar con datos
+        // Llenar el Excel con los datos
         foreach ($datos as $fila => $filaDatos) {
             foreach ($filaDatos as $col => $valor) {
                 $sheet->setCellValueByColumnAndRow($col + 1, $fila + 1, $valor);
             }
         }
 
-        // Asegurar que el nombre del archivo tenga la extensión .xlsx
-        if (!str_ends_with($namefile, '.xlsx')) {
-            $namefile .= '.xlsx';
-        }
-
-        // Configurar encabezados para descargar con el nombre personalizado
+        // Configurar encabezados para descargar el archivo
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header("Content-Disposition: attachment; filename=\"$namefile\"");
         header('Cache-Control: max-age=0');
 
-        // Generar y enviar el archivo
+        // Escribir y enviar el archivo
         $writer = new Xlsx($spreadsheet);
         $writer->save('php://output');
-        exit;
+        exit; // Terminar ejecución después de la descarga
     }
 }
 
-// Obtener el nombre del archivo desde GET o usar el predeterminado
-$namefile = isset($_GET['name']) ? $_GET['name'] : 'reporte.xlsx';
 
-// Ejecutar la descarga
-$exportador = new ExportarExcel();
-$exportador->generarExcel($namefile);
+resultado de $query = {"code":"200","mnj":"Detalle generado","data":[{"Ticket":"INC051512039","Alta":"2025-02-17 17:15:17","Estado":"En Espera","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_1","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. BOULEVARD BOCA (8960)","Tipo":"Sucursales","Centro Costos":8960,"Region":"Sureste","Zona":1,"SLA":1500,"Tiempo":56,"Estatus":"EN TIEMPO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"},{"Ticket":"INC051507357","Alta":"2025-02-17 13:41:49","Estado":"En Espera","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_1","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. FERROCARRIL HIDALGO (0076)","Tipo":"Sucursales","Centro Costos":76,"Region":"Metro Norte","Zona":1,"SLA":1500,"Tiempo":314,"Estatus":"EN TIEMPO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"},{"Ticket":"INC051507206","Alta":"2025-02-17 13:34:28","Estado":"Abierto","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_1","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. UAEM (1616)","Tipo":"Sucursales","Centro Costos":1616,"Region":"Sur","Zona":1,"SLA":1500,"Tiempo":322,"Estatus":"EN TIEMPO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"},{"Ticket":"INC051541733","Alta":"2025-02-18 08:49:22","Estado":"Nuevo","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_3","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. CIUDAD DEL CARMEN (0303)","Tipo":"Sucursales","Centro Costos":303,"Region":"Sureste","Zona":3,"SLA":1500,"Tiempo":56,"Estatus":"EN TIEMPO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"},{"Ticket":"INC051512735","Alta":"2025-02-17 17:46:28","Estado":"En Espera","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_3","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. TAHONA (4263)","Tipo":"Sucursales","Centro Costos":4263,"Region":"Centro","Zona":1,"SLA":1500,"Tiempo":56,"Estatus":"EN TIEMPO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"},{"Ticket":"INC051511417","Alta":"2025-02-17 16:48:18","Estado":"En Espera","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_3","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. ZIMAPAN (5301)","Tipo":"Sucursales","Centro Costos":5301,"Region":"Sur","Zona":3,"SLA":1500,"Tiempo":56,"Estatus":"EN TIEMPO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"},{"Ticket":"INC051500378","Alta":"2025-02-17 09:28:11","Estado":"En Espera","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_3","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. 20 DE NOVIEMBRE (3759)","Tipo":"Sucursales","Centro Costos":3759,"Region":"Norte","Zona":1,"SLA":1500,"Tiempo":568,"Estatus":"EN TIEMPO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"},{"Ticket":"INC051338980","Alta":"2025-02-12 11:10:56","Estado":"En Espera","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_3","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. ARCELOR MITTAL (7622)","Tipo":"Sucursales","Centro Costos":7622,"Region":"Centro","Zona":1,"SLA":1500,"Tiempo":2385,"Estatus":"VENCIDO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"}]}
