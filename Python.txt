@@ -1,32 +1,12 @@
-Sí, en lugar de devolver un array con datos en tu clase PHP, puedes generar y descargar un archivo XLSX usando la biblioteca PhpSpreadsheet.
-
-Pasos para hacerlo:
-
-1. Instalar PhpSpreadsheet (si no lo tienes ya) con Composer:
-
-composer require phpoffice/phpspreadsheet
-
-
-2. Modificar tu clase PHP para generar el archivo y enviarlo como descarga.
-
-
-
-
----
-
-Ejemplo de Código en PHP
-
-Este código reemplaza la salida del array y genera un archivo Excel descargable:
-
 <?php
-require 'vendor/autoload.php'; // Asegúrate de incluir PhpSpreadsheet
+require 'vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ExportarExcel {
-    public function generarExcel() {
-        // Datos simulados (pueden venir de tu consulta GET o base de datos)
+    public function generarExcel($namefile = 'reporte.xlsx') {
+        // Datos de ejemplo
         $datos = [
             ['ID', 'Nombre', 'Edad'],
             [1, 'Juan', 25],
@@ -34,45 +14,37 @@ class ExportarExcel {
             [3, 'Carlos', 28]
         ];
 
-        // Crear un nuevo documento de Excel
+        // Crear documento Excel
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-        // Llenar el Excel con los datos
+        // Llenar con datos
         foreach ($datos as $fila => $filaDatos) {
             foreach ($filaDatos as $col => $valor) {
                 $sheet->setCellValueByColumnAndRow($col + 1, $fila + 1, $valor);
             }
         }
 
-        // Configurar encabezados para descargar el archivo
+        // Asegurar que el nombre del archivo tenga la extensión .xlsx
+        if (!str_ends_with($namefile, '.xlsx')) {
+            $namefile .= '.xlsx';
+        }
+
+        // Configurar encabezados para descargar con el nombre personalizado
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="reporte.xlsx"');
+        header("Content-Disposition: attachment; filename=\"$namefile\"");
         header('Cache-Control: max-age=0');
 
-        // Escribir y enviar el archivo
+        // Generar y enviar el archivo
         $writer = new Xlsx($spreadsheet);
         $writer->save('php://output');
-        exit; // Terminar ejecución después de la descarga
+        exit;
     }
 }
 
-// Ejecutar la descarga si se accede vía GET
-if (isset($_GET['descargar'])) {
-    $exportador = new ExportarExcel();
-    $exportador->generarExcel();
-}
+// Obtener el nombre del archivo desde GET o usar el predeterminado
+$namefile = isset($_GET['name']) ? $_GET['name'] : 'reporte.xlsx';
 
-
----
-
-Cómo Usarlo
-
-Si accedes a tu script en el navegador con:
-
-https://tu-dominio.com/export.php?descargar=1
-
-El navegador iniciará la descarga del archivo reporte.xlsx con los datos.
-
-Este enfoque reemplaza la salida en formato array y en su lugar genera un archivo Excel descargable.
-
+// Ejecutar la descarga
+$exportador = new ExportarExcel();
+$exportador->generarExcel($namefile);
