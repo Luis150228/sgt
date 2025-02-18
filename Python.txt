@@ -71,22 +71,34 @@ resultado de $query = {"code":"200","mnj":"Detalle generado","data":[{"Ticket":"
 
 private function downLoadReportExcel($datos, $namefile)
 {
-    // Asegurar que el nombre del archivo es válido
+    // Asegurar que el nombre del archivo es válido y con extensión .xlsx
     $namefile = preg_replace('/[^a-zA-Z0-9_-]/', '_', $namefile) . '.xlsx';
 
     // Crear un nuevo documento de Excel
     $spreadsheet = new Spreadsheet();
     $sheet = $spreadsheet->getActiveSheet();
 
-    // Llenar el Excel con los datos
-    foreach ($datos as $fila => $filaDatos) {
-        $colIndex = 1; // Iniciar en la columna 1
+    if (empty($datos)) {
+        die("No hay datos para exportar.");
+    }
+
+    // Obtener los nombres de las columnas (encabezados) desde la primera fila de datos
+    $headers = array_keys($datos[0]);
+
+    // Escribir los encabezados en la primera fila (fila 1)
+    foreach ($headers as $colIndex => $header) {
+        $sheet->setCellValueByColumnAndRow($colIndex + 1, 1, $header);
+    }
+
+    // Escribir los datos en las filas siguientes
+    foreach ($datos as $filaIndex => $filaDatos) {
+        $colIndex = 1; // Iniciar en la primera columna
         foreach ($filaDatos as $valor) {
-            $sheet->setCellValueByColumnAndRow($colIndex++, $fila + 1, $valor);
+            $sheet->setCellValueByColumnAndRow($colIndex++, $filaIndex + 2, $valor);
         }
     }
 
-    // Configurar encabezados para descargar el archivo
+    // Configurar encabezados HTTP para la descarga del archivo
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     header("Content-Disposition: attachment; filename=\"$namefile\"");
     header('Cache-Control: max-age=0');
