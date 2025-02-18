@@ -1,12 +1,78 @@
-DELETE FROM almacen_inventario 
-WHERE idinventario IN (
-    SELECT idinventario FROM (
-        SELECT idinventario 
-        FROM almacen_inventario 
-        WHERE idinventario != '' 
-          AND noe = '57' 
-          AND almacen = 'BODEGA TI SANTA FE'
-        ORDER BY idinventario ASC 
-        LIMIT 160
-    ) AS t
-);
+Sí, en lugar de devolver un array con datos en tu clase PHP, puedes generar y descargar un archivo XLSX usando la biblioteca PhpSpreadsheet.
+
+Pasos para hacerlo:
+
+1. Instalar PhpSpreadsheet (si no lo tienes ya) con Composer:
+
+composer require phpoffice/phpspreadsheet
+
+
+2. Modificar tu clase PHP para generar el archivo y enviarlo como descarga.
+
+
+
+
+---
+
+Ejemplo de Código en PHP
+
+Este código reemplaza la salida del array y genera un archivo Excel descargable:
+
+<?php
+require 'vendor/autoload.php'; // Asegúrate de incluir PhpSpreadsheet
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+class ExportarExcel {
+    public function generarExcel() {
+        // Datos simulados (pueden venir de tu consulta GET o base de datos)
+        $datos = [
+            ['ID', 'Nombre', 'Edad'],
+            [1, 'Juan', 25],
+            [2, 'Ana', 30],
+            [3, 'Carlos', 28]
+        ];
+
+        // Crear un nuevo documento de Excel
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Llenar el Excel con los datos
+        foreach ($datos as $fila => $filaDatos) {
+            foreach ($filaDatos as $col => $valor) {
+                $sheet->setCellValueByColumnAndRow($col + 1, $fila + 1, $valor);
+            }
+        }
+
+        // Configurar encabezados para descargar el archivo
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment; filename="reporte.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        // Escribir y enviar el archivo
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('php://output');
+        exit; // Terminar ejecución después de la descarga
+    }
+}
+
+// Ejecutar la descarga si se accede vía GET
+if (isset($_GET['descargar'])) {
+    $exportador = new ExportarExcel();
+    $exportador->generarExcel();
+}
+
+
+---
+
+Cómo Usarlo
+
+Si accedes a tu script en el navegador con:
+
+https://tu-dominio.com/export.php?descargar=1
+
+El navegador iniciará la descarga del archivo reporte.xlsx con los datos.
+
+Este enfoque reemplaza la salida en formato array y en su lugar genera un archivo Excel descargable.
+
