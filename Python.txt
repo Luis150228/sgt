@@ -1,73 +1,4 @@
-<?php
-ini_set('max_execution_time', 300);
-require_once "../conexion/cnx.php";
-require '../vendor/autoload.php';
-
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-use PhpOffice\PhpSpreadsheet\Reader\Xlsx as XlsxReader;
-
-class valores extends cnx
-{
-
-    public function downloadReports($reporte)
-    {
-        // print_r($reporte);
-        $data = $this->stp_r04DetailDownload($reporte);
-        return $data;
-    }
-
-
-    private function stp_r04DetailDownload($r)
-    {
-        $sql = "CALL stp_r04DetailDownload('$r')";
-        // print_r($sql);
-        // /*
-        $query = parent::getData($sql);
-        if (empty($query)) {
-            $result = array(
-                "code" => "204",
-                "mnj" => "Reporte sin data",
-                "data" => "",
-            );
-
-            return $result;
-        } else {
-            $data = $this->downLoadReportExcel($query, $r);
-            return $data;
-        }
-        // */
-    }
-
-
-    private function downLoadReportExcel($datos, $namefile)
-    {
-       // Crear un nuevo documento de Excel
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
-
-        // Llenar el Excel con los datos
-        foreach ($datos as $fila => $filaDatos) {
-            foreach ($filaDatos as $col => $valor) {
-                $sheet->setCellValueByColumnAndRow($col + 1, $fila + 1, $valor);
-            }
-        }
-
-        // Configurar encabezados para descargar el archivo
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header("Content-Disposition: attachment; filename=\"$namefile\"");
-        header('Cache-Control: max-age=0');
-
-        // Escribir y enviar el archivo
-        $writer = new Xlsx($spreadsheet);
-        $writer->save('php://output');
-        exit; // Terminar ejecución después de la descarga
-    }
-}
-
-
-resultado de $query = {"code":"200","mnj":"Detalle generado","data":[{"Ticket":"INC051512039","Alta":"2025-02-17 17:15:17","Estado":"En Espera","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_1","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. BOULEVARD BOCA (8960)","Tipo":"Sucursales","Centro Costos":8960,"Region":"Sureste","Zona":1,"SLA":1500,"Tiempo":56,"Estatus":"EN TIEMPO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"},{"Ticket":"INC051507357","Alta":"2025-02-17 13:41:49","Estado":"En Espera","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_1","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. FERROCARRIL HIDALGO (0076)","Tipo":"Sucursales","Centro Costos":76,"Region":"Metro Norte","Zona":1,"SLA":1500,"Tiempo":314,"Estatus":"EN TIEMPO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"},{"Ticket":"INC051507206","Alta":"2025-02-17 13:34:28","Estado":"Abierto","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_1","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. UAEM (1616)","Tipo":"Sucursales","Centro Costos":1616,"Region":"Sur","Zona":1,"SLA":1500,"Tiempo":322,"Estatus":"EN TIEMPO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"},{"Ticket":"INC051541733","Alta":"2025-02-18 08:49:22","Estado":"Nuevo","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_3","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. CIUDAD DEL CARMEN (0303)","Tipo":"Sucursales","Centro Costos":303,"Region":"Sureste","Zona":3,"SLA":1500,"Tiempo":56,"Estatus":"EN TIEMPO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"},{"Ticket":"INC051512735","Alta":"2025-02-17 17:46:28","Estado":"En Espera","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_3","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. TAHONA (4263)","Tipo":"Sucursales","Centro Costos":4263,"Region":"Centro","Zona":1,"SLA":1500,"Tiempo":56,"Estatus":"EN TIEMPO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"},{"Ticket":"INC051511417","Alta":"2025-02-17 16:48:18","Estado":"En Espera","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_3","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. ZIMAPAN (5301)","Tipo":"Sucursales","Centro Costos":5301,"Region":"Sur","Zona":3,"SLA":1500,"Tiempo":56,"Estatus":"EN TIEMPO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"},{"Ticket":"INC051500378","Alta":"2025-02-17 09:28:11","Estado":"En Espera","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_3","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. 20 DE NOVIEMBRE (3759)","Tipo":"Sucursales","Centro Costos":3759,"Region":"Norte","Zona":1,"SLA":1500,"Tiempo":568,"Estatus":"EN TIEMPO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"},{"Ticket":"INC051338980","Alta":"2025-02-12 11:10:56","Estado":"En Espera","Categoria":"Impresi\u00f3n del usuario final","Problema":"Error del dispositivo","Proyecto":"Reportes de fallas diversas que presente el multifuncional y no opere correctamente al Imprimir, Copiar o Escanear","Grupo Asignado":"TMX_EU_Lexmark_Zona_3","Grupo General":"EUT Multifuncional Lexmark","Grupos":"MULTIFUNCIONALES","Medido":"EUT","Ubicacion":"SUC. ARCELOR MITTAL (7622)","Tipo":"Sucursales","Centro Costos":7622,"Region":"Centro","Zona":1,"SLA":1500,"Tiempo":2385,"Estatus":"VENCIDO","Clasificacion":"MULTIFUNCIONALES","Type":"Incidente","num_relacionado":"","resuelto":"0000-00-00 00:00:00"}]}
-
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
 
 private function downLoadReportExcel($datos, $namefile)
 {
@@ -82,21 +13,31 @@ private function downLoadReportExcel($datos, $namefile)
         die("No hay datos para exportar.");
     }
 
-    // Obtener los nombres de las columnas (encabezados) desde la primera fila de datos
+    // Obtener los nombres de las columnas (encabezados)
     $headers = array_keys($datos[0]);
 
-    // Escribir los encabezados en la primera fila (fila 1)
+    // Escribir los encabezados en la primera fila
     foreach ($headers as $colIndex => $header) {
         $sheet->setCellValueByColumnAndRow($colIndex + 1, 1, $header);
     }
 
     // Escribir los datos en las filas siguientes
     foreach ($datos as $filaIndex => $filaDatos) {
-        $colIndex = 1; // Iniciar en la primera columna
+        $colIndex = 1;
         foreach ($filaDatos as $valor) {
             $sheet->setCellValueByColumnAndRow($colIndex++, $filaIndex + 2, $valor);
         }
     }
+
+    // Ajustar el ancho de columnas específicas
+    $sheet->getColumnDimension('A')->setWidth((92 - 5) / 7);
+    $sheet->getColumnDimension('B')->setWidth((127 - 5) / 7);
+    $sheet->getColumnDimension('G')->setWidth((265 - 5) / 7);
+
+    // Configurar alineación de los encabezados para mejor presentación
+    $headerStyle = $sheet->getStyle('A1:' . $sheet->getHighestColumn() . '1');
+    $headerStyle->getFont()->setBold(true);
+    $headerStyle->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
     // Configurar encabezados HTTP para la descarga del archivo
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
