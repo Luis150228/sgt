@@ -1,25 +1,13 @@
-Dashboard Web Diarios
-Objetivo: Optimizar la presentación y disponibilidad de información para facilitar la adopción por parte de los usuarios y habilitar consultas en tiempo real.
-
-Viabilidad técnica: Validación de que la información pueda mostrarse en el nuevo formato para asegurar una transición ágil.
-Formato bajo demanda: Implementación de tableros y datos actualizados en tiempo real, disponibles para consulta en cualquier momento.
-Escalabilidad: Extensión del modelo "on-demand" a reportes semanales y mensuales.
-Acciones Clave
-Optimización de bases de datos: Diseño de una arquitectura eficiente en motores SQL para acelerar las consultas.
-Mapeo y automatización: Creación de diagramas de flujo de procesos actuales para identificar áreas de mejora y automatizarlas.
-Diseño UI: Desarrollo de una interfaz de usuario amigable y estandarizada, alineada con el formato utilizado en reportes enviados por correo electrónico.
-Consideraciones
-Seguridad de datos: Implementación de perfiles de usuario para proteger la información sensible.
-Validación dual: Ejecución en paralelo con los procesos actuales para garantizar confiabilidad durante la transición.
-
-
-Dashboard Web Diarios
-Objetivo: Facilitar la adopción del nuevo formato y habilitar consultas en tiempo real con tableros bajo demanda, escalables a reportes semanales y mensuales.
-
-Acciones Clave
-Diseño de bases de datos en SQL para optimizar consultas.
-Automatización y mejora de procesos mediante diagramas de flujo.
-Desarrollo de una interfaz estándar y amigable para los usuarios.
-Consideraciones
-Perfiles de usuario para proteger la información.
-Validación en paralelo con los procesos actuales.
+failed to load config from /home/Luis150228/crud-redux/vite.config.ts
+error when starting dev server:
+Error: Cannot load native addon because loading addons is disabled: /home/Luis150228/crud-redux/node_modules/@tailwindcss/oxide-linux-x64-musl/tailwindcss-oxide.linux-x64-musl.node
+    at _0x4dc9e9._0x4ee2d5 [as dlopen] (https://crudredux-ztcd.w-credentialless-staticblitz.com/blitz.495c5120.js:40:914989)
+    at Module._extensions..node (https://crudredux-ztcd.w-credentialless-staticblitz.com/builtins.8cb5228f.js:144:15217)
+    at Module.load (https://crudredux-ztcd.w-credentialless-staticblitz.com/builtins.8cb5228f.js:144:12820)
+    at Module._load (https://crudredux-ztcd.w-credentialless-staticblitz.com/builtins.8cb5228f.js:144:10273)
+    at Module.require (https://crudredux-ztcd.w-credentialless-staticblitz.com/builtins.8cb5228f.js:144:13097)
+    at require3 (https://crudredux-ztcd.w-credentialless-staticblitz.com/builtins.8cb5228f.js:163:2815)
+    at _0x4a53bd (https://crudredux-ztcd.w-credentialless-staticblitz.com/blitz.495c5120.js:40:810748)
+    at Object.eval (file:///home/Luis150228/crud-redux/node_modules/@tailwindcss/oxide/index.js#cjs:177:31)
+    at Object._0x339e27 (https://crudredux-ztcd.w-credentialless-staticblitz.com/blitz.495c5120.js:40:811403)
+    at Module._compile (https://crudredux-ztcd.w-credentialless-staticblitz.com/builtins.8cb5228f.js:144:14246)
