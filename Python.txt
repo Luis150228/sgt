@@ -6,11 +6,9 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 import time
 
-# Configuración inicial
-chrome_path = "C:\\ruta\\a\\chromedriver.exe"  # Cambia esto
+# Configuración
+chrome_path = r"C:\Temp\chromedriver\chromedriver.exe"  # ¡Asegúrate de que el archivo EXE existe aquí!
 url = "http://180.176.105.244/"
-
-# Credenciales
 usuario = "C356882"
 password = "derekNatalie72"
 
@@ -35,28 +33,29 @@ try:
     input_password = driver.find_element(By.ID, "pass")
 
     input_usuario.send_keys(usuario)
-    input_password.send_keys(password + Keys.RETURN)  # Envía el formulario
+    input_password.send_keys(password + Keys.RETURN)
 
-    # 3. Esperar a que desaparezca el preloader
+    # 3. Esperar preloader
     WebDriverWait(driver, 30).until(
         EC.presence_of_element_located((By.XPATH, "//div[@id='preloader' and contains(@class, 'preloader-close')]"))
     
     # 4. Click en "Actualizar Data"
     link_actualizar = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//a[@href='../apps/dataupdate.html']"))
+        EC.element_to_be_clickable((By.XPATH, "//a[@href='../apps/dataupdate.html']")))
     link_actualizar.click()
 
-    # 5. Click en el icono de bi-bandaid-fill
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, "//i[contains(@class, 'bi-bandaid-fill')]"))
-    
-    icono_bandaid = driver.find_element(By.XPATH, "//i[contains(@class, 'bi-bandaid-fill')]")
+    # 5. Click en el ícono de bi-bandaid-fill
+    icono_bandaid = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//i[contains(@class, 'bi-bandaid-fill')]")))
     icono_bandaid.click()
 
     print("Proceso completado exitosamente")
-    time.sleep(5)  # Pausa para ver el resultado
+    time.sleep(5)
 
 except Exception as e:
-    print(f"Error durante la ejecución: {str(e)}")
+    print(f"Error: {str(e)}")
+    if 'driver' in locals():  # Si el driver se creó pero hubo un error después
+        driver.save_screenshot("error.png")  # Guarda captura del error
 finally:
-    driver.quit()
+    if 'driver' in locals():
+        driver.quit()
