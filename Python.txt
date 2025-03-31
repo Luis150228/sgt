@@ -1,26 +1,10 @@
-PS C:\Users\C356882\Desktop\mouse> Get-Command python -All
-
-CommandType     Name                                               Version    Source
------------     ----                                               -------    ------
-Application     python.exe                                         0.0.0.0    C:\Users\C356882\AppData\Local\Microsoft\WindowsApps\python.exe
-
-
-PS C:\Users\C356882\Desktop\mouse> 
-
-# Descargar instalador oficial
-Invoke-WebRequest https://www.python.org/ftp/python/3.11.8/python-3.11.8-amd64.exe -OutFile python-installer.exe
-
-# Ejecutar instalador (como Administrador)
-Start-Process python-installer.exe -ArgumentList '/quiet InstallAllUsers=1 PrependPath=1' -Wait
-
-# Descargar instalador oficial
-Invoke-WebRequest https://www.python.org/ftp/python/3.11.8/python-3.11.8-amd64.exe -OutFile python-installer.exe
-
-# Ejecutar instalador (como Administrador)
-Start-Process python-installer.exe -ArgumentList '/quiet InstallAllUsers=1 PrependPath=1' -Wait
-
-# Usar el Python de WindowsApps con pip integrado
-python -m pip install mouse
-
-# O especificar la ruta completa (si conoces dónde está pip)
-& "$env:LOCALAPPDATA\Packages\PythonSoftwareFoundation.Python.*\LocalCache\local-packages\Python311\Scripts\pip.exe" install mouse
+PS C:\Users\C356882\Desktop\mouse> python -m pip install mouse
+no se encontr¾ Python; ejecutar sin argumentos para instalar desde el Microsoft Store o deshabilitar este acceso directo desde Configuraci¾n > Aplicaciones > Configuraci¾n avanzada de aplicaciones > Alias de ejecuci¾n de aplicaciones.
+PS C:\Users\C356882\Desktop\mouse> pip install mouse
+pip : El término 'pip' no se reconoce como nombre de un cmdlet, función, archivo de script o programa ejecutable. Compruebe si escribió correctamente el nombre o, si incluyó una ruta de acceso, compruebe que dicha 
+ruta es correcta e inténtelo de nuevo.
+En línea: 1 Carácter: 1
++ pip install mouse
++ ~~~
+    + CategoryInfo          : ObjectNotFound: (pip:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
