@@ -7,4 +7,11 @@ mail.Body = "¡Funciona correctamente!"
 mail.To = "destinatario@ejemplo.com"
 mail.Display()  # Usa .Send() para enviar directamente
 
-conda install -c conda-forge pyautogui
+PS C:\Users\C356882\Desktop\mouse> & "C:/Program Files/Python313/python.exe" c:/Users/C356882/Desktop/mouse/mail.py
+Traceback (most recent call last):
+  File "c:\Users\C356882\Desktop\mouse\mail.py", line 3, in <module>
+    outlook = win32com.client.Dispatch("Outlook.Application")
+              ^^^^^^^^^^^^^^^
+AttributeError: module 'win32com' has no attribute 'client'
+PS C:\Users\C356882\Desktop\mouse> 
+
