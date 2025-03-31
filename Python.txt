@@ -8,3 +8,33 @@ npm error code SELF_SIGNED_CERT_IN_CHAIN
 npm error errno SELF_SIGNED_CERT_IN_CHAIN
 npm error request to https://registry.npmjs.org/create-vite failed, reason: self-signed certificate in certificate chain
 npm error A complete log of this run can be found in: C:\Users\C356882\AppData\Local\npm-cache\_logs\2025-03-31T16_26_00_334Z-debug-0.log
+
+Y:\dev>npx create-vite@latest --ignore-ssl
+npm error code SELF_SIGNED_CERT_IN_CHAIN
+npm error errno SELF_SIGNED_CERT_IN_CHAIN
+npm error request to https://registry.npmjs.org/create-vite failed, reason: self-signed certificate in certificate chain
+npm error A complete log of this run can be found in: C:\Users\C356882\AppData\Local\npm-cache\_logs\2025-03-31T16_31_24_052Z-debug-0.log
+
+Y:\dev>npm config ser strict-ssl false
+npm error code EUSAGE
+npm error
+npm error Manage the npm configuration files
+npm error
+npm error Usage:
+npm error npm config set <key>=<value> [<key>=<value> ...]
+npm error npm config get [<key> [<key> ...]]
+npm error npm config delete <key> [<key> ...]
+npm error npm config list [--json]
+npm error npm config edit
+npm error npm config fix
+npm error
+npm error Options:
+npm error [--json] [-g|--global] [--editor <editor>] [-L|--location <global|user|project>]
+npm error [-l|--long]
+npm error
+npm error alias: c
+npm error
+npm error Run "npm help config" for more info
+npm error A complete log of this run can be found in: C:\Users\C356882\AppData\Local\npm-cache\_logs\2025-03-31T16_33_18_854Z-debug-0.log
+
+Y:\dev>
