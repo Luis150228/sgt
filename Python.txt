@@ -1,15 +1,62 @@
-quiero abrir chrome en la url http://180.176.105.244/
-dar click en el siguiente boton
-<button type="button" class="btn btn-primary btn-lg px-4 me-md-2">SDK-CAU Reportes</button>
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.keys import Keys
+import time
 
-en los siguientes input poner las credenciales de acceso
-<input type="text" class="form-control" id="usr" name="usr" placeholder="Usuario" aria-describedby="button-addon2" required="">
-usuario: C356882
+# Configuración inicial
+chrome_path = "C:\\ruta\\a\\chromedriver.exe"  # Cambia esto
+url = "http://180.176.105.244/"
 
-<input type="password" class="form-control" id="pass" name="pass" data-pass="validate-pass" placeholder="Password" aria-describedby="button-addon2" required="">
-pass: derekNatalie72 y dar click en enter
-Esperar hasta el div con id "preloader" tenga la clase "preloader preloader-close"
-una vez que tenga la clase esperada dar click en el siguiente elemento 
-<a class="nav-link" href="../apps/dataupdate.html">Actualizar Data</a>
-y despues dar click en el elemento 
-<i data-icon="true" class="bi bi-bandaid-fill"></i>
+# Credenciales
+usuario = "C356882"
+password = "derekNatalie72"
+
+try:
+    # Iniciar Chrome
+    service = Service(chrome_path)
+    driver = webdriver.Chrome(service=service)
+    driver.maximize_window()
+    driver.get(url)
+
+    # 1. Click en botón "SDK-CAU Reportes"
+    btn_reportes = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'btn-primary') and contains(., 'SDK-CAU Reportes')]"))
+    )
+    btn_reportes.click()
+
+    # 2. Ingresar credenciales
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, "usr"))
+    
+    input_usuario = driver.find_element(By.ID, "usr")
+    input_password = driver.find_element(By.ID, "pass")
+
+    input_usuario.send_keys(usuario)
+    input_password.send_keys(password + Keys.RETURN)  # Envía el formulario
+
+    # 3. Esperar a que desaparezca el preloader
+    WebDriverWait(driver, 30).until(
+        EC.presence_of_element_located((By.XPATH, "//div[@id='preloader' and contains(@class, 'preloader-close')]"))
+    
+    # 4. Click en "Actualizar Data"
+    link_actualizar = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//a[@href='../apps/dataupdate.html']"))
+    link_actualizar.click()
+
+    # 5. Click en el icono de bi-bandaid-fill
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, "//i[contains(@class, 'bi-bandaid-fill')]"))
+    
+    icono_bandaid = driver.find_element(By.XPATH, "//i[contains(@class, 'bi-bandaid-fill')]")
+    icono_bandaid.click()
+
+    print("Proceso completado exitosamente")
+    time.sleep(5)  # Pausa para ver el resultado
+
+except Exception as e:
+    print(f"Error durante la ejecución: {str(e)}")
+finally:
+    driver.quit()
