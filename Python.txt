@@ -1,16 +1,12 @@
-PS C:\Users\C356882> py pip install mouse
-C:\Program Files\Python313\python.exe: can't open file 'C:\\Users\\C356882\\pip': [Errno 2] No such file or directory
-PS C:\Users\C356882> py --version
-Python 3.13.0
-PS C:\Users\C356882> pip --version
-pip : El término 'pip' no se reconoce como nombre de un cmdlet, función, archivo de script o programa ejecutable.
-Compruebe si escribió correctamente el nombre o, si incluyó una ruta de acceso, compruebe que dicha ruta es correcta e
-inténtelo de nuevo.
-En línea: 1 Carácter: 1
-+ pip --version
-+ ~~~
-    + CategoryInfo          : ObjectNotFound: (pip:String) [], CommandNotFoundException
-    + FullyQualifiedErrorId : CommandNotFoundException
-
-PS C:\Users\C356882>
-
+Requirement already satisfied: mouse in c:\users\c356882\appdata\roaming\python\python313\site-packages (0.7.1)
+PS C:\Users\C356882\Desktop\mouse> py -m pip install pywin32
+Defaulting to user installation because normal site-packages is not writeable
+Collecting pywin32
+  Downloading pywin32-310-cp313-cp313-win_amd64.whl.metadata (9.4 kB)
+Downloading pywin32-310-cp313-cp313-win_amd64.whl (9.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.5/9.5 MB 2.2 MB/s eta 0:00:00
+Installing collected packages: pywin32
+  WARNING: The scripts pywin32_postinstall.exe and pywin32_testall.exe are installed in 'C:\Users\C356882\AppData\Roaming\Python\Python313\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed pywin32-310
+PS C:\Users\C356882\Desktop\mouse> 
