@@ -1,10 +1,12 @@
-PS C:\Users\C356882\Desktop\mouse> python -m pip install mouse
-no se encontr¾ Python; ejecutar sin argumentos para instalar desde el Microsoft Store o deshabilitar este acceso directo desde Configuraci¾n > Aplicaciones > Configuraci¾n avanzada de aplicaciones > Alias de ejecuci¾n de aplicaciones.
-PS C:\Users\C356882\Desktop\mouse> pip install mouse
-pip : El término 'pip' no se reconoce como nombre de un cmdlet, función, archivo de script o programa ejecutable. Compruebe si escribió correctamente el nombre o, si incluyó una ruta de acceso, compruebe que dicha 
-ruta es correcta e inténtelo de nuevo.
-En línea: 1 Carácter: 1
-+ pip install mouse
-+ ~~~
-    + CategoryInfo          : ObjectNotFound: (pip:String) [], CommandNotFoundException
-    + FullyQualifiedErrorId : CommandNotFoundException
+Python 3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> pip install mouse
+  File "<python-input-0>", line 1
+    pip install mouse
+        ^^^^^^^
+SyntaxError: invalid syntax
+>>>
+
+
+
+
