@@ -1,51 +1,10 @@
-use PhpOffice\PhpSpreadsheet\Style\Alignment;
+Y:\dev\santec_hardware>npm -v
+10.9.2
 
-private function downLoadReportExcel($datos, $namefile)
-{
-    // Asegurar que el nombre del archivo es válido y con extensión .xlsx
-    $namefile = preg_replace('/[^a-zA-Z0-9_-]/', '_', $namefile) . '.xlsx';
+Y:\dev\santec_hardware>cd..
 
-    // Crear un nuevo documento de Excel
-    $spreadsheet = new Spreadsheet();
-    $sheet = $spreadsheet->getActiveSheet();
-
-    if (empty($datos)) {
-        die("No hay datos para exportar.");
-    }
-
-    // Obtener los nombres de las columnas (encabezados)
-    $headers = array_keys($datos[0]);
-
-    // Escribir los encabezados en la primera fila
-    foreach ($headers as $colIndex => $header) {
-        $sheet->setCellValueByColumnAndRow($colIndex + 1, 1, $header);
-    }
-
-    // Escribir los datos en las filas siguientes
-    foreach ($datos as $filaIndex => $filaDatos) {
-        $colIndex = 1;
-        foreach ($filaDatos as $valor) {
-            $sheet->setCellValueByColumnAndRow($colIndex++, $filaIndex + 2, $valor);
-        }
-    }
-
-    // Ajustar el ancho de columnas específicas
-    $sheet->getColumnDimension('A')->setWidth((92 - 5) / 7);
-    $sheet->getColumnDimension('B')->setWidth((127 - 5) / 7);
-    $sheet->getColumnDimension('G')->setWidth((265 - 5) / 7);
-
-    // Configurar alineación de los encabezados para mejor presentación
-    $headerStyle = $sheet->getStyle('A1:' . $sheet->getHighestColumn() . '1');
-    $headerStyle->getFont()->setBold(true);
-    $headerStyle->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-
-    // Configurar encabezados HTTP para la descarga del archivo
-    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header("Content-Disposition: attachment; filename=\"$namefile\"");
-    header('Cache-Control: max-age=0');
-
-    // Escribir y enviar el archivo
-    $writer = new Xlsx($spreadsheet);
-    $writer->save('php://output');
-    exit; // Terminar ejecución después de la descarga
-}
+Y:\dev>npm create vite@latest
+npm error code SELF_SIGNED_CERT_IN_CHAIN
+npm error errno SELF_SIGNED_CERT_IN_CHAIN
+npm error request to https://registry.npmjs.org/create-vite failed, reason: self-signed certificate in certificate chain
+npm error A complete log of this run can be found in: C:\Users\C356882\AppData\Local\npm-cache\_logs\2025-03-31T16_26_00_334Z-debug-0.log
