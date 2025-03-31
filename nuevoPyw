@@ -1,46 +1,9 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
-import time
+posterior a la espera se debe espera a que aparezca el siguiente elemento "ask_effective_number" una vez en pantalla dar click derecho sobre el
+<th name="task_effective_number" class="text-align-left list_header_cell list_hdr " glide_label="Número efectivo" glide_field="incident.task_effective_number" composite_edit_field="" glide_type="string" filterable="true" groupable="true" sortable="true" sort_dir="none" align="left" scope="col" style=";" data-type="list2_hdrcell" data-list_id="incident" role="columnheader" aria-label="Número efectivo"><span class="list_header_cell_container"><a class="column_head list_hdrcell table-col-header" role="button" title="" tabindex="0" data-type="list2_hdrcell" data-list_id="incident" data-original-title="" aria-expanded="false">Número efectivo</a><span aria-hidden="true" class="sort-icon column_header_icon"><a href="#" class="col-change-sort sort_column_header" tabindex="-1" data-type="list2_hdrcell"><i class="sort-icon-padding list-column-icon"></i></a></span><i class="icon-ellipsis-vertical col-menu list_header_context list-column-icon" aria-haspopup="true" data-type="list2_hdricon" role="button" tabindex="0" title="Opciones de columna" aria-label="Número efectivo opciones de columna" aria-expanded="false" data-original-title="Opciones de columna"></i></span></th>
 
-# Credenciales
-PASSWORD = 'F3nix@202503d'
+el click derecho sobre el elemento anteior debe abrir un menu el cual contiene el siguiente elemento "data-context-menu-label="Exportar" hay que dar click en el
+<div item_id="d1ad2f010a0a0b3e005c8b7fbd7c4e28" class="context_item context_menu_hover" role="menuitem" tabindex="-1" aria-haspopup="true" aria-controls="d1ad2f010a0a0b3e005c8b7fbd7c4e28_incident" label="true" data-context-menu-label="Exportar" aria-expanded="true">Exportar<i class="icon-chevron-right context_submenu_indicator"></i></div>
 
-def handle_microsoft_auth(driver):
-    try:
-        # Cambiar al último tab abierto (la ventana emergente)
-        driver.switch_to.window(driver.window_handles[-1])
-        
-        # Esperar y llenar el campo de contraseña
-        password_field = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.ID, "i0118"))
-        password_field.send_keys(PASSWORD)
-        password_field.send_keys(Keys.RETURN)
-        
-        # Esperar por la opción de autenticación alternativa
-        auth_alternative = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//a[contains(text(), 'No puedo usar mi aplicación Microsoft Authenticator')]"))
-        auth_alternative.click()
-        
-        # Esperar y seleccionar la opción de llamada telefónica
-        call_option = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//div[contains(text(), 'XXXXXX32')]")))
-        call_option.click()
-        
-        print("Esperando 20 segundos para que contesten la llamada...")
-        time.sleep(20)
-        
-        # Volver al tab principal
-        driver.switch_to.window(driver.window_handles[0])
-        return True
-        
-    except Exception as e:
-        print(f"Error en autenticación: {str(e)}")
-        return False
-
-# Uso en tu script principal:
-# Después de hacer clic en el ícono que abre la nueva ventana:
-success = handle_microsoft_auth(driver)
-if not success:
-    print("Falló el proceso de autenticación")
+el click anterior mostrara otro menu en el cual debemos selecionar con un click el siguiente elemento con texto "CSV"
+<div item_id="d1cd92f20a0a0b3e00b44ff90470380e" class="context_item" role="menuitem" tabindex="-1" func_set="true">CSV</div>
+esto abrira una ventana para guardar un archivo CSV el cual se debe guardar en el escritorio con el nombre de Incident.csv
