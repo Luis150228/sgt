@@ -1,16 +1,8 @@
-where python
-$env:Path += ";C:\Python313\Scripts"
-pip --version
+PS C:\Users\C356882\Desktop\mouse> Get-Command python -All
 
-PS C:\Users\C356882\Desktop\mouse> where python
-PS C:\Users\C356882\Desktop\mouse> $env:Path += ";C:\Python313\Scripts"
-PS C:\Users\C356882\Desktop\mouse> pip --version
-pip : El término 'pip' no se reconoce como nombre de un cmdlet, función, archivo de script o programa ejecutable. Compruebe si escribió correctamente el nombre o, si incluyó una ruta de acceso, compruebe que dicha 
-ruta es correcta e inténtelo de nuevo.
-En línea: 1 Carácter: 1
-+ pip --version
-+ ~~~
-    + CategoryInfo          : ObjectNotFound: (pip:String) [], CommandNotFoundException
-    + FullyQualifiedErrorId : CommandNotFoundException
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Application     python.exe                                         0.0.0.0    C:\Users\C356882\AppData\Local\Microsoft\WindowsApps\python.exe
 
-PS C:\Users\C356882\Desktop\mouse>
+
+PS C:\Users\C356882\Desktop\mouse> 
