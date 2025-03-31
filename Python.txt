@@ -1,3 +1,24 @@
-rm -rf node_modules package-lock.json
-npm install --save-dev @esbuild/win32-x64
-npm cache clean --force
+PS C:\Users\C356882\Desktop\mouse> & "C:/Program Files/Python313/python.exe" c:/Users/C356882/Desktop/mouse/main.py
+Traceback (most recent call last):
+  File "c:\Users\C356882\Desktop\mouse\main.py", line 1, in <module>
+    import mouse
+ModuleNotFoundError: No module named 'mouse'
+PS C:\Users\C356882\Desktop\mouse> 
+
+import mouse
+import time
+
+while (True):
+    mouse.move(0, 1, absolute=True, duration=5)
+    # mouse.click('left')
+    time.sleep(10)
+    mouse.move(270, 180, absolute=True, duration=5)
+    # mouse.click('left')
+    time.sleep(10)
+    mouse.move(240, 150, absolute=True, duration=5)
+    # mouse.click('left')
+    time.sleep(10)
+    mouse.move(270, 180, absolute=True, duration=5)
+    # mouse.click('right')
+    time.sleep(10)
+    
