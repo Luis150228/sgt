@@ -1,36 +1,3 @@
-PS C:\Users\C356882\Desktop\mouse> & "C:/Program Files/Python313/python.exe" c:/Users/C356882/Desktop/mouse/main.py
-Traceback (most recent call last):
-  File "c:\Users\C356882\Desktop\mouse\main.py", line 1, in <module>
-    import mouse
-ModuleNotFoundError: No module named 'mouse'
-PS C:\Users\C356882\Desktop\mouse> 
-
-import mouse
-import time
-
-while (True):
-    mouse.move(0, 1, absolute=True, duration=5)
-    # mouse.click('left')
-    time.sleep(10)
-    mouse.move(270, 180, absolute=True, duration=5)
-    # mouse.click('left')
-    time.sleep(10)
-    mouse.move(240, 150, absolute=True, duration=5)
-    # mouse.click('left')
-    time.sleep(10)
-    mouse.move(270, 180, absolute=True, duration=5)
-    # mouse.click('right')
-    time.sleep(10)
-
-    PS C:\Users\C356882\Desktop\mouse> py --version
-Python 3.13.0
-PS C:\Users\C356882\Desktop\mouse> pip install mouse
-pip : El término 'pip' no se reconoce como nombre de un cmdlet, función, archivo de script o programa ejecutable. Compruebe si escribió correctamente el nombre o, si incluyó una ruta de acceso, compruebe que dicha 
-ruta es correcta e inténtelo de nuevo.
-En línea: 1 Carácter: 1
-+ pip install mouse
-+ ~~~
-    + CategoryInfo          : ObjectNotFound: (pip:String) [], CommandNotFoundException
-    + FullyQualifiedErrorId : CommandNotFoundException
-
-    
+where python
+$env:Path += ";C:\Python313\Scripts"
+pip --version
