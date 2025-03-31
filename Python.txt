@@ -1,17 +1,22 @@
 import win32com.client
 
+# Iniciar Outlook
 outlook = win32com.client.Dispatch("Outlook.Application")
 mail = outlook.CreateItem(0)
-mail.Subject = "Prueba desde Python"
-mail.Body = "¡Funciona correctamente!"
-mail.To = "destinatario@ejemplo.com"
-mail.Display()  # Usa .Send() para enviar directamente
 
-PS C:\Users\C356882\Desktop\mouse> & "C:/Program Files/Python313/python.exe" c:/Users/C356882/Desktop/mouse/mail.py
-Traceback (most recent call last):
-  File "c:\Users\C356882\Desktop\mouse\mail.py", line 3, in <module>
-    outlook = win32com.client.Dispatch("Outlook.Application")
-              ^^^^^^^^^^^^^^^
-AttributeError: module 'win32com' has no attribute 'client'
-PS C:\Users\C356882\Desktop\mouse> 
+# Configurar correo básico
+mail.Subject = "Documento Confidencial"
+mail.Body = "Contenido sensible bajo protección."
+mail.To = "destinatario@empresa.com"
 
+# Asignar etiqueta de confidencialidad (Sensitivity Label)
+mail.Sensitivity = 2  # 0=Normal, 1=Personal, 2=Privado, 3=Confidencial
+
+# OPCIONAL: Usar Microsoft Purview Labels (si tienes Microsoft 365 E5/A5)
+try:
+    mail.PropertyAccessor.SetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/msip_labels", 
+                                   '{"Name":"Confidencial", "Color":"#FF0000"}')
+except Exception as e:
+    print(f"Error al asignar etiqueta avanzada: {e}")
+
+mail.Display()  # Usar .Send() para enviar directamente
