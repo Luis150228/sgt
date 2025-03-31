@@ -1,6 +1,15 @@
-PS C:\Users\C356882\Desktop\mouse> & "C:/Program Files/Python313/python.exe" c:/Users/C356882/Desktop/mouse/mouseOffice.pyw
-  File "c:\Users\C356882\Desktop\mouse\mouseOffice.pyw", line 83
-    time_left = (datetime.combine(datetime.today(), automator.start_time) - datetime.now()
-                ^
-SyntaxError: '(' was never closed
-PS C:\Users\C356882\Desktop\mouse> 
+quiero abrir chrome en la url http://180.176.105.244/
+dar click en el siguiente boton
+<button type="button" class="btn btn-primary btn-lg px-4 me-md-2">SDK-CAU Reportes</button>
+
+en los siguientes input poner las credenciales de acceso
+<input type="text" class="form-control" id="usr" name="usr" placeholder="Usuario" aria-describedby="button-addon2" required="">
+usuario: C356882
+
+<input type="password" class="form-control" id="pass" name="pass" data-pass="validate-pass" placeholder="Password" aria-describedby="button-addon2" required="">
+pass: derekNatalie72 y dar click en enter
+Esperar hasta el div con id "preloader" tenga la clase "preloader preloader-close"
+una vez que tenga la clase esperada dar click en el siguiente elemento 
+<a class="nav-link" href="../apps/dataupdate.html">Actualizar Data</a>
+y despues dar click en el elemento 
+<i data-icon="true" class="bi bi-bandaid-fill"></i>
