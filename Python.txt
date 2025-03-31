@@ -13,3 +13,5 @@ Defaulting to user installation because normal site-packages is not writeable
 Collecting pyautogui
   ERROR: HTTP error 403 while getting https://files.pythonhosted.org/packages/65/ff/cdae0a8c2118a0de74b6cf4cbcdcaf8fd25857e6c3f205ce4b1794b27814/PyAutoGUI-0.9.54.tar.gz (from https://pypi.org/simple/pyautogui/)
 ERROR: Could not install requirement pyautogui from https://files.pythonhosted.org/packages/65/ff/cdae0a8c2118a0de74b6cf4cbcdcaf8fd25857e6c3f205ce4b1794b27814/PyAutoGUI-0.9.54.tar.gz because of HTTP error 403 Client Error: Forbidden for url: https://files.pythonhosted.org/packages/65/ff/cdae0a8c2118a0de74b6cf4cbcdcaf8fd25857e6c3f205ce4b1794b27814/PyAutoGUI-0.9.54.tar.gz for URL https://files.pythonhosted.org/packages/65/ff/cdae0a8c2118a0de74b6cf4cbcdcaf8fd25857e6c3f205ce4b1794b27814/PyAutoGUI-0.9.54.tar.gz (from https://pypi.org/simple/pyautogui/)
+
+pip install pyautogui --index-url https://pypi.org/simple/ --trusted-host pypi.org
