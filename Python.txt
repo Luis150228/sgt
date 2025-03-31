@@ -1,6 +1,42 @@
-WinWait("Seleccionar un certificado")
-ControlClick("Seleccionar un certificado", "", "[CLASS:Button; TEXT:Aceptar]")
-cert_select.au3
+Opción 1: PyWin32 + SendKeys (Sin instalación adicional)
+import win32gui
+import win32con
+import time
 
-import os
-os.system('cert_select.au3')
+def handle_certificate_window():
+    hwnd = win32gui.FindWindow(None, "Seleccionar un certificado")
+    if hwnd:
+        # Enviar TAB para navegar al botón "Aceptar" y ENTER
+        win32gui.SetForegroundWindow(hwnd)
+        time.sleep(1)
+        win32gui.SendMessage(hwnd, win32con.WM_KEYDOWN, win32con.VK_TAB, 0)
+        time.sleep(0.5)
+        win32gui.SendMessage(hwnd, win32con.WM_KEYDOWN, win32con.VK_RETURN, 0)
+        return True
+    return False
+
+# Usar después del click que abre el certificado:
+time.sleep(3)  # Esperar a que aparezca la ventana
+if not handle_certificate_window():
+    print("No se encontró la ventana de certificados")
+
+Opción 2: Selenium + Keyboard (Requiere keyboard)
+import keyboard
+import time
+
+# Después del click que abre el certificado:
+time.sleep(3)
+
+# Simular atajo de teclado (Alt+A para "Aceptar")
+keyboard.press_and_release('alt+a')  # Algunos sistemas usan Alt+S
+time.sleep(1)
+keyboard.press_and_release('enter')
+
+Opción 3: JavaScript Injection (Si es ventana del navegador)
+# Intenta esto si la ventana es un popup de Chrome
+driver.switch_to.alert.accept()  # Para diálogos simples
+
+# O inyecta JS para manipular el DOM (ejemplo genérico):
+driver.execute_script("""
+    document.querySelector('button[title="Aceptar"]').click();
+""")
