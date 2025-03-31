@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
+from pywinauto import Application
 import time
 
 # Configuración
@@ -48,6 +49,19 @@ try:
     icono_bandaid = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.XPATH, "//i[contains(@class, 'bi-bandaid-fill')]")))
     icono_bandaid.click()
+
+    # Esperar a que aparezca la ventana de certificados (ajusta el tiempo según necesites)
+    time.sleep(3)
+    
+    # Conectar con la ventana de Chrome
+    app = Application(backend="uia").connect(title="Seleccionar un certificado", timeout=10)
+    
+    # Seleccionar el certificado (ajusta el texto exacto del asunto)
+    cert_window = app.window(title="Seleccionar un certificado")
+    cert_window.child_window(title="LUIS FERNANDO RANGEL DI.", control_type="DataItem").click()
+    
+    # Hacer clic en "Aceptar"
+    cert_window.child_window(title="Aceptar", control_type="Button").click()
 
     print("Proceso completado exitosamente")
     time.sleep(5)
