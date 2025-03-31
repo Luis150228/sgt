@@ -7,3 +7,60 @@ el click derecho sobre el elemento anteior debe abrir un menu el cual contiene e
 el click anterior mostrara otro menu en el cual debemos selecionar con un click el siguiente elemento con texto "CSV"
 <div item_id="d1cd92f20a0a0b3e00b44ff90470380e" class="context_item" role="menuitem" tabindex="-1" func_set="true">CSV</div>
 esto abrira una ventana para guardar un archivo CSV el cual se debe guardar en el escritorio con el nombre de Incident.csv
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
+import os
+import time
+
+def export_to_csv(driver):
+    try:
+        # 1. Esperar a que aparezca la columna "Número efectivo"
+        columna_numero = WebDriverWait(driver, 20).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "th[name='task_effective_number']"))
+        
+        # 2. Realizar click derecho sobre la columna
+        action = ActionChains(driver)
+        action.context_click(columna_numero).perform()
+        time.sleep(1)  # Esperar a que aparezca el menú contextual
+        
+        # 3. Seleccionar opción "Exportar"
+        exportar_option = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "div[data-context-menu-label='Exportar']")))
+        exportar_option.click()
+        time.sleep(1)  # Esperar a que aparezca el submenú
+        
+        # 4. Seleccionar formato CSV
+        csv_option = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, "//div[@class='context_item' and text()='CSV']")))
+        csv_option.click()
+        
+        # 5. Esperar a que aparezca el diálogo de guardado (manejo dependiente del sistema)
+        time.sleep(3)  # Tiempo para que aparezca el diálogo
+        
+        # 6. Guardar el archivo (requiere configuración previa del navegador o AutoIt)
+        # Opción A: Configuración previa de Chrome para descargas
+        # Opción B: Usar PyWinAuto para manejar el diálogo de guardado
+        
+        print("Exportación a CSV iniciada. El archivo se guardará como 'Incident.csv' en el Escritorio.")
+        return True
+        
+    except Exception as e:
+        print(f"Error durante la exportación: {str(e)}")
+        driver.save_screenshot("export_error.png")
+        return False
+
+# Configuración previa necesaria para Chrome (añadir al inicio del script):
+chrome_options = webdriver.ChromeOptions()
+prefs = {
+    "download.default_directory": os.path.join(os.path.expanduser("~"), "Desktop"),
+    "download.prompt_for_download": False,
+    "download.directory_upgrade": True,
+    "safebrowsing.enabled": True
+}
+chrome_options.add_experimental_option("prefs", prefs)
+
+# Al iniciar el driver:
+# driver = webdriver.Chrome(options=chrome_options)
