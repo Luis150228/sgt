@@ -1,27 +1,46 @@
-perfecto se abre una nueva ventana de chrome y ahora pide el passwor que es 'F3nix@202503d'
-<input name="passwd" type="password" id="i0118" class="form-control input ext-input text-box ext-text-box" aria-required="true" data-bind="
-                attr: { autocomplete: svr.fIsUpdatedAutocompleteEnabled ? 'current-password' : 'off'},
-                textInput: passwordTextbox.value,
-                ariaDescribedBy: [
-                    'loginHeader passwordError',
-                    showCredViewBrandingDesc ? 'credViewBrandingDesc' : '',
-                    unsafe_pageDescription ? 'passwordDesc' : ''].join(' '),
-                hasFocusEx: passwordTextbox.focused() &amp;&amp; !showPassword(),
-                placeholder: $placeholderText,
-                ariaLabel: unsafe_passwordAriaLabel,
-                moveOffScreen: showPassword,
-                externalCss: {
-                    'input': true,
-                    'text-box': true,
-                    'has-error': passwordTextbox.error }" autocomplete="current-password" aria-describedby="loginHeader passwordError  passwordDesc" placeholder="Contraseña" aria-label="Escriba la contraseña para c356882@produban.com.mx" tabindex="0">
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+import time
 
-despues de poner la clave hay que esperar a que ingrese y despues aparecera un elemento <a> ancor con lo siguiente 
-<a href="#" id="signInAnotherWay" aria-describedby="idDiv_SAOTCAS_Title idDiv_SAOTCAS_Description">No puedo usar mi aplicación Microsoft Authenticator en este momento</a> hay que usar el texto como referencia "No puedo usar mi aplicación Microsoft Authenticator en este momento"
+# Credenciales
+PASSWORD = 'F3nix@202503d'
 
-despues aparecera el siguiente elemento que podemos ubicarlo por el siguiente texto XXXXXXXX32
-<div class="table-cell text-left content" data-bind="css: { 'content': !svr.fSupportWindowsStyles }">
-                            <div data-bind="text: display">Llamar al +XX XXXXXXXX32‎</div>
-                            <!-- ko if: showProofDetail --><!-- /ko -->
-                        </div>
+def handle_microsoft_auth(driver):
+    try:
+        # Cambiar al último tab abierto (la ventana emergente)
+        driver.switch_to.window(driver.window_handles[-1])
+        
+        # Esperar y llenar el campo de contraseña
+        password_field = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.ID, "i0118"))
+        password_field.send_keys(PASSWORD)
+        password_field.send_keys(Keys.RETURN)
+        
+        # Esperar por la opción de autenticación alternativa
+        auth_alternative = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//a[contains(text(), 'No puedo usar mi aplicación Microsoft Authenticator')]"))
+        auth_alternative.click()
+        
+        # Esperar y seleccionar la opción de llamada telefónica
+        call_option = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//div[contains(text(), 'XXXXXX32')]")))
+        call_option.click()
+        
+        print("Esperando 20 segundos para que contesten la llamada...")
+        time.sleep(20)
+        
+        # Volver al tab principal
+        driver.switch_to.window(driver.window_handles[0])
+        return True
+        
+    except Exception as e:
+        print(f"Error en autenticación: {str(e)}")
+        return False
 
-hay que darle click y esperar 20 seg para que la llamada sea contestada por el usuario dando acceso
+# Uso en tu script principal:
+# Después de hacer clic en el ícono que abre la nueva ventana:
+success = handle_microsoft_auth(driver)
+if not success:
+    print("Falló el proceso de autenticación")
