@@ -1,12 +1,16 @@
-Python 3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)] on win32
-Type "help", "copyright", "credits" or "license" for more information.
->>> pip install mouse
-  File "<python-input-0>", line 1
-    pip install mouse
-        ^^^^^^^
-SyntaxError: invalid syntax
->>>
+PS C:\Users\C356882> py pip install mouse
+C:\Program Files\Python313\python.exe: can't open file 'C:\\Users\\C356882\\pip': [Errno 2] No such file or directory
+PS C:\Users\C356882> py --version
+Python 3.13.0
+PS C:\Users\C356882> pip --version
+pip : El término 'pip' no se reconoce como nombre de un cmdlet, función, archivo de script o programa ejecutable.
+Compruebe si escribió correctamente el nombre o, si incluyó una ruta de acceso, compruebe que dicha ruta es correcta e
+inténtelo de nuevo.
+En línea: 1 Carácter: 1
++ pip --version
++ ~~~
+    + CategoryInfo          : ObjectNotFound: (pip:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
 
-
-
+PS C:\Users\C356882>
 
