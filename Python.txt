@@ -6,3 +6,21 @@ Application     python.exe                                         0.0.0.0    C:
 
 
 PS C:\Users\C356882\Desktop\mouse> 
+
+# Descargar instalador oficial
+Invoke-WebRequest https://www.python.org/ftp/python/3.11.8/python-3.11.8-amd64.exe -OutFile python-installer.exe
+
+# Ejecutar instalador (como Administrador)
+Start-Process python-installer.exe -ArgumentList '/quiet InstallAllUsers=1 PrependPath=1' -Wait
+
+# Descargar instalador oficial
+Invoke-WebRequest https://www.python.org/ftp/python/3.11.8/python-3.11.8-amd64.exe -OutFile python-installer.exe
+
+# Ejecutar instalador (como Administrador)
+Start-Process python-installer.exe -ArgumentList '/quiet InstallAllUsers=1 PrependPath=1' -Wait
+
+# Usar el Python de WindowsApps con pip integrado
+python -m pip install mouse
+
+# O especificar la ruta completa (si conoces dónde está pip)
+& "$env:LOCALAPPDATA\Packages\PythonSoftwareFoundation.Python.*\LocalCache\local-packages\Python311\Scripts\pip.exe" install mouse
