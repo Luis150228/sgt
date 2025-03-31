@@ -1,0 +1,27 @@
+perfecto se abre una nueva ventana de chrome y ahora pide el passwor que es 'F3nix@202503d'
+<input name="passwd" type="password" id="i0118" class="form-control input ext-input text-box ext-text-box" aria-required="true" data-bind="
+                attr: { autocomplete: svr.fIsUpdatedAutocompleteEnabled ? 'current-password' : 'off'},
+                textInput: passwordTextbox.value,
+                ariaDescribedBy: [
+                    'loginHeader passwordError',
+                    showCredViewBrandingDesc ? 'credViewBrandingDesc' : '',
+                    unsafe_pageDescription ? 'passwordDesc' : ''].join(' '),
+                hasFocusEx: passwordTextbox.focused() &amp;&amp; !showPassword(),
+                placeholder: $placeholderText,
+                ariaLabel: unsafe_passwordAriaLabel,
+                moveOffScreen: showPassword,
+                externalCss: {
+                    'input': true,
+                    'text-box': true,
+                    'has-error': passwordTextbox.error }" autocomplete="current-password" aria-describedby="loginHeader passwordError  passwordDesc" placeholder="Contraseña" aria-label="Escriba la contraseña para c356882@produban.com.mx" tabindex="0">
+
+despues de poner la clave hay que esperar a que ingrese y despues aparecera un elemento <a> ancor con lo siguiente 
+<a href="#" id="signInAnotherWay" aria-describedby="idDiv_SAOTCAS_Title idDiv_SAOTCAS_Description">No puedo usar mi aplicación Microsoft Authenticator en este momento</a> hay que usar el texto como referencia "No puedo usar mi aplicación Microsoft Authenticator en este momento"
+
+despues aparecera el siguiente elemento que podemos ubicarlo por el siguiente texto XXXXXXXX32
+<div class="table-cell text-left content" data-bind="css: { 'content': !svr.fSupportWindowsStyles }">
+                            <div data-bind="text: display">Llamar al +XX XXXXXXXX32‎</div>
+                            <!-- ko if: showProofDetail --><!-- /ko -->
+                        </div>
+
+hay que darle click y esperar 20 seg para que la llamada sea contestada por el usuario dando acceso
