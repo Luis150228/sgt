@@ -1,22 +1,18 @@
-import win32com.client
+quiero iniciar el siguiente codigo a las 9:20 hrs y que ya no se ejecute a las 18:02 hrs
+import mouse
+import time
 
-# Iniciar Outlook
-outlook = win32com.client.Dispatch("Outlook.Application")
-mail = outlook.CreateItem(0)
-
-# Configurar correo básico
-mail.Subject = "Documento Confidencial"
-mail.Body = "Contenido sensible bajo protección."
-mail.To = "destinatario@empresa.com"
-
-# Asignar etiqueta de confidencialidad (Sensitivity Label)
-mail.Sensitivity = 2  # 0=Normal, 1=Personal, 2=Privado, 3=Confidencial
-
-# OPCIONAL: Usar Microsoft Purview Labels (si tienes Microsoft 365 E5/A5)
-try:
-    mail.PropertyAccessor.SetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/msip_labels", 
-                                   '{"Name":"Confidencial", "Color":"#FF0000"}')
-except Exception as e:
-    print(f"Error al asignar etiqueta avanzada: {e}")
-
-mail.Display()  # Usar .Send() para enviar directamente
+while (True):
+    mouse.move(0, 1, absolute=True, duration=5)
+    # mouse.click('left')
+    time.sleep(10)
+    mouse.move(270, 180, absolute=True, duration=5)
+    # mouse.click('left')
+    time.sleep(10)
+    mouse.move(240, 150, absolute=True, duration=5)
+    # mouse.click('left')
+    time.sleep(10)
+    mouse.move(270, 180, absolute=True, duration=5)
+    # mouse.click('right')
+    time.sleep(10)
+    
