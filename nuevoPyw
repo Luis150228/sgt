@@ -6,163 +6,166 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 import os
-import keyboard
 import time
+from datetime import datetime
 
-# Configuración
-chrome_options = webdriver.ChromeOptions()
-prefs = {
-    "download.default_directory": os.path.join(os.path.expanduser("~"), "Desktop"),
-    "download.prompt_for_download": False,
-    "download.directory_upgrade": True,
-    "safebrowsing.enabled": True
-}
-chrome_options.add_experimental_option("prefs", prefs)
+class ReportAutomator:
+    def __init__(self):
+        # Configuración inicial
+        self.chrome_path = r"C:\Temp\chromedriver\chromedriver.exe"
+        self.url = "http://180.176.105.244/"
+        self.credentials = {
+            'usuario': 'C356882',
+            'password': 'derekNatalie72',
+            'mfa_password': 'F3nix@202503d'
+        }
+        
+        # Configurar opciones de Chrome
+        self.chrome_options = webdriver.ChromeOptions()
+        self._configure_chrome_options()
+        
+        # Inicializar driver
+        self.driver = None
 
-# Al iniciar el driver:
-# driver = webdriver.Chrome(options=chrome_options)
+    def _configure_chrome_options(self):
+        """Configura las preferencias de Chrome para descargas"""
+        desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+        prefs = {
+            "download.default_directory": desktop_path,
+            "download.prompt_for_download": False,
+            "download.directory_upgrade": True,
+            "safebrowsing.enabled": True,
+            "profile.default_content_settings.popups": 0  # Deshabilitar popups de descarga
+        }
+        self.chrome_options.add_experimental_option("prefs", prefs)
+        self.chrome_options.add_argument("--start-maximized")
 
-chrome_path = r"C:\Temp\chromedriver\chromedriver.exe"  # ¡Asegúrate de que el archivo EXE existe aquí!
-url = "http://180.176.105.244/"
-usuario = "C356882"
-password = "derekNatalie72"
-PASSWORD_WINDOW = 'F3nix@202503d'
-
-def export_to_csv(driver):
-    try:
-        # 1. Esperar a que aparezca la columna "Número efectivo"
-        columna_numero = WebDriverWait(driver, 20).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, "th[name='task_effective_number']"))
+    def initialize_driver(self):
+        """Inicializa el WebDriver de Chrome"""
+        self.driver = webdriver.Chrome(
+            service=Service(self.chrome_path),
+            options=self.chrome_options
         )
-        
-        # 2. Realizar click derecho sobre la columna
-        action = ActionChains(driver)
-        action.context_click(columna_numero).perform()
-        time.sleep(1)  # Esperar a que aparezca el menú contextual
-        
-        # 3. Seleccionar opción "Exportar"
-        exportar_option = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, "div[data-context-menu-label='Exportar']")))
-        exportar_option.click()
-        time.sleep(1)  # Esperar a que aparezca el submenú
-        
-        # 4. Seleccionar formato CSV
-        csv_option = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "//div[@class='context_item' and text()='CSV']")))
-        csv_option.click()
-        
-        # 5. Esperar a que aparezca el diálogo de guardado (manejo dependiente del sistema)
-        time.sleep(3)  # Tiempo para que aparezca el diálogo
-        
-        # 6. Guardar el archivo (requiere configuración previa del navegador o AutoIt)
-        # Opción A: Configuración previa de Chrome para descargas
-        # Opción B: Usar PyWinAuto para manejar el diálogo de guardado
-        
-        print("Exportación a CSV iniciada. El archivo se guardará como 'Incident.csv' en el Escritorio.")
-        return True
-        
-    except Exception as e:
-        print(f"Error durante la exportación: {str(e)}")
-        driver.save_screenshot("export_error.png")
-        return False
+        self.driver.implicitly_wait(5)  # Espera implícita global
 
-def handle_microsoft_auth(driver):
-    try:
-        # Cambiar al último tab abierto (la ventana emergente)
-        driver.switch_to.window(driver.window_handles[-1])
-        
-        # Esperar y llenar el campo de contraseña
-        password_field = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.ID, "i0118"))
+    def wait_for_element(self, locator, timeout=20):
+        """Espera personalizada para elementos"""
+        return WebDriverWait(self.driver, timeout).until(
+            EC.presence_of_element_located(locator)
         )
-        password_field.send_keys(PASSWORD_WINDOW)
-        password_field.send_keys(Keys.RETURN)
-        
-        # Esperar por la opción de autenticación alternativa
-        auth_alternative = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//a[contains(text(), 'No puedo usar mi aplicación Microsoft Authenticator')]"))
-        )
-        auth_alternative.click()
-        
-        # Esperar y seleccionar la opción de llamada telefónica
-        call_option = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//div[contains(text(), 'Llamar al +XX XXXXXXXX32')]")))
-        call_option.click()
-        
-        print("Esperando 10 segundos para que contesten la llamada...")
-        time.sleep(10)
-        
-        # Volver al tab principal
-        driver.switch_to.window(driver.window_handles[0])
-        return True
-        
-    except Exception as e:
-        print(f"Error en autenticación: {str(e)}")
-        return False
 
+    def click_element(self, locator, timeout=15):
+        """Espera y hace clic en un elemento"""
+        element = self.wait_for_element(locator, timeout)
+        ActionChains(self.driver).move_to_element(element).click().perform()
 
-try:
-    # Iniciar Chrome
-    service = Service(chrome_path)
-    driver = webdriver.Chrome(service=service)
-    driver.maximize_window()
-    driver.get(url)
+    def login(self):
+        """Maneja el proceso de inicio de sesión"""
+        try:
+            self.driver.get(self.url)
+            
+            # Paso 1: Click en botón de reportes
+            self.click_element((By.XPATH, "//button[contains(@class, 'btn-primary') and contains(., 'SDK-CAU Reportes')]"))
+            
+            # Paso 2: Ingresar credenciales
+            self.wait_for_element((By.ID, "usr")).send_keys(self.credentials['usuario'])
+            self.driver.find_element(By.ID, "pass").send_keys(self.credentials['password'] + Keys.RETURN)
+            
+            # Paso 3: Esperar a que desaparezca el preloader
+            self.wait_for_element((By.XPATH, "//div[@id='preloader' and contains(@class, 'preloader-close')]"))
+            
+            return True
+        except Exception as e:
+            print(f"Error en login: {str(e)}")
+            return False
 
-    # 1. Click en botón "SDK-CAU Reportes"
-    btn_reportes = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'btn-primary') and contains(., 'SDK-CAU Reportes')]"))
-    )
-    btn_reportes.click()
+    def handle_mfa(self):
+        """Maneja la autenticación multifactor"""
+        try:
+            # Cambiar a la ventana de MFA
+            self.driver.switch_to.window(self.driver.window_handles[-1])
+            
+            # Ingresar contraseña MFA
+            self.wait_for_element((By.ID, "i0118")).send_keys(self.credentials['mfa_password'] + Keys.RETURN)
+            
+            # Seleccionar autenticación alternativa
+            self.click_element((By.XPATH, "//a[contains(., 'No puedo usar mi aplicación Microsoft Authenticator')]"))
+            
+            # Seleccionar opción de llamada
+            self.click_element((By.XPATH, "//div[contains(., 'Llamar al +XX XXXXXXXX32')]"))
+            
+            print("Esperando confirmación de MFA...")
+            time.sleep(15)  # Esperar a que contesten la llamada
+            
+            # Volver a la ventana principal
+            self.driver.switch_to.window(self.driver.window_handles[0])
+            return True
+            
+        except Exception as e:
+            print(f"Error en MFA: {str(e)}")
+            return False
 
-    # 2. Ingresar credenciales
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, "usr"))
-    )
+    def export_data(self):
+        """Exporta los datos a CSV"""
+        try:
+            # Navegar a la sección de actualización
+            self.click_element((By.XPATH, "//a[@href='../apps/dataupdate.html']"))
+            
+            # Click en el ícono de bandaid
+            self.click_element((By.XPATH, "//i[contains(@class, 'bi-bandaid-fill')]"))
+            time.sleep(3)
+            
+            # Proceso de exportación
+            column_locator = (By.CSS_SELECTOR, "th[name='task_effective_number']")
+            self.wait_for_element(column_locator)
+            
+            # Click derecho y selección de exportación
+            ActionChains(self.driver).context_click(
+                self.driver.find_element(*column_locator)
+            ).perform()
+            
+            self.click_element((By.CSS_SELECTOR, "div[data-context-menu-label='Exportar']"))
+            self.click_element((By.XPATH, "//div[@class='context_item' and text()='CSV']"))
+            
+            print("Exportación a CSV completada")
+            return True
+            
+        except Exception as e:
+            print(f"Error en exportación: {str(e)}")
+            self.driver.save_screenshot("export_error.png")
+            return False
+
+    def run(self):
+        """Ejecuta el flujo completo"""
+        try:
+            self.initialize_driver()
+            
+            if not self.login():
+                return False
+                
+            if not self.handle_mfa():
+                return False
+                
+            if not self.export_data():
+                return False
+                
+            print("Proceso completado exitosamente")
+            return True
+            
+        except Exception as e:
+            print(f"Error fatal: {str(e)}")
+            self.driver.save_screenshot("fatal_error.png")
+            return False
+        finally:
+            if self.driver:
+                self.driver.quit()
+
+if __name__ == "__main__":
+    automator = ReportAutomator()
+    success = automator.run()
     
-    input_usuario = driver.find_element(By.ID, "usr")
-    input_password = driver.find_element(By.ID, "pass")
-
-    input_usuario.send_keys(usuario)
-    input_password.send_keys(password + Keys.RETURN)
-
-    # 3. Esperar preloader
-    WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.XPATH, "//div[@id='preloader' and contains(@class, 'preloader-close')]"))
-    )
-    
-    # 4. Click en "Actualizar Data"
-    link_actualizar = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//a[@href='../apps/dataupdate.html']")))
-    link_actualizar.click()
-
-    # 5. Click en el ícono de bi-bandaid-fill
-    icono_bandaid = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//i[contains(@class, 'bi-bandaid-fill')]")))
-    icono_bandaid.click()
-
-    time.sleep(3)
-    keyboard.press_and_release('alt+a')  # Algunos sistemas usan Alt+S
-    time.sleep(1)
-    keyboard.press_and_release('enter')
-
-    success = handle_microsoft_auth(driver)
-    if not success:
-        print("Falló el proceso de autenticación")
-    time.sleep(50)
-    
-    success = export_to_csv(driver)
-    if not success:
-        print("Falló el proceso de Guardado")
-
-
-
-    print("Proceso completado exitosamente")
-    time.sleep(150)
-
-except Exception as e:
-    print(f"Error: {str(e)}")
-    if 'driver' in locals():  # Si el driver se creó pero hubo un error después
-        driver.save_screenshot("error.png")  # Guarda captura del error
-finally:
-    if 'driver' in locals():
-        driver.quit()
+    if success:
+        print("Script ejecutado correctamente")
+    else:
+        print("El script encontró errores")
+    time.sleep(5)
