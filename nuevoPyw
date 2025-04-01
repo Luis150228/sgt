@@ -1,25 +1,39 @@
-posterior a la espera se debe espera a que aparezca el siguiente elemento "ask_effective_number" una vez en pantalla dar click derecho sobre el
-<th name="task_effective_number" class="text-align-left list_header_cell list_hdr " glide_label="Número efectivo" glide_field="incident.task_effective_number" composite_edit_field="" glide_type="string" filterable="true" groupable="true" sortable="true" sort_dir="none" align="left" scope="col" style=";" data-type="list2_hdrcell" data-list_id="incident" role="columnheader" aria-label="Número efectivo"><span class="list_header_cell_container"><a class="column_head list_hdrcell table-col-header" role="button" title="" tabindex="0" data-type="list2_hdrcell" data-list_id="incident" data-original-title="" aria-expanded="false">Número efectivo</a><span aria-hidden="true" class="sort-icon column_header_icon"><a href="#" class="col-change-sort sort_column_header" tabindex="-1" data-type="list2_hdrcell"><i class="sort-icon-padding list-column-icon"></i></a></span><i class="icon-ellipsis-vertical col-menu list_header_context list-column-icon" aria-haspopup="true" data-type="list2_hdricon" role="button" tabindex="0" title="Opciones de columna" aria-label="Número efectivo opciones de columna" aria-expanded="false" data-original-title="Opciones de columna"></i></span></th>
-
-el click derecho sobre el elemento anteior debe abrir un menu el cual contiene el siguiente elemento "data-context-menu-label="Exportar" hay que dar click en el
-<div item_id="d1ad2f010a0a0b3e005c8b7fbd7c4e28" class="context_item context_menu_hover" role="menuitem" tabindex="-1" aria-haspopup="true" aria-controls="d1ad2f010a0a0b3e005c8b7fbd7c4e28_incident" label="true" data-context-menu-label="Exportar" aria-expanded="true">Exportar<i class="icon-chevron-right context_submenu_indicator"></i></div>
-
-el click anterior mostrara otro menu en el cual debemos selecionar con un click el siguiente elemento con texto "CSV"
-<div item_id="d1cd92f20a0a0b3e00b44ff90470380e" class="context_item" role="menuitem" tabindex="-1" func_set="true">CSV</div>
-esto abrira una ventana para guardar un archivo CSV el cual se debe guardar en el escritorio con el nombre de Incident.csv
-
+from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.keys import Keys
 import os
+import keyboard
 import time
+
+# Configuración
+chrome_options = webdriver.ChromeOptions()
+prefs = {
+    "download.default_directory": os.path.join(os.path.expanduser("~"), "Desktop"),
+    "download.prompt_for_download": False,
+    "download.directory_upgrade": True,
+    "safebrowsing.enabled": True
+}
+chrome_options.add_experimental_option("prefs", prefs)
+
+# Al iniciar el driver:
+# driver = webdriver.Chrome(options=chrome_options)
+
+chrome_path = r"C:\Temp\chromedriver\chromedriver.exe"  # ¡Asegúrate de que el archivo EXE existe aquí!
+url = "http://180.176.105.244/"
+usuario = "C356882"
+password = "derekNatalie72"
+PASSWORD_WINDOW = 'F3nix@202503d'
 
 def export_to_csv(driver):
     try:
         # 1. Esperar a que aparezca la columna "Número efectivo"
         columna_numero = WebDriverWait(driver, 20).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "th[name='task_effective_number']"))
+        )
         
         # 2. Realizar click derecho sobre la columna
         action = ActionChains(driver)
@@ -52,15 +66,103 @@ def export_to_csv(driver):
         driver.save_screenshot("export_error.png")
         return False
 
-# Configuración previa necesaria para Chrome (añadir al inicio del script):
-chrome_options = webdriver.ChromeOptions()
-prefs = {
-    "download.default_directory": os.path.join(os.path.expanduser("~"), "Desktop"),
-    "download.prompt_for_download": False,
-    "download.directory_upgrade": True,
-    "safebrowsing.enabled": True
-}
-chrome_options.add_experimental_option("prefs", prefs)
+def handle_microsoft_auth(driver):
+    try:
+        # Cambiar al último tab abierto (la ventana emergente)
+        driver.switch_to.window(driver.window_handles[-1])
+        
+        # Esperar y llenar el campo de contraseña
+        password_field = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.ID, "i0118"))
+        )
+        password_field.send_keys(PASSWORD_WINDOW)
+        password_field.send_keys(Keys.RETURN)
+        
+        # Esperar por la opción de autenticación alternativa
+        auth_alternative = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//a[contains(text(), 'No puedo usar mi aplicación Microsoft Authenticator')]"))
+        )
+        auth_alternative.click()
+        
+        # Esperar y seleccionar la opción de llamada telefónica
+        call_option = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//div[contains(text(), 'Llamar al +XX XXXXXXXX32')]")))
+        call_option.click()
+        
+        print("Esperando 10 segundos para que contesten la llamada...")
+        time.sleep(10)
+        
+        # Volver al tab principal
+        driver.switch_to.window(driver.window_handles[0])
+        return True
+        
+    except Exception as e:
+        print(f"Error en autenticación: {str(e)}")
+        return False
 
-# Al iniciar el driver:
-# driver = webdriver.Chrome(options=chrome_options)
+
+try:
+    # Iniciar Chrome
+    service = Service(chrome_path)
+    driver = webdriver.Chrome(service=service)
+    driver.maximize_window()
+    driver.get(url)
+
+    # 1. Click en botón "SDK-CAU Reportes"
+    btn_reportes = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'btn-primary') and contains(., 'SDK-CAU Reportes')]"))
+    )
+    btn_reportes.click()
+
+    # 2. Ingresar credenciales
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, "usr"))
+    )
+    
+    input_usuario = driver.find_element(By.ID, "usr")
+    input_password = driver.find_element(By.ID, "pass")
+
+    input_usuario.send_keys(usuario)
+    input_password.send_keys(password + Keys.RETURN)
+
+    # 3. Esperar preloader
+    WebDriverWait(driver, 30).until(
+        EC.presence_of_element_located((By.XPATH, "//div[@id='preloader' and contains(@class, 'preloader-close')]"))
+    )
+    
+    # 4. Click en "Actualizar Data"
+    link_actualizar = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//a[@href='../apps/dataupdate.html']")))
+    link_actualizar.click()
+
+    # 5. Click en el ícono de bi-bandaid-fill
+    icono_bandaid = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//i[contains(@class, 'bi-bandaid-fill')]")))
+    icono_bandaid.click()
+
+    time.sleep(3)
+    keyboard.press_and_release('alt+a')  # Algunos sistemas usan Alt+S
+    time.sleep(1)
+    keyboard.press_and_release('enter')
+
+    success = handle_microsoft_auth(driver)
+    if not success:
+        print("Falló el proceso de autenticación")
+    time.sleep(50)
+    
+    success = export_to_csv(driver)
+    if not success:
+        print("Falló el proceso de Guardado")
+
+
+
+    print("Proceso completado exitosamente")
+    time.sleep(150)
+
+except Exception as e:
+    print(f"Error: {str(e)}")
+    if 'driver' in locals():  # Si el driver se creó pero hubo un error después
+        driver.save_screenshot("error.png")  # Guarda captura del error
+finally:
+    if 'driver' in locals():
+        driver.quit()
