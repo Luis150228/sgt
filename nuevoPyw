@@ -1,171 +1,29 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.keys import Keys
-import os
-import time
-from datetime import datetime
+PS C:\Users\C356882\Desktop\mouse> & "C:/Program Files/Python313/python.exe" c:/Users/C356882/Desktop/mouse/autoReportsBeta.pyw
 
-class ReportAutomator:
-    def __init__(self):
-        # Configuración inicial
-        self.chrome_path = r"C:\Temp\chromedriver\chromedriver.exe"
-        self.url = "http://180.176.105.244/"
-        self.credentials = {
-            'usuario': 'C356882',
-            'password': 'derekNatalie72',
-            'mfa_password': 'F3nix@202503d'
-        }
-        
-        # Configurar opciones de Chrome
-        self.chrome_options = webdriver.ChromeOptions()
-        self._configure_chrome_options()
-        
-        # Inicializar driver
-        self.driver = None
+DevTools listening on ws://127.0.0.1:52443/devtools/browser/1b028ad3-bac3-4446-a9bc-b433bfbdbcf5
+Created TensorFlow Lite XNNPACK delegate for CPU.
+Error en MFA: Message: 
+Stacktrace:
+        GetHandleVerifier [0x00007FF72D084C25+3179557]
+        (No symbol) [0x00007FF72CCE88A0]
+        (No symbol) [0x00007FF72CB791CA]
+        (No symbol) [0x00007FF72CBCFA67]
+        (No symbol) [0x00007FF72CBCFC9C]
+        (No symbol) [0x00007FF72CC23627]
+        (No symbol) [0x00007FF72CBF7C6F]
+        (No symbol) [0x00007FF72CC202F3]
+        (No symbol) [0x00007FF72CBF7A03]
+        (No symbol) [0x00007FF72CBC06D0]
+        (No symbol) [0x00007FF72CBC1983]
+        GetHandleVerifier [0x00007FF72D0E67CD+3579853]
+        GetHandleVerifier [0x00007FF72D0FD1D2+3672530]
+        GetHandleVerifier [0x00007FF72D0F2153+3627347]
+        GetHandleVerifier [0x00007FF72CE5092A+868650]
+        (No symbol) [0x00007FF72CCF2FFF]
+        (No symbol) [0x00007FF72CCEF4A4]
+        (No symbol) [0x00007FF72CCEF646]
+        (No symbol) [0x00007FF72CCDEAA9]
+        BaseThreadInitThunk [0x00007FFDACBC259D+29]
+        RtlUserThreadStart [0x00007FFDADA0AF38+40]
 
-    def _configure_chrome_options(self):
-        """Configura las preferencias de Chrome para descargas"""
-        desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
-        prefs = {
-            "download.default_directory": desktop_path,
-            "download.prompt_for_download": False,
-            "download.directory_upgrade": True,
-            "safebrowsing.enabled": True,
-            "profile.default_content_settings.popups": 0  # Deshabilitar popups de descarga
-        }
-        self.chrome_options.add_experimental_option("prefs", prefs)
-        self.chrome_options.add_argument("--start-maximized")
-
-    def initialize_driver(self):
-        """Inicializa el WebDriver de Chrome"""
-        self.driver = webdriver.Chrome(
-            service=Service(self.chrome_path),
-            options=self.chrome_options
-        )
-        self.driver.implicitly_wait(5)  # Espera implícita global
-
-    def wait_for_element(self, locator, timeout=20):
-        """Espera personalizada para elementos"""
-        return WebDriverWait(self.driver, timeout).until(
-            EC.presence_of_element_located(locator)
-        )
-
-    def click_element(self, locator, timeout=15):
-        """Espera y hace clic en un elemento"""
-        element = self.wait_for_element(locator, timeout)
-        ActionChains(self.driver).move_to_element(element).click().perform()
-
-    def login(self):
-        """Maneja el proceso de inicio de sesión"""
-        try:
-            self.driver.get(self.url)
-            
-            # Paso 1: Click en botón de reportes
-            self.click_element((By.XPATH, "//button[contains(@class, 'btn-primary') and contains(., 'SDK-CAU Reportes')]"))
-            
-            # Paso 2: Ingresar credenciales
-            self.wait_for_element((By.ID, "usr")).send_keys(self.credentials['usuario'])
-            self.driver.find_element(By.ID, "pass").send_keys(self.credentials['password'] + Keys.RETURN)
-            
-            # Paso 3: Esperar a que desaparezca el preloader
-            self.wait_for_element((By.XPATH, "//div[@id='preloader' and contains(@class, 'preloader-close')]"))
-            
-            return True
-        except Exception as e:
-            print(f"Error en login: {str(e)}")
-            return False
-
-    def handle_mfa(self):
-        """Maneja la autenticación multifactor"""
-        try:
-            # Cambiar a la ventana de MFA
-            self.driver.switch_to.window(self.driver.window_handles[-1])
-            
-            # Ingresar contraseña MFA
-            self.wait_for_element((By.ID, "i0118")).send_keys(self.credentials['mfa_password'] + Keys.RETURN)
-            
-            # Seleccionar autenticación alternativa
-            self.click_element((By.XPATH, "//a[contains(., 'No puedo usar mi aplicación Microsoft Authenticator')]"))
-            
-            # Seleccionar opción de llamada
-            self.click_element((By.XPATH, "//div[contains(., 'Llamar al +XX XXXXXXXX32')]"))
-            
-            print("Esperando confirmación de MFA...")
-            time.sleep(15)  # Esperar a que contesten la llamada
-            
-            # Volver a la ventana principal
-            self.driver.switch_to.window(self.driver.window_handles[0])
-            return True
-            
-        except Exception as e:
-            print(f"Error en MFA: {str(e)}")
-            return False
-
-    def export_data(self):
-        """Exporta los datos a CSV"""
-        try:
-            # Navegar a la sección de actualización
-            self.click_element((By.XPATH, "//a[@href='../apps/dataupdate.html']"))
-            
-            # Click en el ícono de bandaid
-            self.click_element((By.XPATH, "//i[contains(@class, 'bi-bandaid-fill')]"))
-            time.sleep(3)
-            
-            # Proceso de exportación
-            column_locator = (By.CSS_SELECTOR, "th[name='task_effective_number']")
-            self.wait_for_element(column_locator)
-            
-            # Click derecho y selección de exportación
-            ActionChains(self.driver).context_click(
-                self.driver.find_element(*column_locator)
-            ).perform()
-            
-            self.click_element((By.CSS_SELECTOR, "div[data-context-menu-label='Exportar']"))
-            self.click_element((By.XPATH, "//div[@class='context_item' and text()='CSV']"))
-            
-            print("Exportación a CSV completada")
-            return True
-            
-        except Exception as e:
-            print(f"Error en exportación: {str(e)}")
-            self.driver.save_screenshot("export_error.png")
-            return False
-
-    def run(self):
-        """Ejecuta el flujo completo"""
-        try:
-            self.initialize_driver()
-            
-            if not self.login():
-                return False
-                
-            if not self.handle_mfa():
-                return False
-                
-            if not self.export_data():
-                return False
-                
-            print("Proceso completado exitosamente")
-            return True
-            
-        except Exception as e:
-            print(f"Error fatal: {str(e)}")
-            self.driver.save_screenshot("fatal_error.png")
-            return False
-        finally:
-            if self.driver:
-                self.driver.quit()
-
-if __name__ == "__main__":
-    automator = ReportAutomator()
-    success = automator.run()
-    
-    if success:
-        print("Script ejecutado correctamente")
-    else:
-        print("El script encontró errores")
-    time.sleep(5)
+El script encontró errores
